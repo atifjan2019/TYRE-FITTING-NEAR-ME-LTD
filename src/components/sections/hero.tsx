@@ -33,7 +33,7 @@ export function Hero({
 
   return (
     <section className="border-b bg-gradient-to-b from-white to-[var(--color-muted-blue)]/50">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 lg:items-center lg:py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:py-20 lg:grid-cols-2 lg:items-center">
         {/* Left: value proposition + CTAs */}
         <div>
           {/* Google rating badge */}

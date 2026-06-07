@@ -3,28 +3,38 @@ import { BRAND_LOGOS } from "@/lib/site-config";
 
 /**
  * Tyre-brand logo grid using the curated images in /public/uploads/brands.
- * (For brands you'd rather manage in the CMS with their own logos, use
- *  /admin → Brands instead.)
+ * Each logo sits in a uniform white card so mixed logo sizes/shapes still line
+ * up neatly. (Manage brands with their own logos via /admin -> Brands too.)
  */
 export function BrandLogos() {
   if (!BRAND_LOGOS.length) return null;
 
   return (
-    <section className="border-y bg-white py-12">
+    <section className="border-y bg-secondary py-14">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="mb-8 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          All major tyre brands in stock - plus quality budget options
-        </p>
-        <div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
+          <h2 className="font-heading text-2xl font-extrabold text-primary sm:text-3xl">
+            Fitting all major tyre brands
+          </h2>
+          <p className="mt-2 text-muted-foreground">
+            From premium names to quality budget options, supplied and fitted at
+            your location.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {BRAND_LOGOS.map((b) => (
-            <div key={b.src} className="flex h-14 items-center justify-center">
+            <div
+              key={b.src}
+              className="flex h-24 items-center justify-center rounded-xl border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+            >
               <Image
                 src={b.src}
                 alt={b.alt}
-                width={150}
-                height={56}
-                sizes="(max-width: 640px) 40vw, 150px"
-                className="max-h-14 w-auto object-contain opacity-80 transition hover:opacity-100"
+                width={140}
+                height={64}
+                sizes="(max-width: 640px) 40vw, 140px"
+                className="max-h-12 w-auto object-contain"
               />
             </div>
           ))}
