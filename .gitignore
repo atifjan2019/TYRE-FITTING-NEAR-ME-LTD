@@ -48,6 +48,9 @@ pnpm-debug.log*
 !/public/uploads/brands
 !/public/uploads/brands/**
 
+# internal working notes (not for the repo)
+/PROJECT-NOTES.md
+
 # vercel / build tooling
 /.vercel
 /.turbo
