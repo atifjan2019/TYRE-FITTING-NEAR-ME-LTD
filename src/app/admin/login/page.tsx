@@ -20,7 +20,7 @@ export default function LoginPage() {
           </div>
           <h1 className="text-xl font-bold">Admin sign in</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Tyre Fitting Near Me — content management
+            Tyre Fitting Near Me - content management
           </p>
         </div>
 

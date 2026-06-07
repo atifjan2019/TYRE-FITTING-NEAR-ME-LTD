@@ -6,7 +6,7 @@ import type { SiteSettingsData } from "@/lib/data";
 
 /**
  * Site footer. Lists service areas (good for internal linking + local SEO),
- * contact actions, and legal links. No street address — service-area business.
+ * contact actions, and legal links. No street address - service-area business.
  */
 export function SiteFooter({
   settings,
@@ -100,7 +100,7 @@ export function SiteFooter({
           <p>
             © {new Date().getFullYear()} {settings.brandName}. All rights reserved.
           </p>
-          <p>Mobile service-area business — we come to you. No shop visits.</p>
+          <p>Mobile service-area business - we come to you. No shop visits.</p>
         </div>
       </div>
     </footer>

@@ -9,7 +9,7 @@ import type { SiteSettingsData } from "@/lib/data";
 export function buildMetadata(opts: {
   title: string;
   description: string;
-  /** Path beginning with "/" — used for the canonical URL. */
+  /** Path beginning with "/" - used for the canonical URL. */
   path?: string;
   ogImage?: string | null;
   noindex?: boolean;

@@ -2,7 +2,7 @@
  * Admin resource definitions (config-driven CRUD).
  * ---------------------------------------------------------------------------
  * The whole /admin section is generated from these configs, so adding a new
- * field to a content type is a ONE-LINE change here — no new components needed.
+ * field to a content type is a ONE-LINE change here - no new components needed.
  * Each resource maps to a Prisma model (`model`) and lists the editable fields.
  */
 

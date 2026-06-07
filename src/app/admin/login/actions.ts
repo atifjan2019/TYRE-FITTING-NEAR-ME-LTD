@@ -5,7 +5,7 @@ import { signIn } from "@/auth";
 
 /**
  * Server action for the admin login form. On success Auth.js throws a redirect
- * (to /admin) which must be allowed to propagate — so we only catch AuthError
+ * (to /admin) which must be allowed to propagate - so we only catch AuthError
  * and re-throw everything else.
  */
 export async function login(

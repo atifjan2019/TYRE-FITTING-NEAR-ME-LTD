@@ -80,7 +80,7 @@ export default async function BlogIndexPage() {
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">No articles yet — check back soon.</p>
+          <p className="text-muted-foreground">No articles yet - check back soon.</p>
         )}
       </div>
     </>

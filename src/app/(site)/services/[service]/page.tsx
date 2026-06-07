@@ -78,7 +78,7 @@ export default async function ServicePage({
         data={[
           localBusinessJsonLd({
             settings,
-            name: `${settings.brandName} — ${service.title}`,
+            name: `${settings.brandName} - ${service.title}`,
             description: service.shortDescription,
             url: `${SITE.url}/services/${service.slug}`,
             areaServed: counties.map((c) => c.name),

@@ -47,7 +47,7 @@ export async function generateMetadata({
     description:
       county.seoDescription ||
       county.intro ||
-      `24/7 mobile tyre fitting across ${county.name}. We come to you — home, work or roadside.`,
+      `24/7 mobile tyre fitting across ${county.name}. We come to you - home, work or roadside.`,
     path: `/${county.slug}`,
     ogImage: county.ogImage,
   });
@@ -79,7 +79,7 @@ export default async function CountyPage({
         data={[
           localBusinessJsonLd({
             settings,
-            name: `${settings.brandName} — ${county.name}`,
+            name: `${settings.brandName} - ${county.name}`,
             description: county.intro || undefined,
             url: `${SITE.url}/${county.slug}`,
             areaServed: [county.name, ...county.towns.map((t) => t.name)],

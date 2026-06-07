@@ -33,7 +33,7 @@ export default async function AreasPage() {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHero
         title="Areas we cover"
-        subtitle="We're a fully mobile service across the UK — choose your county to see the towns we cover."
+        subtitle="We're a fully mobile service across the UK - choose your county to see the towns we cover."
         crumbs={crumbs}
       />
       <AreasCovered counties={counties} heading={false} />

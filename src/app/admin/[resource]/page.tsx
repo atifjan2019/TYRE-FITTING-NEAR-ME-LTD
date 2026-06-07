@@ -104,6 +104,6 @@ function renderCell(value: unknown) {
       </span>
     );
   }
-  const str = String(value ?? "—");
+  const str = String(value ?? "-");
   return str.length > 60 ? `${str.slice(0, 60)}…` : str;
 }

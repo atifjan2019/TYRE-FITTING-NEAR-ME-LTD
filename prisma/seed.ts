@@ -1,5 +1,5 @@
 /**
- * Database seed — populates a fresh DB with realistic starter content so the
+ * Database seed - populates a fresh DB with realistic starter content so the
  * site is usable immediately and the templates can be reviewed.
  *
  * Run with:  npm run db:seed
@@ -32,7 +32,7 @@ async function main() {
     create: {
       id: "settings",
       brandName: "Tyre Fitting Near Me Ltd",
-      tagline: "24/7 Mobile Tyre Fitting — We Come To You",
+      tagline: "24/7 Mobile Tyre Fitting - We Come To You",
       phone: "0800 000 0000",
       whatsapp: "447000000000",
       email: "bookings@tyrefittingnearme.co.uk",
@@ -57,7 +57,7 @@ async function main() {
       title: "Mobile Tyre Fitting",
       slug: "mobile-tyre-fitting",
       shortDescription:
-        "New tyres supplied and fitted at your home, work or roadside — no need to visit a garage.",
+        "New tyres supplied and fitted at your home, work or roadside - no need to visit a garage.",
       icon: "truck",
       features: [
         "All tyre brands & sizes",
@@ -71,7 +71,7 @@ async function main() {
       title: "Mobile Tyre Repair",
       slug: "mobile-tyre-repair",
       shortDescription:
-        "Fast, safe tyre repairs that come to you — getting you moving without a costly replacement.",
+        "Fast, safe tyre repairs that come to you - getting you moving without a costly replacement.",
       icon: "wrench",
       features: [
         "British Standard BS AU 159 repairs",
@@ -134,7 +134,7 @@ async function main() {
       title: "TPMS Service",
       slug: "tpms-service",
       shortDescription:
-        "Tyre Pressure Monitoring System diagnosis, sensor replacement and reset — keep that warning light off.",
+        "Tyre Pressure Monitoring System diagnosis, sensor replacement and reset - keep that warning light off.",
       icon: "activity",
       features: ["Sensor diagnostics", "Replacement & programming", "Valve service kits"],
     },
@@ -186,7 +186,7 @@ async function main() {
       name: "London",
       slug: "london",
       intro:
-        "24/7 mobile tyre fitting across Greater London — from the City to the suburbs, we come to you.",
+        "24/7 mobile tyre fitting across Greater London - from the City to the suburbs, we come to you.",
       coverageNotes:
         "All London boroughs covered, including routes along the A406 North Circular, A205 South Circular and the M25 orbital.",
       order: 0,
@@ -195,7 +195,7 @@ async function main() {
       name: "Kent",
       slug: "kent",
       intro:
-        "Fast mobile tyre fitting throughout Kent — home, work or roadside, day or night.",
+        "Fast mobile tyre fitting throughout Kent - home, work or roadside, day or night.",
       coverageNotes:
         "Covering the M20, M2, M26 and A2 corridors and all major Kent towns from Dartford to Dover.",
       order: 1,
@@ -231,7 +231,7 @@ async function main() {
       name: "Scotland",
       slug: "scotland",
       intro:
-        "Mobile tyre fitting across Scotland's central belt and beyond — we come to you.",
+        "Mobile tyre fitting across Scotland's central belt and beyond - we come to you.",
       coverageNotes:
         "Covering the M8, M9, M74 and M90 including Glasgow, Edinburgh, Stirling and Falkirk.",
       order: 5,
@@ -254,7 +254,7 @@ async function main() {
         intro: c.intro,
         coverageNotes: c.coverageNotes,
         order: c.order,
-        body: `<p>${c.intro}</p><p>${c.coverageNotes}</p><p>Whatever you drive, our mobile technicians carry a wide range of tyres and can fit, balance and repair on site — usually within the hour.</p>`,
+        body: `<p>${c.intro}</p><p>${c.coverageNotes}</p><p>Whatever you drive, our mobile technicians carry a wide range of tyres and can fit, balance and repair on site - usually within the hour.</p>`,
         responseTimeText: "Typical call-out: 30–60 minutes",
         seoDescription: c.intro,
       },
@@ -263,7 +263,7 @@ async function main() {
   }
   console.log(`✓ ${counties.length} counties`);
 
-  // --- Example towns (the SEO money pages — genuinely unique content) -------
+  // --- Example towns (the SEO money pages - genuinely unique content) -------
   const towns: {
     name: string;
     slug: string;
@@ -279,7 +279,7 @@ async function main() {
       slug: "maidstone",
       countySlug: "kent",
       intro:
-        "Need a tyre fitted in Maidstone? Our mobile vans cover the county town and surrounding villages day and night — at your home, your workplace or stuck at the roadside.",
+        "Need a tyre fitted in Maidstone? Our mobile vans cover the county town and surrounding villages day and night - at your home, your workplace or stuck at the roadside.",
       localNotes:
         "We regularly attend call-outs along the M20 (Junctions 5–8), the A20 through Bearsted and Allington, and the A229 to Bluewater and the Medway towns. Common spots include the Eclipse Park and Parkwood industrial estates, Maidstone Hospital, and the Lockmeadow and Fremlin Walk retail areas.",
       responseTimeText: "Typical Maidstone call-out: 30–45 minutes",
@@ -292,14 +292,14 @@ async function main() {
         {
           question: "Do you cover the villages around Maidstone?",
           answer:
-            "Yes — we cover Bearsted, Headcorn, Coxheath, Boughton Monchelsea, Yalding and the surrounding villages.",
+            "Yes - we cover Bearsted, Headcorn, Coxheath, Boughton Monchelsea, Yalding and the surrounding villages.",
         },
       ],
       reviews: [
         {
           author: "James P.",
           rating: 5,
-          text: "Flat tyre on the M20 near Maidstone at 6am — they were with me in 35 minutes and back on the road before work. Brilliant.",
+          text: "Flat tyre on the M20 near Maidstone at 6am - they were with me in 35 minutes and back on the road before work. Brilliant.",
         },
         {
           author: "Sarah W.",
@@ -321,7 +321,7 @@ async function main() {
         {
           question: "Can you fit tyres near Bromley South station?",
           answer:
-            "Yes — we can meet you at the station car parks or your workplace nearby and fit while you carry on with your day.",
+            "Yes - we can meet you at the station car parks or your workplace nearby and fit while you carry on with your day.",
         },
       ],
       reviews: [
@@ -345,7 +345,7 @@ async function main() {
         {
           question: "Do you cover Birmingham Airport and the NEC?",
           answer:
-            "Yes — we regularly attend the airport, NEC and Birmingham Business Park for both private cars and fleet vehicles.",
+            "Yes - we regularly attend the airport, NEC and Birmingham Business Park for both private cars and fleet vehicles.",
         },
       ],
       reviews: [
@@ -375,7 +375,7 @@ async function main() {
         intro: t.intro,
         localNotes: t.localNotes,
         responseTimeText: t.responseTimeText,
-        body: `<p>${t.intro}</p><h2>Why choose our ${t.name} mobile tyre service?</h2><p>We carry a wide range of tyres for cars, vans and 4x4s and fit them wherever you are — no garage visit, no hassle. Every tyre is balanced on site and your old tyre is taken away for recycling.</p>`,
+        body: `<p>${t.intro}</p><h2>Why choose our ${t.name} mobile tyre service?</h2><p>We carry a wide range of tyres for cars, vans and 4x4s and fit them wherever you are - no garage visit, no hassle. Every tyre is balanced on site and your old tyre is taken away for recycling.</p>`,
         seoDescription: t.intro.slice(0, 155),
       },
     });
@@ -413,7 +413,7 @@ async function main() {
     {
       question: "Do you really come to me?",
       answer:
-        "Yes. We are a fully mobile service — we come to your home, workplace or the roadside. There is no garage to visit.",
+        "Yes. We are a fully mobile service - we come to your home, workplace or the roadside. There is no garage to visit.",
     },
     {
       question: "Is there a call-out fee?",
@@ -433,7 +433,7 @@ async function main() {
     {
       question: "Can you fit tyres at night?",
       answer:
-        "Yes — our emergency tyre fitting service runs 24 hours a day, 365 days a year.",
+        "Yes - our emergency tyre fitting service runs 24 hours a day, 365 days a year.",
     },
   ];
   await prisma.faq.deleteMany({ where: { category: "general" } });
@@ -506,7 +506,7 @@ async function main() {
       tags: ["tyre safety", "advice"],
       published: true,
       publishedAt: new Date("2026-01-15"),
-      body: `<p>The legal minimum tread depth for car tyres in the UK is <strong>1.6mm</strong> across the central three-quarters of the tyre, around its entire circumference.</p><h2>The 20p test</h2><p>Place a 20p coin into the main tread grooves of your tyre. If you can't see the outer band of the coin, your tread is above the legal limit. If you can see the band, your tyres may be unsafe and should be checked.</p><h2>Why it matters</h2><p>Worn tyres dramatically increase stopping distances in the wet and risk a £2,500 fine and 3 penalty points <em>per tyre</em>. If your tread is low, give us a call — we'll fit new tyres wherever you are.</p>`,
+      body: `<p>The legal minimum tread depth for car tyres in the UK is <strong>1.6mm</strong> across the central three-quarters of the tyre, around its entire circumference.</p><h2>The 20p test</h2><p>Place a 20p coin into the main tread grooves of your tyre. If you can't see the outer band of the coin, your tread is above the legal limit. If you can see the band, your tyres may be unsafe and should be checked.</p><h2>Why it matters</h2><p>Worn tyres dramatically increase stopping distances in the wet and risk a £2,500 fine and 3 penalty points <em>per tyre</em>. If your tread is low, give us a call - we'll fit new tyres wherever you are.</p>`,
       seoDescription:
         "Learn how to check your tyre tread depth with the simple 20p test. UK legal minimum is 1.6mm. Stay safe and avoid fines.",
     },

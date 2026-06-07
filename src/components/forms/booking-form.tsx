@@ -14,7 +14,7 @@ import { telHref } from "@/lib/utils";
 /**
  * Booking / quote form. Captures the essentials a fitter needs (tyre size,
  * postcode/location, phone) and POSTs to /api/lead which emails the business.
- * Phone/WhatsApp remain the primary conversion path — this is the fallback for
+ * Phone/WhatsApp remain the primary conversion path - this is the fallback for
  * people who'd rather not call.
  *
  * `defaultService` lets a service page pre-select the relevant service.
@@ -61,7 +61,7 @@ export function BookingForm({
         <CheckCircle2 className="mx-auto h-12 w-12 text-[var(--color-whatsapp)]" />
         <h3 className="mt-4 text-xl font-bold">Request received!</h3>
         <p className="mt-2 text-muted-foreground">
-          Thanks — we&apos;ve got your details and will call you back shortly. For
+          Thanks - we&apos;ve got your details and will call you back shortly. For
           anything urgent, please call us now.
         </p>
         {phone ? (
@@ -146,7 +146,7 @@ export function BookingForm({
           />
         </div>
 
-        {/* Honeypot — visually hidden, must stay empty */}
+        {/* Honeypot - visually hidden, must stay empty */}
         <div className="hidden" aria-hidden>
           <label>
             Company

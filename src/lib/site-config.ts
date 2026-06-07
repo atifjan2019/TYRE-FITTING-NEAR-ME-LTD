@@ -3,7 +3,7 @@
  * worth a database round-trip (navigation, default copy, the WhatsApp message).
  *
  * Editable CONTENT (phone number, counters, services, locations, etc.) lives in
- * the database and is managed from /admin — see src/lib/data.ts.
+ * the database and is managed from /admin - see src/lib/data.ts.
  */
 
 export const SITE = {
@@ -50,7 +50,7 @@ export const FOOTER_NAV: { title: string; links: { label: string; href: string }
 ];
 
 /**
- * The "4 simple steps to book" shown on the homepage. Static UI copy — kept in
+ * The "4 simple steps to book" shown on the homepage. Static UI copy - kept in
  * code because it's a fixed brand process, not per-page content.
  */
 export const BOOKING_STEPS = [
@@ -71,7 +71,7 @@ export const BOOKING_STEPS = [
   },
   {
     title: "Fitted on the spot",
-    description: "New tyres fitted and balanced — you're back on the road.",
+    description: "New tyres fitted and balanced - you're back on the road.",
     icon: "circle-check-big",
   },
 ] as const;

@@ -1,8 +1,8 @@
 // =============================================================================
-// Prisma schema — Tyre Fitting Near Me Ltd
+// Prisma schema - Tyre Fitting Near Me Ltd
 // -----------------------------------------------------------------------------
 // Database: PostgreSQL (running in Docker on a Hostinger VPS).
-// App:      Next.js on Vercel (serverless) — see connection-pooling notes below.
+// App:      Next.js on Vercel (serverless) - see connection-pooling notes below.
 //
 // Two connection URLs (Prisma's recommended serverless setup):
 //   DATABASE_URL  -> POOLED connection used by the app at runtime. Point this at
@@ -14,7 +14,7 @@
 //                    VPS Postgres on port 32768.
 //
 // Fill both in `.env.local` (local dev) and in the Vercel project env vars.
-// NEVER commit real credentials — see `.env.example` for the format.
+// NEVER commit real credentials - see `.env.example` for the format.
 //
 // NOTE: "enum-like" fields are plain Strings with allowed values documented in
 // comments, to keep the admin forms simple and migrations painless.
@@ -31,27 +31,27 @@ datasource db {
 }
 
 // -----------------------------------------------------------------------------
-// Admin users — login for the /admin dashboard (NextAuth credentials provider)
+// Admin users - login for the /admin dashboard (NextAuth credentials provider)
 // -----------------------------------------------------------------------------
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
   name         String?
-  passwordHash String // bcrypt hash — never store plain text
+  passwordHash String // bcrypt hash - never store plain text
   role         String   @default("admin") // "admin" | "editor"
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
 
 // -----------------------------------------------------------------------------
-// Site settings — a single row (id = "settings") edited from the admin.
+// Site settings - a single row (id = "settings") edited from the admin.
 // Holds global NAP/contact info reused across the whole site + header/footer.
 // SERVICE-AREA business: NO street address is stored anywhere.
 // -----------------------------------------------------------------------------
 model SiteSetting {
   id        String @id @default("settings")
   brandName String @default("Tyre Fitting Near Me Ltd")
-  tagline   String @default("24/7 Mobile Tyre Fitting — We Come To You")
+  tagline   String @default("24/7 Mobile Tyre Fitting - We Come To You")
 
   // Contact / conversion details
   phone        String @default("")
@@ -71,14 +71,14 @@ model SiteSetting {
 
   // Default SEO fallbacks
   defaultMetaTitle       String @default("Mobile Tyre Fitting Near Me | 24/7 Call-Out")
-  defaultMetaDescription String @default("24/7 mobile tyre fitting that comes to you — home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.")
+  defaultMetaDescription String @default("24/7 mobile tyre fitting that comes to you - home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.")
   defaultOgImage         String?
 
   updatedAt DateTime @updatedAt
 }
 
 // -----------------------------------------------------------------------------
-// Services — one row per service, rendered by the /services/[service] template.
+// Services - one row per service, rendered by the /services/[service] template.
 // -----------------------------------------------------------------------------
 model Service {
   id               String  @id @default(cuid())
@@ -109,7 +109,7 @@ model Service {
 }
 
 // -----------------------------------------------------------------------------
-// County hubs — top-level location pages, e.g. /kent
+// County hubs - top-level location pages, e.g. /kent
 // -----------------------------------------------------------------------------
 model County {
   id               String  @id @default(cuid())
@@ -140,7 +140,7 @@ model County {
 }
 
 // -----------------------------------------------------------------------------
-// Town / borough pages — nested under a county, e.g. /kent/maidstone
+// Town / borough pages - nested under a county, e.g. /kent/maidstone
 // These are the SEO money pages: every field exists so each page is genuinely
 // unique (local notes, response time, local FAQs, local reviews).
 // -----------------------------------------------------------------------------
@@ -179,7 +179,7 @@ model Town {
 }
 
 // -----------------------------------------------------------------------------
-// FAQs — reusable. Attach to a service, county, or town, or leave all relations
+// FAQs - reusable. Attach to a service, county, or town, or leave all relations
 // null for a GENERAL/global FAQ shown on the homepage & /faq.
 // -----------------------------------------------------------------------------
 model Faq {
@@ -207,7 +207,7 @@ model Faq {
 }
 
 // -----------------------------------------------------------------------------
-// Reviews — reusable. Attach to a town/county/service for local social proof,
+// Reviews - reusable. Attach to a town/county/service for local social proof,
 // or leave relations null for a global review shown on the homepage & /reviews.
 // -----------------------------------------------------------------------------
 model Review {
@@ -239,7 +239,7 @@ model Review {
 }
 
 // -----------------------------------------------------------------------------
-// Blog posts — tyre safety / advice articles, /blog/[slug]
+// Blog posts - tyre safety / advice articles, /blog/[slug]
 // -----------------------------------------------------------------------------
 model BlogPost {
   id          String    @id @default(cuid())
@@ -266,7 +266,7 @@ model BlogPost {
 }
 
 // -----------------------------------------------------------------------------
-// Tyre brands — logos for the homepage brand strip.
+// Tyre brands - logos for the homepage brand strip.
 // -----------------------------------------------------------------------------
 model Brand {
   id        String   @id @default(cuid())

@@ -3,7 +3,7 @@ import { telHref, whatsappHref } from "@/lib/utils";
 import { SITE } from "@/lib/site-config";
 
 /**
- * Fixed bottom action bar shown ONLY on mobile — the primary conversion path
+ * Fixed bottom action bar shown ONLY on mobile - the primary conversion path
  * for a stranded customer holding their phone. Two large thumb-friendly
  * buttons: Call Now + WhatsApp. Hidden on >= lg where the header CTA suffices.
  */

@@ -22,7 +22,7 @@ const VALUES = [
   {
     icon: Truck,
     title: "We come to you",
-    text: "Home, work or roadside — our fully-equipped vans bring the garage to your location.",
+    text: "Home, work or roadside - our fully-equipped vans bring the garage to your location.",
   },
   {
     icon: Clock,
@@ -53,7 +53,7 @@ export default async function AboutPage() {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHero
         title="About Tyre Fitting Near Me"
-        subtitle="A mobile-first tyre service built around one idea: getting you safely back on the road, fast — wherever you are."
+        subtitle="A mobile-first tyre service built around one idea: getting you safely back on the road, fast - wherever you are."
         crumbs={crumbs}
       />
 
@@ -61,7 +61,7 @@ export default async function AboutPage() {
         <div className="prose-content">
           <p>
             {settings.brandName} is a fully mobile tyre service. We don&apos;t run a
-            shop or expect you to limp a dangerous tyre to a garage — instead, our
+            shop or expect you to limp a dangerous tyre to a garage - instead, our
             technicians come to you with everything needed to fit, balance and
             repair tyres on the spot.
           </p>
@@ -69,7 +69,7 @@ export default async function AboutPage() {
             With over {settings.yearsExperience} years&apos; experience and more than{" "}
             {settings.customersServed.toLocaleString()} customers served, we&apos;ve
             built our reputation on speed, honest pricing and genuinely caring
-            about getting drivers moving again — especially when they&apos;re
+            about getting drivers moving again - especially when they&apos;re
             stranded at the roadside.
           </p>
           <p>

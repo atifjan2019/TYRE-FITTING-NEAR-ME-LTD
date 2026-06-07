@@ -37,7 +37,7 @@ export function Hero({ settings }: { settings: SiteSettingsData }) {
           <p className="mt-5 max-w-2xl text-lg text-primary-foreground/90">
             Flat tyre at home, at work or stuck at the roadside? Our mobile vans
             fit, repair and balance tyres on the spot across London, Kent,
-            Sussex, Essex, the West Midlands &amp; Scotland — day or night, no
+            Sussex, Essex, the West Midlands &amp; Scotland - day or night, no
             call-out fee.
           </p>
 

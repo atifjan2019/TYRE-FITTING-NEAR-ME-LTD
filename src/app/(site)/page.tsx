@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return buildMetadata({
     title:
-      "Mobile Tyre Fitting Near Me | 24/7 Call-Out — We Come To You",
+      "Mobile Tyre Fitting Near Me | 24/7 Call-Out - We Come To You",
     description: settings.defaultMetaDescription,
     path: "/",
     ogImage: settings.defaultOgImage,

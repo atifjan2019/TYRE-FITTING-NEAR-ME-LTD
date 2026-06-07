@@ -28,7 +28,7 @@ export default async function TermsPage() {
         <div className="prose-content">
           <p>
             These terms govern the services provided by {settings.brandName}. This is a
-            starting template — please have it reviewed by a solicitor before launch.
+            starting template - please have it reviewed by a solicitor before launch.
           </p>
 
           <h2>Services</h2>
@@ -68,8 +68,8 @@ export default async function TermsPage() {
           <h2>Contact</h2>
           <p>
             {settings.brandName}
-            {settings.email ? ` — ${settings.email}` : ""}
-            {settings.phone ? ` — ${settings.phone}` : ""}.
+            {settings.email ? ` - ${settings.email}` : ""}
+            {settings.phone ? ` - ${settings.phone}` : ""}.
           </p>
         </div>
       </div>

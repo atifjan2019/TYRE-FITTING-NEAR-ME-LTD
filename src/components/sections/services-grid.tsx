@@ -26,7 +26,7 @@ export function ServicesGrid({
           <SectionHeading
             eyebrow="What we do"
             title="Our mobile tyre services"
-            subtitle="One call covers it — fitting, repairs, balancing and more, wherever you are."
+            subtitle="One call covers it - fitting, repairs, balancing and more, wherever you are."
           />
         ) : null}
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

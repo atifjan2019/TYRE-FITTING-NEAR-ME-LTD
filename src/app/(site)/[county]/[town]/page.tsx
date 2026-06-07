@@ -42,7 +42,7 @@ export async function generateMetadata({
     description:
       town.seoDescription ||
       town.intro ||
-      `Mobile tyre fitting in ${town.name}, ${town.county.name}. We come to you — fast 24/7 call-out.`,
+      `Mobile tyre fitting in ${town.name}, ${town.county.name}. We come to you - fast 24/7 call-out.`,
     path: `/${town.county.slug}/${town.slug}`,
     ogImage: town.ogImage,
   });
@@ -77,7 +77,7 @@ export default async function TownPage({
         data={[
           localBusinessJsonLd({
             settings,
-            name: `${settings.brandName} — ${town.name}`,
+            name: `${settings.brandName} - ${town.name}`,
             description: town.intro || undefined,
             url: `${SITE.url}/${town.county.slug}/${town.slug}`,
             areaServed: [town.name, town.county.name],
@@ -132,7 +132,7 @@ export default async function TownPage({
               <section className="mt-8 rounded-xl border bg-secondary/40 p-6">
                 <h2 className="flex items-center gap-2 text-lg font-bold">
                   <MapPin className="h-5 w-5 text-primary" />
-                  Local knowledge — {town.name}
+                  Local knowledge - {town.name}
                 </h2>
                 <p className="mt-2 text-muted-foreground">{town.localNotes}</p>
               </section>

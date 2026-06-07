@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
   const lead = parsed.data;
 
-  // Honeypot: a filled "company" field means a bot — silently accept & drop.
+  // Honeypot: a filled "company" field means a bot - silently accept & drop.
   if (lead.company) return NextResponse.json({ ok: true });
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -38,9 +38,9 @@ export async function POST(request: Request) {
       <li><strong>Name:</strong> ${escapeHtml(lead.name)}</li>
       <li><strong>Phone:</strong> ${escapeHtml(lead.phone)}</li>
       <li><strong>Postcode/location:</strong> ${escapeHtml(lead.postcode)}</li>
-      <li><strong>Tyre size:</strong> ${escapeHtml(lead.tyreSize || "—")}</li>
-      <li><strong>Service:</strong> ${escapeHtml(lead.service || "—")}</li>
-      <li><strong>Message:</strong> ${escapeHtml(lead.message || "—")}</li>
+      <li><strong>Tyre size:</strong> ${escapeHtml(lead.tyreSize || "-")}</li>
+      <li><strong>Service:</strong> ${escapeHtml(lead.service || "-")}</li>
+      <li><strong>Message:</strong> ${escapeHtml(lead.message || "-")}</li>
     </ul>
   `;
 

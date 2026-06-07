@@ -16,7 +16,7 @@ import { prisma } from "@/lib/prisma";
 const DEFAULT_SETTINGS = {
   id: "settings",
   brandName: "Tyre Fitting Near Me Ltd",
-  tagline: "24/7 Mobile Tyre Fitting — We Come To You",
+  tagline: "24/7 Mobile Tyre Fitting - We Come To You",
   phone: "",
   whatsapp: "",
   email: "",
@@ -29,7 +29,7 @@ const DEFAULT_SETTINGS = {
   tiktokUrl: null,
   defaultMetaTitle: "Mobile Tyre Fitting Near Me | 24/7 Call-Out",
   defaultMetaDescription:
-    "24/7 mobile tyre fitting that comes to you — home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
+    "24/7 mobile tyre fitting that comes to you - home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
   defaultOgImage: null,
 };
 
@@ -116,7 +116,7 @@ export const getTown = cache(async (countySlug: string, townSlug: string) => {
   });
 });
 
-/** All county/town slug pairs — used by generateStaticParams for SSG. */
+/** All county/town slug pairs - used by generateStaticParams for SSG. */
 export const getAllLocationPaths = cache(async () => {
   const towns = await prisma.town.findMany({
     where: { published: true, county: { published: true } },

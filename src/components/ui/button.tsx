@@ -13,7 +13,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        // High-visibility emergency CTA (e.g. "Call Now") — amber-orange.
+        // High-visibility emergency CTA (e.g. "Call Now") - amber-orange.
         cta: "bg-accent text-accent-foreground hover:bg-[var(--color-accent-hover)] shadow-sm",
         whatsapp:
           "bg-[var(--color-whatsapp)] text-white hover:bg-[var(--color-whatsapp-dark)]",

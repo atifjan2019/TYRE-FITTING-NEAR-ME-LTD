@@ -22,11 +22,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Mobile Tyre Fitting Near Me | 24/7 Call-Out — We Come To You",
+    default: "Mobile Tyre Fitting Near Me | 24/7 Call-Out - We Come To You",
     template: `%s | ${SITE.shortName}`,
   },
   description:
-    "24/7 mobile tyre fitting that comes to you — home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
+    "24/7 mobile tyre fitting that comes to you - home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
   applicationName: SITE.name,
   formatDetection: { telephone: true },
 };

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ===========================================================================
-   Tailwind v4 theme — shadcn/ui compatible design tokens.
+   Tailwind v4 theme - shadcn/ui compatible design tokens.
    Brand: confident automotive BLUE for trust + high-visibility AMBER for CTAs
    (e.g. "Call Now"), with WhatsApp green handled inline on its button.
    =========================================================================== */
@@ -49,22 +49,22 @@
 
   /* Brand spec: Navy/near-black + Amber-Orange CTA, light-first. */
   --background: #ffffff; /* white */
-  --foreground: #0e1726; /* navy/near-black — body text */
+  --foreground: #0e1726; /* navy/near-black - body text */
   --card: #ffffff;
   --card-foreground: #0e1726;
   --popover: #ffffff;
   --popover-foreground: #0e1726;
 
-  --primary: #0e1726; /* navy/near-black — headers, footer, dark sections */
+  --primary: #0e1726; /* navy/near-black - headers, footer, dark sections */
   --primary-foreground: #ffffff;
 
-  --secondary: #f5f7fa; /* muted — alternate section backgrounds / cards */
+  --secondary: #f5f7fa; /* muted - alternate section backgrounds / cards */
   --secondary-foreground: #0e1726;
 
   --muted: #f5f7fa;
   --muted-foreground: #5b6470; /* muted text */
 
-  --accent: #ff6a00; /* amber-orange — primary CTA / highlights */
+  --accent: #ff6a00; /* amber-orange - primary CTA / highlights */
   --accent-foreground: #ffffff; /* white text on the orange CTA */
   --accent-hover: #e65f00; /* CTA hover */
 

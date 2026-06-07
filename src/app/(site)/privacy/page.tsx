@@ -30,7 +30,7 @@ export default async function PrivacyPage() {
           <p>
             This Privacy Policy explains how {settings.brandName} (&quot;we&quot;,
             &quot;us&quot;) collects and uses your personal information when you use our
-            website or services. This is a starting template — please have it reviewed
+            website or services. This is a starting template - please have it reviewed
             by a solicitor before launch.
           </p>
 
@@ -65,8 +65,8 @@ export default async function PrivacyPage() {
           <h2>Contact</h2>
           <p>
             {settings.brandName}
-            {settings.email ? ` — ${settings.email}` : ""}
-            {settings.phone ? ` — ${settings.phone}` : ""}.
+            {settings.email ? ` - ${settings.email}` : ""}
+            {settings.phone ? ` - ${settings.phone}` : ""}.
           </p>
         </div>
       </div>

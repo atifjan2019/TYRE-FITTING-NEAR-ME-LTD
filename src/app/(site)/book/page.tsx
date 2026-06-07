@@ -41,7 +41,7 @@ export default async function BookPage() {
         <div>
           <h2 className="text-2xl font-bold">Fastest ways to reach us</h2>
           <p className="mt-2 text-muted-foreground">
-            Stuck at the roadside? Calling is quickest — we&apos;re available{" "}
+            Stuck at the roadside? Calling is quickest - we&apos;re available{" "}
             {settings.openingHours.toLowerCase()}.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">

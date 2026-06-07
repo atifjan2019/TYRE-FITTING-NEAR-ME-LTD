@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "Contact Us | Tyre Fitting Near Me",
     description:
-      "Get in touch for 24/7 mobile tyre fitting. Call, WhatsApp or email — we come to you across the UK.",
+      "Get in touch for 24/7 mobile tyre fitting. Call, WhatsApp or email - we come to you across the UK.",
     path: "/contact",
   });
 }
@@ -36,7 +36,7 @@ export default async function ContactPage() {
       />
       <PageHero
         title="Contact us"
-        subtitle="We're a mobile service — there's no shop to visit. Reach us any time and we'll come to you."
+        subtitle="We're a mobile service - there's no shop to visit. Reach us any time and we'll come to you."
         crumbs={crumbs}
       />
 
