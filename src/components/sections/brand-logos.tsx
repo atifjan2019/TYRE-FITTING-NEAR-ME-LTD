@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { BRAND_LOGOS } from "@/lib/site-config";
-import { cn } from "@/lib/utils";
 
 /**
  * Tyre-brand logo grid using the curated images in /public/uploads/brands.
@@ -35,10 +34,8 @@ export function BrandLogos() {
                 width={160}
                 height={72}
                 sizes="(max-width: 640px) 40vw, 160px"
-                className={cn(
-                  "w-auto object-contain",
-                  b.big ? "max-h-16" : "max-h-12"
-                )}
+                className="w-auto object-contain"
+                style={{ maxHeight: `${b.maxHeight ?? 48}px` }}
               />
             </div>
           ))}

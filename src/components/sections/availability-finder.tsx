@@ -51,8 +51,10 @@ export function AvailabilityFinder() {
           autoComplete="postal-code"
           className="w-full rounded-lg border border-input bg-white px-4 py-3.5 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
-        <Button type="submit" size="xl" className="mt-3 w-full">
-          Check availability near you <ArrowRight className="h-5 w-5" />
+        <Button type="submit" size="xl" className="mt-3 w-full text-base sm:text-lg">
+          <span className="sm:hidden">Check availability</span>
+          <span className="hidden sm:inline">Check availability near you</span>
+          <ArrowRight className="h-5 w-5" />
         </Button>
       </form>
       <p className="mt-3 text-center text-xs text-muted-foreground">

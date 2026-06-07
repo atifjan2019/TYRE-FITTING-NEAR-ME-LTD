@@ -91,7 +91,11 @@ export function Hero({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <WhatsAppIcon /> WhatsApp your location &amp; tyre size
+                  <WhatsAppIcon />
+                  <span className="sm:hidden">WhatsApp Us</span>
+                  <span className="hidden sm:inline">
+                    WhatsApp your location &amp; tyre size
+                  </span>
                 </a>
               </Button>
             ) : null}
