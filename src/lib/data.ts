@@ -19,9 +19,11 @@ const DEFAULT_SETTINGS = {
   tagline: "24/7 Mobile Tyre Fitting - We Come To You",
   logo: null as string | null,
   favicon: null as string | null,
-  phone: "",
-  whatsapp: "",
-  email: "",
+  // Fallback contact details so the call button + WhatsApp bubble still work if
+  // the DB is briefly unreachable. The CMS overrides these when reachable.
+  phone: "0788 328 8831",
+  whatsapp: "447722127759",
+  email: "bookings@tyrefittingnearme.co.uk",
   openingHours: "24/7, 365 days a year",
   yearsExperience: 10,
   customersServed: 15000,
