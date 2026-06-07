@@ -252,6 +252,7 @@ async function main() {
   console.log(`✓ ${counties.length} counties`);
 
   // --- Example towns (the SEO money pages - genuinely unique content) -------
+  // One example town per county (add more towns later in /admin).
   const towns: {
     name: string;
     slug: string;
@@ -260,7 +261,6 @@ async function main() {
     localNotes: string;
     responseTimeText: string;
     faqs: { question: string; answer: string }[];
-    reviews: { author: string; rating: number; text: string }[];
   }[] = [
     {
       name: "Maidstone",
@@ -283,18 +283,6 @@ async function main() {
             "Yes - we cover Bearsted, Headcorn, Coxheath, Boughton Monchelsea, Yalding and the surrounding villages.",
         },
       ],
-      reviews: [
-        {
-          author: "James P.",
-          rating: 5,
-          text: "Flat tyre on the M20 near Maidstone at 6am - they were with me in 35 minutes and back on the road before work. Brilliant.",
-        },
-        {
-          author: "Sarah W.",
-          rating: 5,
-          text: "Fitted two new tyres on my driveway in Bearsted while I worked from home. Fair price, lovely chap.",
-        },
-      ],
     },
     {
       name: "Bromley",
@@ -310,13 +298,6 @@ async function main() {
           question: "Can you fit tyres near Bromley South station?",
           answer:
             "Yes - we can meet you at the station car parks or your workplace nearby and fit while you carry on with your day.",
-        },
-      ],
-      reviews: [
-        {
-          author: "Daniel K.",
-          rating: 5,
-          text: "Punctured outside The Glades. WhatsApped a photo of my tyre, got a quote straight back, sorted within the hour.",
         },
       ],
     },
@@ -336,15 +317,63 @@ async function main() {
             "Yes - we regularly attend the airport, NEC and Birmingham Business Park for both private cars and fleet vehicles.",
         },
       ],
-      reviews: [
+    },
+    {
+      name: "Brighton",
+      slug: "brighton",
+      countySlug: "sussex",
+      intro:
+        "Mobile tyre fitting across Brighton & Hove. We come to you in the city centre, the lanes and the surrounding Sussex coast - at home, at work or roadside.",
+      localNotes:
+        "We cover the A23 and A27 around Brighton, Hove and Shoreham, plus the seafront and Marina, the London Road and Lewes Road areas, and the universities at Falmer.",
+      responseTimeText: "Typical Brighton call-out: 30-50 minutes",
+      faqs: [
         {
-          author: "Priya S.",
-          rating: 5,
-          text: "Landed at Birmingham Airport to a flat tyre in the car park. They came out same evening and fitted a new one. Lifesavers.",
+          question: "Do you cover Hove and the wider Brighton area?",
+          answer:
+            "Yes - we cover Brighton, Hove, Portslade, Shoreham and the surrounding Sussex coast.",
+        },
+      ],
+    },
+    {
+      name: "Chelmsford",
+      slug: "chelmsford",
+      countySlug: "essex",
+      intro:
+        "Mobile tyre fitting in Chelmsford and across mid-Essex. Our vans come to your home, workplace or the roadside, day or night.",
+      localNotes:
+        "We regularly attend the A12 and A414 around Chelmsford, plus Springfield, Great Baddow and Boreham, and the retail and business parks off Westway and Waterhouse Lane.",
+      responseTimeText: "Typical Chelmsford call-out: 30-50 minutes",
+      faqs: [
+        {
+          question: "Can you reach me on the A12 near Chelmsford?",
+          answer:
+            "Yes - roadside breakdowns on the A12 and A414 are prioritised and we carry a wide range of tyres on board.",
+        },
+      ],
+    },
+    {
+      name: "Glasgow",
+      slug: "glasgow",
+      countySlug: "scotland",
+      intro:
+        "Mobile tyre fitting across Glasgow and the surrounding area. We come to you - home, work or roadside - 24 hours a day.",
+      localNotes:
+        "We cover the M8 through the city, the M77 and M74 approaches, the city centre, the West End and the East End, plus the surrounding towns across the central belt.",
+      responseTimeText: "Typical Glasgow call-out: 30-60 minutes",
+      faqs: [
+        {
+          question: "Do you cover the Glasgow city centre and motorways?",
+          answer:
+            "Yes - we cover the city centre and the M8/M77/M74 routes, with roadside emergencies prioritised.",
         },
       ],
     },
   ];
+
+  // Keep exactly the towns defined above (one per county) and remove any extras
+  // from previous seeds. NOTE: re-seeding also removes towns added in /admin.
+  await prisma.town.deleteMany({});
 
   for (const t of towns) {
     const countyId = countyIdBySlug[t.countySlug];
@@ -383,53 +412,7 @@ async function main() {
     });
     // NOTE: reviews are intentionally NOT seeded - add only real reviews in /admin.
   }
-  console.log(`✓ ${towns.length} example towns (rich content + local FAQs)`);
-
-  // --- Full town coverage --------------------------------------------------
-  // Names from the prioritised town list. These are created as published stubs
-  // so the county hubs aren't empty. IMPORTANT: add genuinely unique local
-  // detail (real roads, landmarks, areas) to each in /admin - thin duplicate
-  // location pages hurt SEO. Re-seeding only updates the name, so your admin
-  // edits are preserved.
-  const TOWN_DATA: Record<string, string[]> = {
-    london: ["Bromley", "Croydon", "Greenwich", "Bexley", "Lewisham", "Wandsworth", "Ealing", "Enfield", "Barnet", "Hounslow", "Romford", "Harrow", "Kingston", "Sutton", "Richmond", "Wembley", "Stratford", "Clapham", "Fulham", "Streatham"],
-    kent: ["Maidstone", "Dartford", "Medway", "Canterbury", "Sevenoaks", "Tunbridge Wells", "Ashford", "Dover", "Gravesend", "Tonbridge", "Folkestone", "Sittingbourne", "Chatham", "Gillingham", "Margate"],
-    sussex: ["Brighton", "Hove", "Crawley", "Worthing", "Eastbourne", "Hastings", "Horsham", "Chichester", "Bognor Regis", "Littlehampton", "Burgess Hill", "East Grinstead", "Bexhill", "Haywards Heath"],
-    essex: ["Chelmsford", "Colchester", "Basildon", "Southend-on-Sea", "Brentwood", "Harlow", "Thurrock", "Braintree", "Clacton-on-Sea", "Loughton", "Romford", "Grays", "Canvey Island", "Witham"],
-    "west-midlands": ["Birmingham", "Solihull", "Sutton Coldfield", "Wolverhampton", "Coventry", "West Bromwich", "Dudley", "Walsall", "Halesowen", "Stourbridge", "Smethwick", "Sutton", "Bromsgrove", "Tamworth"],
-    scotland: ["Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Stirling", "Falkirk", "Paisley", "Livingston", "East Kilbride", "Cumbernauld", "Hamilton", "Kirkcaldy", "Perth", "Ayr"],
-  };
-
-  const slugify = (s: string) =>
-    s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-  const richSlugs = new Set(["kent:maidstone", "london:bromley", "west-midlands:solihull"]);
-
-  let stubCount = 0;
-  for (const [countySlug, names] of Object.entries(TOWN_DATA)) {
-    const countyId = countyIdBySlug[countySlug];
-    if (!countyId) continue;
-    const countyName = counties.find((c) => c.slug === countySlug)?.name ?? countySlug;
-    for (const name of names) {
-      const slug = slugify(name);
-      if (richSlugs.has(`${countySlug}:${slug}`)) continue; // keep rich examples
-      const intro = `Need a mobile tyre fitter in ${name}? We come to you across ${name} and the surrounding ${countyName} area - at home, at work or stuck at the roadside, 24/7.`;
-      await prisma.town.upsert({
-        where: { countyId_slug: { countyId, slug } },
-        update: { name }, // preserve any admin-entered content on re-seed
-        create: {
-          name,
-          slug,
-          countyId,
-          intro,
-          body: `<p>${intro}</p><h2>Mobile tyre fitting in ${name}</h2><p>Our fully-equipped vans carry a wide range of tyres for cars, vans and 4x4s and fit them wherever you are - no garage visit needed. Every tyre is balanced on site and your old tyre is taken away for recycling. Add real local roads and landmarks for ${name} here to make this page genuinely unique.</p>`,
-          responseTimeText: "Typical call-out: 30-45 minutes",
-          seoDescription: intro.slice(0, 155),
-        },
-      });
-      stubCount++;
-    }
-  }
-  console.log(`✓ ${stubCount} additional town pages across all counties`);
+  console.log(`✓ ${towns.length} towns (one per county; add more in /admin)`);
 
   // --- Global FAQs ----------------------------------------------------------
   const globalFaqs = [
