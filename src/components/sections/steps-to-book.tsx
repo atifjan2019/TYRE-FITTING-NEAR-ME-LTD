@@ -5,7 +5,7 @@ import { BOOKING_STEPS } from "@/lib/site-config";
 /** "How it works" - 4 steps, each with a reassuring micro-line. */
 export function StepsToBook() {
   return (
-    <section className="bg-secondary py-16">
+    <section className="bg-secondary py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="It couldn't be easier"

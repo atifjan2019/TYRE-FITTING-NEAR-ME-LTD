@@ -5,7 +5,7 @@ import { WHY_CHOOSE } from "@/lib/site-config";
 /** "Why choose us" - 4 reassurance blocks. Reusable on service/location pages. */
 export function WhyChooseUs() {
   return (
-    <section className="bg-[var(--color-muted-blue)] py-16">
+    <section className="bg-[var(--color-muted-blue)] py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="The Tyre Fitting Near Me difference"

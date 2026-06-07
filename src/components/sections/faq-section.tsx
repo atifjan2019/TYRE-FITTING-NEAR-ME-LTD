@@ -24,7 +24,7 @@ export function FaqSection({
   if (!faqs.length) return null;
 
   return (
-    <section className="py-16">
+    <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-3xl px-4">
         <SectionHeading eyebrow={eyebrow} title={title} />
         <Accordion type="single" collapsible className="mt-8">

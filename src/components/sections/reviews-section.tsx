@@ -25,7 +25,7 @@ export function ReviewsSection({
   if (!reviews.length) return null;
 
   return (
-    <section className="bg-secondary py-16">
+    <section className="bg-secondary py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
         {heading ? (
           <SectionHeading

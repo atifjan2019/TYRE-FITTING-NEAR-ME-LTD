@@ -46,7 +46,7 @@ export function StatCounters({ stats }: { stats: Stat[] }) {
     <section className="bg-primary text-primary-foreground">
       <div
         ref={ref}
-        className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-12 lg:grid-cols-4"
+        className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-16 sm:py-20 lg:grid-cols-4"
       >
         {stats.map((s) => (
           <div key={s.label} className="text-center">

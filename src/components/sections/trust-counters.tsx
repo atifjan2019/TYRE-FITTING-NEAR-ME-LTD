@@ -14,7 +14,7 @@ export function TrustCounters({ settings }: { settings: SiteSettingsData }) {
 
   return (
     <section className="border-y bg-primary text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-12 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-16 sm:py-20 lg:grid-cols-4">
         {stats.map((s) => (
           <div key={s.label} className="text-center">
             <div className="text-4xl font-extrabold tracking-tight text-accent sm:text-5xl">

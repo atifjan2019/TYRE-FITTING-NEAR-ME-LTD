@@ -20,7 +20,7 @@ export function ServicesGrid({
   heading?: boolean;
 }) {
   return (
-    <section className="py-16">
+    <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
         {heading ? (
           <SectionHeading

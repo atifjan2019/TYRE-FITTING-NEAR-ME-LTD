@@ -10,7 +10,7 @@ export function BrandLogos() {
   if (!BRAND_LOGOS.length) return null;
 
   return (
-    <section className="border-y bg-secondary py-14">
+    <section className="border-y bg-secondary py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <h2 className="font-heading text-2xl font-extrabold text-primary sm:text-3xl">
