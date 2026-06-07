@@ -1,0 +1,281 @@
+// =============================================================================
+// Prisma schema — Tyre Fitting Near Me Ltd
+// -----------------------------------------------------------------------------
+// Database: PostgreSQL (running in Docker on a Hostinger VPS).
+// App:      Next.js on Vercel (serverless) — see connection-pooling notes below.
+//
+// Two connection URLs (Prisma's recommended serverless setup):
+//   DATABASE_URL  -> POOLED connection used by the app at runtime. Point this at
+//                    PgBouncer (transaction mode) once you add it, and append
+//                    `?pgbouncer=true&sslmode=require`. Until PgBouncer exists it
+//                    can equal DIRECT_URL.
+//   DIRECT_URL    -> DIRECT connection (no pooler) used by `prisma migrate` and
+//                    `prisma db push`, which need a real session. This is your
+//                    VPS Postgres on port 32768.
+//
+// Fill both in `.env.local` (local dev) and in the Vercel project env vars.
+// NEVER commit real credentials — see `.env.example` for the format.
+//
+// NOTE: "enum-like" fields are plain Strings with allowed values documented in
+// comments, to keep the admin forms simple and migrations painless.
+// =============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // pooled (runtime / serverless)
+  directUrl = env("DIRECT_URL") // direct (migrations)
+}
+
+// -----------------------------------------------------------------------------
+// Admin users — login for the /admin dashboard (NextAuth credentials provider)
+// -----------------------------------------------------------------------------
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String // bcrypt hash — never store plain text
+  role         String   @default("admin") // "admin" | "editor"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// -----------------------------------------------------------------------------
+// Site settings — a single row (id = "settings") edited from the admin.
+// Holds global NAP/contact info reused across the whole site + header/footer.
+// SERVICE-AREA business: NO street address is stored anywhere.
+// -----------------------------------------------------------------------------
+model SiteSetting {
+  id        String @id @default("settings")
+  brandName String @default("Tyre Fitting Near Me Ltd")
+  tagline   String @default("24/7 Mobile Tyre Fitting — We Come To You")
+
+  // Contact / conversion details
+  phone        String @default("")
+  whatsapp     String @default("") // international format, e.g. 447000000000
+  email        String @default("")
+  openingHours String @default("24/7, 365 days a year")
+
+  // Trust counters shown on the homepage
+  yearsExperience Int @default(10)
+  customersServed Int @default(15000)
+  brandsCount     Int @default(50)
+
+  // Social profiles (optional)
+  facebookUrl  String?
+  instagramUrl String?
+  tiktokUrl    String?
+
+  // Default SEO fallbacks
+  defaultMetaTitle       String @default("Mobile Tyre Fitting Near Me | 24/7 Call-Out")
+  defaultMetaDescription String @default("24/7 mobile tyre fitting that comes to you — home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.")
+  defaultOgImage         String?
+
+  updatedAt DateTime @updatedAt
+}
+
+// -----------------------------------------------------------------------------
+// Services — one row per service, rendered by the /services/[service] template.
+// -----------------------------------------------------------------------------
+model Service {
+  id               String  @id @default(cuid())
+  title            String
+  slug             String  @unique
+  shortDescription String // used in grids/cards + meta description fallback
+  body             String  @default("") // rich-text HTML from the editor
+  icon             String? // lucide icon name, e.g. "wrench"
+  heroImage        String?
+  features         Json    @default("[]") // string[] of bullet points
+  priceFrom        String? // free text, e.g. "from £25"
+
+  // SEO
+  seoTitle       String?
+  seoDescription String?
+  ogImage        String?
+
+  published Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  faqs    Faq[]
+  reviews Review[]
+
+  @@index([slug])
+  @@index([published, order])
+}
+
+// -----------------------------------------------------------------------------
+// County hubs — top-level location pages, e.g. /kent
+// -----------------------------------------------------------------------------
+model County {
+  id               String  @id @default(cuid())
+  name             String // e.g. "Kent"
+  slug             String  @unique // e.g. "kent"
+  intro            String  @default("") // short lead paragraph
+  body             String  @default("") // rich-text HTML
+  heroImage        String?
+  responseTimeText String  @default("Typical call-out: 30–60 minutes")
+  coverageNotes    String  @default("") // major roads/areas covered in the county
+
+  // SEO
+  seoTitle       String?
+  seoDescription String?
+  ogImage        String?
+
+  published Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  towns   Town[]
+  faqs    Faq[]
+  reviews Review[]
+
+  @@index([slug])
+  @@index([published, order])
+}
+
+// -----------------------------------------------------------------------------
+// Town / borough pages — nested under a county, e.g. /kent/maidstone
+// These are the SEO money pages: every field exists so each page is genuinely
+// unique (local notes, response time, local FAQs, local reviews).
+// -----------------------------------------------------------------------------
+model Town {
+  id       String @id @default(cuid())
+  name     String // e.g. "Maidstone"
+  slug     String // e.g. "maidstone" (unique WITHIN its county)
+  countyId String
+  county   County @relation(fields: [countyId], references: [id], onDelete: Cascade)
+
+  intro            String  @default("") // unique lead paragraph for this town
+  body             String  @default("") // rich-text HTML
+  localNotes       String  @default("") // major roads, landmarks, retail parks, etc.
+  responseTimeText String  @default("Typical call-out: 30–45 minutes")
+  heroImage        String?
+
+  // SEO
+  seoTitle       String?
+  seoDescription String?
+  ogImage        String?
+
+  published Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  faqs    Faq[]
+  reviews Review[]
+
+  // slug only needs to be unique within a county (so two counties can both
+  // have e.g. "newport"), enforced by the composite unique constraint below.
+  @@unique([countyId, slug])
+  @@index([slug])
+  @@index([countyId])
+  @@index([published])
+}
+
+// -----------------------------------------------------------------------------
+// FAQs — reusable. Attach to a service, county, or town, or leave all relations
+// null for a GENERAL/global FAQ shown on the homepage & /faq.
+// -----------------------------------------------------------------------------
+model Faq {
+  id       String @id @default(cuid())
+  question String
+  answer   String // plain text / light HTML
+  category String @default("general") // "general" | "service" | "location"
+
+  serviceId String?
+  service   Service? @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  countyId  String?
+  county    County?  @relation(fields: [countyId], references: [id], onDelete: Cascade)
+  townId    String?
+  town      Town?    @relation(fields: [townId], references: [id], onDelete: Cascade)
+
+  published Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category, published])
+  @@index([serviceId])
+  @@index([countyId])
+  @@index([townId])
+}
+
+// -----------------------------------------------------------------------------
+// Reviews — reusable. Attach to a town/county/service for local social proof,
+// or leave relations null for a global review shown on the homepage & /reviews.
+// -----------------------------------------------------------------------------
+model Review {
+  id       String   @id @default(cuid())
+  author   String
+  rating   Int      @default(5) // 1–5
+  text     String
+  location String? // free text, e.g. "Maidstone, Kent"
+  source   String   @default("Google") // "Google" | "Trustpilot" | "Facebook" | ...
+  date     DateTime @default(now())
+  featured Boolean  @default(false)
+
+  serviceId String?
+  service   Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  countyId  String?
+  county    County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  townId    String?
+  town      Town?    @relation(fields: [townId], references: [id], onDelete: SetNull)
+
+  published Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([published, featured])
+  @@index([serviceId])
+  @@index([countyId])
+  @@index([townId])
+}
+
+// -----------------------------------------------------------------------------
+// Blog posts — tyre safety / advice articles, /blog/[slug]
+// -----------------------------------------------------------------------------
+model BlogPost {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  excerpt     String    @default("")
+  coverImage  String?
+  body        String    @default("") // rich-text HTML
+  author      String    @default("Tyre Fitting Near Me Ltd")
+  tags        Json      @default("[]") // string[]
+  publishedAt DateTime?
+  published   Boolean   @default(false)
+
+  // SEO
+  seoTitle       String?
+  seoDescription String?
+  ogImage        String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slug])
+  @@index([published, publishedAt])
+}
+
+// -----------------------------------------------------------------------------
+// Tyre brands — logos for the homepage brand strip.
+// -----------------------------------------------------------------------------
+model Brand {
+  id        String   @id @default(cuid())
+  name      String
+  logo      String? // image URL (Vercel Blob)
+  url       String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([order])
+}

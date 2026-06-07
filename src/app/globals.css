@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   Tailwind v4 theme — shadcn/ui compatible design tokens.
+   Brand: confident automotive BLUE for trust + high-visibility AMBER for CTAs
+   (e.g. "Call Now"), with WhatsApp green handled inline on its button.
+   =========================================================================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-success: var(--success);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand greens used by the WhatsApp button */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Brand spec: Navy/near-black + Amber-Orange CTA, light-first. */
+  --background: #ffffff; /* white */
+  --foreground: #0e1726; /* navy/near-black — body text */
+  --card: #ffffff;
+  --card-foreground: #0e1726;
+  --popover: #ffffff;
+  --popover-foreground: #0e1726;
+
+  --primary: #0e1726; /* navy/near-black — headers, footer, dark sections */
+  --primary-foreground: #ffffff;
+
+  --secondary: #f5f7fa; /* muted — alternate section backgrounds / cards */
+  --secondary-foreground: #0e1726;
+
+  --muted: #f5f7fa;
+  --muted-foreground: #5b6470; /* muted text */
+
+  --accent: #ff6a00; /* amber-orange — primary CTA / highlights */
+  --accent-foreground: #ffffff; /* white text on the orange CTA */
+  --accent-hover: #e65f00; /* CTA hover */
+
+  --success: #16a34a; /* success UI states only */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  --border: #e6eaf0; /* cool light border */
+  --input: #e6eaf0;
+  --ring: #ff6a00; /* visible focus ring in the brand accent */
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Headings use the Poppins display font per the brand spec. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Rich-text (Tiptap) output rendered on public pages via .prose-content */
+.prose-content {
+  line-height: 1.7;
+}
+.prose-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+.prose-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.prose-content p {
+  margin-bottom: 1rem;
+}
+.prose-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.prose-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.prose-content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+.prose-content img {
+  border-radius: var(--radius);
+  margin: 1rem 0;
+}
