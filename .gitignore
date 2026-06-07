@@ -11,16 +11,29 @@ next-env.d.ts
 # production
 /build
 
-# misc
+# misc / OS
 .DS_Store
-*.pem
+Thumbs.db
 
-# debug
+# secrets, keys & certificates — never commit these
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# debug / logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# local env files — ignore ALL .env* except the committed template
+# editor / IDE
+.vscode/
+.idea/
+
+# local env files — ignore ALL .env* (incl. .env.local secrets) except the template
 .env*
 !.env.example
 
@@ -32,6 +45,8 @@ yarn-error.log*
 /public/uploads/*
 !/public/uploads/.gitkeep
 
-# vercel / typescript build info
+# vercel / build tooling
 /.vercel
+/.turbo
+/coverage
 *.tsbuildinfo
