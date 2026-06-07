@@ -2,8 +2,13 @@
 
 /* ===========================================================================
    Tailwind v4 theme - shadcn/ui compatible design tokens.
-   Brand: confident automotive BLUE for trust + high-visibility AMBER for CTAs
-   (e.g. "Call Now"), with WhatsApp green handled inline on its button.
+   BRAND: Red + Navy.
+   - Brand RED (#ED1C24) = primary CTAs / highlights  -> token: --accent (+ alias --brand-red)
+   - NAVY  (#0A1733)     = headings, dark sections, header, footer -> token: --primary (+ alias --navy)
+   - WhatsApp green is handled on its own button.
+   NOTE: shadcn's `--primary` is the navy brand-dark (used for dark surfaces);
+   the red CTA lives on `--accent`, and the default Button is mapped to red.
+   No component hardcodes colours - everything references these tokens.
    =========================================================================== */
 @theme inline {
   --color-background: var(--background);
@@ -18,7 +23,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
+  --color-accent: var(--accent); /* brand RED (primary CTA) */
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-hover: var(--accent-hover);
   --color-success: var(--success);
@@ -27,6 +32,14 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  /* Brand aliases (self-documenting names that match the palette spec) */
+  --color-brand-red: var(--accent); /* #ED1C24 */
+  --color-brand-red-hover: var(--accent-hover); /* #C9151C */
+  --color-primary-alt: var(--primary-alt); /* soft red #FC414E */
+  --color-navy: var(--primary); /* #0A1733 */
+  --color-logo-blue: var(--logo-blue); /* #1F4ED8 - logo accent only */
+  --color-muted-blue: var(--muted-blue); /* #DADFF0 - soft section bg */
 
   /* Brand greens used by the WhatsApp button */
   --color-whatsapp: #25d366;
@@ -39,42 +52,49 @@
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-marquee: marquee 35s linear infinite;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.625rem; /* buttons use rounded-lg via this */
 
-  /* Brand spec: Navy/near-black + Amber-Orange CTA, light-first. */
+  /* Red + Navy brand spec */
   --background: #ffffff; /* white */
-  --foreground: #0e1726; /* navy/near-black - body text */
+  --foreground: #0a1733; /* navy - headings & default text (body copy = #333 via .prose-content) */
   --card: #ffffff;
-  --card-foreground: #0e1726;
+  --card-foreground: #0a1733;
   --popover: #ffffff;
-  --popover-foreground: #0e1726;
+  --popover-foreground: #0a1733;
 
-  --primary: #0e1726; /* navy/near-black - headers, footer, dark sections */
+  /* Navy = brand dark surfaces (header, footer, dark sections, headings) */
+  --primary: #0a1733;
   --primary-foreground: #ffffff;
 
-  --secondary: #f5f7fa; /* muted - alternate section backgrounds / cards */
-  --secondary-foreground: #0e1726;
-
-  --muted: #f5f7fa;
+  /* Alternate light section background (muted light grey) */
+  --secondary: #f4f4f4;
+  --secondary-foreground: #0a1733;
+  --muted: #f4f4f4;
   --muted-foreground: #5b6470; /* muted text */
+  --muted-blue: #dadff0; /* soft card/section background */
 
-  --accent: #ff6a00; /* amber-orange - primary CTA / highlights */
-  --accent-foreground: #ffffff; /* white text on the orange CTA */
-  --accent-hover: #e65f00; /* CTA hover */
+  /* Brand RED = primary CTA / highlights */
+  --accent: #ed1c24;
+  --accent-foreground: #ffffff; /* ALWAYS white on red (AA) */
+  --accent-hover: #c9151c;
+  --primary-alt: #fc414e; /* soft red - secondary buttons / gradients */
+
+  --logo-blue: #1f4ed8; /* logo accent only */
 
   --success: #16a34a; /* success UI states only */
-  --destructive: #dc2626;
+  --destructive: #dc2626; /* error UI states only */
   --destructive-foreground: #ffffff;
 
-  --border: #e6eaf0; /* cool light border */
-  --input: #e6eaf0;
-  --ring: #ff6a00; /* visible focus ring in the brand accent */
+  --border: #e6e8ef; /* light border */
+  --input: #e6e8ef;
+  --ring: #ed1c24; /* focus ring in brand red */
 }
 
 @keyframes accordion-down {
@@ -91,6 +111,23 @@
   }
   to {
     height: 0;
+  }
+}
+
+/* Seamless auto-scrolling marquee (content is duplicated, so -50% loops). */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none !important;
   }
 }
 
@@ -122,6 +159,11 @@
 /* Rich-text (Tiptap) output rendered on public pages via .prose-content */
 .prose-content {
   line-height: 1.7;
+  color: #333333; /* body copy colour per brand spec */
+}
+.prose-content h2,
+.prose-content h3 {
+  color: var(--color-navy); /* headings stay navy */
 }
 .prose-content h2 {
   font-size: 1.5rem;
@@ -149,7 +191,7 @@
   margin-bottom: 1rem;
 }
 .prose-content a {
-  color: var(--primary);
+  color: var(--color-accent);
   text-decoration: underline;
 }
 .prose-content img {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Phone, MessageCircle, Clock } from "lucide-react";
+import { Phone, Clock } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { getSiteSettings } from "@/lib/data";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -59,7 +60,7 @@ export default async function BookPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle /> WhatsApp Us
+                  <WhatsAppIcon /> WhatsApp Us
                 </a>
               </Button>
             ) : null}

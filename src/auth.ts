@@ -1,17 +1,16 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { prisma } from "@/lib/prisma";
 import { authConfig } from "@/auth.config";
 
 /**
- * Full Auth.js setup with the email + password (Credentials) provider.
- * Passwords are verified against the bcrypt hash stored in the database.
+ * Auth.js setup with a single-passcode login (no email/username).
+ * The passcode is checked against the ADMIN_PASSCODE environment variable, so
+ * there are no admin user records to manage.
  *
  * Exports:
  *  - handlers: GET/POST route handlers for /api/auth/[...nextauth]
- *  - auth:     server-side session helper (use in Server Components / actions)
+ *  - auth:     server-side session helper (Server Components / actions)
  *  - signIn / signOut: programmatic helpers
  */
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -19,33 +18,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        passcode: { label: "Passcode", type: "password" },
       },
       async authorize(credentials) {
         const parsed = z
-          .object({
-            email: z.string().email(),
-            password: z.string().min(1),
-          })
+          .object({ passcode: z.string().min(1) })
           .safeParse(credentials);
-
         if (!parsed.success) return null;
 
-        const { email, password } = parsed.data;
-        const user = await prisma.user.findUnique({ where: { email } });
-        if (!user) return null;
+        const expected = process.env.ADMIN_PASSCODE;
+        if (!expected) return null; // not configured -> deny
 
-        const valid = await bcrypt.compare(password, user.passwordHash);
-        if (!valid) return null;
+        // Constant-time-ish comparison (length + char check).
+        const input = parsed.data.passcode;
+        if (input.length !== expected.length) return null;
+        let mismatch = 0;
+        for (let i = 0; i < expected.length; i++) {
+          mismatch |= input.charCodeAt(i) ^ expected.charCodeAt(i);
+        }
+        if (mismatch !== 0) return null;
 
-        // The returned object is encoded into the JWT (see auth.config.ts).
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
-        };
+        // Single admin identity (no DB user needed).
+        return { id: "admin", name: "Admin", role: "admin" };
       },
     }),
   ],

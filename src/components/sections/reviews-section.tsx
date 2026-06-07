@@ -15,14 +15,17 @@ type ReviewCard = {
 export function ReviewsSection({
   reviews,
   heading = true,
+  stats,
 }: {
   reviews: ReviewCard[];
   heading?: boolean;
+  /** Optional overall-rating headline (computed from the CMS). */
+  stats?: { average: number; count: number };
 }) {
   if (!reviews.length) return null;
 
   return (
-    <section className="bg-secondary/40 py-16">
+    <section className="bg-secondary py-16">
       <div className="mx-auto max-w-7xl px-4">
         {heading ? (
           <SectionHeading
@@ -30,6 +33,19 @@ export function ReviewsSection({
             title="What our customers say"
             subtitle="Real reviews from drivers we've helped across the UK."
           />
+        ) : null}
+
+        {stats && stats.count > 0 ? (
+          <div className="mx-auto mt-6 flex max-w-md flex-col items-center gap-1 rounded-xl border bg-card p-5 text-center shadow-sm">
+            <div className="font-heading text-4xl font-extrabold text-accent">
+              {stats.average.toFixed(1)}
+            </div>
+            <StarRating rating={Math.round(stats.average)} />
+            <p className="text-sm text-muted-foreground">
+              Rated {stats.average.toFixed(1)} / 5 from {stats.count} customer
+              {stats.count === 1 ? "" : "s"}
+            </p>
+          </div>
         ) : null}
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r) => (

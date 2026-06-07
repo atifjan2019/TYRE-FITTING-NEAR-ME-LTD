@@ -1,5 +1,6 @@
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { telHref, whatsappHref } from "@/lib/utils";
 import { SITE } from "@/lib/site-config";
 
@@ -36,7 +37,7 @@ export function CtaButtons({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <MessageCircle /> WhatsApp Us
+            <WhatsAppIcon /> WhatsApp Us
           </a>
         </Button>
       ) : null}

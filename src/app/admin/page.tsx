@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { auth } from "@/auth";
 import { Icon } from "@/components/icon";
 import { RESOURCES, RESOURCE_ORDER } from "@/lib/admin/resources";
 
@@ -9,8 +8,6 @@ import { RESOURCES, RESOURCE_ORDER } from "@/lib/admin/resources";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const session = await auth();
-
   const [counties, towns, services, posts, reviews, faqs, brands] =
     await Promise.all([
       prisma.county.count(),
@@ -37,7 +34,7 @@ export default async function AdminDashboard() {
       <header className="mb-8">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <p className="text-muted-foreground">
-          Signed in as {session?.user?.email}. Manage your site content below.
+          Signed in as admin. Manage your site content below.
         </p>
       </header>
 

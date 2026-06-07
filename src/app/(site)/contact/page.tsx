@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Phone, MessageCircle, Mail, Clock, MapPin } from "lucide-react";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { getSiteSettings } from "@/lib/data";
 import { buildMetadata, localBusinessJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -57,7 +58,7 @@ export default async function ContactPage() {
             {settings.whatsapp ? (
               <li className="flex items-center gap-3">
                 <span className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--color-whatsapp)]/10 text-[var(--color-whatsapp)]">
-                  <MessageCircle className="h-5 w-5" />
+                  <WhatsAppIcon className="h-5 w-5" />
                 </span>
                 <a
                   href={whatsappHref(settings.whatsapp, SITE.whatsappMessage)}

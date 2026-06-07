@@ -1,4 +1,5 @@
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { telHref, whatsappHref } from "@/lib/utils";
 import { SITE } from "@/lib/site-config";
 
@@ -35,7 +36,7 @@ export function MobileCallBar({
           className="flex items-center justify-center gap-2 bg-[var(--color-whatsapp)] py-3.5 text-base font-bold text-white"
           aria-label="Message us on WhatsApp"
         >
-          <MessageCircle className="h-5 w-5" /> WhatsApp
+          <WhatsAppIcon className="h-5 w-5" /> WhatsApp
         </a>
       ) : null}
     </div>

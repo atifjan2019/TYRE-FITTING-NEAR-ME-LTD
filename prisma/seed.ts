@@ -8,22 +8,11 @@
  * than creating duplicates.
  */
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // --- Admin user -----------------------------------------------------------
-  const email = process.env.ADMIN_EMAIL ?? "admin@tyrefittingnearme.co.uk";
-  const password = process.env.ADMIN_PASSWORD ?? "ChangeMe!2024";
-  const passwordHash = await bcrypt.hash(password, 12);
-
-  await prisma.user.upsert({
-    where: { email },
-    update: { passwordHash },
-    create: { email, passwordHash, name: "Site Admin", role: "admin" },
-  });
-  console.log(`✓ Admin user: ${email}`);
+  // Admin login uses a single passcode (ADMIN_PASSCODE env var) - no user rows.
 
   // --- Site settings (singleton) -------------------------------------------
   await prisma.siteSetting.upsert({

@@ -8,13 +8,17 @@ import { cn } from "@/lib/utils";
  * (e.g. a Next.js <Link> or an <a tel:>) while keeping the button styling.
  */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-heading text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-heading text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        // High-visibility emergency CTA (e.g. "Call Now") - amber-orange.
+        // Default primary button = brand RED (emergency CTA), white text.
+        default:
+          "bg-accent text-accent-foreground hover:bg-[var(--color-accent-hover)] shadow-sm",
+        // Explicit emergency CTA (e.g. "Call Now") - identical brand red.
         cta: "bg-accent text-accent-foreground hover:bg-[var(--color-accent-hover)] shadow-sm",
+        // Navy button for use on light sections where red would be too loud.
+        navy: "bg-primary text-primary-foreground hover:bg-primary/90",
         whatsapp:
           "bg-[var(--color-whatsapp)] text-white hover:bg-[var(--color-whatsapp-dark)]",
         destructive:

@@ -38,7 +38,7 @@ export function SiteHeader({
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-primary font-bold text-primary-foreground">
+          <span className="grid h-9 w-9 place-items-center rounded-md bg-[var(--color-logo-blue)] font-bold text-white">
             T
           </span>
           <span className="text-lg font-extrabold leading-tight tracking-tight">

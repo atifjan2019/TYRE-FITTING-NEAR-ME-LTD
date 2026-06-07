@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Phone, MessageCircle, Mail, Clock, MapPin } from "lucide-react";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { FOOTER_NAV, SITE } from "@/lib/site-config";
 import { telHref, whatsappHref } from "@/lib/utils";
 import type { SiteSettingsData } from "@/lib/data";
@@ -39,7 +40,7 @@ export function SiteFooter({
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-primary"
                   >
-                    <MessageCircle className="h-4 w-4 text-[var(--color-whatsapp)]" /> WhatsApp us
+                    <WhatsAppIcon className="h-4 w-4 text-[var(--color-whatsapp)]" /> WhatsApp us
                   </a>
                 </li>
               ) : null}

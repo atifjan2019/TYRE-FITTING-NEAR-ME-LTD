@@ -23,8 +23,6 @@ export const MAIN_NAV: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Areas We Cover", href: "/areas" },
-  { label: "Reviews", href: "/reviews" },
-  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -50,28 +48,97 @@ export const FOOTER_NAV: { title: string; links: { label: string; href: string }
 ];
 
 /**
- * The "4 simple steps to book" shown on the homepage. Static UI copy - kept in
- * code because it's a fixed brand process, not per-page content.
+ * "How it works" - the 4-step booking process shown on the homepage. Static UI
+ * copy (a fixed brand process), each with a reassuring micro-line.
  */
 export const BOOKING_STEPS = [
   {
     title: "Call or WhatsApp",
-    description: "Tell us your tyre size, location and what you need. 24/7.",
+    description: "Tell us your tyre size, location and what you need.",
+    micro: "Quote in 60 seconds",
     icon: "phone",
   },
   {
-    title: "Get a fast quote",
-    description: "Upfront, fair pricing with no hidden call-out fees.",
-    icon: "badge-pound-sterling",
-  },
-  {
-    title: "We come to you",
-    description: "Our mobile van arrives at your home, work or roadside.",
+    title: "Fitter dispatched",
+    description: "Your nearest mobile fitter heads straight to you.",
+    micro: "Fast local arrival",
     icon: "truck",
   },
   {
-    title: "Fitted on the spot",
-    description: "New tyres fitted and balanced - you're back on the road.",
+    title: "Fitted on-site",
+    description: "We fit and balance your tyres wherever you are.",
+    micro: "No garage needed",
+    icon: "wrench",
+  },
+  {
+    title: "Drive away safely",
+    description: "Back on the road in no time, sorted properly.",
+    micro: "Workmanship guaranteed",
     icon: "circle-check-big",
   },
 ] as const;
+
+/**
+ * Auto-scrolling trust strip badges. Static brand promises - safe to keep in
+ * code (not per-page content).
+ */
+export const TRUST_STRIP: { label: string; icon: string }[] = [
+  { label: "24/7 emergency call-outs", icon: "clock" },
+  { label: "30-60 min typical response", icon: "gauge" },
+  { label: "Home, work or roadside", icon: "map-pin" },
+  { label: "All cards accepted", icon: "badge-pound-sterling" },
+  { label: "Fully insured fitters", icon: "shield-check" },
+  { label: "No hidden fees", icon: "circle-check-big" },
+  { label: "Across all our regions", icon: "map" },
+];
+
+/**
+ * Tyre-brand logos for the homepage "brands" section. These are curated static
+ * assets committed under /public/uploads/brands (see .gitignore exception).
+ * To add a brand: drop the logo in that folder and add a line here with alt text.
+ * (Alternatively, manage brands with logos via /admin → Brands.)
+ */
+export const BRAND_LOGOS: { src: string; alt: string }[] = [
+  { src: "/uploads/brands/dunlop-tyre.png", alt: "Dunlop tyres" },
+  {
+    src: "/uploads/brands/davanti-tyres-logo-png_seeklogo-364573-removebg-preview.png",
+    alt: "Davanti tyres",
+  },
+  { src: "/uploads/brands/Adobe-Express-file.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/Adobe-Express-file-3.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/Adobe-Express-file-5.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/Adobe-Express-file-6.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/5860f81a4fc7f3474eb80db5.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/5860f8854fc7f3474eb80dba-scaled.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/5860f8f04fc7f3474eb80dbc-scaled.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/pngegg-7.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/pngegg-8.png", alt: "Tyre brand" },
+];
+
+/** "Why choose us" blocks shown on the homepage. */
+export const WHY_CHOOSE: { title: string; description: string; icon: string }[] = [
+  {
+    title: "30-60 minute arrival",
+    description:
+      "A fitter is usually with you within the hour - we know a flat tyre can't wait.",
+    icon: "gauge",
+  },
+  {
+    title: "Fair, transparent pricing",
+    description:
+      "An upfront, all-in quote before we set off. No call-out fees, no surprises.",
+    icon: "badge-pound-sterling",
+  },
+  {
+    title: "24/7 emergency call-out",
+    description:
+      "Day or night, 365 days a year. Stranded at 3am? We'll still come to you.",
+    icon: "clock",
+  },
+  {
+    title: "Insured, certified fitters",
+    description:
+      "Fully insured, experienced technicians and quality tyres fitted to standard.",
+    icon: "shield-check",
+  },
+];

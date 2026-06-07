@@ -2,14 +2,14 @@ import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { BOOKING_STEPS } from "@/lib/site-config";
 
-/** "4 simple steps to book" band. */
+/** "How it works" - 4 steps, each with a reassuring micro-line. */
 export function StepsToBook() {
   return (
-    <section className="bg-secondary/40 py-16">
+    <section className="bg-secondary py-16">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="It couldn't be easier"
-          title="4 simple steps to book"
+          title="How it works"
           subtitle="From flat tyre to back on the road - usually within the hour."
         />
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -26,6 +26,9 @@ export function StepsToBook() {
               </div>
               <h3 className="text-lg font-bold">{step.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
+              <p className="mt-3 inline-flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent">
+                {step.micro}
+              </p>
             </li>
           ))}
         </ol>

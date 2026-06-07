@@ -13,7 +13,7 @@ export function BrandStrip({ brands }: { brands: Brand[] }) {
     <section className="border-b bg-background py-10">
       <div className="mx-auto max-w-7xl px-4">
         <p className="mb-6 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          We fit all major tyre brands
+          All major tyre brands in stock — plus quality budget options
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
           {brands.map((b) =>

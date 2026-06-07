@@ -44,6 +44,9 @@ pnpm-debug.log*
 # user-uploaded media (served from /public/uploads at runtime)
 /public/uploads/*
 !/public/uploads/.gitkeep
+# ...but DO commit curated brand logos so they deploy
+!/public/uploads/brands
+!/public/uploads/brands/**
 
 # vercel / build tooling
 /.vercel

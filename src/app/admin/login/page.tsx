@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-/** Admin login screen (email + password, verified against the bcrypt hash). */
+/** Admin login screen - single passcode (checked against ADMIN_PASSCODE). */
 export default function LoginPage() {
   const [errorMessage, formAction, isPending] = useActionState(login, undefined);
 
   return (
-    <main className="grid min-h-dvh place-items-center bg-secondary/40 px-4">
+    <main className="grid min-h-dvh place-items-center bg-secondary px-4">
       <div className="w-full max-w-sm rounded-xl border bg-card p-8 shadow-sm">
         <div className="mb-6 text-center">
           <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-lg bg-primary text-primary-foreground">
@@ -20,31 +20,23 @@ export default function LoginPage() {
           </div>
           <h1 className="text-xl font-bold">Admin sign in</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Tyre Fitting Near Me - content management
+            Enter your passcode to manage the site
           </p>
         </div>
 
         <form action={formAction} className="space-y-4">
           <div>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="passcode">Passcode</Label>
             <Input
-              id="email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              className="mt-1.5"
-            />
-          </div>
-          <div>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              name="password"
+              id="passcode"
+              name="passcode"
               type="password"
+              inputMode="numeric"
+              autoComplete="one-time-code"
               required
-              autoComplete="current-password"
-              className="mt-1.5"
+              autoFocus
+              className="mt-1.5 text-center tracking-widest"
+              placeholder="••••••••"
             />
           </div>
 

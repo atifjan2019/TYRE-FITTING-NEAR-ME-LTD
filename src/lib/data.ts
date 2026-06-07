@@ -142,6 +142,21 @@ export const getAllReviews = cache(async () => {
   });
 });
 
+/**
+ * Aggregate review stats (count + average) computed from published reviews, so
+ * the rating shown on the site always reflects the CMS content.
+ */
+export const getReviewStats = cache(async () => {
+  const agg = await prisma.review.aggregate({
+    where: { published: true },
+    _avg: { rating: true },
+    _count: true,
+  });
+  const count = agg._count ?? 0;
+  const average = agg._avg.rating ?? 5;
+  return { count, average: Math.round(average * 10) / 10 };
+});
+
 export const getGlobalFaqs = cache(async () => {
   return prisma.faq.findMany({
     where: { published: true, category: "general" },

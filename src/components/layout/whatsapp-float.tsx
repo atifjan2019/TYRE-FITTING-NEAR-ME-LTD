@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { whatsappHref } from "@/lib/utils";
 import { SITE } from "@/lib/site-config";
 
@@ -18,7 +18,7 @@ export function WhatsAppFloat({ whatsapp }: { whatsapp: string }) {
       aria-label="Chat with us on WhatsApp"
       className="fixed bottom-24 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-whatsapp)] text-white shadow-lg transition-transform hover:scale-105 lg:bottom-6 lg:right-6"
     >
-      <MessageCircle className="h-7 w-7" />
+      <WhatsAppIcon className="h-7 w-7" />
       <span className="absolute -right-0.5 -top-0.5 flex h-3.5 w-3.5">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
         <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-green-500" />
