@@ -5,31 +5,35 @@ import {
   getCounties,
   getFeaturedReviews,
   getGlobalFaqs,
-  getBrands,
+  getReviewStats,
 } from "@/lib/data";
-import { buildMetadata, localBusinessJsonLd, faqPageJsonLd } from "@/lib/seo";
+import {
+  buildMetadata,
+  localBusinessJsonLd,
+  faqPageJsonLd,
+  breadcrumbJsonLd,
+} from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE } from "@/lib/site-config";
 import { Hero } from "@/components/sections/hero";
-import { TrustCounters } from "@/components/sections/trust-counters";
+import { TrustMarquee } from "@/components/sections/trust-marquee";
+import { BrandLogos } from "@/components/sections/brand-logos";
 import { StepsToBook } from "@/components/sections/steps-to-book";
+import { StatCounters } from "@/components/sections/stat-counters";
 import { ServicesGrid } from "@/components/sections/services-grid";
-import { BrandStrip } from "@/components/sections/brand-strip";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { AreasCovered } from "@/components/sections/areas-covered";
+import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { FaqSection } from "@/components/sections/faq-section";
-import { BookingForm } from "@/components/forms/booking-form";
-import { SectionHeading } from "@/components/sections/section-heading";
+import { CtaBand } from "@/components/sections/cta-band";
 
 // Statically generated, revalidated hourly (ISR) so the DB isn't hit per visit.
-// Admin edits also trigger on-demand revalidation (see admin server actions).
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return buildMetadata({
-    title:
-      "Mobile Tyre Fitting Near Me | 24/7 Call-Out - We Come To You",
+    title: "Mobile Tyre Fitting Near Me | 24/7 Call-Out — We Come To You",
     description: settings.defaultMetaDescription,
     path: "/",
     ogImage: settings.defaultOgImage,
@@ -37,32 +41,64 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [settings, services, counties, reviews, faqs, brands] =
+  const [settings, services, counties, reviews, faqs, stats] =
     await Promise.all([
       getSiteSettings(),
       getServices(),
       getCounties(),
       getFeaturedReviews(6),
       getGlobalFaqs(),
-      getBrands(),
+      getReviewStats(),
     ]);
+
+  // Animated counters — values from the CMS so claims stay accurate.
+  const counterStats = [
+    { label: "Tyres fitted", value: settings.customersServed, suffix: "+" },
+    {
+      label: `Google rating · ${stats.count}+ reviews`,
+      value: stats.average,
+      decimals: 1,
+      suffix: "★",
+    },
+    { label: "Min average response", value: 0, display: "30–60" },
+    { label: "Insured & certified fitters", value: 100, suffix: "%" },
+  ];
 
   return (
     <>
-      {/* Structured data: service-area business + homepage FAQs */}
+      {/* Structured data: service-area business, FAQs, breadcrumb */}
       <JsonLd
-        data={localBusinessJsonLd({
-          settings,
-          url: SITE.url,
-          areaServed: counties.map((c) => c.name),
-          image: settings.defaultOgImage,
-        })}
+        data={[
+          localBusinessJsonLd({
+            settings,
+            url: SITE.url,
+            areaServed: counties.map((c) => c.name),
+            image: settings.defaultOgImage,
+          }),
+          breadcrumbJsonLd([{ name: "Home", path: "/" }]),
+          ...(faqs.length ? [faqPageJsonLd(faqs)] : []),
+        ]}
       />
-      {faqs.length ? <JsonLd data={faqPageJsonLd(faqs)} /> : null}
 
-      <Hero settings={settings} />
-      <TrustCounters settings={settings} />
+      {/* 1. Hero with finder */}
+      <Hero settings={settings} stats={stats} />
+
+      {/* 2. Auto-scrolling trust strip */}
+      <TrustMarquee />
+
+      {/* 3. Brand logo row */}
+      <BrandLogos />
+
+      {/* 4. How it works */}
       <StepsToBook />
+
+      {/* 5. Animated stat counters */}
+      <StatCounters stats={counterStats} />
+
+      {/* 6. Reviews feed with overall rating */}
+      <ReviewsSection reviews={reviews} stats={stats} />
+
+      {/* 7. Services grid (each card links to its own page) */}
       <ServicesGrid
         services={services.map((s) => ({
           title: s.title,
@@ -72,25 +108,23 @@ export default async function HomePage() {
           priceFrom: s.priceFrom,
         }))}
       />
-      <BrandStrip brands={brands} />
-      <ReviewsSection reviews={reviews} />
+
+      {/* 8. Popular areas */}
       <AreasCovered counties={counties} />
+
+      {/* 9. Why choose us */}
+      <WhyChooseUs />
+
+      {/* 10. FAQ (+ FAQPage schema above) */}
       <FaqSection faqs={faqs} />
 
-      {/* Quote / booking band */}
-      <section className="bg-secondary/40 py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-2 lg:items-center">
-          <div>
-            <SectionHeading
-              align="left"
-              eyebrow="No call-out fee"
-              title="Get a fast, no-obligation quote"
-              subtitle="Prefer not to call? Send your details and we'll get straight back to you. For emergencies, calling is fastest."
-            />
-          </div>
-          <BookingForm phone={settings.phone} />
-        </div>
-      </section>
+      {/* 11. Final CTA band */}
+      <CtaBand
+        phone={settings.phone}
+        whatsapp={settings.whatsapp}
+        title="Flat tyre? We come to you, 24/7"
+        subtitle="Call or WhatsApp now — fast mobile tyre fitting at your home, work or roadside."
+      />
     </>
   );
 }
