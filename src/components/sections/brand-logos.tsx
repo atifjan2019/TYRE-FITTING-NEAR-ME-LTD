@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { BRAND_LOGOS } from "@/lib/site-config";
 
@@ -26,16 +27,21 @@ export function BrandLogos() {
           {BRAND_LOGOS.map((b) => (
             <div
               key={b.src}
-              className="flex h-24 items-center justify-center rounded-xl border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+              className="flex min-h-24 items-center justify-center rounded-xl border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
             >
               <Image
                 src={b.src}
                 alt={b.alt}
                 width={160}
-                height={72}
-                sizes="(max-width: 640px) 40vw, 160px"
-                className="w-auto object-contain"
-                style={{ maxHeight: `${b.maxHeight ?? 48}px` }}
+                height={96}
+                sizes="(max-width: 640px) 45vw, 160px"
+                className="w-auto object-contain max-h-[var(--mh-m)] sm:max-h-[var(--mh)]"
+                style={
+                  {
+                    "--mh": `${b.maxHeight ?? 48}px`,
+                    "--mh-m": `${b.maxHeightMobile ?? b.maxHeight ?? 48}px`,
+                  } as CSSProperties
+                }
               />
             </div>
           ))}

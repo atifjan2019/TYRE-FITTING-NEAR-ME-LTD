@@ -1,10 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-
 /**
- * Official WhatsApp logo (Font Awesome brand glyph). Inherits the button's text
- * colour; pass a `className` (e.g. "h-5 w-5") to size it.
+ * Official WhatsApp logo glyph (the phone-in-speech-bubble mark).
+ * Rendered as an inline SVG with `fill="currentColor"`, so on the green bubble
+ * (white text) it shows the recognisable white WhatsApp mark.
+ * Pass a `className` to size it (e.g. "h-8 w-8").
  */
 export function WhatsAppIcon({ className }: { className?: string }) {
-  return <FontAwesomeIcon icon={faWhatsapp} className={className} />;
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.257.59 4.46 1.71 6.405L3.2 28.8l6.57-1.72a12.74 12.74 0 0 0 6.23 1.587h.005c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.332-6.635-3.75-9.052A12.71 12.71 0 0 0 16.001 3.2Zm0 23.2h-.004a10.6 10.6 0 0 1-5.4-1.48l-.387-.23-4.003 1.05 1.07-3.9-.252-.4a10.56 10.56 0 0 1-1.62-5.64c0-5.85 4.76-10.61 10.61-10.61 2.835 0 5.5 1.105 7.504 3.11a10.54 10.54 0 0 1 3.106 7.508c0 5.85-4.76 10.61-10.61 10.61Zm5.82-7.946c-.319-.16-1.886-.93-2.178-1.036-.292-.107-.504-.16-.717.16-.213.319-.823 1.036-1.009 1.249-.186.213-.372.24-.69.08-.319-.16-1.346-.496-2.564-1.582-.948-.845-1.587-1.889-1.773-2.208-.186-.319-.02-.491.14-.65.143-.143.319-.372.479-.558.16-.186.213-.319.319-.532.107-.213.053-.399-.027-.559-.08-.16-.717-1.73-.983-2.368-.259-.621-.522-.537-.717-.547l-.611-.011c-.213 0-.559.08-.852.399-.292.319-1.116 1.09-1.116 2.661 0 1.57 1.143 3.087 1.302 3.3.16.213 2.249 3.434 5.45 4.816.762.329 1.356.526 1.82.673.765.243 1.461.209 2.011.127.614-.092 1.886-.771 2.152-1.516.266-.745.266-1.383.186-1.516-.08-.133-.292-.213-.611-.373Z" />
+    </svg>
+  );
 }
