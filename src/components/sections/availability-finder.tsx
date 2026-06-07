@@ -34,7 +34,7 @@ export function AvailabilityFinder() {
         </span>
       </div>
 
-      <h2 className="font-heading text-2xl font-extrabold leading-tight text-primary">
+      <h2 className="text-center font-heading text-2xl font-extrabold leading-tight text-primary sm:text-left">
         Find a <span className="text-accent">24/7 mobile tyre fitter</span> near
         you…
       </h2>
