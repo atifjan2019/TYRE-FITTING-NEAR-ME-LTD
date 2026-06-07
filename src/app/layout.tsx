@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { SITE } from "@/lib/site-config";
 import { getSiteSettings } from "@/lib/data";
 import "./globals.css";
+
+// We import the Font Awesome CSS above ourselves, so stop the library from
+// injecting it at runtime (prevents a flash of oversized icons).
+config.autoAddCss = false;
 
 // Self-hosted Google fonts (no render-blocking external request) exposed as CSS
 // variables. `display: swap` avoids invisible text during load (good for LCP).

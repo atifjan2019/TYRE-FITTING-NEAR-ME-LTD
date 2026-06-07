@@ -1,67 +1,69 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
-  Truck,
-  Wrench,
-  CircleDot,
-  Gauge,
-  House,
-  Siren,
-  Bus,
-  Lock,
-  Activity,
-  BatteryCharging,
-  Phone,
-  BadgePoundSterling,
-  CircleCheckBig,
-  MapPin,
-  Clock,
-  ShieldCheck,
-  Map,
-  Newspaper,
-  Star,
-  CircleHelp,
-  BadgeCheck,
-  Settings,
-  LayoutDashboard,
-  type LucideProps,
-} from "lucide-react";
+  faTruck,
+  faWrench,
+  faCircleDot,
+  faGauge,
+  faGaugeHigh,
+  faHouse,
+  faBolt,
+  faVanShuttle,
+  faLock,
+  faCarBattery,
+  faPhone,
+  faSterlingSign,
+  faCircleCheck,
+  faLocationDot,
+  faClock,
+  faShieldHalved,
+  faMapLocationDot,
+  faNewspaper,
+  faStar,
+  faCircleQuestion,
+  faGear,
+  faTableColumns,
+} from "@fortawesome/free-solid-svg-icons";
 
 /**
- * Maps a string icon name (stored in the DB / site-config) to a lucide icon.
- * Keeps the database free of React components while letting editors pick icons
+ * Maps a string icon name (stored in the DB / site-config) to a Font Awesome
+ * icon. Keeps the database free of components while letting editors pick icons
  * by name. Falls back to a wrench if the name is unknown.
  */
-const ICONS = {
-  truck: Truck,
-  wrench: Wrench,
-  "circle-dot": CircleDot,
-  gauge: Gauge,
-  house: House,
-  siren: Siren,
-  bus: Bus,
-  lock: Lock,
-  activity: Activity,
-  "battery-charging": BatteryCharging,
-  phone: Phone,
-  "badge-pound-sterling": BadgePoundSterling,
-  "circle-check-big": CircleCheckBig,
-  "map-pin": MapPin,
-  clock: Clock,
-  "shield-check": ShieldCheck,
-  map: Map,
-  newspaper: Newspaper,
-  star: Star,
-  "circle-help": CircleHelp,
-  "badge-check": BadgeCheck,
-  settings: Settings,
-  "layout-dashboard": LayoutDashboard,
-} as const;
-
-export type IconName = keyof typeof ICONS;
+const ICONS: Record<string, IconDefinition> = {
+  truck: faTruck,
+  wrench: faWrench,
+  "circle-dot": faCircleDot,
+  gauge: faGauge,
+  house: faHouse,
+  siren: faBolt,
+  bus: faVanShuttle,
+  lock: faLock,
+  activity: faGaugeHigh,
+  "battery-charging": faCarBattery,
+  phone: faPhone,
+  "badge-pound-sterling": faSterlingSign,
+  "circle-check-big": faCircleCheck,
+  "map-pin": faLocationDot,
+  clock: faClock,
+  "shield-check": faShieldHalved,
+  map: faMapLocationDot,
+  newspaper: faNewspaper,
+  star: faStar,
+  "circle-help": faCircleQuestion,
+  "badge-check": faCircleCheck,
+  settings: faGear,
+  "layout-dashboard": faTableColumns,
+};
 
 export function Icon({
   name,
-  ...props
-}: { name?: string | null } & Omit<LucideProps, "name">) {
-  const Cmp = (name && ICONS[name as IconName]) || Wrench;
-  return <Cmp {...props} />;
+  className,
+}: {
+  name?: string | null;
+  className?: string;
+}) {
+  const icon = (name && ICONS[name]) || faWrench;
+  // `className` (e.g. "h-6 w-6") sizes the rendered SVG.
+  return <FontAwesomeIcon icon={icon} className={className} />;
 }
