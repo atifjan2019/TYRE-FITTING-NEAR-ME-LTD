@@ -24,7 +24,11 @@ export default async function SiteLayout({
 
   return (
     <>
-      <SiteHeader brandName={settings.brandName} phone={settings.phone} />
+      <SiteHeader
+        brandName={settings.brandName}
+        phone={settings.phone}
+        logo={settings.logo}
+      />
       <main className="pb-16 lg:pb-0">{children}</main>
       <SiteFooter
         settings={settings}

@@ -17,6 +17,8 @@ const DEFAULT_SETTINGS = {
   id: "settings",
   brandName: "Tyre Fitting Near Me Ltd",
   tagline: "24/7 Mobile Tyre Fitting - We Come To You",
+  logo: null as string | null,
+  favicon: null as string | null,
   phone: "",
   whatsapp: "",
   email: "",

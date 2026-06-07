@@ -348,25 +348,6 @@ export const RESOURCES: Record<string, ResourceConfig> = {
       },
     ],
   },
-
-  brands: {
-    key: "brands",
-    model: "brand",
-    labelSingular: "Brand",
-    labelPlural: "Brands",
-    icon: "badge-check",
-    listColumns: [
-      { name: "name", label: "Name" },
-      { name: "order", label: "Order" },
-    ],
-    orderBy: [{ order: "asc" }],
-    fields: [
-      { name: "name", label: "Brand name", type: "text", required: true },
-      { name: "logo", label: "Logo image", type: "image", colSpan: 2 },
-      { name: "url", label: "Website URL (optional)", type: "text", colSpan: 2 },
-      ORDER_FIELD,
-    ],
-  },
 };
 
 export function getResource(key: string): ResourceConfig | undefined {
@@ -381,5 +362,4 @@ export const RESOURCE_ORDER = [
   "posts",
   "reviews",
   "faqs",
-  "brands",
 ] as const;

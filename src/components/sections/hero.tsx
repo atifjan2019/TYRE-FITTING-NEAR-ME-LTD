@@ -50,7 +50,10 @@ export function Hero({
           </div>
 
           <h1 className="font-heading text-4xl font-extrabold italic leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="block text-accent">MOBILE TYRE FITTING</span>
+            {/* Keep on a single line at every width (scales to fit). */}
+            <span className="block whitespace-nowrap text-accent text-[clamp(1.5rem,6vw,2.75rem)]">
+              MOBILE TYRE FITTING
+            </span>
             <span className="block text-primary">WE COME TO YOU, FAST</span>
           </h1>
 

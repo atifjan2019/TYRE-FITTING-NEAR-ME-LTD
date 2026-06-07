@@ -49,9 +49,11 @@ model User {
 // SERVICE-AREA business: NO street address is stored anywhere.
 // -----------------------------------------------------------------------------
 model SiteSetting {
-  id        String @id @default("settings")
-  brandName String @default("Tyre Fitting Near Me Ltd")
-  tagline   String @default("24/7 Mobile Tyre Fitting - We Come To You")
+  id        String  @id @default("settings")
+  brandName String  @default("Tyre Fitting Near Me Ltd")
+  tagline   String  @default("24/7 Mobile Tyre Fitting - We Come To You")
+  logo      String? // header logo image (Vercel Blob / uploads)
+  favicon   String? // browser tab icon
 
   // Contact / conversion details
   phone        String @default("")

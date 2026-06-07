@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Phone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MAIN_NAV } from "@/lib/site-config";
@@ -17,9 +18,11 @@ import { cn } from "@/lib/utils";
 export function SiteHeader({
   brandName,
   phone,
+  logo,
 }: {
   brandName: string;
   phone: string;
+  logo?: string | null;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -38,13 +41,26 @@ export function SiteHeader({
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-[var(--color-logo-blue)] font-bold text-white">
-            T
-          </span>
-          <span className="text-lg font-extrabold leading-tight tracking-tight">
-            {brandName.replace(/ Ltd$/, "")}
-            <span className="text-primary">.</span>
-          </span>
+          {logo ? (
+            <Image
+              src={logo}
+              alt={brandName}
+              width={180}
+              height={44}
+              priority
+              className="h-10 w-auto object-contain"
+            />
+          ) : (
+            <>
+              <span className="grid h-9 w-9 place-items-center rounded-md bg-[var(--color-logo-blue)] font-bold text-white">
+                T
+              </span>
+              <span className="text-lg font-extrabold leading-tight tracking-tight">
+                {brandName.replace(/ Ltd$/, "")}
+                <span className="text-accent">.</span>
+              </span>
+            </>
+          )}
         </Link>
 
         {/* Desktop nav */}

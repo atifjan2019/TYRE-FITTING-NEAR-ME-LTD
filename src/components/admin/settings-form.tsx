@@ -33,32 +33,17 @@ export function SettingsForm({ settings }: { settings: SiteSettingsData }) {
           defaultValue={settings.whatsapp}
         />
         <Field label="Email" name="email" defaultValue={settings.email} />
-        <Field
-          label="Opening hours"
-          name="openingHours"
-          defaultValue={settings.openingHours}
-        />
       </Section>
 
-      <Section title="Trust counters">
-        <Field
-          label="Years experience"
-          name="yearsExperience"
-          type="number"
-          defaultValue={String(settings.yearsExperience)}
-        />
-        <Field
-          label="Customers served"
-          name="customersServed"
-          type="number"
-          defaultValue={String(settings.customersServed)}
-        />
-        <Field
-          label="Tyre brands count"
-          name="brandsCount"
-          type="number"
-          defaultValue={String(settings.brandsCount)}
-        />
+      <Section title="Logo & favicon">
+        <div>
+          <Label className="mb-1.5 block">Logo (shown in the header)</Label>
+          <ImageUpload name="logo" defaultValue={settings.logo} />
+        </div>
+        <div>
+          <Label className="mb-1.5 block">Favicon (browser tab icon)</Label>
+          <ImageUpload name="favicon" defaultValue={settings.favicon} />
+        </div>
       </Section>
 
       <Section title="Social profiles">

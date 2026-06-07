@@ -19,7 +19,7 @@ import { Hero } from "@/components/sections/hero";
 import { TrustMarquee } from "@/components/sections/trust-marquee";
 import { BrandLogos } from "@/components/sections/brand-logos";
 import { StepsToBook } from "@/components/sections/steps-to-book";
-import { StatCounters } from "@/components/sections/stat-counters";
+import { StatCounters, type Stat } from "@/components/sections/stat-counters";
 import { ServicesGrid } from "@/components/sections/services-grid";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { AreasCovered } from "@/components/sections/areas-covered";
@@ -33,7 +33,9 @@ export const revalidate = 3600;
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return buildMetadata({
-    title: "Mobile Tyre Fitting Near Me | 24/7 Call-Out - We Come To You",
+    // ~58 chars; absolute so the "| Tyre Fitting Near Me" template isn't appended.
+    title: "Mobile Tyre Fitting Near Me | 24/7 Call-Out, We Come To You",
+    absoluteTitle: true,
     description: settings.defaultMetaDescription,
     path: "/",
     ogImage: settings.defaultOgImage,
@@ -51,18 +53,26 @@ export default async function HomePage() {
       getReviewStats(),
     ]);
 
-  // Animated counters - values from the CMS so claims stay accurate.
+  // Animated counters - only real CMS values; anything missing is hidden (never
+  // shown as 0). No invented "% insured". Response time & 24/7 are facts.
   const counterStats = [
-    { label: "Tyres fitted", value: settings.customersServed, suffix: "+" },
-    {
-      label: `Google rating · ${stats.count}+ reviews`,
-      value: stats.average,
-      decimals: 1,
-      suffix: "★",
-    },
-    { label: "Min average response", value: 0, display: "30-60" },
-    { label: "Insured & certified fitters", value: 100, suffix: "%" },
-  ];
+    settings.customersServed > 0
+      ? { label: "Tyres fitted", value: settings.customersServed, suffix: "+" }
+      : null,
+    stats.count > 0
+      ? {
+          label: `Rated on Google (${stats.count} review${stats.count === 1 ? "" : "s"})`,
+          value: stats.average,
+          decimals: 1,
+          suffix: "★",
+        }
+      : null,
+    settings.yearsExperience > 0
+      ? { label: "Years experience", value: settings.yearsExperience, suffix: "+" }
+      : null,
+    { label: "Typical response", value: 0, display: "30-60 min" },
+    { label: "Emergency call-out", value: 0, display: "24/7" },
+  ].filter(Boolean) as Stat[];
 
   return (
     <>

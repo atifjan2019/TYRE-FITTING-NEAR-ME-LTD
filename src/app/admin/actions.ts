@@ -128,22 +128,16 @@ export async function saveSettings(
 ): Promise<ActionState> {
   await requireAdmin();
 
-  const num = (k: string, fallback: number) => {
-    const v = formData.get(k);
-    return v ? Number(v) : fallback;
-  };
   const str = (k: string) => (formData.get(k) as string | null) ?? "";
 
   const data = {
     brandName: str("brandName"),
     tagline: str("tagline"),
+    logo: str("logo") || null,
+    favicon: str("favicon") || null,
     phone: str("phone"),
     whatsapp: str("whatsapp"),
     email: str("email"),
-    openingHours: str("openingHours"),
-    yearsExperience: num("yearsExperience", 10),
-    customersServed: num("customersServed", 15000),
-    brandsCount: num("brandsCount", 50),
     facebookUrl: str("facebookUrl") || null,
     instagramUrl: str("instagramUrl") || null,
     tiktokUrl: str("tiktokUrl") || null,

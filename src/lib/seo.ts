@@ -13,6 +13,8 @@ export function buildMetadata(opts: {
   path?: string;
   ogImage?: string | null;
   noindex?: boolean;
+  /** Use the title verbatim (no "| Tyre Fitting Near Me" template suffix). */
+  absoluteTitle?: boolean;
 }): Metadata {
   const url = opts.path ? `${SITE.url}${opts.path}` : SITE.url;
   const images = opts.ogImage
@@ -20,7 +22,7 @@ export function buildMetadata(opts: {
     : undefined;
 
   return {
-    title: opts.title,
+    title: opts.absoluteTitle ? { absolute: opts.title } : opts.title,
     description: opts.description,
     alternates: { canonical: url },
     robots: opts.noindex ? { index: false, follow: false } : undefined,

@@ -42,13 +42,17 @@ export function StatCounters({ stats }: { stats: Stat[] }) {
     return () => obs.disconnect();
   }, []);
 
+  // Never render a "0" placeholder: drop numeric stats with no real value.
+  const visible = stats.filter((s) => s.display || s.value > 0);
+  if (visible.length === 0) return null;
+
   return (
     <section className="bg-primary text-primary-foreground">
       <div
         ref={ref}
         className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-16 sm:py-20 lg:grid-cols-4"
       >
-        {stats.map((s) => (
+        {visible.map((s) => (
           <div key={s.label} className="text-center">
             <div className="font-heading text-4xl font-extrabold tracking-tight text-accent sm:text-5xl">
               {s.display ? (
@@ -105,7 +109,10 @@ function Counter({
     return () => cancelAnimationFrame(raf);
   }, [active, value]);
 
-  const formatted = n.toLocaleString("en-GB", {
+  // Show the real value until the count-up runs, so SSR / no-JS / crawlers
+  // never see a "0" placeholder.
+  const shown = active ? n : value;
+  const formatted = shown.toLocaleString("en-GB", {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   });

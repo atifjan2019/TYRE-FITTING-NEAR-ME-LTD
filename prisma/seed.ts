@@ -17,7 +17,9 @@ async function main() {
   // --- Site settings (singleton) -------------------------------------------
   await prisma.siteSetting.upsert({
     where: { id: "settings" },
-    update: {},
+    // Reset inflated placeholder counters to 0 (honest for a new company) so
+    // they're hidden on the site until you enter real numbers in /admin.
+    update: { customersServed: 0, yearsExperience: 0, brandsCount: 0 },
     create: {
       id: "settings",
       brandName: "Tyre Fitting Near Me Ltd",
@@ -26,21 +28,22 @@ async function main() {
       whatsapp: "447000000000",
       email: "bookings@tyrefittingnearme.co.uk",
       openingHours: "24 hours a day, 7 days a week",
-      yearsExperience: 12,
-      customersServed: 18500,
-      brandsCount: 50,
+      yearsExperience: 0,
+      customersServed: 0,
+      brandsCount: 0,
     },
   });
   console.log("✓ Site settings");
 
   // --- Services -------------------------------------------------------------
+  // NOTE: prices are intentionally left blank - set real "from" prices per
+  // service in /admin if/when you want to advertise them.
   const services: {
     title: string;
     slug: string;
     shortDescription: string;
     icon: string;
     features: string[];
-    priceFrom?: string;
   }[] = [
     {
       title: "Mobile Tyre Fitting",
@@ -54,7 +57,6 @@ async function main() {
         "Old tyre disposal included",
         "Same-day appointments",
       ],
-      priceFrom: "from £25 fitted",
     },
     {
       title: "Mobile Tyre Repair",
@@ -67,7 +69,6 @@ async function main() {
         "We assess if a repair is safe & legal",
         "Most repairs under 30 minutes",
       ],
-      priceFrom: "from £20",
     },
     {
       title: "Puncture Repair",
@@ -76,7 +77,6 @@ async function main() {
         "Got a slow puncture or a nail in your tyre? We'll repair it on the spot where it's safe to do so.",
       icon: "circle-dot",
       features: ["Slow puncture diagnosis", "Nail & screw removal", "Valve replacement"],
-      priceFrom: "from £20",
     },
     {
       title: "Wheel Balancing",
@@ -101,7 +101,6 @@ async function main() {
         "Stranded with a flat? Our emergency call-out runs day and night, 365 days a year.",
       icon: "siren",
       features: ["Round-the-clock call-out", "Rapid roadside response", "Motorway & A-road cover"],
-      priceFrom: "call for a quote",
     },
     {
       title: "Van Tyre Fitting",
@@ -145,7 +144,7 @@ async function main() {
         shortDescription: s.shortDescription,
         icon: s.icon,
         features: s.features,
-        priceFrom: s.priceFrom,
+        priceFrom: null,
         order: i,
       },
       create: {
@@ -154,7 +153,7 @@ async function main() {
         shortDescription: s.shortDescription,
         icon: s.icon,
         features: s.features,
-        priceFrom: s.priceFrom,
+        priceFrom: null,
         order: i,
         body: `<p>${s.shortDescription}</p><p>Our fully-equipped mobile vans bring the garage to you. Call or WhatsApp us with your tyre size and location for an upfront quote.</p>`,
         seoDescription: s.shortDescription,
@@ -382,20 +381,9 @@ async function main() {
         order: i,
       })),
     });
-    await prisma.review.createMany({
-      data: t.reviews.map((r, i) => ({
-        author: r.author,
-        rating: r.rating,
-        text: r.text,
-        location: `${t.name}, ${counties.find((c) => c.slug === t.countySlug)?.name}`,
-        source: "Google",
-        townId: town.id,
-        order: i,
-        featured: i === 0,
-      })),
-    });
+    // NOTE: reviews are intentionally NOT seeded - add only real reviews in /admin.
   }
-  console.log(`✓ ${towns.length} example towns (with local FAQs & reviews)`);
+  console.log(`✓ ${towns.length} example towns (rich content + local FAQs)`);
 
   // --- Global FAQs ----------------------------------------------------------
   const globalFaqs = [
@@ -431,56 +419,11 @@ async function main() {
   });
   console.log(`✓ ${globalFaqs.length} global FAQs`);
 
-  // --- Global / featured reviews -------------------------------------------
-  const globalReviews = [
-    {
-      author: "Mark T.",
-      rating: 5,
-      text: "Absolutely first class. Two tyres fitted on my drive within two hours of calling. Cheaper than the local garage too.",
-      location: "London",
-    },
-    {
-      author: "Emma R.",
-      rating: 5,
-      text: "Broke down on the motorway at night with my kids in the car. They came out fast and were so reassuring. Cannot thank them enough.",
-      location: "Essex",
-    },
-    {
-      author: "Gavin M.",
-      rating: 5,
-      text: "Locking wheel nut key was lost. They removed it without a scratch and fitted my new tyres. Top service.",
-      location: "Scotland",
-    },
-  ];
-  await prisma.review.deleteMany({
-    where: { townId: null, countyId: null, serviceId: null },
-  });
-  await prisma.review.createMany({
-    data: globalReviews.map((r, i) => ({
-      ...r,
-      source: "Google",
-      featured: true,
-      order: i,
-    })),
-  });
-  console.log(`✓ ${globalReviews.length} global reviews`);
-
-  // --- Tyre brands ----------------------------------------------------------
-  const brands = [
-    "Michelin",
-    "Continental",
-    "Pirelli",
-    "Bridgestone",
-    "Goodyear",
-    "Dunlop",
-    "Hankook",
-    "Avon",
-  ];
-  await prisma.brand.deleteMany({});
-  await prisma.brand.createMany({
-    data: brands.map((name, i) => ({ name, order: i })),
-  });
-  console.log(`✓ ${brands.length} tyre brands`);
+  // --- Reviews: only REAL reviews belong on the site -----------------------
+  // Clear any placeholder reviews so nothing invented is shown. Add genuine
+  // Google/Trustpilot reviews via /admin -> Reviews.
+  await prisma.review.deleteMany({});
+  console.log("✓ Cleared placeholder reviews (add real ones in /admin)");
 
   // --- Blog post ------------------------------------------------------------
   await prisma.blogPost.upsert({

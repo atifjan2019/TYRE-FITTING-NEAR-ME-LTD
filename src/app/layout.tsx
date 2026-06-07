@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { SITE } from "@/lib/site-config";
+import { getSiteSettings } from "@/lib/data";
 import "./globals.css";
 
 // Self-hosted Google fonts (no render-blocking external request) exposed as CSS
