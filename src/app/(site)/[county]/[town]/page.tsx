@@ -92,7 +92,7 @@ export default async function TownPage({
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
           <div className="mb-4">
-            <Breadcrumbs items={crumbs} />
+            <Breadcrumbs items={crumbs} light />
           </div>
           <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight sm:text-5xl">
             Mobile Tyre Fitting in {town.name}

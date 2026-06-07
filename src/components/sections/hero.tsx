@@ -80,7 +80,7 @@ export function Hero({
             {settings.phone ? (
               <Button asChild variant="cta" size="xl">
                 <a href={telHref(settings.phone)}>
-                  <Phone /> Call Now
+                  <Phone /> Call {settings.phone}
                 </a>
               </Button>
             ) : null}

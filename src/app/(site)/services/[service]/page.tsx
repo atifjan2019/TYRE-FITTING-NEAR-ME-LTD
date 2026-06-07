@@ -11,7 +11,6 @@ import {
 } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE } from "@/lib/site-config";
-import { Icon } from "@/components/icon";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { RichText } from "@/components/rich-text";
 import { CtaButtons } from "@/components/sections/cta-buttons";
@@ -93,26 +92,20 @@ export default async function ServicePage({
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
           <div className="mb-4">
-            <Breadcrumbs items={crumbs} />
+            <Breadcrumbs items={crumbs} light />
           </div>
-          <div className="flex items-start gap-4">
-            <div className="hidden shrink-0 rounded-xl bg-white/10 p-3 sm:block">
-              <Icon name={service.icon} className="h-8 w-8 text-accent" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
-                {service.title}
-              </h1>
-              <p className="mt-4 max-w-2xl text-lg text-primary-foreground/90">
-                {service.shortDescription}
-              </p>
-              {service.priceFrom ? (
-                <p className="mt-2 text-sm font-semibold text-accent">
-                  {service.priceFrom}
-                </p>
-              ) : null}
-            </div>
-          </div>
+          <h1 className="font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
+            {service.title}
+          </h1>
+          <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
+          <p className="mt-4 max-w-2xl text-lg text-primary-foreground/90">
+            {service.shortDescription}
+          </p>
+          {service.priceFrom ? (
+            <p className="mt-2 text-sm font-semibold text-accent">
+              {service.priceFrom}
+            </p>
+          ) : null}
           <CtaButtons
             phone={settings.phone}
             whatsapp={settings.whatsapp}
