@@ -56,7 +56,7 @@ export function AvailabilityFinder() {
         </Button>
       </form>
       <p className="mt-3 text-center text-xs text-muted-foreground">
-        Live fitter availability across all our regions — no obligation.
+        Live fitter availability across all our regions - no obligation.
       </p>
     </div>
   );

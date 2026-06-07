@@ -2,7 +2,7 @@
  * Best-effort mapping of UK postcode AREAS (the leading letters of a postcode,
  * e.g. "ME" in "ME16 8AB") to one of our county/region hub slugs.
  *
- * This is a STARTER map covering the main areas of each region — your developer
+ * This is a STARTER map covering the main areas of each region - your developer
  * can refine it as coverage grows. Unknown postcodes fall back to /areas.
  *
  * Region slugs must match the County slugs in the CMS:
@@ -35,7 +35,7 @@ const POSTCODE_AREA_TO_REGION: Record<string, string> = {
   PA: "scotland", PH: "scotland", TD: "scotland", ZE: "scotland",
 };
 
-/** Extract the postcode area (1–2 leading letters) and map it to a region slug. */
+/** Extract the postcode area (1-2 leading letters) and map it to a region slug. */
 export function regionSlugForPostcode(input: string): string | null {
   const cleaned = input.trim().toUpperCase().replace(/\s+/g, "");
   const match = cleaned.match(/^[A-Z]{1,2}/);

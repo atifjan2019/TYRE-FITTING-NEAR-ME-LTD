@@ -13,7 +13,7 @@ export function BrandLogos() {
     <section className="border-y bg-white py-12">
       <div className="mx-auto max-w-7xl px-4">
         <p className="mb-8 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          All major tyre brands in stock — plus quality budget options
+          All major tyre brands in stock - plus quality budget options
         </p>
         <div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
           {BRAND_LOGOS.map((b) => (

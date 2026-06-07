@@ -28,7 +28,7 @@ export function Hero({
     "24/7 emergency response",
     ratingLabel,
     "All major brands in stock",
-    "30–60 min typical arrival",
+    "30-60 min typical arrival",
   ];
 
   return (
@@ -51,12 +51,12 @@ export function Hero({
 
           <h1 className="font-heading text-4xl font-extrabold italic leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             <span className="block text-accent">MOBILE TYRE FITTING</span>
-            <span className="block text-primary">WE COME TO YOU — FAST</span>
+            <span className="block text-primary">WE COME TO YOU, FAST</span>
           </h1>
 
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
             24/7 emergency mobile tyre fitting across London, Kent, Sussex, Essex,
-            the West Midlands &amp; Scotland. Home, work or roadside — there&apos;s
+            the West Midlands &amp; Scotland. Home, work or roadside - there&apos;s
             no garage to visit, we come to you.
           </p>
 
@@ -94,7 +94,7 @@ export function Hero({
             ) : null}
           </div>
           <p className="mt-3 text-sm font-semibold text-accent">
-            Roadside help available now — 24/7, 365 days a year.
+            Roadside help available now - 24/7, 365 days a year.
           </p>
         </div>
 

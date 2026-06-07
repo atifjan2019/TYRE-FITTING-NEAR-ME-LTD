@@ -118,7 +118,7 @@ model County {
   intro            String  @default("") // short lead paragraph
   body             String  @default("") // rich-text HTML
   heroImage        String?
-  responseTimeText String  @default("Typical call-out: 30–60 minutes")
+  responseTimeText String  @default("Typical call-out: 30-60 minutes")
   coverageNotes    String  @default("") // major roads/areas covered in the county
 
   // SEO
@@ -154,7 +154,7 @@ model Town {
   intro            String  @default("") // unique lead paragraph for this town
   body             String  @default("") // rich-text HTML
   localNotes       String  @default("") // major roads, landmarks, retail parks, etc.
-  responseTimeText String  @default("Typical call-out: 30–45 minutes")
+  responseTimeText String  @default("Typical call-out: 30-45 minutes")
   heroImage        String?
 
   // SEO
@@ -213,7 +213,7 @@ model Faq {
 model Review {
   id       String   @id @default(cuid())
   author   String
-  rating   Int      @default(5) // 1–5
+  rating   Int      @default(5) // 1-5
   text     String
   location String? // free text, e.g. "Maidstone, Kent"
   source   String   @default("Google") // "Google" | "Trustpilot" | "Facebook" | ...

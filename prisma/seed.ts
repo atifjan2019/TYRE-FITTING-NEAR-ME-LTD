@@ -244,7 +244,7 @@ async function main() {
         coverageNotes: c.coverageNotes,
         order: c.order,
         body: `<p>${c.intro}</p><p>${c.coverageNotes}</p><p>Whatever you drive, our mobile technicians carry a wide range of tyres and can fit, balance and repair on site - usually within the hour.</p>`,
-        responseTimeText: "Typical call-out: 30–60 minutes",
+        responseTimeText: "Typical call-out: 30-60 minutes",
         seoDescription: c.intro,
       },
     });
@@ -270,13 +270,13 @@ async function main() {
       intro:
         "Need a tyre fitted in Maidstone? Our mobile vans cover the county town and surrounding villages day and night - at your home, your workplace or stuck at the roadside.",
       localNotes:
-        "We regularly attend call-outs along the M20 (Junctions 5–8), the A20 through Bearsted and Allington, and the A229 to Bluewater and the Medway towns. Common spots include the Eclipse Park and Parkwood industrial estates, Maidstone Hospital, and the Lockmeadow and Fremlin Walk retail areas.",
-      responseTimeText: "Typical Maidstone call-out: 30–45 minutes",
+        "We regularly attend call-outs along the M20 (Junctions 5-8), the A20 through Bearsted and Allington, and the A229 to Bluewater and the Medway towns. Common spots include the Eclipse Park and Parkwood industrial estates, Maidstone Hospital, and the Lockmeadow and Fremlin Walk retail areas.",
+      responseTimeText: "Typical Maidstone call-out: 30-45 minutes",
       faqs: [
         {
           question: "How quickly can you reach me in Maidstone?",
           answer:
-            "Most Maidstone call-outs are reached within 30–45 minutes. Roadside emergencies on the M20 are prioritised.",
+            "Most Maidstone call-outs are reached within 30-45 minutes. Roadside emergencies on the M20 are prioritised.",
         },
         {
           question: "Do you cover the villages around Maidstone?",
@@ -305,7 +305,7 @@ async function main() {
         "Mobile tyre fitting across Bromley and the South East London suburbs. We come to you in Bromley town centre, the residential roads, or anywhere you've broken down.",
       localNotes:
         "We frequently cover the A21 Bromley Road, the A232 through Bromley Common, and routes towards Orpington and Beckenham. Regular call-outs around The Glades shopping centre, Bromley South station and the surrounding business parks.",
-      responseTimeText: "Typical Bromley call-out: 30–50 minutes",
+      responseTimeText: "Typical Bromley call-out: 30-50 minutes",
       faqs: [
         {
           question: "Can you fit tyres near Bromley South station?",
@@ -328,8 +328,8 @@ async function main() {
       intro:
         "From Shirley to Knowle, our Solihull mobile tyre fitters bring the garage to your door across the borough and the wider West Midlands.",
       localNotes:
-        "We cover the M42 (Junctions 4–6), the A34 Stratford Road through Shirley, and routes to Birmingham Airport and the NEC. Frequent call-outs around Touchwood shopping centre, Blythe Valley Park and Jaguar Land Rover sites.",
-      responseTimeText: "Typical Solihull call-out: 30–45 minutes",
+        "We cover the M42 (Junctions 4-6), the A34 Stratford Road through Shirley, and routes to Birmingham Airport and the NEC. Frequent call-outs around Touchwood shopping centre, Blythe Valley Park and Jaguar Land Rover sites.",
+      responseTimeText: "Typical Solihull call-out: 30-45 minutes",
       faqs: [
         {
           question: "Do you cover Birmingham Airport and the NEC?",

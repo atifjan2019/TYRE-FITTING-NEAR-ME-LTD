@@ -8,7 +8,7 @@ export type Stat = {
   prefix?: string;
   suffix?: string;
   decimals?: number;
-  /** If set, shown verbatim (no count-up) — e.g. "30-60". */
+  /** If set, shown verbatim (no count-up) - e.g. "30-60". */
   display?: string;
 };
 

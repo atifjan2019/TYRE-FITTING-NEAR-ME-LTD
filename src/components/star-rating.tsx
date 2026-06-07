@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/** Simple 1–5 star display. */
+/** Simple 1-5 star display. */
 export function StarRating({
   rating,
   className,

@@ -271,7 +271,7 @@ export const RESOURCES: Record<string, ResourceConfig> = {
     orderBy: [{ featured: "desc" }, { date: "desc" }],
     fields: [
       { name: "author", label: "Author name", type: "text", required: true },
-      { name: "rating", label: "Rating (1–5)", type: "number", required: true },
+      { name: "rating", label: "Rating (1-5)", type: "number", required: true },
       { name: "text", label: "Review text", type: "textarea", required: true, colSpan: 2 },
       { name: "location", label: "Location (free text)", type: "text" },
       { name: "source", label: "Source (Google, Trustpilot…)", type: "text" },

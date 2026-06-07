@@ -2,7 +2,7 @@ import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { WHY_CHOOSE } from "@/lib/site-config";
 
-/** "Why choose us" — 4 reassurance blocks. Reusable on service/location pages. */
+/** "Why choose us" - 4 reassurance blocks. Reusable on service/location pages. */
 export function WhyChooseUs() {
   return (
     <section className="bg-[var(--color-muted-blue)] py-16">

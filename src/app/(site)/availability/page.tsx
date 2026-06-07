@@ -45,8 +45,8 @@ export default async function AvailabilityPage({
 
   const areaLabel = county?.name ?? (location ? location.toUpperCase() : "your area");
 
-  // Deterministic "available fitters" count (placeholder — wire to real fitter
-  // availability later). 2–4 based on the search so it feels location-specific.
+  // Deterministic "available fitters" count (placeholder - wire to real fitter
+  // availability later). 2-4 based on the search so it feels location-specific.
   const available = 2 + ((location?.length ?? 1) % 3);
 
   return (

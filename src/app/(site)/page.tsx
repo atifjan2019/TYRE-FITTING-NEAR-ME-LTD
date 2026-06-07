@@ -33,7 +33,7 @@ export const revalidate = 3600;
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   return buildMetadata({
-    title: "Mobile Tyre Fitting Near Me | 24/7 Call-Out — We Come To You",
+    title: "Mobile Tyre Fitting Near Me | 24/7 Call-Out - We Come To You",
     description: settings.defaultMetaDescription,
     path: "/",
     ogImage: settings.defaultOgImage,
@@ -51,7 +51,7 @@ export default async function HomePage() {
       getReviewStats(),
     ]);
 
-  // Animated counters — values from the CMS so claims stay accurate.
+  // Animated counters - values from the CMS so claims stay accurate.
   const counterStats = [
     { label: "Tyres fitted", value: settings.customersServed, suffix: "+" },
     {
@@ -60,7 +60,7 @@ export default async function HomePage() {
       decimals: 1,
       suffix: "★",
     },
-    { label: "Min average response", value: 0, display: "30–60" },
+    { label: "Min average response", value: 0, display: "30-60" },
     { label: "Insured & certified fitters", value: 100, suffix: "%" },
   ];
 
@@ -123,7 +123,7 @@ export default async function HomePage() {
         phone={settings.phone}
         whatsapp={settings.whatsapp}
         title="Flat tyre? We come to you, 24/7"
-        subtitle="Call or WhatsApp now — fast mobile tyre fitting at your home, work or roadside."
+        subtitle="Call or WhatsApp now - fast mobile tyre fitting at your home, work or roadside."
       />
     </>
   );
