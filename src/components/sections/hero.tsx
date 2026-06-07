@@ -85,7 +85,7 @@ export function Hero({
               </Button>
             ) : null}
             {settings.whatsapp ? (
-              <Button asChild variant="whatsapp" size="xl">
+              <Button asChild variant="whatsapp" size="xl" className="whitespace-normal">
                 <a
                   href={whatsappHref(settings.whatsapp, SITE.whatsappMessage)}
                   target="_blank"
