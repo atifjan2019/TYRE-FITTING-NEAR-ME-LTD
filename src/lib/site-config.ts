@@ -98,16 +98,31 @@ export const TRUST_STRIP: { label: string; icon: string }[] = [
  * To add a brand: drop the logo in that folder and add a line here with alt text.
  * (Alternatively, manage brands with logos via /admin → Brands.)
  */
-// `maxHeight` (px) fine-tunes an individual logo's size (default 48). Useful for
-// logos with lots of built-in whitespace that look small next to the others.
-export const BRAND_LOGOS: { src: string; alt: string; maxHeight?: number }[] = [
+// `maxHeight` (px) fine-tunes a logo's size on desktop (default 48).
+// `maxHeightMobile` overrides it on small screens (defaults to maxHeight).
+export const BRAND_LOGOS: {
+  src: string;
+  alt: string;
+  maxHeight?: number;
+  maxHeightMobile?: number;
+}[] = [
   { src: "/uploads/brands/dunlop-tyre.png", alt: "Dunlop tyres" },
   {
     src: "/uploads/brands/davanti-tyres-logo-png_seeklogo-364573-removebg-preview.png",
     alt: "Davanti tyres",
   },
-  { src: "/uploads/brands/Adobe-Express-file.png", alt: "Tyre brand", maxHeight: 64 },
-  { src: "/uploads/brands/Adobe-Express-file-3.png", alt: "Tyre brand", maxHeight: 58 },
+  {
+    src: "/uploads/brands/Adobe-Express-file.png",
+    alt: "Tyre brand",
+    maxHeight: 64,
+    maxHeightMobile: 96, // 50% bigger on mobile
+  },
+  {
+    src: "/uploads/brands/Adobe-Express-file-3.png",
+    alt: "Tyre brand",
+    maxHeight: 58,
+    maxHeightMobile: 87, // 50% bigger on mobile
+  },
   { src: "/uploads/brands/Adobe-Express-file-5.png", alt: "Tyre brand" },
   { src: "/uploads/brands/Adobe-Express-file-6.png", alt: "Tyre brand" },
   { src: "/uploads/brands/5860f81a4fc7f3474eb80db5.png", alt: "Tyre brand" },

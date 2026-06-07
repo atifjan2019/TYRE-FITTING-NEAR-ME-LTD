@@ -17,9 +17,12 @@ export function WhatsAppFloat({ whatsapp }: { whatsapp: string }) {
       className="fixed bottom-3 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-whatsapp)] text-white shadow-lg transition-transform hover:scale-105 lg:bottom-3 lg:right-5"
     >
       <WhatsAppIcon className="h-10 w-10" />
-      <span className="absolute -right-0.5 -top-0.5 flex h-3.5 w-3.5">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-        <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-green-500" />
+      {/* Notification badge with a "1" and a ping pulse */}
+      <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+        <span className="relative grid h-5 w-5 place-items-center rounded-full bg-accent text-[11px] font-bold leading-none text-white">
+          1
+        </span>
       </span>
     </a>
   );
