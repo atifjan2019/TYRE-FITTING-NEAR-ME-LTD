@@ -21,17 +21,22 @@ const poppins = Poppins({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
-  title: {
-    default: "Mobile Tyre Fitting Near Me | 24/7 Call-Out - We Come To You",
-    template: `%s | ${SITE.shortName}`,
-  },
-  description:
-    "24/7 mobile tyre fitting that comes to you - home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
-  applicationName: SITE.name,
-  formatDetection: { telephone: true },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  return {
+    metadataBase: new URL(SITE.url),
+    title: {
+      default: "Mobile Tyre Fitting Near Me | 24/7 Call-Out, We Come To You",
+      template: `%s | ${SITE.shortName}`,
+    },
+    description:
+      "24/7 mobile tyre fitting that comes to you - home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
+    applicationName: SITE.name,
+    formatDetection: { telephone: true },
+    // Favicon from the CMS (falls back to /favicon.ico if unset).
+    icons: settings.favicon ? { icon: settings.favicon } : undefined,
+  };
+}
 
 export default function RootLayout({
   children,

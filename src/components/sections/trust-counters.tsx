@@ -1,16 +1,22 @@
 import type { SiteSettingsData } from "@/lib/data";
 
-/** Headline trust counters (years experience, customers served, brands). */
+/** Headline trust counters. Zero/unset CMS values are hidden (no fake numbers). */
 export function TrustCounters({ settings }: { settings: SiteSettingsData }) {
   const stats = [
-    { value: `${settings.yearsExperience}+`, label: "Years experience" },
-    {
-      value: `${settings.customersServed.toLocaleString()}+`,
-      label: "Customers served",
-    },
-    { value: `${settings.brandsCount}+`, label: "Tyre brands fitted" },
+    settings.yearsExperience > 0
+      ? { value: `${settings.yearsExperience}+`, label: "Years experience" }
+      : null,
+    settings.customersServed > 0
+      ? {
+          value: `${settings.customersServed.toLocaleString()}+`,
+          label: "Customers served",
+        }
+      : null,
+    settings.brandsCount > 0
+      ? { value: `${settings.brandsCount}+`, label: "Tyre brands fitted" }
+      : null,
     { value: "24/7", label: "Emergency call-out" },
-  ];
+  ].filter(Boolean) as { value: string; label: string }[];
 
   return (
     <section className="border-y bg-primary text-primary-foreground">

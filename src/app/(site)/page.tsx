@@ -70,7 +70,6 @@ export default async function HomePage() {
     settings.yearsExperience > 0
       ? { label: "Years experience", value: settings.yearsExperience, suffix: "+" }
       : null,
-    { label: "Typical response", value: 0, display: "30-60 min" },
     { label: "Emergency call-out", value: 0, display: "24/7" },
   ].filter(Boolean) as Stat[];
 

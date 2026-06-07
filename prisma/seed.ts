@@ -385,6 +385,52 @@ async function main() {
   }
   console.log(`✓ ${towns.length} example towns (rich content + local FAQs)`);
 
+  // --- Full town coverage --------------------------------------------------
+  // Names from the prioritised town list. These are created as published stubs
+  // so the county hubs aren't empty. IMPORTANT: add genuinely unique local
+  // detail (real roads, landmarks, areas) to each in /admin - thin duplicate
+  // location pages hurt SEO. Re-seeding only updates the name, so your admin
+  // edits are preserved.
+  const TOWN_DATA: Record<string, string[]> = {
+    london: ["Bromley", "Croydon", "Greenwich", "Bexley", "Lewisham", "Wandsworth", "Ealing", "Enfield", "Barnet", "Hounslow", "Romford", "Harrow", "Kingston", "Sutton", "Richmond", "Wembley", "Stratford", "Clapham", "Fulham", "Streatham"],
+    kent: ["Maidstone", "Dartford", "Medway", "Canterbury", "Sevenoaks", "Tunbridge Wells", "Ashford", "Dover", "Gravesend", "Tonbridge", "Folkestone", "Sittingbourne", "Chatham", "Gillingham", "Margate"],
+    sussex: ["Brighton", "Hove", "Crawley", "Worthing", "Eastbourne", "Hastings", "Horsham", "Chichester", "Bognor Regis", "Littlehampton", "Burgess Hill", "East Grinstead", "Bexhill", "Haywards Heath"],
+    essex: ["Chelmsford", "Colchester", "Basildon", "Southend-on-Sea", "Brentwood", "Harlow", "Thurrock", "Braintree", "Clacton-on-Sea", "Loughton", "Romford", "Grays", "Canvey Island", "Witham"],
+    "west-midlands": ["Birmingham", "Solihull", "Sutton Coldfield", "Wolverhampton", "Coventry", "West Bromwich", "Dudley", "Walsall", "Halesowen", "Stourbridge", "Smethwick", "Sutton", "Bromsgrove", "Tamworth"],
+    scotland: ["Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Stirling", "Falkirk", "Paisley", "Livingston", "East Kilbride", "Cumbernauld", "Hamilton", "Kirkcaldy", "Perth", "Ayr"],
+  };
+
+  const slugify = (s: string) =>
+    s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  const richSlugs = new Set(["kent:maidstone", "london:bromley", "west-midlands:solihull"]);
+
+  let stubCount = 0;
+  for (const [countySlug, names] of Object.entries(TOWN_DATA)) {
+    const countyId = countyIdBySlug[countySlug];
+    if (!countyId) continue;
+    const countyName = counties.find((c) => c.slug === countySlug)?.name ?? countySlug;
+    for (const name of names) {
+      const slug = slugify(name);
+      if (richSlugs.has(`${countySlug}:${slug}`)) continue; // keep rich examples
+      const intro = `Need a mobile tyre fitter in ${name}? We come to you across ${name} and the surrounding ${countyName} area - at home, at work or stuck at the roadside, 24/7.`;
+      await prisma.town.upsert({
+        where: { countyId_slug: { countyId, slug } },
+        update: { name }, // preserve any admin-entered content on re-seed
+        create: {
+          name,
+          slug,
+          countyId,
+          intro,
+          body: `<p>${intro}</p><h2>Mobile tyre fitting in ${name}</h2><p>Our fully-equipped vans carry a wide range of tyres for cars, vans and 4x4s and fit them wherever you are - no garage visit needed. Every tyre is balanced on site and your old tyre is taken away for recycling. Add real local roads and landmarks for ${name} here to make this page genuinely unique.</p>`,
+          responseTimeText: "Typical call-out: 30-45 minutes",
+          seoDescription: intro.slice(0, 155),
+        },
+      });
+      stubCount++;
+    }
+  }
+  console.log(`✓ ${stubCount} additional town pages across all counties`);
+
   // --- Global FAQs ----------------------------------------------------------
   const globalFaqs = [
     {
