@@ -25,10 +25,12 @@ export function Hero({
       : "Rated 5★ on Google";
 
   const bullets = [
-    "24/7 emergency response",
+    "24/7 emergency response, 365 days a year",
+    "30 to 60 minute typical arrival",
     ratingLabel,
-    "All major brands in stock",
-    "30-60 min typical arrival",
+    "All major tyre brands, premium and budget",
+    "Fully insured, certified mobile fitters",
+    "No call-out fee, all-in quote upfront",
   ];
 
   return (
@@ -58,9 +60,11 @@ export function Hero({
           </h1>
 
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            24/7 emergency mobile tyre fitting across London, Kent, Sussex, Essex,
-            the West Midlands &amp; Scotland. Home, work or roadside - there&apos;s
-            no garage to visit, we come to you.
+            Tyre Fitting Near Me Ltd is a 24/7 mobile tyre fitting service for car,
+            van, SUV, EV and fleet drivers across London, Kent, Sussex, Essex, the
+            West Midlands and Scotland. Our fully insured certified fitters supply,
+            fit and balance tyres at your home, work or roadside, returning you to
+            the road within 30 to 60 minutes.
           </p>
 
           {/* Trust bullets */}

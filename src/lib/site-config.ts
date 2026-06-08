@@ -54,25 +54,29 @@ export const FOOTER_NAV: { title: string; links: { label: string; href: string }
 export const BOOKING_STEPS = [
   {
     title: "Call or WhatsApp",
-    description: "Tell us your tyre size, location and what you need.",
-    micro: "Quote in 60 seconds",
+    description:
+      "Tell us your tyre size, postcode and what you need by phone or WhatsApp, and we lock in your price and arrival time.",
+    micro: "60-second quote, no call-out fee",
     icon: "phone",
   },
   {
     title: "Fitter dispatched",
-    description: "Your nearest mobile fitter heads straight to you.",
-    micro: "Fast local arrival",
+    description:
+      "We dispatch your nearest insured mobile technician with the correct tyres already in stock for your vehicle.",
+    micro: "30 to 60 minute arrival",
     icon: "truck",
   },
   {
     title: "Fitted on-site",
-    description: "We fit and balance your tyres wherever you are.",
-    micro: "No garage needed",
+    description:
+      "We remove, replace and dynamically balance your tyres, check the valve and TPMS, then torque to manufacturer spec.",
+    micro: "Calibrated equipment, guaranteed",
     icon: "wrench",
   },
   {
     title: "Drive away safely",
-    description: "Back on the road in no time, sorted properly.",
+    description:
+      "We recycle your old tyres, issue your paperwork and take card payment on-site, leaving your vehicle road-legal.",
     micro: "Workmanship guaranteed",
     icon: "circle-check-big",
   },
@@ -89,7 +93,10 @@ export const TRUST_STRIP: { label: string; icon: string }[] = [
   { label: "All cards accepted", icon: "badge-pound-sterling" },
   { label: "Fully insured fitters", icon: "shield-check" },
   { label: "No hidden fees", icon: "circle-check-big" },
-  { label: "Across all our regions", icon: "map" },
+  { label: "5.0 Google rating", icon: "star" },
+  { label: "Workmanship guaranteed", icon: "badge-check" },
+  { label: "British Standard AU 159 repairs", icon: "shield-check" },
+  { label: "15+ tyre brands in stock", icon: "circle-dot" },
 ];
 
 /**
@@ -157,5 +164,17 @@ export const WHY_CHOOSE: { title: string; description: string; icon: string }[] 
     description:
       "Fully insured, experienced technicians and quality tyres fitted to standard.",
     icon: "shield-check",
+  },
+  {
+    title: "5.0 out of 5 on Google",
+    description:
+      "UK drivers rate our mobile tyre fitting 5.0 on Google for speed, fairness and a tidy on-site job.",
+    icon: "star",
+  },
+  {
+    title: "Workmanship guaranteed",
+    description:
+      "Every fitting is backed by our workmanship guarantee and repaired to British Standard AU 159.",
+    icon: "badge-check",
   },
 ];

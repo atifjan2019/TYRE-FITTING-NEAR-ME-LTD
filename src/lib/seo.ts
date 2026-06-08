@@ -133,3 +133,101 @@ export function aggregateRatingJsonLd(reviews: { rating: number }[]) {
     worstRating: 1,
   };
 }
+
+/**
+ * ItemList of Service nodes, one per mobile tyre service in the cluster. Each
+ * Service is linked to the provider business and its dedicated service page.
+ */
+export function servicesJsonLd(
+  services: { title: string; slug: string; description: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: services.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Service",
+        name: s.title,
+        serviceType: s.title,
+        description: s.description,
+        url: `${SITE.url}/services/${s.slug}`,
+        provider: { "@id": `${SITE.url}#business` },
+        areaServed: "United Kingdom",
+      },
+    })),
+  };
+}
+
+/** HowTo schema for the "how mobile tyre fitting works" process. */
+export function howToJsonLd(
+  name: string,
+  steps: { title: string; description: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.description,
+    })),
+  };
+}
+
+/**
+ * Organization schema for E-E-A-T (founder, employee, insurance references).
+ * Founder name and employee count are owner-supplied; omitted cleanly if blank.
+ */
+export function organizationJsonLd(opts: {
+  settings: SiteSettingsData;
+  founderName?: string;
+  numberOfEmployees?: number;
+}) {
+  const { settings } = opts;
+  const sameAs = (
+    [settings.facebookUrl, settings.instagramUrl, settings.tiktokUrl] as (string | null)[]
+  ).filter((u): u is string => Boolean(u));
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE.url}#organization`,
+    name: settings.brandName,
+    url: SITE.url,
+    telephone: settings.phone || undefined,
+    email: settings.email || undefined,
+    logo: settings.logo ? `${SITE.url}${settings.logo}` : undefined,
+    sameAs: sameAs.length ? sameAs : undefined,
+    founder: opts.founderName ? { "@type": "Person", name: opts.founderName } : undefined,
+    numberOfEmployees: opts.numberOfEmployees || undefined,
+    knowsAbout: [
+      "Mobile tyre fitting",
+      "Puncture repair",
+      "Wheel balancing",
+      "TPMS service",
+      "Run-flat tyre replacement",
+    ],
+  };
+}
+
+/** WebSite schema with a sitelinks SearchAction. */
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE.url}#website`,
+    url: SITE.url,
+    name: SITE.name,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE.url}/availability?location={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
