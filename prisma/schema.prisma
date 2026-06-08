@@ -281,3 +281,28 @@ model Brand {
 
   @@index([order])
 }
+
+// -----------------------------------------------------------------------------
+// Leads / bookings - submissions from the public forms. Captured here so the
+// owner can see every enquiry in the admin, not just in the notification email.
+//   type "booking"      -> full booking/quote form (name, phone, etc.)
+//   type "availability" -> hero "check availability" search (postcode only)
+// -----------------------------------------------------------------------------
+model Lead {
+  id         String   @id @default(cuid())
+  type       String   @default("booking") // "booking" | "availability"
+  name       String   @default("")
+  phone      String   @default("")
+  postcode   String   @default("")
+  tyreSize   String   @default("")
+  service    String   @default("")
+  message    String   @default("")
+  source     String   @default("") // page/path the lead came from (optional)
+  status     String   @default("new") // "new" | "contacted" | "booked" | "closed"
+  adminNotes String   @default("")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([status, createdAt])
+  @@index([createdAt])
+}

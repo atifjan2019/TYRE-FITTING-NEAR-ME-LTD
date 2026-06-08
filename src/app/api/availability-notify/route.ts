@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { prisma } from "@/lib/prisma";
 import { isMailConfigured, sendNotifyEmail, escapeHtml } from "@/lib/mailer";
 
 /**
@@ -29,6 +30,19 @@ export async function POST(request: Request) {
 
   const { location, company } = parsed.data;
   if (company) return NextResponse.json({ ok: true });
+
+  // Persist so the search shows in the admin (best-effort).
+  try {
+    await prisma.lead.create({
+      data: {
+        type: "availability",
+        postcode: location,
+        source: request.headers.get("referer") ?? "",
+      },
+    });
+  } catch (err) {
+    console.error("Failed to save availability search to DB:", err);
+  }
 
   const html = `
     <h2>New availability search</h2>

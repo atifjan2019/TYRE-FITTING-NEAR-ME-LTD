@@ -104,6 +104,15 @@ function renderCell(value: unknown) {
       </span>
     );
   }
+  if (value instanceof Date) {
+    return value.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
   const str = String(value ?? "-");
   return str.length > 60 ? `${str.slice(0, 60)}…` : str;
 }

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { leadSchema } from "@/lib/validation";
+import { prisma } from "@/lib/prisma";
 import { isMailConfigured, sendNotifyEmail, escapeHtml } from "@/lib/mailer";
 
 /**
@@ -28,6 +29,25 @@ export async function POST(request: Request) {
 
   // Honeypot: a filled "company" field means a bot - silently accept & drop.
   if (lead.company) return NextResponse.json({ ok: true });
+
+  // Persist so the enquiry shows in the admin (best-effort: a DB hiccup must not
+  // lose the lead, since the email below is the backup notification).
+  try {
+    await prisma.lead.create({
+      data: {
+        type: "booking",
+        name: lead.name,
+        phone: lead.phone,
+        postcode: lead.postcode,
+        tyreSize: lead.tyreSize || "",
+        service: lead.service || "",
+        message: lead.message || "",
+        source: request.headers.get("referer") ?? "",
+      },
+    });
+  } catch (err) {
+    console.error("Failed to save lead to DB:", err);
+  }
 
   const html = `
     <h2>New tyre fitting enquiry</h2>

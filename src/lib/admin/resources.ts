@@ -39,7 +39,8 @@ export type PrismaModel =
   | "blogPost"
   | "review"
   | "faq"
-  | "brand";
+  | "brand"
+  | "lead";
 
 export interface ResourceConfig {
   key: string; // URL segment, e.g. /admin/towns
@@ -86,6 +87,67 @@ const ORDER_FIELD: FieldConfig = {
 };
 
 export const RESOURCES: Record<string, ResourceConfig> = {
+  leads: {
+    key: "leads",
+    model: "lead",
+    labelSingular: "Booking",
+    labelPlural: "Bookings",
+    icon: "inbox",
+    listColumns: [
+      { name: "name", label: "Name" },
+      { name: "phone", label: "Phone" },
+      { name: "postcode", label: "Postcode" },
+      { name: "type", label: "Type" },
+      { name: "status", label: "Status" },
+      { name: "createdAt", label: "Received" },
+    ],
+    orderBy: [{ createdAt: "desc" }],
+    fields: [
+      {
+        name: "status",
+        label: "Status",
+        type: "select",
+        required: true,
+        help: "Track where this enquiry is in your pipeline.",
+        options: [
+          { value: "new", label: "New" },
+          { value: "contacted", label: "Contacted" },
+          { value: "booked", label: "Booked" },
+          { value: "closed", label: "Closed / lost" },
+        ],
+      },
+      {
+        name: "type",
+        label: "Source form",
+        type: "select",
+        options: [
+          { value: "booking", label: "Booking / quote form" },
+          { value: "availability", label: "Availability search" },
+        ],
+      },
+      { name: "name", label: "Name", type: "text" },
+      { name: "phone", label: "Phone", type: "text" },
+      { name: "postcode", label: "Postcode / location", type: "text" },
+      { name: "tyreSize", label: "Tyre size", type: "text" },
+      { name: "service", label: "Service requested", type: "text" },
+      { name: "message", label: "Message", type: "textarea", colSpan: 2 },
+      {
+        name: "adminNotes",
+        label: "Internal notes",
+        type: "textarea",
+        colSpan: 2,
+        help: "Private - never shown on the website.",
+      },
+      {
+        name: "source",
+        label: "Came from (page)",
+        type: "text",
+        colSpan: 2,
+        help: "The page the visitor submitted from.",
+      },
+    ],
+  },
+
   counties: {
     key: "counties",
     model: "county",
@@ -356,6 +418,7 @@ export function getResource(key: string): ResourceConfig | undefined {
 
 /** Ordered list for the admin sidebar. */
 export const RESOURCE_ORDER = [
+  "leads",
   "counties",
   "towns",
   "services",
