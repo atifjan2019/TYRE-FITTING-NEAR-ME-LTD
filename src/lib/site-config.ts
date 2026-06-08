@@ -125,16 +125,20 @@ export const BRAND_LOGOS: {
     alt: "Davanti tyres",
   },
   {
-    src: "/uploads/brands/Adobe-Express-file.png",
-    alt: "Tyre brand",
-    maxHeight: 64,
-    maxHeightMobile: 96, // 50% bigger on mobile
+    // Whitespace trimmed from the original (was 75% transparent padding,
+    // which made the visible logo render small). It's a wide 6:1 banner, so
+    // it fills the card width via `max-w-full` and height stays modest.
+    src: "/uploads/brands/yokohama.png",
+    alt: "Yokohama tyres",
+    maxHeight: 44,
+    maxHeightMobile: 40,
   },
   {
-    src: "/uploads/brands/Adobe-Express-file-3.png",
-    alt: "Tyre brand",
-    maxHeight: 58,
-    maxHeightMobile: 87, // 50% bigger on mobile
+    // Whitespace trimmed from the original (was 71% transparent padding).
+    src: "/uploads/brands/kumho-tires.png",
+    alt: "Kumho Tires",
+    maxHeight: 56,
+    maxHeightMobile: 52,
   },
   { src: "/uploads/brands/Adobe-Express-file-5.png", alt: "Tyre brand" },
   { src: "/uploads/brands/Adobe-Express-file-6.png", alt: "Tyre brand" },

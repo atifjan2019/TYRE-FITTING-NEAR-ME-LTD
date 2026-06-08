@@ -35,7 +35,7 @@ export function BrandLogos() {
                 width={160}
                 height={96}
                 sizes="(max-width: 640px) 45vw, 160px"
-                className="w-auto object-contain max-h-[var(--mh-m)] sm:max-h-[var(--mh)]"
+                className="w-auto max-w-full object-contain max-h-[var(--mh-m)] sm:max-h-[var(--mh)]"
                 style={
                   {
                     "--mh": `${b.maxHeight ?? 48}px`,
