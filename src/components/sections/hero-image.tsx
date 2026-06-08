@@ -10,9 +10,10 @@ import { CircleDot } from "lucide-react";
  * it falls back to a brand navy -> red gradient with a tyre icon, never an empty
  * grey box.
  *
- * Asset lives in /public/uploads/hero.webp (served from the site root).
+ * Asset lives in /public/hero.webp. It is at the public root (not /uploads,
+ * which is gitignored) so it is committed and deploys to production.
  */
-const HERO_SRC = "/uploads/hero.webp";
+const HERO_SRC = "/hero.webp";
 
 export function HeroImage() {
   const [failed, setFailed] = useState(false);
