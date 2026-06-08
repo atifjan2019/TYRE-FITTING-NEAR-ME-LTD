@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Loader2, Phone } from "lucide-react";
+import { CheckCircle2, Loader2, Phone, Search } from "lucide-react";
 import { leadSchema, type LeadInput } from "@/lib/validation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,6 +36,13 @@ export function BookingForm({
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
+  // Vehicle registration lookup (DVLA) — kept outside react-hook-form since the
+  // lead schema doesn't include it; the result is folded into the message below.
+  const [reg, setReg] = useState("");
+  const [looking, setLooking] = useState(false);
+  const [vehicle, setVehicle] = useState<string | null>(null);
+  const [lookupError, setLookupError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -45,13 +52,51 @@ export function BookingForm({
     defaultValues: { service: defaultService ?? "", postcode: defaultPostcode ?? "" },
   });
 
+  async function lookUpVehicle() {
+    const plate = reg.trim();
+    if (!plate) return;
+    setLooking(true);
+    setLookupError(null);
+    setVehicle(null);
+    try {
+      const res = await fetch("/api/vehicle-lookup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ registrationNumber: plate }),
+      });
+      if (res.ok) {
+        const v = await res.json();
+        const summary = [v.colour, v.make, v.yearOfManufacture, v.fuelType]
+          .filter(Boolean)
+          .join(" ");
+        setVehicle(summary || "Vehicle found");
+      } else if (res.status === 404) {
+        setLookupError("We couldn't find that registration. Check it and try again.");
+      } else {
+        // Not configured / temporarily down: keep the plate, skip the lookup.
+        setLookupError("Couldn't look that up right now — we'll confirm your vehicle when we call.");
+      }
+    } catch {
+      setLookupError("Couldn't look that up right now — we'll confirm your vehicle when we call.");
+    } finally {
+      setLooking(false);
+    }
+  }
+
   async function onSubmit(values: LeadInput) {
     setServerError(null);
+    // Fold the registration (and confirmed vehicle, if looked up) into the
+    // message so the team sees it without a schema/DB change.
+    const plate = reg.trim().toUpperCase();
+    const vehicleLine = plate
+      ? `Vehicle: ${vehicle ? `${vehicle} ` : ""}(reg ${plate})`
+      : "";
+    const message = [values.message?.trim(), vehicleLine].filter(Boolean).join("\n\n");
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, leadKey: leadKey ?? "" }),
+        body: JSON.stringify({ ...values, message, leadKey: leadKey ?? "" }),
       });
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
@@ -119,6 +164,47 @@ export function BookingForm({
           />
           {errors.postcode && (
             <p className="mt-1 text-sm text-destructive">{errors.postcode.message}</p>
+          )}
+        </div>
+
+        <div className="sm:col-span-2">
+          <Label htmlFor="reg">Vehicle registration (optional)</Label>
+          <div className="mt-1.5 flex gap-2">
+            <Input
+              id="reg"
+              value={reg}
+              onChange={(e) => {
+                setReg(e.target.value.toUpperCase());
+                setVehicle(null);
+                setLookupError(null);
+              }}
+              placeholder="e.g. AB12 CDE"
+              className="uppercase tracking-wider"
+              autoComplete="off"
+            />
+            <Button
+              type="button"
+              variant="outline"
+              onClick={lookUpVehicle}
+              disabled={looking || !reg.trim()}
+              className="shrink-0"
+            >
+              {looking ? (
+                <>
+                  <Loader2 className="animate-spin" /> Looking up…
+                </>
+              ) : (
+                <>
+                  <Search className="h-4 w-4" /> Look up
+                </>
+              )}
+            </Button>
+          </div>
+          {lookupError && <p className="mt-1 text-sm text-destructive">{lookupError}</p>}
+          {vehicle && (
+            <p className="mt-2 flex items-center gap-1.5 text-sm font-medium text-primary">
+              <CheckCircle2 className="h-4 w-4 text-[var(--color-success)]" /> {vehicle}
+            </p>
           )}
         </div>
 
