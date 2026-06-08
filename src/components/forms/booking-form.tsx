@@ -19,15 +19,19 @@ import { telHref } from "@/lib/utils";
  *
  * `defaultService` lets a service page pre-select the relevant service.
  * `defaultPostcode` lets the availability finder prefill the searched location.
+ * `leadKey` (from the availability search) de-duplicates the lead: when present,
+ * this booking upgrades the existing search row instead of creating a new one.
  */
 export function BookingForm({
   phone,
   defaultService,
   defaultPostcode,
+  leadKey,
 }: {
   phone?: string;
   defaultService?: string;
   defaultPostcode?: string;
+  leadKey?: string;
 }) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -47,7 +51,7 @@ export function BookingForm({
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, leadKey: leadKey ?? "" }),
       });
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);

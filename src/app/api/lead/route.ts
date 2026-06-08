@@ -32,19 +32,29 @@ export async function POST(request: Request) {
 
   // Persist so the enquiry shows in the admin (best-effort: a DB hiccup must not
   // lose the lead, since the email below is the backup notification).
+  // If a leadKey is present, this booking came from the availability flow - so
+  // UPGRADE that search row into a full booking rather than creating a second
+  // lead. upsert keeps it to one row even if the search row was never written.
+  const data = {
+    type: "booking",
+    name: lead.name,
+    phone: lead.phone,
+    postcode: lead.postcode,
+    tyreSize: lead.tyreSize || "",
+    service: lead.service || "",
+    message: lead.message || "",
+    source: request.headers.get("referer") ?? "",
+  };
   try {
-    await prisma.lead.create({
-      data: {
-        type: "booking",
-        name: lead.name,
-        phone: lead.phone,
-        postcode: lead.postcode,
-        tyreSize: lead.tyreSize || "",
-        service: lead.service || "",
-        message: lead.message || "",
-        source: request.headers.get("referer") ?? "",
-      },
-    });
+    if (lead.leadKey) {
+      await prisma.lead.upsert({
+        where: { sessionKey: lead.leadKey },
+        update: data,
+        create: { ...data, sessionKey: lead.leadKey },
+      });
+    } else {
+      await prisma.lead.create({ data });
+    }
   } catch (err) {
     console.error("Failed to save lead to DB:", err);
   }

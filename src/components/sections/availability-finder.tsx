@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getOrCreateLeadKey } from "@/lib/lead-key";
 
 /**
  * "Find a 24/7 mobile tyre fitter near you" card (hero right column).
@@ -21,19 +22,28 @@ export function AvailabilityFinder() {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const q = value.trim();
+    const key = getOrCreateLeadKey();
 
     // Best-effort lead notification - don't block navigation on it.
     if (q) {
       void fetch("/api/availability-notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ location: q }),
+        body: JSON.stringify({ location: q, key }),
         keepalive: true,
       }).catch(() => {});
     }
 
+    // Carry the key through the URL so the booking form on /availability can
+    // upgrade this same lead instead of creating a duplicate.
     startTransition(() => {
-      router.push(q ? `/availability?location=${encodeURIComponent(q)}` : "/availability");
+      if (!q) {
+        router.push("/availability");
+        return;
+      }
+      const params = new URLSearchParams({ location: q });
+      if (key) params.set("k", key);
+      router.push(`/availability?${params.toString()}`);
     });
   }
 

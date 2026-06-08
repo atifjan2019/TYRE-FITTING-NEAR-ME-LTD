@@ -11,6 +11,8 @@ import { isMailConfigured, sendNotifyEmail, escapeHtml } from "@/lib/mailer";
  */
 const schema = z.object({
   location: z.string().min(1).max(120),
+  // Correlation key so a later booking upgrades THIS row (see /api/lead).
+  key: z.string().max(64).optional().or(z.literal("")),
   // Honeypot - must stay empty.
   company: z.string().max(0).optional().or(z.literal("")),
 });
@@ -28,18 +30,36 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Validation failed" }, { status: 422 });
   }
 
-  const { location, company } = parsed.data;
+  const { location, key, company } = parsed.data;
   if (company) return NextResponse.json({ ok: true });
 
-  // Persist so the search shows in the admin (best-effort).
+  // Persist so the search shows in the admin (best-effort). With a key, upsert
+  // so re-searching in the same session updates one row instead of stacking up,
+  // and never clobbers a row a booking already upgraded (only touch if still a
+  // search).
   try {
-    await prisma.lead.create({
-      data: {
-        type: "availability",
-        postcode: location,
-        source: request.headers.get("referer") ?? "",
-      },
-    });
+    const source = request.headers.get("referer") ?? "";
+    if (key) {
+      const existing = await prisma.lead.findUnique({
+        where: { sessionKey: key },
+        select: { type: true },
+      });
+      if (!existing) {
+        await prisma.lead.create({
+          data: { type: "availability", postcode: location, source, sessionKey: key },
+        });
+      } else if (existing.type === "availability") {
+        await prisma.lead.update({
+          where: { sessionKey: key },
+          data: { postcode: location, source },
+        });
+      }
+      // else: a booking already exists for this key - leave it untouched.
+    } else {
+      await prisma.lead.create({
+        data: { type: "availability", postcode: location, source },
+      });
+    }
   } catch (err) {
     console.error("Failed to save availability search to DB:", err);
   }

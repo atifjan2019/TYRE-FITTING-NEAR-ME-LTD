@@ -14,9 +14,11 @@ import { BookingForm } from "@/components/forms/booking-form";
 export function BookingDialog({
   phone,
   defaultPostcode,
+  leadKey,
 }: {
   phone?: string;
   defaultPostcode?: string;
+  leadKey?: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -59,7 +61,11 @@ export function BookingDialog({
             >
               <X className="h-5 w-5" />
             </button>
-            <BookingForm phone={phone} defaultPostcode={defaultPostcode} />
+            <BookingForm
+              phone={phone}
+              defaultPostcode={defaultPostcode}
+              leadKey={leadKey}
+            />
           </div>
         </div>
       )}

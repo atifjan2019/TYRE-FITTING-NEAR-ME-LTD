@@ -14,6 +14,9 @@ export const leadSchema = z.object({
   tyreSize: z.string().max(60).optional().or(z.literal("")),
   service: z.string().max(80).optional().or(z.literal("")),
   message: z.string().max(1000).optional().or(z.literal("")),
+  // Correlation key from the availability search, so a booking upgrades the
+  // existing search lead instead of creating a duplicate. Optional.
+  leadKey: z.string().max(64).optional().or(z.literal("")),
   // Honeypot field - must stay empty (bots fill it). Not shown to users.
   company: z.string().max(0).optional().or(z.literal("")),
 });

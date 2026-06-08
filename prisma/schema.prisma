@@ -290,6 +290,10 @@ model Brand {
 // -----------------------------------------------------------------------------
 model Lead {
   id         String   @id @default(cuid())
+  // Correlates the hero availability search with the booking the same visitor
+  // later submits, so one enquiry is a single row (the booking upgrades the
+  // search) instead of two. Null for leads from standalone forms.
+  sessionKey String?  @unique
   type       String   @default("booking") // "booking" | "availability"
   name       String   @default("")
   phone      String   @default("")

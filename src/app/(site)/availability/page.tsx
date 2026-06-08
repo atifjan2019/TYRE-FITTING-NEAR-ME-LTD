@@ -27,9 +27,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AvailabilityPage({
   searchParams,
 }: {
-  searchParams: Promise<{ location?: string }>;
+  searchParams: Promise<{ location?: string; k?: string }>;
 }) {
-  const [{ location }, settings] = await Promise.all([
+  const [{ location, k }, settings] = await Promise.all([
     searchParams,
     getSiteSettings(),
   ]);
@@ -115,7 +115,11 @@ export default async function AvailabilityPage({
             </a>
           </Button>
         ) : null}
-        <BookingDialog phone={settings.phone ?? undefined} defaultPostcode={location} />
+        <BookingDialog
+          phone={settings.phone ?? undefined}
+          defaultPostcode={location}
+          leadKey={k}
+        />
       </div>
     </div>
   );
