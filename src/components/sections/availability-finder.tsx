@@ -18,6 +18,17 @@ export function AvailabilityFinder() {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const q = value.trim();
+
+    // Best-effort lead notification - don't block navigation on it.
+    if (q) {
+      void fetch("/api/availability-notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ location: q }),
+        keepalive: true,
+      }).catch(() => {});
+    }
+
     router.push(q ? `/availability?location=${encodeURIComponent(q)}` : "/availability");
   }
 

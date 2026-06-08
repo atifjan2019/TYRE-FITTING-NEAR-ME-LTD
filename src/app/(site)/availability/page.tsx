@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Phone, Truck, Clock } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { getSiteSettings } from "@/lib/data";
@@ -7,6 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site-config";
 import { regionSlugForPostcode } from "@/lib/postcode-regions";
 import { CoverageMap } from "@/components/sections/coverage-map";
+import { BookingDialog } from "@/components/sections/booking-dialog";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { telHref, whatsappHref } from "@/lib/utils";
@@ -115,21 +115,8 @@ export default async function AvailabilityPage({
             </a>
           </Button>
         ) : null}
+        <BookingDialog phone={settings.phone ?? undefined} defaultPostcode={location} />
       </div>
-
-      {county ? (
-        <p className="mt-6 text-sm">
-          <Link href={`/${county.slug}`} className="font-semibold text-accent hover:underline">
-            See all {county.name} coverage &amp; towns →
-          </Link>
-        </p>
-      ) : (
-        <p className="mt-6 text-sm">
-          <Link href="/areas" className="font-semibold text-accent hover:underline">
-            View all coverage areas →
-          </Link>
-        </p>
-      )}
     </div>
   );
 }

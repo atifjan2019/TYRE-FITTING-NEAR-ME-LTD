@@ -18,13 +18,16 @@ import { telHref } from "@/lib/utils";
  * people who'd rather not call.
  *
  * `defaultService` lets a service page pre-select the relevant service.
+ * `defaultPostcode` lets the availability finder prefill the searched location.
  */
 export function BookingForm({
   phone,
   defaultService,
+  defaultPostcode,
 }: {
   phone?: string;
   defaultService?: string;
+  defaultPostcode?: string;
 }) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -35,7 +38,7 @@ export function BookingForm({
     formState: { errors, isSubmitting },
   } = useForm<LeadInput>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { service: defaultService ?? "" },
+    defaultValues: { service: defaultService ?? "", postcode: defaultPostcode ?? "" },
   });
 
   async function onSubmit(values: LeadInput) {
