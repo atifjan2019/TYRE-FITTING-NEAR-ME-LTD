@@ -20,6 +20,7 @@ export default async function ResourceListPage({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const rows: any[] = await (prisma as any)[resource.model].findMany({
     orderBy: resource.orderBy,
+    ...(resource.include ? { include: resource.include } : {}),
   });
 
   return (
@@ -89,8 +90,32 @@ export default async function ResourceListPage({
   );
 }
 
-/** Render a table cell, handling booleans and long text nicely. */
+/** Render a table cell, handling booleans, related rows and long text nicely. */
 function renderCell(value: unknown) {
+  // Related rows (e.g. a county's towns): show as chips with a count.
+  if (Array.isArray(value)) {
+    if (value.length === 0) {
+      return <span className="text-muted-foreground">None yet</span>;
+    }
+    return (
+      <div className="flex flex-wrap gap-1">
+        {value.map((item, i) => {
+          const label =
+            item && typeof item === "object"
+              ? (item.name ?? item.title ?? "-")
+              : String(item);
+          return (
+            <span
+              key={item?.id ?? i}
+              className="rounded-full bg-secondary px-2 py-0.5 text-xs font-medium"
+            >
+              {label}
+            </span>
+          );
+        })}
+      </div>
+    );
+  }
   if (typeof value === "boolean") {
     return (
       <span

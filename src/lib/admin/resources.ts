@@ -51,6 +51,8 @@ export interface ResourceConfig {
   /** Columns shown in the list table. */
   listColumns: { name: string; label: string }[];
   orderBy: Record<string, "asc" | "desc">[];
+  /** Optional Prisma `include` for the list query (e.g. to show related rows). */
+  include?: Record<string, unknown>;
   fields: FieldConfig[];
 }
 
@@ -157,9 +159,16 @@ export const RESOURCES: Record<string, ResourceConfig> = {
     listColumns: [
       { name: "name", label: "Name" },
       { name: "slug", label: "Slug" },
+      { name: "towns", label: "Towns" },
       { name: "published", label: "Published" },
     ],
     orderBy: [{ order: "asc" }, { name: "asc" }],
+    include: {
+      towns: {
+        orderBy: [{ order: "asc" }, { name: "asc" }],
+        select: { id: true, name: true },
+      },
+    },
     fields: [
       { name: "name", label: "County name", type: "text", required: true },
       {
