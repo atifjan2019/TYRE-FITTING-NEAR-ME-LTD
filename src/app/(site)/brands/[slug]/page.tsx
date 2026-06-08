@@ -283,7 +283,11 @@ export default async function BrandPage({
                 {page.pricing.map((row) => (
                   <tr key={row.service} className="border-b last:border-0">
                     <td className="px-4 py-4 font-semibold text-foreground sm:px-6">{row.service}</td>
-                    <td className="whitespace-nowrap px-4 py-4 font-bold text-accent sm:px-6">{row.price}</td>
+                    <td className="whitespace-nowrap px-4 py-4 sm:px-6">
+                      <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-sm font-bold text-accent">
+                        {row.price}
+                      </span>
+                    </td>
                     <td className="hidden px-4 py-4 text-muted-foreground sm:table-cell sm:px-6">{row.includes}</td>
                   </tr>
                 ))}

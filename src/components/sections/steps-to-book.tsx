@@ -21,7 +21,7 @@ export function StepsToBook() {
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-0.5 text-xs font-bold text-primary-foreground">
                 Step {i + 1}
               </div>
-              <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-accent/15 text-accent">
+              <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-accent text-accent-foreground shadow-sm">
                 <Icon name={step.icon} className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-bold">{step.title}</h3>

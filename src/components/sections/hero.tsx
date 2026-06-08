@@ -1,9 +1,10 @@
-import { Check, Phone, Star } from "lucide-react";
+import { Check, Phone, Star, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { AvailabilityFinder } from "@/components/sections/availability-finder";
+import { HeroImage } from "@/components/sections/hero-image";
 import { telHref, whatsappHref } from "@/lib/utils";
-import { SITE } from "@/lib/site-config";
+import { SITE, GOOGLE_REVIEWS_URL } from "@/lib/site-config";
 import type { SiteSettingsData } from "@/lib/data";
 
 /**
@@ -22,13 +23,14 @@ export function Hero({
   const reviewCount = stats.count > 0 ? `${stats.count}+` : "50+";
   const ratingValue = stats.count > 0 ? stats.average.toFixed(1) : "5.0";
 
-  const bullets = [
-    "24/7 emergency response, 365 days a year",
-    "30 to 60 minute typical arrival",
-    `5.0 from ${reviewCount} verified Google reviews`,
-    "30+ mobile fittings completed every week",
-    "Public liability insured up to £5,000,000",
-    "No call-out fee, all-in quote upfront",
+  // `shield` marks the insurance/no-fee guarantees that render as shield badges.
+  const bullets: { text: string; shield?: boolean }[] = [
+    { text: "24/7 emergency response, 365 days a year" },
+    { text: "30 to 60 minute typical arrival" },
+    { text: `5.0 from ${reviewCount} verified Google reviews` },
+    { text: "30+ mobile fittings completed every week" },
+    { text: "Public liability insured up to £5,000,000", shield: true },
+    { text: "No call-out fee, all-in quote upfront", shield: true },
   ];
 
   return (
@@ -44,19 +46,24 @@ export function Hero({
             <span className="block text-primary">WE COME TO YOU, FAST</span>
           </h1>
 
-          {/* Google rating badge - immediately under H1 (eye-tracking) */}
-          <div className="mt-5 inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm">
+          {/* Google rating - larger gold stars, clickable to the reviews profile */}
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${ratingValue} from ${reviewCount} verified Google reviews. Read reviews on Google.`}
+            className="mt-5 inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 text-sm font-semibold shadow-sm transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-md active:scale-[0.97] motion-reduce:transform-none"
+          >
             <span className="flex" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <Star key={i} className="h-6 w-6 fill-amber-400 text-amber-400" />
               ))}
             </span>
-            <span className="text-muted-foreground">
-              {ratingValue} from {reviewCount} verified Google reviews
-            </span>
-          </div>
+            <span className="text-base font-bold text-primary">{ratingValue}</span>
+            <span className="text-muted-foreground">/ 5 on Google</span>
+          </a>
 
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">
+          <p className="mt-5 max-w-xl text-base text-muted-foreground">
             Tyre Fitting Near Me Ltd is a 24/7 mobile tyre fitting service for car,
             van, SUV, EV and fleet drivers across London, Kent, Sussex, Essex, the
             West Midlands and Scotland. Our fully insured certified fitters supply,
@@ -64,14 +71,21 @@ export function Hero({
             the road within 30 to 60 minutes.
           </p>
 
-          {/* Trust bullets - 2 cols on mobile (2x3), 3 cols on desktop (3x2) */}
-          <ul className="mt-6 grid max-w-xl grid-cols-2 gap-2.5 lg:grid-cols-3">
+          {/* Trust badges - shield/check pills */}
+          <ul className="mt-6 flex max-w-xl flex-wrap gap-2">
             {bullets.map((b) => (
-              <li key={b} className="flex items-start gap-2 text-sm font-medium text-primary">
-                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground">
-                  <Check className="h-3.5 w-3.5" />
+              <li
+                key={b.text}
+                className="inline-flex items-center gap-1.5 rounded-full border bg-white/70 px-3 py-1.5 text-xs font-semibold text-primary shadow-sm"
+              >
+                <span className="grid h-4 w-4 shrink-0 place-items-center text-accent">
+                  {b.shield ? (
+                    <ShieldCheck className="h-4 w-4" />
+                  ) : (
+                    <Check className="h-3.5 w-3.5" />
+                  )}
                 </span>
-                {b}
+                {b.text}
               </li>
             ))}
           </ul>
@@ -115,8 +129,9 @@ export function Hero({
           </p>
         </div>
 
-        {/* Right: availability finder */}
-        <div className="lg:pl-6">
+        {/* Right: photo anchor + availability finder */}
+        <div className="flex flex-col gap-6 lg:pl-6">
+          <HeroImage />
           <AvailabilityFinder />
         </div>
       </div>

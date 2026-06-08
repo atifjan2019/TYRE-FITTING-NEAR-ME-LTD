@@ -139,8 +139,16 @@
   animation: page-enter 0.35s ease-out both;
 }
 
+/* Smooth scrolling for in-page anchor links. */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .animate-marquee,
   .animate-page-enter {
     animation: none !important;

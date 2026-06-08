@@ -2,9 +2,9 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { PRICING_ROWS } from "@/lib/homepage-content";
 
 /**
- * Section 8 - Transparent mobile tyre fitting prices. Prices are "From £X"
- * placeholders until the business owner supplies real figures (flagged in the
- * audit appendix). The all-in, no-call-out-fee promise removes booking friction.
+ * Section 8 - Transparent mobile tyre fitting prices. Price cells render a styled
+ * pill and default to "Get a quote" until the owner supplies real "From £NN"
+ * figures. The all-in, no-call-out-fee promise removes booking friction.
  */
 export function PricingTable() {
   return (
@@ -34,8 +34,10 @@ export function PricingTable() {
                       {row.includes}
                     </span>
                   </td>
-                  <td className="whitespace-nowrap px-4 py-4 font-bold text-accent sm:px-6">
-                    {row.price}
+                  <td className="whitespace-nowrap px-4 py-4 sm:px-6">
+                    <span className="inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-sm font-bold text-accent">
+                      {row.price}
+                    </span>
                   </td>
                   <td className="hidden px-4 py-4 text-muted-foreground sm:table-cell sm:px-6">
                     {row.includes}

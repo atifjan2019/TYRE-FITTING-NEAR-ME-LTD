@@ -1,6 +1,7 @@
 import { User } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { CountUp } from "@/components/ui/count-up";
 import { FITTER_STANDARDS, FOUNDER, FOUNDER_STATS } from "@/lib/homepage-content";
 
 /**
@@ -58,9 +59,10 @@ export function OurFitters() {
             <div key={stat.label} className="text-center">
               <dt className="sr-only">{stat.label}</dt>
               <dd>
-                <span className="block font-heading text-3xl font-extrabold text-accent">
-                  {stat.value}
-                </span>
+                <CountUp
+                  value={stat.value}
+                  className="block font-heading text-3xl font-extrabold text-accent"
+                />
                 <span className="mt-1 block text-sm text-muted-foreground">{stat.label}</span>
               </dd>
             </div>

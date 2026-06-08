@@ -18,6 +18,12 @@ export const SITE = {
   locale: "en_GB",
 } as const;
 
+/**
+ * Google Business Profile reviews URL. Fill this in with the real profile link.
+ * Used by the hero rating badge and the "Read all reviews on Google" link.
+ */
+export const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Tyre+Fitting+Near+Me+Ltd+reviews";
+
 /** Primary navigation shown in the header. */
 export const MAIN_NAV: { label: string; href: string }[] = [
   { label: "Home", href: "/" },

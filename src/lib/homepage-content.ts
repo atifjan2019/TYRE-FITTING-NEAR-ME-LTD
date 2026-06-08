@@ -3,8 +3,8 @@
  * ---------------------------------------------------------------------------
  * Central entity: Mobile Tyre Fitting. Every entry below follows the sentence
  * formula (WHO does WHAT for WHOM with WHAT verification, OUTCOME) and carries
- * entity + attribute + value. No em dashes anywhere. Prices use "From £X"
- * placeholders until the business owner supplies real figures.
+ * entity + attribute + value. No em dashes anywhere. Prices default to
+ * "Get a quote" until the business owner supplies real "From £NN" figures.
  *
  * This is static UI copy (a fixed brand offering), so it lives in code rather
  * than the database. Dynamic content (reviews, counties, settings) still comes
@@ -430,27 +430,27 @@ export const VEHICLE_TYPES: {
 export const PRICING_ROWS: { service: string; price: string; includes: string }[] = [
   {
     service: "Mobile tyre fitting (supplied and fitted, per tyre)",
-    price: "From £X",
+    price: "Get a quote",
     includes: "Removal, new valve, dynamic balancing and old tyre disposal",
   },
   {
     service: "Puncture repair on-site",
-    price: "From £X",
+    price: "Get a quote",
     includes: "British Standard AU 159 plug-and-patch repair",
   },
   {
     service: "Wheel balancing (per wheel)",
-    price: "From £X",
+    price: "Get a quote",
     includes: "Dynamic balance with calibrated digital balancer",
   },
   {
     service: "TPMS sensor replacement",
-    price: "From £X",
+    price: "Get a quote",
     includes: "Replacement sensor, programming and reset",
   },
   {
     service: "Locking wheel nut removal",
-    price: "From £X",
+    price: "Get a quote",
     includes: "Non-destructive removal and standard replacement nut",
   },
   {

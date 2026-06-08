@@ -106,9 +106,9 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       },
     ],
     pricing: [
-      { service: "BMW 3 Series run-flat (225/45 R18, supplied and fitted)", price: "From £X", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "BMW 5 Series run-flat (245/45 R18, supplied and fitted)", price: "From £X", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "BMW X5 run-flat (265/45 R20, supplied and fitted)", price: "From £X", includes: "Removal, valve, balance, TPMS reset, disposal" },
+      { service: "BMW 3 Series run-flat (225/45 R18, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
+      { service: "BMW 5 Series run-flat (245/45 R18, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
+      { service: "BMW X5 run-flat (265/45 R20, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "BMW TPMS reset (with fitting)", price: "Included", includes: "i-Drive reset procedure" },
       { service: "Emergency 24/7 call-out", price: "No call-out fee", includes: "Service price only, quoted before dispatch" },
     ],

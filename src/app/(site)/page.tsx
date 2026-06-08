@@ -28,6 +28,8 @@ import {
 } from "@/lib/homepage-content";
 import { BRAND_PAGE_SLUGS } from "@/lib/brand-pages";
 
+import { Reveal } from "@/components/ui/reveal";
+import { AvailabilityFinder } from "@/components/sections/availability-finder";
 import { Hero } from "@/components/sections/hero";
 import { TrustMarquee } from "@/components/sections/trust-marquee";
 import { TyreBrands } from "@/components/sections/tyre-brands";
@@ -150,79 +152,98 @@ export default async function HomePage() {
       <TrustMarquee />
 
       {/* 3. Tyre brands supplied and fitted */}
-      <TyreBrands />
+      <Reveal><TyreBrands /></Reveal>
 
       {/* 4. How mobile tyre fitting works (HowTo schema above) */}
-      <StepsToBook />
+      <Reveal><StepsToBook /></Reveal>
+
+      {/* Mobile vs garage comparison - moved up so undecided visitors see it early */}
+      <Reveal><MobileVsGarage /></Reveal>
 
       {/* 5. Mobile tyre services cluster */}
-      <MobileServices availableSlugs={serviceSlugs} />
+      <Reveal><MobileServices availableSlugs={serviceSlugs} /></Reveal>
 
       {/* CTA strip 1 (between services and vehicles) */}
-      <CtaStrip
-        phone={settings.phone}
-        whatsapp={settings.whatsapp}
-        title="Need a Mobile Tyre Fitter Now? We Arrive in 30 to 60 Minutes."
-        subtitle="Live availability across all six regions. No call-out fee."
-        variant="navy"
-      />
+      <Reveal>
+        <CtaStrip
+          phone={settings.phone}
+          whatsapp={settings.whatsapp}
+          title="Need a Mobile Tyre Fitter Now? We Arrive in 30 to 60 Minutes."
+          subtitle="Live availability across all six regions. No call-out fee."
+          variant="navy"
+        />
+      </Reveal>
 
       {/* 6. Vehicles we cover */}
-      <VehiclesCovered />
+      <Reveal><VehiclesCovered /></Reveal>
 
       {/* 6b. Premium and performance vehicle specialists */}
-      <BrandSpecialists builtSlugs={builtBrandSlugs} />
+      <Reveal><BrandSpecialists builtSlugs={builtBrandSlugs} /></Reveal>
 
       {/* 7. Tyre size / registration lookup */}
-      <TyreLookup whatsapp={settings.whatsapp} />
+      <Reveal><TyreLookup whatsapp={settings.whatsapp} /></Reveal>
 
       {/* 8. Transparent pricing */}
-      <PricingTable />
+      <Reveal><PricingTable /></Reveal>
 
       {/* 9. Real customer reviews */}
-      <HomeReviews reviewCount={reviewCount} />
+      <Reveal><HomeReviews reviewCount={reviewCount} /></Reveal>
+
+      {/* Repeated postcode finder after reviews (reused component, no new copy) */}
+      <Reveal>
+        <section className="bg-secondary py-12 sm:py-16">
+          <div className="mx-auto max-w-2xl px-4">
+            <AvailabilityFinder />
+          </div>
+        </section>
+      </Reveal>
 
       {/* 10. Recent mobile tyre fittings */}
-      <RecentWork />
+      <Reveal><RecentWork /></Reveal>
 
       {/* 11. Areas we cover */}
-      <AreasSemantic availableSlugs={countySlugs} />
+      <Reveal><AreasSemantic availableSlugs={countySlugs} /></Reveal>
 
-      {/* 12. Mobile tyre fitting vs garage */}
-      <MobileVsGarage />
-
-      {/* CTA strip 2 (between comparison and why-choose) */}
-      <CtaStrip
-        phone={settings.phone}
-        whatsapp={settings.whatsapp}
-        title="Skip the Garage. Book a Mobile Tyre Fitter Instead."
-        subtitle="Same-day mobile tyre fitting at your home, work or roadside, fully insured."
-        variant="purple"
-      />
+      {/* CTA strip 2 (before why-choose) */}
+      <Reveal>
+        <CtaStrip
+          phone={settings.phone}
+          whatsapp={settings.whatsapp}
+          title="Skip the Garage. Book a Mobile Tyre Fitter Instead."
+          subtitle="Same-day mobile tyre fitting at your home, work or roadside, fully insured."
+          variant="purple"
+        />
+      </Reveal>
 
       {/* 13. Why drivers choose us */}
-      <WhyChooseUs />
+      <Reveal><WhyChooseUs /></Reveal>
 
       {/* 14. Our fitters and their standards */}
-      <OurFitters />
+      <Reveal><OurFitters /></Reveal>
 
       {/* 15. For fleets and businesses */}
-      <FleetBusiness
-        phone={settings.phone}
-        whatsapp={settings.whatsapp}
-        email={settings.email}
-      />
+      <Reveal>
+        <FleetBusiness
+          phone={settings.phone}
+          whatsapp={settings.whatsapp}
+          email={settings.email}
+        />
+      </Reveal>
 
       {/* 16. FAQs (FAQPage schema above) */}
-      <FaqSection faqs={HOMEPAGE_FAQS} title="Mobile Tyre Fitting FAQs" eyebrow="FAQs" />
+      <Reveal>
+        <FaqSection faqs={HOMEPAGE_FAQS} title="Mobile Tyre Fitting FAQs" eyebrow="FAQs" />
+      </Reveal>
 
       {/* 17. Final conversion CTA */}
-      <CtaBand
-        phone={settings.phone}
-        whatsapp={settings.whatsapp}
-        title="Flat Tyre? We Come to You, 24/7"
-        subtitle="Certified, fully insured mobile fitters at your home, work or roadside in 30 to 60 minutes, with no call-out fee. Call or WhatsApp now."
-      />
+      <Reveal>
+        <CtaBand
+          phone={settings.phone}
+          whatsapp={settings.whatsapp}
+          title="Flat Tyre? We Come to You, 24/7"
+          subtitle="Certified, fully insured mobile fitters at your home, work or roadside in 30 to 60 minutes, with no call-out fee. Call or WhatsApp now."
+        />
+      </Reveal>
     </>
   );
 }

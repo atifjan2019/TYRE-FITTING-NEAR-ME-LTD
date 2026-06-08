@@ -16,15 +16,11 @@ export function MobileCtaBar({ phone, whatsapp }: { phone: string; whatsapp: str
 
   useEffect(() => {
     if (!phone && !whatsapp) return;
-    let lastY = window.scrollY;
     function onScroll() {
-      const y = window.scrollY;
-      const inHeroZone = y < 600; // hide over the hero's own CTAs
-      const scrollingDown = y > lastY;
-      // Show on scroll down past the hero, hide on scroll up.
-      setVisible(!inHeroZone && scrollingDown);
-      lastY = y;
+      // Stay visible at all times once the user is past the hero CTA zone.
+      setVisible(window.scrollY >= 600);
     }
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [phone, whatsapp]);

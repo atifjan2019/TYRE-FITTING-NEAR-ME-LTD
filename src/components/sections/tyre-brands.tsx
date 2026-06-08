@@ -24,14 +24,14 @@ export function TyreBrands() {
             {BRAND_LOGOS.map((logo, i) => (
               <div
                 key={`${logo.src}-${i}`}
-                className="grid place-items-center rounded-xl border bg-card p-4 shadow-sm"
+                className="group grid h-24 place-items-center rounded-xl border bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={140}
                   height={56}
-                  className="h-12 w-auto object-contain"
+                  className="h-12 w-auto object-contain opacity-80 grayscale transition duration-200 group-hover:opacity-100 group-hover:grayscale-0 motion-reduce:transition-none"
                 />
               </div>
             ))}
