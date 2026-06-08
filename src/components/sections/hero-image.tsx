@@ -10,12 +10,9 @@ import { CircleDot } from "lucide-react";
  * it falls back to a brand navy -> red gradient with a tyre icon, never an empty
  * grey box.
  *
- * Final asset: swap `HERO_SRC` to "/hero-fitter.jpg" once the real photo is added
- * to /public. Until then it uses a temporary Unsplash placeholder (allowed in
- * next.config remotePatterns).
+ * Asset lives in /public/uploads/hero.webp (served from the site root).
  */
-const HERO_SRC =
-  "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=70";
+const HERO_SRC = "/uploads/hero.webp";
 
 export function HeroImage() {
   const [failed, setFailed] = useState(false);
