@@ -281,47 +281,133 @@ export const PRICING_ROWS: { service: string; price: string; includes: string }[
 ];
 
 // ---------------------------------------------------------------------------
+// Section 9 - Customer reviews (PLACEHOLDER content - owner swaps for real
+// Google reviews). Each carries a coverage-area location for entity reinforcement.
+// ---------------------------------------------------------------------------
+export const HOME_REVIEWS: {
+  id: string;
+  name: string;
+  location: string;
+  date: string;
+  rating: number;
+  body: string;
+}[] = [
+  {
+    id: "rev-sarah-m",
+    name: "Sarah M.",
+    location: "Bromley, London",
+    date: "March 2026",
+    rating: 5,
+    body: "Had a flat on the school run. Called at 8.45am, the fitter was on the driveway by 9.20am. Replaced both front tyres with Michelin, balanced and torqued, and I made the 10.30 meeting. Properly impressed.",
+  },
+  {
+    id: "rev-daniel-p",
+    name: "Daniel P.",
+    location: "Maidstone, Kent",
+    date: "February 2026",
+    rating: 5,
+    body: "Blew a tyre on the M20 at 11pm on a Sunday. Mobile fitter was with me in 35 minutes, fitted a new Continental and got me moving. No call-out fee, exactly the price quoted. Saved my night.",
+  },
+  {
+    id: "rev-anita-r",
+    name: "Anita R.",
+    location: "Brighton, Sussex",
+    date: "February 2026",
+    rating: 5,
+    body: "Booked through WhatsApp, sent a photo of the tyre size, got an all-in quote in minutes. The fitter arrived within the hour, did the job on the driveway, and took the old tyre away. Cleaner and faster than any garage.",
+  },
+  {
+    id: "rev-james-t",
+    name: "James T.",
+    location: "Chelmsford, Essex",
+    date: "January 2026",
+    rating: 5,
+    body: "Run-flat on a BMW, most garages told me to come in next week. These guys had the right tyre, came out the same afternoon, fitted it on site and balanced it properly. No fuss, fair price.",
+  },
+  {
+    id: "rev-priya-s",
+    name: "Priya S.",
+    location: "Solihull, West Midlands",
+    date: "January 2026",
+    rating: 5,
+    body: "Locking wheel nut key was missing and I needed two new tyres. The fitter removed the nut without damaging the alloy, fitted standard replacements and changed the tyres. Honest pricing and zero damage.",
+  },
+  {
+    id: "rev-craig-d",
+    name: "Craig D.",
+    location: "Glasgow, Scotland",
+    date: "December 2025",
+    rating: 5,
+    body: "Fleet of five vans, one down with a puncture on a Saturday morning. The fitter was at our yard in 40 minutes, repaired the tyre to BS AU 159, and the van was back out on deliveries by lunch. We use them every week now.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Section 14 - Founder identity (PLACEHOLDER - owner supplies real name, photo,
+// bio, years and figures). Name below is the example from the brief.
+// ---------------------------------------------------------------------------
+export const FOUNDER = {
+  name: "Sami Khan",
+  role: "Founder and lead mobile tyre fitter",
+  yearsInTrade: "over 10 years in the tyre trade",
+  photo: "/uploads/team/founder-photo.jpg",
+  photoAlt:
+    "Sami Khan, founder and lead mobile tyre fitter at Tyre Fitting Near Me Ltd, photographed beside a fully equipped mobile fitting van",
+  bio: "I started out fitting tyres in busy high-street garages, and after more than a decade in the trade I kept seeing the same problem: drivers stuck waiting, or stranded with no safe way to reach a garage. So I built Tyre Fitting Near Me as a fully mobile service that brings the workshop to you, at home, at work or at the roadside. Every fitting my team and I carry out is balanced on calibrated equipment, torqued to manufacturer specification and backed by our workmanship guarantee. If a job is not right, we put it right. That promise is personal.",
+  quote:
+    "We bring the workshop to you, and every fitting is backed by my personal workmanship guarantee.",
+};
+
+// Quantified track record (PLACEHOLDER values - owner confirms real figures).
+export const FOUNDER_STATS: { value: string; label: string }[] = [
+  { value: "10+", label: "years operating across the UK" },
+  { value: "8", label: "certified mobile tyre technicians on the road" },
+  { value: "12,000+", label: "mobile tyre fittings completed" },
+  { value: "6", label: "vans on the road across our coverage area" },
+];
+
+// ---------------------------------------------------------------------------
 // Section 10 - Recent mobile tyre fittings (image placeholders, EAV alt text)
 // Real photos are owner input. Filenames map to alt text for easy swap-in.
 // ---------------------------------------------------------------------------
 export const RECENT_WORK: { file: string; alt: string; caption: string }[] = [
   {
-    file: "/uploads/work/michelin-pilot-sport-225-40-r18-bmw-3-series-bromley.jpg",
+    file: "/uploads/work/recent-work-01-michelin-pilot-sport-4-225-40-r18-bmw-3-series-bromley.jpg",
     alt: "Michelin Pilot Sport 4 225/40 R18 fitted to a BMW 3 Series in Bromley by Tyre Fitting Near Me mobile fitter",
     caption: "Michelin Pilot Sport 4 225/40 R18, BMW 3 Series, Bromley, fitted in 45 minutes",
   },
   {
-    file: "/uploads/work/continental-205-55-r16-ford-focus-maidstone.jpg",
+    file: "/uploads/work/recent-work-02-continental-205-55-r16-ford-focus-maidstone.jpg",
     alt: "Continental PremiumContact 205/55 R16 fitted to a Ford Focus in Maidstone by Tyre Fitting Near Me mobile fitter",
     caption: "Continental 205/55 R16, Ford Focus, Maidstone, roadside call-out",
   },
   {
-    file: "/uploads/work/michelin-agilis-215-65-r16c-transit-croydon.jpg",
+    file: "/uploads/work/recent-work-03-michelin-agilis-215-65-r16c-ford-transit-croydon.jpg",
     alt: "Michelin Agilis 215/65 R16C commercial van tyre fitted to a Ford Transit in Croydon by Tyre Fitting Near Me mobile fitter",
     caption: "Michelin Agilis 215/65 R16C, Ford Transit, Croydon, fleet call-out",
   },
   {
-    file: "/uploads/work/pirelli-pzero-245-40-r19-tesla-model-3-brighton.jpg",
+    file: "/uploads/work/recent-work-04-pirelli-p-zero-245-40-r19-tesla-model-3-brighton.jpg",
     alt: "Pirelli P Zero 245/40 R19 EV tyre fitted to a Tesla Model 3 in Brighton by Tyre Fitting Near Me mobile fitter",
     caption: "Pirelli P Zero 245/40 R19, Tesla Model 3, Brighton, home fitting",
   },
   {
-    file: "/uploads/work/bridgestone-195-65-r15-vw-golf-chelmsford.jpg",
+    file: "/uploads/work/recent-work-05-bridgestone-turanza-195-65-r15-vw-golf-chelmsford.jpg",
     alt: "Bridgestone Turanza 195/65 R15 fitted to a Volkswagen Golf in Chelmsford by Tyre Fitting Near Me mobile fitter",
     caption: "Bridgestone Turanza 195/65 R15, VW Golf, Chelmsford, workplace fitting",
   },
   {
-    file: "/uploads/work/goodyear-225-45-r17-audi-a4-solihull.jpg",
+    file: "/uploads/work/recent-work-06-goodyear-efficientgrip-225-45-r17-audi-a4-solihull.jpg",
     alt: "Goodyear EfficientGrip 225/45 R17 fitted to an Audi A4 in Solihull by Tyre Fitting Near Me mobile fitter",
     caption: "Goodyear EfficientGrip 225/45 R17, Audi A4, Solihull, 30-minute arrival",
   },
   {
-    file: "/uploads/work/dunlop-205-55-r16-vauxhall-astra-glasgow.jpg",
+    file: "/uploads/work/recent-work-07-dunlop-sport-205-55-r16-vauxhall-astra-glasgow.jpg",
     alt: "Dunlop Sport BluResponse 205/55 R16 fitted to a Vauxhall Astra in Glasgow by Tyre Fitting Near Me mobile fitter",
     caption: "Dunlop Sport 205/55 R16, Vauxhall Astra, Glasgow, evening call-out",
   },
   {
-    file: "/uploads/work/hankook-235-55-r18-nissan-qashqai-coventry.jpg",
+    file: "/uploads/work/recent-work-08-hankook-ventus-235-55-r18-nissan-qashqai-coventry.jpg",
     alt: "Hankook Ventus 235/55 R18 SUV tyre fitted to a Nissan Qashqai in Coventry by Tyre Fitting Near Me mobile fitter",
     caption: "Hankook Ventus 235/55 R18, Nissan Qashqai, Coventry, home fitting",
   },

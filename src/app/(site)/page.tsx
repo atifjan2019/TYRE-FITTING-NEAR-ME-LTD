@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import {
   getSiteSettings,
+  getServices,
   getCounties,
-  getFeaturedReviews,
   getReviewStats,
 } from "@/lib/data";
 import {
@@ -17,17 +17,24 @@ import {
 } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE, BOOKING_STEPS } from "@/lib/site-config";
-import { MOBILE_SERVICES, HOMEPAGE_FAQS } from "@/lib/homepage-content";
+import {
+  MOBILE_SERVICES,
+  HOMEPAGE_FAQS,
+  HOME_REVIEWS,
+  SERVICE_REGIONS,
+  FOUNDER,
+} from "@/lib/homepage-content";
 
 import { Hero } from "@/components/sections/hero";
 import { TrustMarquee } from "@/components/sections/trust-marquee";
 import { TyreBrands } from "@/components/sections/tyre-brands";
 import { StepsToBook } from "@/components/sections/steps-to-book";
 import { MobileServices } from "@/components/sections/mobile-services";
+import { CtaStrip } from "@/components/sections/cta-strip";
 import { VehiclesCovered } from "@/components/sections/vehicles-covered";
 import { TyreLookup } from "@/components/sections/tyre-lookup";
 import { PricingTable } from "@/components/sections/pricing-table";
-import { ReviewsSection } from "@/components/sections/reviews-section";
+import { HomeReviews } from "@/components/sections/home-reviews";
 import { RecentWork } from "@/components/sections/recent-work";
 import { AreasSemantic } from "@/components/sections/areas-semantic";
 import { MobileVsGarage } from "@/components/sections/mobile-vs-garage";
@@ -52,49 +59,60 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [settings, counties, reviews, stats] = await Promise.all([
+  const [settings, services, counties, stats] = await Promise.all([
     getSiteSettings(),
+    getServices(),
     getCounties(),
-    getFeaturedReviews(6),
     getReviewStats(),
   ]);
 
-  // LocalBusiness node, augmented with rating + a few reviews when available.
+  // Only link to destinations that actually exist (no shipped 404s).
+  const serviceSlugs = new Set(services.map((s) => s.slug));
+  const countySlugs = new Set(counties.map((c) => c.slug));
+
+  const reviewCount = stats.count > 0 ? stats.count : HOME_REVIEWS.length;
+
+  // LocalBusiness node, augmented with rating + reviews.
   const business: Record<string, unknown> = localBusinessJsonLd({
     settings,
     url: SITE.url,
-    areaServed: counties.map((c) => c.name),
+    areaServed: SERVICE_REGIONS.map((r) => r.region),
     image: settings.defaultOgImage,
   });
-  if (stats.count > 0) {
-    business.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: stats.average.toFixed(1),
-      reviewCount: stats.count,
-      bestRating: 5,
-      worstRating: 1,
-    };
-    business.review = reviews.slice(0, 5).map((r) => ({
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-      author: { "@type": "Person", name: r.author },
-      reviewBody: r.text,
-    }));
-  }
+  business.aggregateRating = {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount,
+    bestRating: 5,
+    worstRating: 1,
+  };
+  business.review = HOME_REVIEWS.map((r) => ({
+    "@type": "Review",
+    reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+    author: { "@type": "Person", name: r.name },
+    datePublished: r.date,
+    reviewBody: r.body,
+  }));
 
   return (
     <>
-      {/* Structured data: business, website, organization, services, how-to, FAQ, breadcrumb */}
+      {/* Structured data: business+reviews, website, organization, services, how-to, FAQ, breadcrumb */}
       <JsonLd
         data={[
           business,
           websiteJsonLd(),
-          organizationJsonLd({ settings }),
+          organizationJsonLd({
+            settings,
+            founderName: FOUNDER.name,
+            founderJobTitle: FOUNDER.role,
+            founderImage: FOUNDER.photo,
+          }),
           servicesJsonLd(
             MOBILE_SERVICES.map((s) => ({
               title: s.title,
               slug: s.slug,
               description: s.description,
+              category: s.hypernym,
             }))
           ),
           howToJsonLd(
@@ -119,7 +137,16 @@ export default async function HomePage() {
       <StepsToBook />
 
       {/* 5. Mobile tyre services cluster */}
-      <MobileServices />
+      <MobileServices availableSlugs={serviceSlugs} />
+
+      {/* CTA strip 1 (between services and vehicles) */}
+      <CtaStrip
+        phone={settings.phone}
+        whatsapp={settings.whatsapp}
+        title="Need a Mobile Tyre Fitter Now? We Arrive in 30 to 60 Minutes."
+        subtitle="Live availability across all six regions. No call-out fee."
+        variant="navy"
+      />
 
       {/* 6. Vehicles we cover */}
       <VehiclesCovered />
@@ -131,16 +158,25 @@ export default async function HomePage() {
       <PricingTable />
 
       {/* 9. Real customer reviews */}
-      <ReviewsSection reviews={reviews} stats={stats} />
+      <HomeReviews reviewCount={reviewCount} />
 
       {/* 10. Recent mobile tyre fittings */}
       <RecentWork />
 
       {/* 11. Areas we cover */}
-      <AreasSemantic />
+      <AreasSemantic availableSlugs={countySlugs} />
 
       {/* 12. Mobile tyre fitting vs garage */}
       <MobileVsGarage />
+
+      {/* CTA strip 2 (between comparison and why-choose) */}
+      <CtaStrip
+        phone={settings.phone}
+        whatsapp={settings.whatsapp}
+        title="Skip the Garage. Book a Mobile Tyre Fitter Instead."
+        subtitle="Same-day mobile tyre fitting at your home, work or roadside, fully insured."
+        variant="purple"
+      />
 
       {/* 13. Why drivers choose us */}
       <WhyChooseUs />

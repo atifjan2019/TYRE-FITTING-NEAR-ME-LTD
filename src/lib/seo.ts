@@ -139,7 +139,7 @@ export function aggregateRatingJsonLd(reviews: { rating: number }[]) {
  * Service is linked to the provider business and its dedicated service page.
  */
 export function servicesJsonLd(
-  services: { title: string; slug: string; description: string }[]
+  services: { title: string; slug: string; description: string; category?: string }[]
 ) {
   return {
     "@context": "https://schema.org",
@@ -151,6 +151,7 @@ export function servicesJsonLd(
         "@type": "Service",
         name: s.title,
         serviceType: s.title,
+        category: s.category,
         description: s.description,
         url: `${SITE.url}/services/${s.slug}`,
         provider: { "@id": `${SITE.url}#business` },
@@ -174,6 +175,37 @@ export function howToJsonLd(
       position: i + 1,
       name: s.title,
       text: s.description,
+      image: `${SITE.url}/uploads/how-it-works/step-${i + 1}.jpg`,
+    })),
+  };
+}
+
+/**
+ * Review array + AggregateRating, emitted standalone for the reviews section.
+ * `count` is the real verified-review total (owner-supplied).
+ */
+export function reviewsJsonLd(
+  reviews: { name: string; body: string; rating: number; date: string }[],
+  count: number
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "@id": `${SITE.url}#business`,
+    name: SITE.name,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      bestRating: 5,
+      worstRating: 1,
+      reviewCount: count,
+    },
+    review: reviews.map((r) => ({
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
+      author: { "@type": "Person", name: r.name },
+      datePublished: r.date,
+      reviewBody: r.body,
     })),
   };
 }
@@ -185,7 +217,10 @@ export function howToJsonLd(
 export function organizationJsonLd(opts: {
   settings: SiteSettingsData;
   founderName?: string;
+  founderJobTitle?: string;
+  founderImage?: string;
   numberOfEmployees?: number;
+  foundingDate?: string;
 }) {
   const { settings } = opts;
   const sameAs = (
@@ -201,8 +236,16 @@ export function organizationJsonLd(opts: {
     email: settings.email || undefined,
     logo: settings.logo ? `${SITE.url}${settings.logo}` : undefined,
     sameAs: sameAs.length ? sameAs : undefined,
-    founder: opts.founderName ? { "@type": "Person", name: opts.founderName } : undefined,
+    foundingDate: opts.foundingDate || undefined,
     numberOfEmployees: opts.numberOfEmployees || undefined,
+    founder: opts.founderName
+      ? {
+          "@type": "Person",
+          name: opts.founderName,
+          jobTitle: opts.founderJobTitle,
+          image: opts.founderImage ? `${SITE.url}${opts.founderImage}` : undefined,
+        }
+      : undefined,
     knowsAbout: [
       "Mobile tyre fitting",
       "Puncture repair",

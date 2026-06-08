@@ -28,6 +28,8 @@ export function RecentWork() {
               <div
                 role="img"
                 aria-label={item.alt}
+                data-status="placeholder"
+                data-src={item.file}
                 className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-secondary to-[var(--color-muted-blue)]/60 text-muted-foreground"
               >
                 <Camera className="h-8 w-8" />

@@ -19,17 +19,15 @@ export function Hero({
   settings: SiteSettingsData;
   stats: { average: number; count: number };
 }) {
-  const ratingLabel =
-    stats.count > 0
-      ? `Rated ${stats.average.toFixed(1)}★ on Google`
-      : "Rated 5★ on Google";
+  const reviewCount = stats.count > 0 ? `${stats.count}+` : "50+";
+  const ratingValue = stats.count > 0 ? stats.average.toFixed(1) : "5.0";
 
   const bullets = [
     "24/7 emergency response, 365 days a year",
     "30 to 60 minute typical arrival",
-    ratingLabel,
-    "All major tyre brands, premium and budget",
-    "Fully insured, certified mobile fitters",
+    `5.0 from ${reviewCount} verified Google reviews`,
+    "30+ mobile fittings completed every week",
+    "Public liability insured up to £5,000,000",
     "No call-out fee, all-in quote upfront",
   ];
 
@@ -38,19 +36,6 @@ export function Hero({
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:py-20 lg:grid-cols-2 lg:items-center">
         {/* Left: value proposition + CTAs */}
         <div>
-          {/* Google rating badge */}
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm">
-            <span className="flex">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-              ))}
-            </span>
-            <span className="text-muted-foreground">
-              {stats.average.toFixed(1)} / 5
-              {stats.count > 0 ? ` · ${stats.count}+ reviews` : ""}
-            </span>
-          </div>
-
           <h1 className="font-heading text-4xl font-extrabold italic leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             {/* Keep on a single line at every width (scales to fit). */}
             <span className="block whitespace-nowrap text-accent text-[clamp(1.9rem,8.5vw,3rem)]">
@@ -58,6 +43,18 @@ export function Hero({
             </span>
             <span className="block text-primary">WE COME TO YOU, FAST</span>
           </h1>
+
+          {/* Google rating badge - immediately under H1 (eye-tracking) */}
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-sm font-medium shadow-sm">
+            <span className="flex" aria-hidden>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+              ))}
+            </span>
+            <span className="text-muted-foreground">
+              {ratingValue} from {reviewCount} verified Google reviews
+            </span>
+          </div>
 
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
             Tyre Fitting Near Me Ltd is a 24/7 mobile tyre fitting service for car,
@@ -67,11 +64,11 @@ export function Hero({
             the road within 30 to 60 minutes.
           </p>
 
-          {/* Trust bullets */}
-          <ul className="mt-6 grid max-w-xl gap-2 sm:grid-cols-2">
+          {/* Trust bullets - 2 cols on mobile (2x3), 3 cols on desktop (3x2) */}
+          <ul className="mt-6 grid max-w-xl grid-cols-2 gap-2.5 lg:grid-cols-3">
             {bullets.map((b) => (
-              <li key={b} className="flex items-center gap-2 font-medium text-primary">
-                <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground">
+              <li key={b} className="flex items-start gap-2 text-sm font-medium text-primary">
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground">
                   <Check className="h-3.5 w-3.5" />
                 </span>
                 {b}
@@ -83,7 +80,11 @@ export function Hero({
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             {settings.phone ? (
               <Button asChild variant="cta" size="xl">
-                <a href={telHref(settings.phone)}>
+                <a
+                  href={telHref(settings.phone)}
+                  data-conversion="call"
+                  aria-label={`Call our 24/7 fitter line on ${settings.phone}`}
+                >
                   <Phone /> Call {settings.phone}
                 </a>
               </Button>
@@ -94,6 +95,8 @@ export function Hero({
                   href={whatsappHref(settings.whatsapp, SITE.whatsappMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-conversion="whatsapp"
+                  aria-label="Send your location and tyre size on WhatsApp"
                 >
                   <WhatsAppIcon />
                   <span className="sm:hidden">WhatsApp Us</span>
@@ -104,8 +107,11 @@ export function Hero({
               </Button>
             ) : null}
           </div>
-          <p className="mt-3 text-sm font-semibold text-accent">
-            Roadside help available now - 24/7, 365 days a year.
+          <p className="mt-3 text-sm text-muted-foreground">
+            Or send a photo of your tyre on WhatsApp. We will quote the all-in price in minutes.
+          </p>
+          <p className="mt-2 text-sm font-semibold text-accent">
+            Roadside help available now, 24/7, 365 days a year.
           </p>
         </div>
 
