@@ -1,7 +1,7 @@
 import { User } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
-import { CountUp } from "@/components/ui/count-up";
+import { StatCounter } from "@/components/ui/stat-counter";
 import { FITTER_STANDARDS, FOUNDER, FOUNDER_STATS } from "@/lib/homepage-content";
 
 /**
@@ -54,20 +54,17 @@ export function OurFitters() {
         </div>
 
         {/* Quantified track record (placeholder figures, owner confirms) */}
-        <dl className="mt-10 grid grid-cols-2 gap-4 rounded-2xl border bg-card p-6 shadow-sm lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-4 rounded-2xl border bg-card p-6 shadow-sm lg:grid-cols-4">
           {FOUNDER_STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <dt className="sr-only">{stat.label}</dt>
-              <dd>
-                <CountUp
-                  value={stat.value}
-                  className="block font-heading text-3xl font-extrabold text-accent"
-                />
-                <span className="mt-1 block text-sm text-muted-foreground">{stat.label}</span>
-              </dd>
-            </div>
+            <StatCounter
+              key={stat.label}
+              end={stat.end}
+              suffix={stat.suffix}
+              useCommas={stat.useCommas}
+              label={stat.label}
+            />
           ))}
-        </dl>
+        </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {FITTER_STANDARDS.map((item) => (

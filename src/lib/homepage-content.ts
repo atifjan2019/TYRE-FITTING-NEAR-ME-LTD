@@ -539,11 +539,17 @@ export const FOUNDER = {
 };
 
 // Quantified track record (PLACEHOLDER values - owner confirms real figures).
-export const FOUNDER_STATS: { value: string; label: string }[] = [
-  { value: "10+", label: "years operating across the UK" },
-  { value: "8", label: "certified mobile tyre technicians on the road" },
-  { value: "12,000+", label: "mobile tyre fittings completed" },
-  { value: "6", label: "vans on the road across our coverage area" },
+// Explicit numeric `end` so the counter never parses from formatted text.
+export const FOUNDER_STATS: {
+  end: number;
+  suffix?: string;
+  useCommas?: boolean;
+  label: string;
+}[] = [
+  { end: 10, suffix: "+", label: "years operating across the UK" },
+  { end: 8, label: "certified mobile tyre technicians on the road" },
+  { end: 12000, suffix: "+", useCommas: true, label: "mobile tyre fittings completed" },
+  { end: 6, label: "vans on the road across our coverage area" },
 ];
 
 // ---------------------------------------------------------------------------
