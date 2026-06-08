@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { SITE } from "@/lib/site-config";
@@ -51,7 +52,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-GB" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="min-h-dvh antialiased">{children}</body>
+      <body className="min-h-dvh antialiased">
+        {/* Top progress bar: instant feedback on every navigation click. */}
+        <NextTopLoader
+          color="#ED1C24"
+          height={3}
+          shadow="0 0 10px #ED1C24, 0 0 5px #ED1C24"
+          showSpinner={false}
+          speed={300}
+          crawlSpeed={150}
+          zIndex={9999}
+        />
+        {children}
+      </body>
     </html>
   );
 }
