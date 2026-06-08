@@ -24,8 +24,8 @@ export default async function TermsPage() {
           { name: "Terms & Conditions", path: "/terms" },
         ]}
       />
-      <div className="mx-auto max-w-3xl px-4 py-12">
-        <div className="prose-content">
+      <div className="mx-auto max-w-7xl px-4 py-12">
+        <div className="prose-content max-w-none">
           <p>
             These terms govern the services provided by {settings.brandName}. This is a
             starting template - please have it reviewed by a solicitor before launch.

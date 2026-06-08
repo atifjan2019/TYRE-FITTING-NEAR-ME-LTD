@@ -41,7 +41,7 @@ export default async function ContactPage() {
         crumbs={crumbs}
       />
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-2 lg:items-start">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 lg:items-start">
         <div>
           <h2 className="text-2xl font-bold">Get in touch</h2>
           <ul className="mt-6 space-y-4">

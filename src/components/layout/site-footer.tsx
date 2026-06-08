@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import { Phone, Mail, Clock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { FOOTER_NAV, SITE } from "@/lib/site-config";
 import { telHref, whatsappHref } from "@/lib/utils";
@@ -22,7 +23,19 @@ export function SiteFooter({
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand + contact */}
           <div>
-            <div className="mb-3 text-lg font-extrabold">{settings.brandName}</div>
+            <Link href="/" className="mb-3 inline-flex items-center">
+              {settings.logo ? (
+                <Image
+                  src={settings.logo}
+                  alt={settings.brandName}
+                  width={260}
+                  height={64}
+                  className="h-12 w-auto object-contain sm:h-14"
+                />
+              ) : (
+                <span className="text-lg font-extrabold">{settings.brandName}</span>
+              )}
+            </Link>
             <p className="mb-4 text-sm text-muted-foreground">{settings.tagline}</p>
             <ul className="space-y-2 text-sm">
               {settings.phone ? (
@@ -59,8 +72,8 @@ export function SiteFooter({
 
           {/* Areas covered */}
           <div>
-            <div className="mb-3 flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              <MapPin className="h-4 w-4" /> Areas We Cover
+            <div className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">
+              Areas We Cover
             </div>
             <ul className="space-y-2 text-sm">
               {counties.map((c) => (
@@ -81,7 +94,7 @@ export function SiteFooter({
           {/* Link groups */}
           {FOOTER_NAV.map((group) => (
             <div key={group.title}>
-              <div className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              <div className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">
                 {group.title}
               </div>
               <ul className="space-y-2 text-sm">
@@ -100,6 +113,7 @@ export function SiteFooter({
         <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t pt-6 text-xs text-muted-foreground sm:flex-row">
           <p>
             © {new Date().getFullYear()} {settings.brandName}. All rights reserved.
+            <span className="ml-1">Registered in England &amp; Wales, company no. 17137653.</span>
           </p>
           <p>Mobile service-area business - we come to you. No shop visits.</p>
         </div>

@@ -25,8 +25,8 @@ export default async function PrivacyPage() {
           { name: "Privacy Policy", path: "/privacy" },
         ]}
       />
-      <div className="mx-auto max-w-3xl px-4 py-12">
-        <div className="prose-content">
+      <div className="mx-auto max-w-7xl px-4 py-12">
+        <div className="prose-content max-w-none">
           <p>
             This Privacy Policy explains how {settings.brandName} (&quot;we&quot;,
             &quot;us&quot;) collects and uses your personal information when you use our
