@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -14,6 +14,9 @@ import { Button } from "@/components/ui/button";
 export function AvailabilityFinder() {
   const router = useRouter();
   const [value, setValue] = useState("");
+  // isPending stays true until the destination page has rendered, so the button
+  // shows a spinner during the (server-rendered) availability page's load.
+  const [isPending, startTransition] = useTransition();
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -29,7 +32,9 @@ export function AvailabilityFinder() {
       }).catch(() => {});
     }
 
-    router.push(q ? `/availability?location=${encodeURIComponent(q)}` : "/availability");
+    startTransition(() => {
+      router.push(q ? `/availability?location=${encodeURIComponent(q)}` : "/availability");
+    });
   }
 
   return (
@@ -60,12 +65,27 @@ export function AvailabilityFinder() {
           onChange={(e) => setValue(e.target.value)}
           placeholder="Enter your postcode or closest town"
           autoComplete="postal-code"
-          className="w-full rounded-lg border border-input bg-white px-4 py-3.5 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          disabled={isPending}
+          className="w-full rounded-lg border border-input bg-white px-4 py-3.5 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60"
         />
-        <Button type="submit" size="xl" className="mt-3 w-full text-base sm:text-lg">
-          <span className="sm:hidden">Check availability</span>
-          <span className="hidden sm:inline">Check availability near you</span>
-          <ArrowRight className="h-5 w-5" />
+        <Button
+          type="submit"
+          size="xl"
+          disabled={isPending}
+          className="mt-3 w-full text-base sm:text-lg"
+        >
+          {isPending ? (
+            <>
+              <Loader2 className="h-5 w-5 animate-spin" />
+              <span>Checking availability…</span>
+            </>
+          ) : (
+            <>
+              <span className="sm:hidden">Check availability</span>
+              <span className="hidden sm:inline">Check availability near you</span>
+              <ArrowRight className="h-5 w-5" />
+            </>
+          )}
         </Button>
       </form>
       <p className="mt-3 text-center text-xs text-muted-foreground">
