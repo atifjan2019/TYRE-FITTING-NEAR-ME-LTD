@@ -108,17 +108,28 @@ export async function saveRecord(
   redirect(`/admin/${resourceKey}`);
 }
 
-/** Delete a record. Bind `resourceKey` and `id` in the form. */
+/** Delete a record. Bind `resourceKey` and `id` in the form. Called from the
+ *  list page, so it revalidates in place rather than redirecting (a redirect to
+ *  the page you're already on is redundant and adds a failure point). */
 export async function deleteRecord(resourceKey: string, id: string) {
   await requireAdmin();
   const resource = getResource(resourceKey);
   if (!resource) return;
 
-  await delegate(resource.model).delete({ where: { id } });
+  try {
+    await delegate(resource.model).delete({ where: { id } });
+  } catch (error) {
+    // P2025 = record already gone (e.g. double-click). Treat as success.
+    if (
+      !(error instanceof Prisma.PrismaClientKnownRequestError) ||
+      error.code !== "P2025"
+    ) {
+      throw error;
+    }
+  }
 
   revalidatePath(`/admin/${resourceKey}`);
   revalidatePath("/", "layout");
-  redirect(`/admin/${resourceKey}`);
 }
 
 /** Update the singleton site settings row. */
