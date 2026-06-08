@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Loader2, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,24 +12,63 @@ import { getOrCreateLeadKey } from "@/lib/lead-key";
  * text and a loading state. Town names are also accepted (the field doubles as a
  * location search), so a non-postcode entry still submits. Routing to
  * /availability is the success/result step.
+ *
+ * When the input looks like a postcode, it is verified against postcodes.io
+ * (a free, no-key UK postcode API) so we only green-light real postcodes.
  */
 
 // Standard UK postcode format (with optional internal space).
 const UK_POSTCODE_RE = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i;
 
+type PostcodeCheck = "idle" | "checking" | "valid" | "invalid";
+
 export function AvailabilityFinder() {
   const router = useRouter();
   const [value, setValue] = useState("");
+  const [check, setCheck] = useState<PostcodeCheck>("idle");
   const [isPending, startTransition] = useTransition();
 
   const trimmed = value.trim();
-  const isValidPostcode = UK_POSTCODE_RE.test(trimmed);
+  const looksLikePostcode = UK_POSTCODE_RE.test(trimmed);
   // Show the red x only once it looks like a finished-but-wrong postcode attempt.
-  const looksWrong = trimmed.length >= 5 && !isValidPostcode && /\d/.test(trimmed);
+  const looksWrong = trimmed.length >= 5 && !looksLikePostcode && /\d/.test(trimmed);
+  // A postcode is only "valid" once the API confirms it actually exists.
+  const isValidPostcode = looksLikePostcode && check === "valid";
+  // It looks like a postcode but the API says it doesn't exist.
+  const isUnknownPostcode = looksLikePostcode && check === "invalid";
+
+  // Verify the postcode against postcodes.io, debounced, whenever it changes.
+  useEffect(() => {
+    if (!looksLikePostcode) {
+      setCheck("idle");
+      return;
+    }
+    setCheck("checking");
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      try {
+        const res = await fetch(
+          `https://api.postcodes.io/postcodes/${encodeURIComponent(trimmed)}/validate`,
+          { signal: controller.signal }
+        );
+        const data = await res.json();
+        setCheck(data?.result === true ? "valid" : "invalid");
+      } catch (err) {
+        // Network/abort errors: fall back to format-only validation (don't block).
+        if ((err as Error)?.name !== "AbortError") setCheck("valid");
+      }
+    }, 400);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [trimmed, looksLikePostcode]);
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     const q = trimmed;
+    // Block submission only when it looks like a postcode but isn't a real one.
+    if (isUnknownPostcode || (looksLikePostcode && check === "checking")) return;
     const key = getOrCreateLeadKey();
 
     if (q) {
@@ -82,31 +121,35 @@ export function AvailabilityFinder() {
           <input
             id="finder"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value.toUpperCase())}
             placeholder="Enter your postcode, e.g. SW1A 1AA"
             autoComplete="postal-code"
             disabled={isPending}
             aria-describedby="finder-help"
-            aria-invalid={looksWrong}
-            className="w-full rounded-lg border border-input bg-white px-4 py-3.5 pr-11 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60"
+            aria-invalid={looksWrong || isUnknownPostcode}
+            className="w-full rounded-lg border border-input bg-white px-4 py-3.5 pr-11 text-base uppercase text-foreground outline-none placeholder:normal-case focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60"
           />
           {/* Real-time validation icon */}
-          {isValidPostcode ? (
+          {check === "checking" ? (
+            <Loader2 className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 animate-spin text-muted-foreground" />
+          ) : isValidPostcode ? (
             <Check className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--color-success)]" />
-          ) : looksWrong ? (
+          ) : looksWrong || isUnknownPostcode ? (
             <X className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-destructive" />
           ) : null}
         </div>
         <p id="finder-help" className="mt-1.5 text-xs text-muted-foreground">
-          {looksWrong
-            ? "That postcode does not look complete. Example: SW1A 1AA."
-            : "Enter your full postcode, e.g. SW1A 1AA. You can also type your nearest town."}
+          {isUnknownPostcode
+            ? "We couldn't find that postcode. Please double-check it."
+            : looksWrong
+              ? "That postcode does not look complete. Example: SW1A 1AA."
+              : "Enter your full postcode, e.g. SW1A 1AA. You can also type your nearest town."}
         </p>
 
         <Button
           type="submit"
           size="xl"
-          disabled={isPending}
+          disabled={isPending || isUnknownPostcode || (looksLikePostcode && check === "checking")}
           className="mt-3 w-full text-base sm:text-lg"
         >
           {isPending ? (

@@ -83,11 +83,6 @@ export function SiteFooter({
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href="/areas" className="font-medium text-primary hover:underline">
-                  View all areas →
-                </Link>
-              </li>
             </ul>
           </div>
 
