@@ -19,11 +19,14 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { SITE, BOOKING_STEPS } from "@/lib/site-config";
 import {
   MOBILE_SERVICES,
+  ADDITIONAL_SERVICES,
+  BRAND_SPECIALISTS,
   HOMEPAGE_FAQS,
   HOME_REVIEWS,
   SERVICE_REGIONS,
   FOUNDER,
 } from "@/lib/homepage-content";
+import { BRAND_PAGE_SLUGS } from "@/lib/brand-pages";
 
 import { Hero } from "@/components/sections/hero";
 import { TrustMarquee } from "@/components/sections/trust-marquee";
@@ -32,6 +35,7 @@ import { StepsToBook } from "@/components/sections/steps-to-book";
 import { MobileServices } from "@/components/sections/mobile-services";
 import { CtaStrip } from "@/components/sections/cta-strip";
 import { VehiclesCovered } from "@/components/sections/vehicles-covered";
+import { BrandSpecialists } from "@/components/sections/brand-specialists";
 import { TyreLookup } from "@/components/sections/tyre-lookup";
 import { PricingTable } from "@/components/sections/pricing-table";
 import { HomeReviews } from "@/components/sections/home-reviews";
@@ -71,6 +75,20 @@ export default async function HomePage() {
   const countySlugs = new Set(counties.map((c) => c.slug));
 
   const reviewCount = stats.count > 0 ? stats.count : HOME_REVIEWS.length;
+  const builtBrandSlugs = new Set(BRAND_PAGE_SLUGS);
+
+  // ItemList of the premium/performance brand cluster pages (Section 6b).
+  const brandItemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Premium and performance vehicle mobile tyre fitting",
+    itemListElement: BRAND_SPECIALISTS.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${b.brand} Mobile Tyre Fitting`,
+      url: `${SITE.url}/brands/${b.slug}`,
+    })),
+  };
 
   // LocalBusiness node, augmented with rating + reviews.
   const business: Record<string, unknown> = localBusinessJsonLd({
@@ -108,13 +126,14 @@ export default async function HomePage() {
             founderImage: FOUNDER.photo,
           }),
           servicesJsonLd(
-            MOBILE_SERVICES.map((s) => ({
+            [...MOBILE_SERVICES, ...ADDITIONAL_SERVICES].map((s) => ({
               title: s.title,
               slug: s.slug,
               description: s.description,
               category: s.hypernym,
             }))
           ),
+          brandItemList,
           howToJsonLd(
             "How mobile tyre fitting works",
             BOOKING_STEPS.map((s) => ({ title: s.title, description: s.description }))
@@ -150,6 +169,9 @@ export default async function HomePage() {
 
       {/* 6. Vehicles we cover */}
       <VehiclesCovered />
+
+      {/* 6b. Premium and performance vehicle specialists */}
+      <BrandSpecialists builtSlugs={builtBrandSlugs} />
 
       {/* 7. Tyre size / registration lookup */}
       <TyreLookup whatsapp={settings.whatsapp} />

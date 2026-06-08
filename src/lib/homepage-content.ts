@@ -192,6 +192,186 @@ export const MOBILE_SERVICES: {
 ];
 
 // ---------------------------------------------------------------------------
+// Section 5 (Group 2) - Additional mobile tyre and wheel services (the 6 new)
+// ---------------------------------------------------------------------------
+export const ADDITIONAL_SERVICES: {
+  title: string;
+  slug: string;
+  hypernym: string;
+  icon: string;
+  description: string;
+  eav: string[];
+}[] = [
+  {
+    title: "Mobile Wheel Alignment",
+    slug: "mobile-wheel-alignment",
+    hypernym: "Wheel Geometry Service",
+    icon: "activity",
+    description:
+      "We carry out 2-wheel, 4-wheel and 4-wheel laser alignment on-site at your home, workplace or roadside, using a portable digital alignment rig adjusted to your vehicle manufacturer specification, so your new tyres wear evenly and your steering tracks straight.",
+    eav: [
+      "Methods: 2-wheel, 4-wheel and 4-wheel laser alignment on-site",
+      "Adjustments: camber, caster, toe-in / toe-out, thrust angle",
+      "Outcome: even tread wear, straight tracking, extended tyre life",
+    ],
+  },
+  {
+    title: "Mobile Tyre Rotation",
+    slug: "mobile-tyre-rotation",
+    hypernym: "Tyre Maintenance Service",
+    icon: "circle-dot",
+    description:
+      "We rotate your tyres on-site in 20 to 30 minutes using the correct front-to-rear and cross-rotation pattern for your vehicle and tyre direction, returning each wheel torqued to manufacturer specification, so your tread wears evenly and you get the full life out of every tyre.",
+    eav: [
+      "Pattern: forward cross, rearward cross or side-to-side by tyre direction",
+      "Frequency: every 5,000 to 7,500 miles",
+      "Outcome: extends tyre life by 20 to 25% with even wear",
+    ],
+  },
+  {
+    title: "Free Tyre Health Check",
+    slug: "free-tyre-health-check",
+    hypernym: "Tyre Safety Inspection",
+    icon: "shield-check",
+    description:
+      "We carry out a free no-obligation tyre health check at your location for any UK driver in our coverage area, inspecting tread depth, sidewall condition, pressure, valve, age and wear pattern against UK legal and safety standards, so you know which tyres are safe and which need attention.",
+    eav: [
+      "Checks: tread depth, sidewall, pressure, valve, DOT age code, wear pattern",
+      "Standard: UK legal minimum 1.6mm tread depth across central 75%",
+      "Outcome: free written report, no obligation, on-site quote if needed",
+    ],
+  },
+  {
+    title: "Mobile Caravan and Motorhome Tyre Fitting",
+    slug: "mobile-caravan-motorhome-tyre-fitting",
+    hypernym: "Leisure Vehicle Tyre Service",
+    icon: "bus",
+    description:
+      "We supply and fit CP-rated camper tyres and reinforced load-rated leisure tyres on-site for touring caravans, static caravans, motorhomes and campervans at storage sites, caravan parks or your home, so leisure vehicles are road-ready before every trip.",
+    eav: [
+      "Vehicles: touring caravans, motorhomes, campervans, static caravans, horseboxes",
+      "Tyres: CP-rated camper, reinforced load-rated, all-season leisure tyres",
+      "Locations: storage compound, caravan park, driveway, dealership",
+    ],
+  },
+  {
+    title: "Mobile Truck and HGV Tyre Fitting",
+    slug: "mobile-truck-hgv-tyre-fitting",
+    hypernym: "Heavy Goods Vehicle Service",
+    icon: "truck",
+    description:
+      "We fit steer, drive and trailer-position tyres on-site to 7.5t through 44t commercial vehicles for fleet operators and owner-drivers at distribution yards, depots or the roadside, using heavy-duty equipment torqued to manufacturer and DVSA standard.",
+    eav: [
+      "Vehicles: 7.5t to 44t rigid and articulated commercial vehicles",
+      "Positions: steer, drive and trailer-specific compounds",
+      "Compliance: DVSA roadworthiness standards, O-licence support",
+    ],
+  },
+  {
+    title: "Mobile Alloy Wheel Refurbishment",
+    slug: "mobile-alloy-wheel-refurbishment",
+    hypernym: "Alloy Wheel Cosmetic Service",
+    icon: "wrench",
+    description:
+      "We restore kerb-damaged and scuffed alloy wheels on-site for drivers across our six UK regions, stripping damaged areas, colour-matching to your factory finish and applying primer, paint and lacquer in 4 to 6 hours per wheel, so your wheels look factory-fresh without leaving home.",
+    eav: [
+      "Services: kerb damage repair, paint refurbishment, light cosmetic restoration",
+      "Mobile scope: on-site cosmetic and kerb repair (diamond-cut not available mobile)",
+      "Time: 4 to 6 hours per wheel on-site",
+    ],
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Section 6b - Premium and performance vehicle brand specialists.
+// Each brand is a micro-hub feeding the central Mobile Tyre Fitting entity.
+// ---------------------------------------------------------------------------
+export const BRAND_SPECIALISTS: {
+  brand: string;
+  slug: string;
+  badge: string;
+  description: string;
+}[] = [
+  {
+    brand: "Tesla",
+    slug: "tesla-mobile-tyre-fitting",
+    badge: "EV-spec tyres",
+    description:
+      "Low rolling resistance tyres fitted on-site for Tesla Model 3, Model Y, Model S and Model X with increased load index and acoustic foam where required.",
+  },
+  {
+    brand: "BMW",
+    slug: "bmw-mobile-tyre-fitting",
+    badge: "Run-flat specialist",
+    description:
+      "Run-flat and standard OE-spec tyres fitted on-site for BMW 1, 3, 5, 7, X, M and i Series with manufacturer-spec torque and TPMS reset.",
+  },
+  {
+    brand: "Audi",
+    slug: "audi-mobile-tyre-fitting",
+    badge: "OE-spec tyres",
+    description:
+      "OE-spec tyres for Audi A, Q, RS and e-tron ranges fitted on-site with manufacturer-approved load and speed ratings.",
+  },
+  {
+    brand: "Mercedes-Benz",
+    slug: "mercedes-mobile-tyre-fitting",
+    badge: "MO-marked tyres",
+    description:
+      "MO-marked tyres fitted on-site for Mercedes-Benz A-Class through S-Class, GLA through GLS and AMG performance models.",
+  },
+  {
+    brand: "Range Rover",
+    slug: "range-rover-mobile-tyre-fitting",
+    badge: "Load-rated SUV tyres",
+    description:
+      "All-terrain and on-road tyres fitted on-site for Range Rover, Range Rover Sport, Velar, Evoque and Defender with load ratings matched to vehicle weight.",
+  },
+  {
+    brand: "Porsche",
+    slug: "porsche-mobile-tyre-fitting",
+    badge: "N-rated tyres",
+    description:
+      "N-rated Porsche-approved tyres fitted on-site for 911, Cayenne, Macan, Panamera and Taycan with performance-spec torque and balance.",
+  },
+  {
+    brand: "Bentley",
+    slug: "bentley-mobile-tyre-fitting",
+    badge: "OE-spec luxury tyres",
+    description:
+      "OE-spec tyres for Continental GT, Flying Spur and Bentayga fitted on-site with luxury-grade workmanship.",
+  },
+  {
+    brand: "Rolls-Royce",
+    slug: "rolls-royce-mobile-tyre-fitting",
+    badge: "RR-approved tyres",
+    description:
+      "RR-approved tyres for Phantom, Ghost, Wraith, Dawn and Cullinan fitted at your private location with full discretion.",
+  },
+  {
+    brand: "Ferrari",
+    slug: "ferrari-mobile-tyre-fitting",
+    badge: "Performance tyres",
+    description:
+      "Performance-spec tyres for Ferrari road cars fitted on-site with Ferrari-approved compounds and ultra-precise balancing.",
+  },
+  {
+    brand: "McLaren",
+    slug: "mclaren-mobile-tyre-fitting",
+    badge: "MC-marked Pirelli",
+    description:
+      "MC-marked Pirelli tyres for McLaren GT, 720S and Artura fitted on-site with manufacturer-approved torque and balance.",
+  },
+  {
+    brand: "Lamborghini",
+    slug: "lamborghini-mobile-tyre-fitting",
+    badge: "L-marked tyres",
+    description:
+      "L-marked performance tyres for Huracán, Urus and Revuelto fitted on-site by performance-tyre-trained technicians.",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Section 6 - Vehicles covered
 // ---------------------------------------------------------------------------
 export const VEHICLE_TYPES: {
