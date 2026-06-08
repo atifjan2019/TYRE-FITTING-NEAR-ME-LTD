@@ -31,7 +31,7 @@ export function TyreBrands() {
                   alt={logo.alt}
                   width={140}
                   height={56}
-                  className="h-12 w-auto object-contain opacity-80 grayscale transition duration-200 group-hover:opacity-100 group-hover:grayscale-0 motion-reduce:transition-none"
+                  className="h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105 motion-reduce:transition-none"
                 />
               </div>
             ))}
