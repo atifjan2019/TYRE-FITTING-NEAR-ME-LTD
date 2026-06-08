@@ -6,10 +6,12 @@ import { auth } from "@/auth";
  * Authenticated image upload → Vercel Blob. Returns the public URL, which the
  * admin stores against the relevant field. On Vercel the token is injected
  * automatically; locally set BLOB_READ_WRITE_TOKEN in .env.local.
+ *
+ * Wrapped with `auth(...)` so the session is read reliably from the request in
+ * a Route Handler (bare `await auth()` can return null here on Next 16).
  */
-export async function POST(request: Request) {
-  const session = await auth();
-  if (!session?.user) {
+export const POST = auth(async function POST(request) {
+  if (!request.auth?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -48,4 +50,4 @@ export async function POST(request: Request) {
     console.error("Blob upload failed:", err);
     return NextResponse.json({ error: "Upload failed" }, { status: 502 });
   }
-}
+});
