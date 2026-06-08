@@ -129,10 +129,17 @@ export function Hero({
           </p>
         </div>
 
-        {/* Right: photo anchor + availability finder */}
-        <div className="flex flex-col gap-6 lg:pl-6">
-          <HeroImage />
-          <AvailabilityFinder />
+        {/* Right: photo anchor with the finder card overlapping its lower half */}
+        <div className="lg:pl-6">
+          <div className="relative">
+            <HeroImage />
+            {/* Pull the form up by ~half the image height (4:3 -> 37.5% of width)
+                so it sits in front of the bottom 50% of the photo, leaving the
+                top half of the image visible. */}
+            <div className="relative z-10 mx-auto -mt-[37.5%] w-[92%]">
+              <AvailabilityFinder />
+            </div>
+          </div>
         </div>
       </div>
     </section>
