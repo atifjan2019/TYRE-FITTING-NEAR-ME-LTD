@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { AdminNav } from "@/components/admin/admin-nav";
+import { getSiteSettings } from "@/lib/data";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -25,15 +26,17 @@ export default async function AdminLayout({
     return <>{children}</>;
   }
 
+  const settings = await getSiteSettings();
+
   return (
     <div className="flex min-h-dvh bg-secondary/30">
       <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 border-r bg-background md:block">
-        <AdminNav />
+        <AdminNav logo={settings.logo} brandName={settings.brandName} />
       </aside>
       <div className="flex-1">
         {/* Mobile top bar with nav */}
         <div className="border-b bg-background md:hidden">
-          <AdminNav />
+          <AdminNav logo={settings.logo} brandName={settings.brandName} />
         </div>
         <main className="p-4 sm:p-6 lg:p-8">{children}</main>
       </div>

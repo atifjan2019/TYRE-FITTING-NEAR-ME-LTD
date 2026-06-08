@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
@@ -8,7 +9,13 @@ import { RESOURCES, RESOURCE_ORDER } from "@/lib/admin/resources";
 import { cn } from "@/lib/utils";
 
 /** Admin sidebar navigation with active-route highlighting. */
-export function AdminNav() {
+export function AdminNav({
+  logo,
+  brandName = "Tyre Fitting Near Me Ltd",
+}: {
+  logo?: string | null;
+  brandName?: string;
+}) {
   const pathname = usePathname();
 
   const items = [
@@ -25,15 +32,28 @@ export function AdminNav() {
   return (
     <nav className="flex h-full flex-col gap-1 p-3">
       <Link href="/admin" className="mb-2 flex items-center gap-2 px-3 py-3">
-        <span className="grid h-8 w-8 place-items-center rounded-md bg-[var(--color-logo-blue)] text-sm font-bold text-white">
-          T
-        </span>
-        <span className="text-sm font-extrabold leading-tight">
-          Tyre Fitting<span className="text-accent">.</span>
-          <span className="block text-xs font-medium text-muted-foreground">
-            Admin panel
-          </span>
-        </span>
+        {logo ? (
+          <Image
+            src={logo}
+            alt={brandName}
+            width={200}
+            height={48}
+            priority
+            className="h-10 w-auto object-contain"
+          />
+        ) : (
+          <>
+            <span className="grid h-8 w-8 place-items-center rounded-md bg-[var(--color-logo-blue)] text-sm font-bold text-white">
+              T
+            </span>
+            <span className="text-sm font-extrabold leading-tight">
+              Tyre Fitting<span className="text-accent">.</span>
+              <span className="block text-xs font-medium text-muted-foreground">
+                Admin panel
+              </span>
+            </span>
+          </>
+        )}
       </Link>
       {items.map((item) => {
         const active = item.exact

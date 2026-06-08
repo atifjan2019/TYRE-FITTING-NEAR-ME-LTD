@@ -38,17 +38,17 @@ export function SiteHeader({
         </div>
       </div>
 
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
           {logo ? (
             <Image
               src={logo}
               alt={brandName}
-              width={180}
-              height={44}
+              width={260}
+              height={64}
               priority
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain sm:h-14"
             />
           ) : (
             <>
