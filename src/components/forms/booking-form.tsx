@@ -239,12 +239,25 @@ export function BookingForm({
           />
         </div>
 
-        {/* Honeypot - visually hidden, must stay empty */}
-        <div className="hidden" aria-hidden>
-          <label>
-            Company
-            <input tabIndex={-1} autoComplete="off" {...register("company")} />
-          </label>
+        {/* Honeypot - off-screen anti-spam field. Real users never see or focus
+            it; spam bots fill it and the submission is rejected server-side. Kept
+            functional, but pulled out of layout, the a11y tree and tab order. */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            opacity: 0,
+            pointerEvents: "none",
+          }}
+        >
+          <label htmlFor="company-hp">Company</label>
+          <input
+            id="company-hp"
+            tabIndex={-1}
+            autoComplete="off"
+            {...register("company")}
+          />
         </div>
       </div>
 

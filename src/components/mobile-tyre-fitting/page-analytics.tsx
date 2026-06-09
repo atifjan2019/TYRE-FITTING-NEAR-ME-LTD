@@ -47,16 +47,15 @@ export function PageAnalytics() {
         }
       }
 
-      // FAQ accordion triggers live inside [data-section="faq"]. Fire only on
-      // the open transition (aria-expanded flips to true after the click).
-      const faqTrigger = target.closest<HTMLElement>(
-        '[data-section="faq"] [data-slot="accordion-trigger"], [data-section="faq"] button'
-      );
-      if (faqTrigger) {
-        // Read state on the next frame, after Radix toggles aria-expanded.
+      // FAQ uses native <details>/<summary> inside [data-section="faq"]. Fire
+      // only on the open transition (the parent <details> gains `open` after the
+      // click is processed).
+      const summary = target.closest<HTMLElement>('[data-section="faq"] summary');
+      if (summary) {
         requestAnimationFrame(() => {
-          if (faqTrigger.getAttribute("aria-expanded") === "true") {
-            track("faq_open", { question: faqTrigger.textContent?.trim().slice(0, 120) });
+          const details = summary.closest("details");
+          if (details?.open) {
+            track("faq_open", { question: summary.textContent?.trim().slice(0, 120) });
           }
         });
       }

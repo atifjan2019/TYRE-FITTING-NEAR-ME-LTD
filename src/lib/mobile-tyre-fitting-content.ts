@@ -260,51 +260,51 @@ export const FAQS: { id: string; question: string; answer: string }[] = [
   {
     id: "what-is",
     question: "What is mobile tyre fitting?",
-    answer: "Mobile tyre fitting is a callout service where a qualified fitter travels to your home, workplace, or roadside, removes the worn or damaged tyre, and fits a replacement on the spot. The 2026 UK standard includes wheel balancing, valve replacement, and old tyre disposal in a single visit.",
+    answer: "Mobile tyre fitting is the replacement, repair, balancing, and disposal of vehicle tyres performed by a trained technician at the customer's home, workplace, or roadside location, with no garage visit required. The 2026 UK standard for mobile tyre fitting includes on-site wheel balancing, valve replacement, and tyre disposal as part of the service.",
   },
   {
     id: "how-quick",
     question: "How quickly can a mobile tyre fitter arrive in an emergency?",
-    answer: "Our emergency callout runs to a 60-minute response target across the UK mainland coverage area, postcode-dependent. The exact arrival time reflects your distance from the nearest fitter and live traffic conditions. Confirm your postcode by phone or WhatsApp on 0788 328 8831 for an accurate window.",
+    answer: "A mobile tyre fitter targets a 60-minute response time for emergency callouts across UK mainland coverage areas, with actual arrival dependent on the requesting postcode and current fitter availability. Phone or WhatsApp the team directly on 0788 328 8831 for fastest emergency dispatch.",
   },
   {
     id: "cost",
     question: "How much does mobile tyre fitting cost?",
-    answer: "Mobile tyre fitting costs a flat £20 per tyre. The fee covers technician travel, old tyre removal, new tyre fitment, wheel balancing, valve replacement, and disposal. The tyre itself is quoted separately at booking. Out-of-hours emergency callouts sometimes carry a separate charge, always disclosed before any work begins.",
+    answer: "The fitting fee is £20 flat per tyre with no call-out charge added on top. The £20 covers technician travel, old tyre removal, new tyre fitment, wheel balancing, valve replacement, and old tyre disposal. The tyre itself is quoted separately. Out-of-hours emergency callouts sometimes carry a callout surcharge, disclosed at booking before any work begins.",
   },
   {
     id: "24-hours",
     question: "Is mobile tyre fitting available 24 hours a day?",
-    answer: "Yes. Cover runs 24/7 across 365 days a year, bank holidays included. Standard booked appointments run from 8am to 8pm, seven days a week, and overnight emergency callouts run through the night. Booked slots use a time window, while emergency callouts work to a 60-minute response target.",
+    answer: "Yes, mobile tyre fitting is available 24 hours a day, 365 days a year including bank holidays. Standard booked appointments run 8am to 8pm seven days a week, and emergency callouts are dispatched overnight.",
   },
   {
     id: "puncture-repair",
     question: "Can a mobile fitter repair a puncture instead of replacing the tyre?",
-    answer: "Yes, where the damage meets BS AU 159 repairable criteria. A puncture inside the central 75% tread area qualifies for a permanent repair. Sidewall damage, shoulder damage, and bead damage are non-repairable, so a replacement tyre is fitted instead, balanced, and signed off the same visit.",
+    answer: "Yes, where the tyre meets the BS AU 159 repairable criteria. A puncture inside the central 75% of the tread area qualifies for a permanent repair. Sidewall, shoulder, or bead damage is not repairable under BS AU 159 and the tyre is replaced on the same visit.",
   },
   {
     id: "balance",
     question: "Do mobile tyre fitters balance the wheels?",
-    answer: "Yes. Every fitment includes on-site wheel balancing using calibrated balancing equipment carried in the mobile fitting van. Balancing corrects weight distribution around the wheel, removing vibration and uneven tread wear at motorway speed. The service forms part of the £20 flat fee, never an added extra.",
+    answer: "Yes, every fitment includes on-site wheel balancing using calibrated balancing equipment carried in the mobile fitting van. Balancing is part of the £20 flat fee and is never charged as an extra.",
   },
   {
     id: "run-flat",
     question: "Can mobile fitters replace run-flat tyres?",
-    answer: "Yes. Run-flat tyres are fitted on-site, with a TPMS reset performed wherever the vehicle requires one. The fitter matches the correct run-flat specification to your vehicle, torques each wheel to the manufacturer figure, and confirms the system reads correctly before leaving.",
+    answer: "Yes, run-flat tyres are fitted on-site with a TPMS reset performed where the vehicle requires one. Every fitting van carries the equipment to handle run-flat fitment without towing the vehicle to a garage.",
   },
   {
     id: "tpms",
     question: "Do mobile fitters handle TPMS sensors?",
-    answer: "Yes. TPMS reset is standard on every fitment in 2026, and sensor replacement is offered wherever a sensor has failed. Every van carries reset tools and replacement sensor stock for common UK vehicles, clearing the dashboard warning before the fitter leaves the site.",
+    answer: "Yes, TPMS reset is performed as standard on every fitment in 2026, and TPMS sensor replacement is available where a sensor has failed. Fitting vans carry replacement sensor stock for common UK vehicles.",
   },
   {
     id: "surface",
     question: "What surface does the mobile fitting van need to work on?",
-    answer: "A flat, hard surface with one metre of side clearance on the wheel being changed. Driveways, car parks, hard kerbsides, and the motorway hard shoulder under National Highways protocol all qualify. Soft grass, steep slopes, and tight spaces without working room do not.",
+    answer: "A flat, hard surface with a minimum of one metre side clearance on the side of the vehicle being worked on. Driveways, car parks, hard kerbsides, and motorway hard shoulder (under National Highways safety protocol) all qualify. Soft grass and steep slopes do not.",
   },
   {
     id: "present",
     question: "Do I have to be present for the mobile tyre fitting appointment?",
-    answer: "The vehicle owner or an authorised person reachable by phone is required during the booked window. The fitter needs access to the vehicle and the locking wheel nut key to complete the work. Full attendance throughout is not required once access and the key are arranged.",
+    answer: "The vehicle owner or an authorised person reachable by phone is required during the booked window. Vehicle access and the locking wheel nut key are needed for the fitter to begin work safely.",
   },
 ];

@@ -30,7 +30,7 @@ export function Hero({ phone, whatsapp }: { phone: string; whatsapp: string }) {
 
           <p
             id="hero-definition"
-            className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/90"
+            className="hero-definition mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/90"
           >
             {HERO.definition}
           </p>

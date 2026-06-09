@@ -311,7 +311,7 @@ export function Costs() {
     <section className="bg-background py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-4">
         <SectionHeading title="Mobile Tyre Fitting Costs and What's Included" />
-        <p className="mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
+        <p className="pricing-summary mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
           £20 flat fitting fee per tyre
           <span className="mt-1 block text-lg font-bold text-accent">No call-out charge</span>
         </p>
