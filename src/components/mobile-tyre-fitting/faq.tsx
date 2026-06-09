@@ -24,7 +24,7 @@ export function Faq({
 
   return (
     <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow={eyebrow} title={title} />
         <div className="mt-8 divide-y border-y">
           {faqs.map((f) => (

@@ -31,7 +31,7 @@ import {
 export function WhyGarage() {
   return (
     <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Why Mobile Tyre Fitting Replaces the Garage Visit
         </h2>
@@ -51,7 +51,7 @@ export function WhyGarage() {
 export function Problems() {
   return (
     <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="On-site"
           title="Tyre Problems Solved On-Site"
@@ -81,7 +81,7 @@ export function Problems() {
 export function Benefits() {
   return (
     <section className="bg-primary py-16 text-primary-foreground sm:py-24">
-      <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
           What You Get with Mobile Tyre Fitting
         </h2>
@@ -110,7 +110,7 @@ export function Benefits() {
 export function Process() {
   return (
     <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Step by step"
           title="How the Mobile Tyre Fitting Process Works"
@@ -148,7 +148,7 @@ export function Process() {
 export function Availability() {
   return (
     <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="24/7 Mobile Tyre Fitting Availability" />
         <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
           {/* Hours model */}
@@ -182,7 +182,7 @@ export function Availability() {
 export function SpecialistServices() {
   return (
     <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="On every van"
           title="Specialist Mobile Tyre Services on Every Van"
@@ -215,7 +215,7 @@ export function SpecialistServices() {
 export function BrandTiers() {
   return (
     <section className="bg-secondary py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           title="Tyre Brands Fitted by Our Mobile Technicians"
           subtitle="Our fitters carry three transparent tiers of tyre, matched to budget, mileage, and vehicle type, with no pressure to trade up."
@@ -257,7 +257,7 @@ export function BrandTiers() {
 export function VehiclesDrivers() {
   return (
     <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-5 lg:gap-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-5 lg:gap-12">
         <div className="lg:col-span-2">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
             Vehicles and Drivers We Serve
@@ -309,7 +309,7 @@ export function VehiclesDrivers() {
 export function Costs() {
   return (
     <section className="bg-background py-16 sm:py-24">
-      <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Mobile Tyre Fitting Costs and What's Included" />
         <p className="pricing-summary mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
           £20 flat fitting fee per tyre
@@ -362,7 +362,7 @@ export function Costs() {
 export function WhyChoose() {
   return (
     <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Why Drivers Across the UK Choose Tyre Fitting Near Me Ltd" />
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
           {WHY_TILES.map((tile) => (
@@ -391,7 +391,7 @@ export function WhyChoose() {
 export function Checklist() {
   return (
     <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What to Have Ready Before the Technician Arrives
         </h2>
@@ -422,7 +422,7 @@ export function Checklist() {
 export function AreasCoverage() {
   return (
     <section className="bg-secondary py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Mobile Tyre Fitting Coverage Across the UK" subtitle={AREAS_INTRO} />
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {AREAS.map((area) => (
@@ -462,7 +462,7 @@ export function AreasCoverage() {
 export function CaseStudy() {
   return (
     <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
           <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
             {CASE_STUDY.label}
