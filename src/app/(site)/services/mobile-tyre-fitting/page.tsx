@@ -36,7 +36,7 @@ import { PROCESS_STEPS, FAQS, AREAS } from "@/lib/mobile-tyre-fitting-content";
 // Statically generated, revalidated hourly (ISR) like the rest of the site.
 export const revalidate = 3600;
 
-const PAGE_PATH = "/mobile-tyre-fitting";
+const PAGE_PATH = "/services/mobile-tyre-fitting";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
 
 export async function generateMetadata(): Promise<Metadata> {

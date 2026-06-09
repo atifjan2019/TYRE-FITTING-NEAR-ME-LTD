@@ -7,7 +7,7 @@ import { HERO } from "@/lib/mobile-tyre-fitting-content";
 const CRUMBS = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },
-  { name: "Mobile Tyre Fitting", path: "/mobile-tyre-fitting" },
+  { name: "Mobile Tyre Fitting", path: "/services/mobile-tyre-fitting" },
 ];
 
 /**
