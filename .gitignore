@@ -50,6 +50,7 @@ pnpm-debug.log*
 
 # internal working notes (not for the repo)
 /PROJECT-NOTES.md
+/WORK-LOG.md
 
 # vercel / build tooling
 /.vercel
