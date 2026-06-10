@@ -27,12 +27,9 @@ export async function generateStaticParams() {
     where: { published: true },
     select: { slug: true },
   });
-  // `mobile-tyre-fitting` has its own static route (services/mobile-tyre-fitting),
-  // which takes precedence over this dynamic segment. Exclude it here so the two
-  // don't both try to build the same path.
-  return services
-    .filter((s) => s.slug !== "mobile-tyre-fitting")
-    .map((s) => ({ service: s.slug }));
+  // Every published service is rendered dynamically from the database through
+  // this single route. There are no bespoke static service pages.
+  return services.map((s) => ({ service: s.slug }));
 }
 
 export async function generateMetadata({
