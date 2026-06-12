@@ -36,7 +36,7 @@ export const TYRE_BRAND_GROUPS: { tier: string; blurb: string; brands: string[] 
 ];
 
 // ---------------------------------------------------------------------------
-// Section 5 - Mobile tyre services cluster (11 cards, Battery Replacement removed)
+// Section 5 - Mobile tyre services cluster (Battery Replacement and Home Tyre Fitting removed)
 // ---------------------------------------------------------------------------
 export const MOBILE_SERVICES: {
   title: string;
@@ -112,21 +112,8 @@ export const MOBILE_SERVICES: {
     ],
   },
   {
-    title: "Home Tyre Fitting",
-    slug: "home-tyre-fitting",
-    hypernym: "Mobile Vehicle Repair Service",
-    icon: "house",
-    description:
-      "We fit tyres on your driveway or outside your home for drivers who would rather not visit a garage, working around your schedule, seven days a week.",
-    eav: [
-      "Location: home driveway or kerbside",
-      "Booking: same-day and scheduled slots",
-      "Convenience: no garage visit, no waiting room",
-    ],
-  },
-  {
     title: "24/7 Emergency Tyre Fitting",
-    slug: "24-7-emergency-tyre-fitting",
+    slug: "emergency-tyre-fitting",
     hypernym: "Roadside Assistance Service",
     icon: "siren",
     description:

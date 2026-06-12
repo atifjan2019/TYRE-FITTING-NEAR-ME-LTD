@@ -1,0 +1,465 @@
+import Link from "next/link";
+import { Check, X } from "lucide-react";
+import { Icon } from "@/components/icon";
+import { SectionHeading } from "@/components/sections/section-heading";
+import {
+  DOWNTIME,
+  LOAD_RATING_INTRO,
+  LOAD_RATING_YES,
+  LOAD_RATING_NO,
+  LOAD_RATING_CLOSE,
+  BENEFITS,
+  PROCESS_STEPS,
+  FLEET,
+  MODELS,
+  MODELS_NOTE,
+  TYRE_TIERS,
+  TYRE_OPTIONS_NOTE,
+  COST_INCLUDED,
+  COST_CALLOUT,
+  WHY_TILES,
+  CHECKLIST,
+  CHECKLIST_NOTE,
+  AREAS_INTRO,
+  AREAS,
+  CASE_STUDY,
+} from "@/lib/van-tyre-fitting-content";
+
+/* ===========================================================================
+   Section 2 - Why van downtime costs more than the tyres (prose)
+   =========================================================================== */
+export function WhyDowntime() {
+  return (
+    <section className="bg-background py-12 sm:py-20">
+      <div className="mx-auto max-w-3xl px-4">
+        <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+          {DOWNTIME.heading}
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+          {DOWNTIME.paras.map((p) => (
+            <p key={p.slice(0, 24)}>{p}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 3 - Van tyres are not car tyres (SIGNATURE comparison)
+   Two-column C-rated (green) vs standard car tyre on a van (red). Crawlable
+   HTML, carrying class "load-rating-explainer" for the WebPage speakable schema.
+   =========================================================================== */
+export function LoadRating() {
+  return (
+    <section className="bg-secondary py-12 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeading
+          eyebrow="Load ratings explained"
+          title="Van Tyres Are Not Car Tyres: Load Ratings Explained"
+          subtitle={LOAD_RATING_INTRO}
+        />
+
+        <div className="load-rating-explainer mt-10 grid gap-6 lg:grid-cols-2">
+          {/* C-rated van tyre (green) */}
+          <div className="rounded-2xl border border-[var(--color-success)]/30 bg-card p-6 shadow-sm">
+            <div className="flex items-center gap-3 border-b border-[var(--color-success)]/20 pb-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[var(--color-success)]/10 text-[var(--color-success)]">
+                <Check className="h-6 w-6" aria-hidden="true" />
+              </span>
+              <h3 className="font-heading text-xl font-bold text-[var(--color-success)]">C-Rated Van Tyre</h3>
+            </div>
+            <ul className="mt-5 space-y-3">
+              {LOAD_RATING_YES.map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-success)]" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Standard car tyre on a van (red) */}
+          <div className="rounded-2xl border border-destructive/30 bg-card p-6 shadow-sm">
+            <div className="flex items-center gap-3 border-b border-destructive/20 pb-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-destructive/10 text-destructive">
+                <X className="h-6 w-6" aria-hidden="true" />
+              </span>
+              <h3 className="font-heading text-xl font-bold text-destructive">Standard Car Tyre on a Van</h3>
+            </div>
+            <ul className="mt-5 space-y-3">
+              {LOAD_RATING_NO.map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm">
+                  <X className="mt-0.5 h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 leading-relaxed text-foreground/80">
+          {LOAD_RATING_CLOSE}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 4 - What you get (trust tile grid) + emergency-page link
+   =========================================================================== */
+export function WhatYouGet() {
+  return (
+    <section className="bg-primary py-16 text-primary-foreground sm:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="text-center font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
+          What You Get with Mobile Van Tyre Fitting
+        </h2>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {BENEFITS.map((b) => (
+            <div key={b.stat + b.body} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
+              <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent text-accent-foreground">
+                <Icon name={b.icon} className="h-6 w-6" />
+              </span>
+              <p className="mt-4 font-heading text-2xl font-extrabold">{b.stat}</p>
+              <p className="mt-2 text-sm text-primary-foreground/80">{b.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mx-auto mt-10 max-w-3xl text-center leading-relaxed text-primary-foreground/90">
+          A van that fails on the road reaches the same fitter through our{" "}
+          <Link href="/services/emergency-tyre-fitting" className="font-semibold text-accent hover:underline">
+            emergency tyre fitting
+          </Link>{" "}
+          service, with a 30 to 60 minute typical response and priority for fleet account vans.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 5 - How van tyre fitting works (drives HowTo schema)
+   =========================================================================== */
+export function Process() {
+  return (
+    <section className="bg-background py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeading eyebrow="Step by step" title="How Mobile Van Tyre Fitting Works" />
+        <ol className="mt-12 space-y-8">
+          {PROCESS_STEPS.map((step, i) => (
+            <li key={step.title} className="relative flex gap-4 sm:gap-6">
+              <div className="flex flex-col items-center">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent font-heading text-lg font-bold text-accent-foreground">
+                  {i + 1}
+                </span>
+                {i < PROCESS_STEPS.length - 1 && (
+                  <span className="mt-1 w-px grow bg-border" aria-hidden="true" />
+                )}
+              </div>
+              <div className="pb-2">
+                <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-primary">
+                  <Icon name={step.icon} className="h-5 w-5 text-accent" />
+                  Step {i + 1}: {step.title}
+                </h3>
+                <p className="mt-2 text-muted-foreground">{step.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 6 - Fleet tyre fitting (distinct navy B2B card + mini-CTA)
+   =========================================================================== */
+export function Fleet() {
+  return (
+    <section className="bg-background py-12 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="overflow-hidden rounded-3xl bg-primary p-8 text-primary-foreground shadow-lg sm:p-12">
+          <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground/90">
+            For fleet managers
+          </span>
+          <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
+            {FLEET.heading}
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg text-primary-foreground/90">{FLEET.intro}</p>
+
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            {FLEET.points.map((point) => (
+              <li key={point} className="flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/5 p-4 text-sm">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-whatsapp)]" aria-hidden="true" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <Link
+              href={FLEET.ctaHref}
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-accent px-6 font-heading text-base font-bold text-accent-foreground transition-transform hover:scale-[1.02]"
+            >
+              {FLEET.ctaLabel}
+            </Link>
+            <p className="text-sm text-primary-foreground/80">{FLEET.phoneLine}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 7 - Vans and models covered (tag grid)
+   =========================================================================== */
+export function ModelsCovered() {
+  return (
+    <section className="bg-secondary py-12 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeading title="Vans Covered up to 3.5 Tonnes" />
+        <ul className="mt-8 flex flex-wrap justify-center gap-3">
+          {MODELS.map((model) => (
+            <li
+              key={model}
+              className="flex items-center gap-2 rounded-full border bg-card px-4 py-2 text-sm font-semibold text-primary shadow-sm"
+            >
+              <Icon name="bus" className="h-4 w-4 text-accent" />
+              {model}
+            </li>
+          ))}
+        </ul>
+        <p className="mx-auto mt-8 max-w-3xl text-center leading-relaxed text-muted-foreground">
+          {MODELS_NOTE}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 8 - Van tyre options (three commercial tiers)
+   =========================================================================== */
+export function TyreOptions() {
+  return (
+    <section className="bg-background py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeading title="Commercial Van Tyres Fitted: Premium to Budget" />
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {TYRE_TIERS.map((t) => (
+            <div key={t.tier} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+              <h3 className="font-heading text-xl font-bold text-primary">{t.tier}</h3>
+              <p className="mt-1 text-sm font-semibold text-accent">{t.brands}</p>
+              <p className="mt-3 text-sm text-muted-foreground">{t.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-secondary p-6 leading-relaxed text-muted-foreground">
+          {TYRE_OPTIONS_NOTE}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 9 - Pricing
+   =========================================================================== */
+export function Costs() {
+  return (
+    <section className="bg-secondary py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeading title="Van Tyre Fitting Cost and What's Included" />
+        <p className="pricing-summary mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
+          £20 flat fitting fee per tyre
+          <span className="mt-1 block text-lg font-bold text-accent">
+            Tyre priced by size, tier and load rating, quoted before booking
+          </span>
+        </p>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border bg-card p-6 shadow-sm">
+          <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-primary">
+            <Check className="h-5 w-5 text-[var(--color-success)]" aria-hidden="true" />
+            The £20 fitting fee covers
+          </h3>
+          <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+            {COST_INCLUDED.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-success)]" aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6">
+          <h3 className="font-heading text-lg font-bold text-primary">{COST_CALLOUT.heading}</h3>
+          <p className="mt-2 leading-relaxed text-muted-foreground">{COST_CALLOUT.body}</p>
+          <p className="mt-3 font-semibold text-primary">{COST_CALLOUT.freshness}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 10 - Emergency van callouts (bridge, links to emergency + repair)
+   =========================================================================== */
+export function EmergencyBridge() {
+  return (
+    <section className="bg-background py-12 sm:py-20">
+      <div className="mx-auto max-w-3xl px-4">
+        <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+          Van Breakdown? Emergency Tyre Fitting 24/7
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+          <p>
+            A loaded van with a blowout on a delivery run gets the emergency treatment, with a 30 to 60
+            minute typical response, 24 hours a day, 365 days a year.
+          </p>
+          <p>
+            A roadside repair is offered where the tyre passes the BS AU 159 checks through our{" "}
+            <Link href="/services/mobile-tyre-repair" className="font-semibold text-accent hover:underline">
+              mobile tyre repair
+            </Link>{" "}
+            service, and a replacement is fitted at the roadside where the damage fails assessment. See the{" "}
+            <Link href="/services/emergency-tyre-fitting" className="font-semibold text-accent hover:underline">
+              emergency tyre fitting
+            </Link>{" "}
+            page for the full callout process. Fleet account vans get priority dispatch.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 11 - Why operators choose us (stat tiles).
+   Brand mention 1 in H2, brand mention 2 in the lead line.
+   =========================================================================== */
+export function WhyChoose() {
+  return (
+    <section className="bg-secondary py-12 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeading title="Why Van Operators Choose Tyre Fitting Near Me Ltd" />
+        <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-muted-foreground">
+          Tyre Fitting Near Me Ltd is a dedicated van and fleet specialist, where national chains fold vans
+          into a generic car-fitting page with no load-rating detail at all.
+        </p>
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
+          {WHY_TILES.map((tile) => (
+            <div key={tile.stat + tile.label} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+              <p className="font-heading text-2xl font-extrabold text-accent sm:text-3xl">{tile.stat}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{tile.label}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 text-center font-medium text-primary">
+          Depot and site fitting kills the downtime a garage visit creates, backed by a 12-month workmanship
+          guarantee.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 12 - Before the fitter arrives (checklist)
+   =========================================================================== */
+export function Checklist() {
+  return (
+    <section className="bg-background py-12 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+          What to Have Ready Before the Fitter Arrives
+        </h2>
+        <ol className="mt-8 space-y-5">
+          {CHECKLIST.map((item, i) => (
+            <li key={item.title} className="flex gap-4">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-accent font-heading text-sm font-bold text-accent-foreground">
+                {i + 1}
+              </span>
+              <div>
+                <p className="font-heading font-bold text-primary">{item.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-8 rounded-2xl border border-l-4 border-l-primary bg-secondary p-6 leading-relaxed text-muted-foreground">
+          {CHECKLIST_NOTE}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 13 - Coverage across the UK (area cards)
+   =========================================================================== */
+export function AreasCoverage() {
+  return (
+    <section className="bg-secondary py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <SectionHeading title="Van Tyre Fitting Coverage Across the UK" subtitle={AREAS_INTRO} />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {AREAS.map((area) => (
+            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+              <div className="flex items-start gap-2">
+                <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>
+              </div>
+              <span className="mt-3 inline-block w-fit rounded-full bg-primary/5 px-3 py-1 text-sm font-semibold text-primary">
+                {area.featured}
+              </span>
+              <p className="mt-3 text-sm text-muted-foreground">{area.cities.join(", ")}</p>
+              <Link href={area.href} className="mt-4 text-sm font-semibold text-accent hover:underline">
+                View {area.region} &rarr;
+              </Link>
+            </div>
+          ))}
+        </div>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-muted-foreground">
+          City pages carry local response times and the nearest fitter. See our{" "}
+          <Link href="/areas" className="font-medium text-accent hover:underline">areas we cover</Link>{" "}
+          for your exact postcode.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================================
+   Section 14 - Illustrative scenario (timestamps card)
+   =========================================================================== */
+export function CaseStudy() {
+  return (
+    <section className="bg-background py-12 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
+          <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
+            {CASE_STUDY.label}
+          </span>
+          <h2 className="mt-4 font-heading text-2xl font-extrabold tracking-tight text-primary sm:text-3xl">
+            Van Tyre Fitting in Action
+          </h2>
+          <p className="mt-4 leading-relaxed text-foreground/80">{CASE_STUDY.body}</p>
+
+          <div className="mt-6 grid grid-cols-3 gap-3 border-t pt-6 text-center">
+            {CASE_STUDY.stats.map((s) => (
+              <div key={s.time}>
+                <p className="font-heading text-xl font-extrabold text-accent sm:text-2xl">{s.time}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm font-medium text-muted-foreground">{CASE_STUDY.meta}</p>
+        </div>
+      </div>
+    </section>
+  );
+}

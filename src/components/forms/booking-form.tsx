@@ -27,11 +27,13 @@ export function BookingForm({
   defaultService,
   defaultPostcode,
   leadKey,
+  messagePlaceholder,
 }: {
   phone?: string;
   defaultService?: string;
   defaultPostcode?: string;
   leadKey?: string;
+  messagePlaceholder?: string;
 }) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -235,7 +237,10 @@ export function BookingForm({
             {...register("message")}
             className="mt-1.5"
             rows={3}
-            placeholder="Vehicle make/model, what happened, best time to call…"
+            placeholder={
+              messagePlaceholder ??
+              "Vehicle make/model, what happened, best time to call…"
+            }
           />
         </div>
 
