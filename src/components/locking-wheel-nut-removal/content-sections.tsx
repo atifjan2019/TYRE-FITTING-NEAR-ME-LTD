@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Check, X } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { ComparisonBlock } from "@/components/sections/comparison-block";
 import {
   PROBLEMS_INTRO,
   PROBLEMS,
@@ -28,16 +28,16 @@ import {
    =========================================================================== */
 export function WhyProblems() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Common causes"
           title="Why Your Locking Wheel Nut Will Not Come Off"
           subtitle={PROBLEMS_INTRO}
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {PROBLEMS.map((c) => (
-            <div key={c.name} className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={c.name} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/5 text-primary">
                 <Icon name={c.icon} className="h-6 w-6" />
               </span>
@@ -59,7 +59,7 @@ export function WhyProblems() {
    =========================================================================== */
 export function NoDamagePromise() {
   return (
-    <section className="no-damage-promise bg-secondary py-12 sm:py-20">
+    <section className="no-damage-promise section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="No-damage guarantee"
@@ -67,47 +67,13 @@ export function NoDamagePromise() {
           subtitle={NO_DAMAGE_LEAD}
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {/* Our specialist extraction (green) */}
-          <div className="rounded-2xl border border-[var(--color-success)]/30 bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-[var(--color-success)]/20 pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[var(--color-success)]/10 text-[var(--color-success)]">
-                <Check className="h-6 w-6" aria-hidden="true" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-[var(--color-success)]">Our specialist extraction</h3>
-            </div>
-            <ul className="mt-5 space-y-3">
-              {NO_DAMAGE_YES.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-success)]" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* DIY kits and unsafe methods (red) */}
-          <div className="rounded-2xl border border-destructive/30 bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-destructive/20 pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-destructive/10 text-destructive">
-                <X className="h-6 w-6" aria-hidden="true" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-destructive">DIY kits and unsafe methods</h3>
-            </div>
-            <ul className="mt-5 space-y-3">
-              {NO_DAMAGE_NO.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <X className="mt-0.5 h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 leading-relaxed text-foreground/80">
-          {NO_DAMAGE_PROSE}
-        </p>
+        <ComparisonBlock
+          className="mt-10"
+          left={{ title: "Our specialist extraction", items: NO_DAMAGE_YES }}
+          right={{ title: "DIY kits and unsafe methods", items: NO_DAMAGE_NO }}
+          rightMode="cross"
+          caption={NO_DAMAGE_PROSE}
+        />
       </div>
     </section>
   );
@@ -118,8 +84,8 @@ export function NoDamagePromise() {
    =========================================================================== */
 export function AfterRemoval() {
   return (
-    <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="section-pad bg-background">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What Happens to the Nut After Removal
         </h2>
@@ -137,7 +103,7 @@ export function AfterRemoval() {
    =========================================================================== */
 export function Process() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow="Step by step" title="How Mobile Locking Wheel Nut Removal Works" />
         <ol className="mt-12 space-y-8">
@@ -172,8 +138,8 @@ export function Process() {
    =========================================================================== */
 export function ClusterBridge() {
   return (
-    <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="section-pad bg-background">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Locking Nut Removal Plus the Tyre Work, One Visit
         </h2>
@@ -206,7 +172,7 @@ export function ClusterBridge() {
    =========================================================================== */
 export function VehiclesCovered() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-5 lg:gap-12">
         <div className="lg:col-span-2">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
@@ -229,13 +195,13 @@ export function VehiclesCovered() {
    =========================================================================== */
 export function Costs() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Locking Wheel Nut Removal Cost" />
         <p className="pricing-summary mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
           {PRICING_SUMMARY}
         </p>
-        <div className="mx-auto mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-8 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>{COST_PROSE}</p>
         </div>
       </div>
@@ -248,8 +214,8 @@ export function Costs() {
    =========================================================================== */
 export function Emergency() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="section-pad bg-secondary">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           24/7 and Emergency Locking Wheel Nut Removal
         </h2>
@@ -276,15 +242,15 @@ export function Emergency() {
    =========================================================================== */
 export function WhyChoose() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Why Drivers Choose Tyre Fitting Near Me Ltd for Removal" />
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-muted-foreground">
           Tyre Fitting Near Me Ltd earns the call on seven proof points.
         </p>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {PROOF_POINTS.map((point) => (
-            <div key={point} className="flex items-start gap-3 rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={point} className="surface-card surface-card-hover flex h-full items-start gap-3 p-5 sm:p-7">
               <Icon name="circle-check-big" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
               <p className="text-sm text-muted-foreground">{point}</p>
             </div>
@@ -300,7 +266,7 @@ export function WhyChoose() {
    =========================================================================== */
 export function Checklist() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What to Have Ready Before the Technician Arrives
@@ -327,12 +293,12 @@ export function Checklist() {
    =========================================================================== */
 export function AreasCoverage() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Locking Wheel Nut Removal Coverage Across the UK" subtitle={AREAS_INTRO} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
-            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={area.region} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <div className="flex items-start gap-2">
                 <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>
@@ -362,9 +328,9 @@ export function AreasCoverage() {
    =========================================================================== */
 export function CaseStudy() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
+        <div className="surface-card p-5 sm:p-8">
           <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
             {CASE_STUDY.label}
           </span>

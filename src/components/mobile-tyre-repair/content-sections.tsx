@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { ComparisonBlock } from "@/components/sections/comparison-block";
 import {
   ELIGIBLE_YES,
   ELIGIBLE_NO,
@@ -57,8 +58,8 @@ function renderChecklistTitle(title: string) {
    =========================================================================== */
 export function WhyDriving() {
   return (
-    <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4">
+    <section className="section-pad bg-background">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Why Driving on a Puncture Costs More Than the Repair
         </h2>
@@ -91,7 +92,7 @@ export function WhyDriving() {
    =========================================================================== */
 export function Eligibility() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="BS AU 159"
@@ -99,52 +100,22 @@ export function Eligibility() {
           subtitle="British Standard BS AU 159 defines exactly when a tyre repair is safe and legal, and every callout starts with this assessment."
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {/* Repairable (green) */}
-          <div className="rounded-2xl border border-[var(--color-success)]/30 bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-[var(--color-success)]/20 pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[var(--color-success)]/10 text-[var(--color-success)]">
-                <Check className="h-6 w-6" aria-hidden="true" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-[var(--color-success)]">Repairable</h3>
-            </div>
-            <ul className="mt-5 space-y-3">
-              {ELIGIBLE_YES.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-success)]" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Not repairable (red) */}
-          <div className="rounded-2xl border border-destructive/30 bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-destructive/20 pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-destructive/10 text-destructive">
-                <X className="h-6 w-6" aria-hidden="true" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-destructive">Not repairable</h3>
-            </div>
-            <ul className="mt-5 space-y-3">
-              {ELIGIBLE_NO.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <X className="mt-0.5 h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 text-center leading-relaxed text-foreground/80">
-          Where the tyre fails assessment, the repair fee is waived against a replacement
-          fitted on the same visit through our{" "}
-          <Link href="/services/mobile-tyre-fitting" className="font-semibold text-accent hover:underline">
-            mobile tyre fitting
-          </Link>{" "}
-          service.
-        </p>
+        <ComparisonBlock
+          className="mt-10"
+          left={{ title: "Repairable", items: ELIGIBLE_YES }}
+          right={{ title: "Not repairable", items: ELIGIBLE_NO }}
+          rightMode="cross"
+          caption={
+            <>
+              Where the tyre fails assessment, the repair fee is waived against a replacement
+              fitted on the same visit through our{" "}
+              <Link href="/services/mobile-tyre-fitting" className="font-semibold text-accent hover:underline">
+                mobile tyre fitting
+              </Link>{" "}
+              service.
+            </>
+          }
+        />
       </div>
     </section>
   );
@@ -155,16 +126,16 @@ export function Eligibility() {
    =========================================================================== */
 export function WhatYouGet() {
   return (
-    <section className="bg-primary py-16 text-primary-foreground sm:py-24">
+    <section className="section-pad bg-primary text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
           What You Get with Every Mobile Puncture Repair
         </h2>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {BENEFITS.map((b) => (
             <div
               key={b.stat + b.body}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"
+              className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center sm:p-7"
             >
               <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent text-accent-foreground">
                 <Icon name={b.icon} className="h-6 w-6" />
@@ -184,7 +155,7 @@ export function WhatYouGet() {
    =========================================================================== */
 export function Process() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow="Step by step" title="How the Mobile Puncture Repair Process Works" />
         <ol className="mt-12 space-y-8">
@@ -218,11 +189,11 @@ export function Process() {
    =========================================================================== */
 export function Availability() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="24/7 Mobile Puncture Repair, Including Roadside" />
-        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
-          <dl className="divide-y divide-border rounded-2xl border bg-card p-2 shadow-sm">
+        <div className="mt-10 grid gap-4 sm:gap-6 lg:grid-cols-2 lg:items-start">
+          <dl className="surface-card divide-y divide-border p-2">
             {AVAILABILITY.hours.map((row) => (
               <div key={row.label} className="flex flex-col gap-1 p-4 sm:flex-row sm:gap-4">
                 <dt className="font-heading font-bold text-primary sm:w-2/5">{row.label}</dt>
@@ -231,7 +202,7 @@ export function Availability() {
             ))}
           </dl>
 
-          <div className="rounded-2xl border border-l-4 border-l-accent bg-card p-6 shadow-sm">
+          <div className="surface-card border-l-4 border-l-accent p-5 sm:p-7">
             <h3 className="font-heading text-xl font-bold text-primary">{AVAILABILITY.pricingHeading}</h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">{AVAILABILITY.pricingBody}</p>
           </div>
@@ -247,16 +218,16 @@ export function Availability() {
    =========================================================================== */
 export function Causes() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Common causes"
           title="Slow Punctures, Nails, Screws and Pressure Loss"
           subtitle={CAUSES_INTRO}
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {CAUSES.map((c) => (
-            <div key={c.name} className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={c.name} className="surface-card flex h-full flex-col p-5 sm:p-7">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/5 text-primary">
                 <Icon name={c.icon} className="h-6 w-6" />
               </span>
@@ -276,8 +247,8 @@ export function Causes() {
    =========================================================================== */
 export function SealantVsRepair() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="section-pad bg-secondary">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Tyre Sealant Kits vs a Permanent Plug-Patch Repair
         </h2>
@@ -289,7 +260,7 @@ export function SealantVsRepair() {
             the vulcanised bond a permanent patch needs, turning a repairable tyre into a
             replacement.
           </p>
-          <p className="rounded-2xl border border-l-4 border-l-accent bg-card p-5 font-medium text-primary">
+          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
             Use a sealant only when stranded with no alternative, then book a professional
             assessment immediately and tell the technician sealant was used.
           </p>
@@ -310,7 +281,7 @@ export function SealantVsRepair() {
    =========================================================================== */
 export function Costs() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Mobile Puncture Repair Cost and What's Included" />
         <p className="pricing-summary mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
@@ -320,8 +291,8 @@ export function Costs() {
           </span>
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-primary">
               <Check className="h-5 w-5 text-[var(--color-success)]" aria-hidden="true" />
               What&apos;s included
@@ -335,7 +306,7 @@ export function Costs() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="font-heading text-lg font-bold text-primary">Quoted separately</h3>
             <ul className="mt-4 space-y-2.5">
               {COST_SEPARATE.map((item) => (
@@ -348,7 +319,7 @@ export function Costs() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-l-4 border-l-accent bg-secondary p-6">
+        <div className="surface-card mt-6 border-l-4 border-l-accent p-5 sm:p-7">
           <h3 className="font-heading text-lg font-bold text-primary">{COST_CALLOUT.heading}</h3>
           <p className="mt-2 leading-relaxed text-muted-foreground">{COST_CALLOUT.body}</p>
           <p className="mt-3 font-semibold text-primary">{COST_CALLOUT.freshness}</p>
@@ -363,7 +334,7 @@ export function Costs() {
    =========================================================================== */
 export function VehiclesCovered() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-5 lg:gap-12">
         <div className="lg:col-span-2">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
@@ -389,7 +360,7 @@ export function VehiclesCovered() {
                 </li>
               ))}
             </ul>
-            <p className="mt-5 rounded-xl bg-card p-4 text-sm text-muted-foreground">{VEHICLES_NOTE}</p>
+            <p className="surface-card mt-5 p-4 text-sm text-muted-foreground">{VEHICLES_NOTE}</p>
           </div>
           <div>
             <h3 className="font-heading text-lg font-bold text-primary">Drivers we serve</h3>
@@ -401,7 +372,7 @@ export function VehiclesCovered() {
                 </li>
               ))}
             </ul>
-            <p className="mt-5 rounded-xl border border-l-4 border-l-accent bg-card p-4 text-sm text-muted-foreground">
+            <p className="surface-card mt-5 border-l-4 border-l-accent p-4 text-sm text-muted-foreground">
               {(() => {
                 const phrase = "Run-flat tyres";
                 const idx = RUNFLAT_NOTE.indexOf(phrase);
@@ -432,7 +403,7 @@ export function VehiclesCovered() {
    =========================================================================== */
 export function WhyChoose() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Why Drivers Across the UK Choose Tyre Fitting Near Me Ltd" />
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-muted-foreground">
@@ -441,7 +412,7 @@ export function WhyChoose() {
         </p>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
           {WHY_TILES.map((tile) => (
-            <div key={tile.stat + tile.label} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+            <div key={tile.stat + tile.label} className="surface-card p-5 text-center sm:p-7">
               <p className="font-heading text-2xl font-extrabold text-accent sm:text-3xl">{tile.stat}</p>
               <p className="mt-2 text-sm text-muted-foreground">{tile.label}</p>
             </div>
@@ -460,7 +431,7 @@ export function WhyChoose() {
    =========================================================================== */
 export function Checklist() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What to Have Ready Before the Technician Arrives

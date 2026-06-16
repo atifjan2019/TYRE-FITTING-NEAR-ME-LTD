@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { ComparisonBlock } from "@/components/sections/comparison-block";
 import {
   COMPARE_RUNFLAT,
   COMPARE_CONVENTIONAL,
@@ -21,12 +22,12 @@ import {
    =========================================================================== */
 export function WhyReplace() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Why a Punctured Run-Flat Usually Needs Replacing, Not Repairing
         </h2>
-        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p className="replacement-only">
             A run-flat that has carried the vehicle on a deflated tyre has stressed its
             reinforced sidewall, so the internal structure is often compromised and
@@ -55,43 +56,13 @@ export function WhyReplace() {
             A neutral decision aid. Neither tyre is wrong, the right choice depends on the
             vehicle and how it is set up.
           </p>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            {/* Run-flat */}
-            <div className="rounded-2xl border bg-card p-6 shadow-sm">
-              <div className="flex items-center gap-3 border-b pb-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/5 text-primary">
-                  <Icon name="shield-check" className="h-6 w-6" />
-                </span>
-                <h4 className="font-heading text-xl font-bold text-primary">Run-Flat</h4>
-              </div>
-              <ul className="mt-5 space-y-3">
-                {COMPARE_RUNFLAT.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Conventional */}
-            <div className="rounded-2xl border bg-card p-6 shadow-sm">
-              <div className="flex items-center gap-3 border-b pb-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/5 text-primary">
-                  <Icon name="circle-dot" className="h-6 w-6" />
-                </span>
-                <h4 className="font-heading text-xl font-bold text-primary">Conventional</h4>
-              </div>
-              <ul className="mt-5 space-y-3">
-                {COMPARE_CONVENTIONAL.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ComparisonBlock
+            className="mt-8"
+            left={{ title: "Run-Flat", items: COMPARE_RUNFLAT }}
+            right={{ title: "Conventional", items: COMPARE_CONVENTIONAL }}
+            rightMode="dash"
+            recommendedPill={false}
+          />
         </div>
       </div>
     </section>
@@ -104,7 +75,7 @@ export function WhyReplace() {
    =========================================================================== */
 export function RunFlatRules() {
   return (
-    <section className="run-flat-rules bg-primary py-16 text-primary-foreground sm:py-24">
+    <section className="run-flat-rules section-pad bg-primary text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
           The Run-Flat Rules That Keep You Safe and Legal
@@ -113,11 +84,11 @@ export function RunFlatRules() {
           Run-flats carry rules conventional tyres do not, and getting them wrong is
           dangerous, so here is what a run-flat specialist checks.
         </p>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {RUNFLAT_RULES.map((rule) => (
             <div
               key={rule.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm"
+              className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm sm:p-7"
             >
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent text-accent-foreground">
                 <Icon name={rule.icon} className="h-6 w-6" />
@@ -152,12 +123,12 @@ export function RunFlatRules() {
    =========================================================================== */
 export function WhatYouGet() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="What You Get with Mobile Run-Flat Replacement" />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {BENEFITS.map((b) => (
-            <div key={b.stat + b.body} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+            <div key={b.stat + b.body} className="surface-card surface-card-hover flex h-full flex-col p-5 text-center sm:p-7">
               <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent text-accent-foreground">
                 <Icon name={b.icon} className="h-6 w-6" />
               </span>
@@ -187,7 +158,7 @@ export function WhatYouGet() {
    =========================================================================== */
 export function Process() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow="Step by step" title="How Mobile Run-Flat Tyre Replacement Works" />
         <ol className="mt-12 space-y-8">
@@ -221,12 +192,12 @@ export function Process() {
    =========================================================================== */
 export function SwitchAdvice() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Should You Replace Run-Flats With Conventional Tyres?
         </h2>
-        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
             A common question on BMW, MINI, and Mercedes is whether to switch from run-flats
             to conventional tyres, and the honest answer has two sides. Switching to
@@ -249,12 +220,12 @@ export function SwitchAdvice() {
    =========================================================================== */
 export function VehiclesCovered() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Vehicles and Run-Flat Types Covered
         </h2>
-        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
             Cars, vans up to 3.5 tonnes, 4x4s, and SUVs. BMW, MINI, and Mercedes ship
             run-flats as standard, and any vehicle supplied with them is covered. Every
@@ -291,12 +262,12 @@ export function VehiclesCovered() {
    =========================================================================== */
 export function TyresFitted() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Run-Flat Tyres Fitted: Premium and Mid-Range
         </h2>
-        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
             Premium run-flat ranges from Michelin, Continental, Pirelli, Bridgestone, and
             Goodyear, plus mid-range run-flat options, all manufacturer-approved and matched
@@ -305,7 +276,7 @@ export function TyresFitted() {
             confirmed against the VRN before fitting. All tyres are sourced from authorised
             UK distributors with the manufacturer warranty preserved.
           </p>
-          <p className="rounded-2xl border border-l-4 border-l-accent bg-card p-5 font-medium text-primary">
+          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
             Run-flats are fitted from £90, priced live from the VRN.
           </p>
         </div>
@@ -319,7 +290,7 @@ export function TyresFitted() {
    =========================================================================== */
 export function Cost() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Run-Flat Tyre Replacement Cost
@@ -330,7 +301,7 @@ export function Cost() {
             The run-flat itself priced live from the VRN
           </span>
         </p>
-        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
             Run-flats cost more than conventional tyres because the reinforced
             self-supporting sidewall costs more to build. The £20 flat fitting fee per tyre
@@ -353,12 +324,12 @@ export function Cost() {
    =========================================================================== */
 export function Emergency() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Run-Flat Warning On? Emergency Replacement 24/7
         </h2>
-        <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
             A run-flat warning means the run-on clock has started, so replacement runs
             24/7/365 with a 30 to 60 minute typical response through{" "}
@@ -392,18 +363,18 @@ export function WhyChoose() {
     "UK mainland coverage",
   ];
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Why Drivers Choose Tyre Fitting Near Me Ltd for Run-Flats" />
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-muted-foreground">
           Tyre Fitting Near Me Ltd is the only mobile run-flat specialist where rivals sell a
           catalogue and make you drive in.
         </p>
-        <ul className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2">
+        <ul className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 sm:gap-6">
           {points.map((point) => (
             <li
               key={point}
-              className="flex items-start gap-2.5 rounded-2xl border bg-card p-4 text-sm shadow-sm"
+              className="surface-card flex items-start gap-2.5 p-4 text-sm"
             >
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-success)]" aria-hidden="true" />
               <span>{point}</span>
@@ -438,7 +409,7 @@ function renderChecklistTitle(title: string) {
 
 export function Checklist() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What to Have Ready Before the Fitter Arrives
@@ -466,12 +437,12 @@ export function Checklist() {
    =========================================================================== */
 export function AreasCoverage() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Run-Flat Tyre Replacement Coverage Across the UK" subtitle={AREAS_INTRO} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
-            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={area.region} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <div className="flex items-start gap-2">
                 <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>
@@ -501,9 +472,9 @@ export function AreasCoverage() {
    =========================================================================== */
 export function CaseStudy() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
+        <div className="surface-card p-5 sm:p-8">
           <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
             {CASE_STUDY.label}
           </span>

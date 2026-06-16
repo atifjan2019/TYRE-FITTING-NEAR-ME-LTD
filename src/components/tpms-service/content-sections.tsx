@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { ComparisonBlock } from "@/components/sections/comparison-block";
 import {
   THREE_JOBS,
   VALVE_FACTS,
@@ -22,14 +23,14 @@ import {
    =========================================================================== */
 export function ThreeJobs() {
   return (
-    <section className="bg-background py-12 sm:py-16">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center font-heading text-2xl font-extrabold tracking-tight text-primary sm:text-3xl">
           The Three TPMS Jobs
         </h2>
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-6">
           {THREE_JOBS.map((job) => (
-            <div key={job.title} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+            <div key={job.title} className="surface-card surface-card-hover flex h-full flex-col p-5 text-center sm:p-7">
               <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-primary/5 text-primary">
                 <Icon name={job.icon} className="h-6 w-6" />
               </span>
@@ -49,8 +50,8 @@ export function ThreeJobs() {
    =========================================================================== */
 export function WhatIsTpms() {
   return (
-    <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4">
+    <section className="section-pad bg-secondary">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What Is a TPMS Service?
         </h2>
@@ -80,7 +81,7 @@ export function WhatIsTpms() {
    =========================================================================== */
 export function ValveVsSensor() {
   return (
-    <section className="valve-vs-sensor bg-secondary py-12 sm:py-20">
+    <section className="valve-vs-sensor section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Which one you need"
@@ -88,61 +89,14 @@ export function ValveVsSensor() {
           subtitle="The two jobs are confused constantly, and the difference decides whether the fix is cheap or costs more, so here is the honest distinction."
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {/* TPMS valve service */}
-          <div className="rounded-2xl border bg-card p-6 shadow-md">
-            <div className="flex items-center gap-3 border-b pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/5 text-primary">
-                <Icon name="circle-dot" className="h-6 w-6" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-primary">TPMS Valve Service</h3>
-            </div>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              Every direct TPMS sensor sits on a valve with a rubber grommet, a valve core, a
-              cap, and a retaining nut, all of which perish, corrode, or leak over time. A valve
-              service replaces that service pack. A perished grommet is a common cause of a slow
-              air leak, and the valve service is done as standard whenever a tyre is removed from
-              the rim.
-            </p>
-            <ul className="mt-5 space-y-3">
-              {VALVE_FACTS.map((fact) => (
-                <li key={fact} className="flex items-start gap-2.5 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  <span>{fact}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* TPMS sensor replacement */}
-          <div className="rounded-2xl border bg-card p-6 shadow-md">
-            <div className="flex items-center gap-3 border-b pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/5 text-primary">
-                <Icon name="gauge" className="h-6 w-6" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-primary">TPMS Sensor Replacement</h3>
-            </div>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              Each direct TPMS sensor contains a sealed battery that lasts 5 to 10 years and
-              cannot be replaced on its own, so when the battery dies or the sensor fails, the
-              complete sensor is replaced and relearned to the ECU.
-            </p>
-            <ul className="mt-5 space-y-3">
-              {SENSOR_FACTS.map((fact) => (
-                <li key={fact} className="flex items-start gap-2.5 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  <span>{fact}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 text-center leading-relaxed text-foreground/80">
-          A leaking valve needs a valve service, a dead sensor needs a replacement, and a quick
-          diagnostic tells you which before any money is spent. Pricing is held flat through 2026
-          for every standard appointment.
-        </p>
+        <ComparisonBlock
+          className="mt-10"
+          left={{ title: "TPMS Valve Service", items: VALVE_FACTS }}
+          right={{ title: "TPMS Sensor Replacement", items: SENSOR_FACTS }}
+          rightMode="dash"
+          recommendedPill={false}
+          caption="A leaking valve needs a valve service, a dead sensor needs a replacement, and a quick diagnostic tells you which before any money is spent. Pricing is held flat through 2026 for every standard appointment."
+        />
       </div>
     </section>
   );
@@ -153,8 +107,8 @@ export function ValveVsSensor() {
    =========================================================================== */
 export function WhyMot() {
   return (
-    <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4">
+    <section className="section-pad bg-secondary">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Why a TPMS Warning Light Fails Your MOT
         </h2>
@@ -178,7 +132,7 @@ export function WhyMot() {
    =========================================================================== */
 export function Process() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow="Step by step" title="How Mobile TPMS Service Works" />
         <ol className="mt-12 space-y-8">
@@ -212,8 +166,8 @@ export function Process() {
    =========================================================================== */
 export function WithEveryTyreChange() {
   return (
-    <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="section-pad bg-secondary">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           TPMS Valve Service With Every Tyre Change
         </h2>
@@ -244,12 +198,12 @@ export function WithEveryTyreChange() {
    =========================================================================== */
 export function DirectIndirect() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Direct and Indirect TPMS Explained" />
-        <dl className="mt-10 divide-y divide-border overflow-hidden rounded-2xl border bg-card shadow-sm">
+        <dl className="surface-card mt-10 divide-y divide-border overflow-hidden">
           {SYSTEMS.map((sys) => (
-            <div key={sys.name} className="flex flex-col gap-3 p-6 sm:flex-row sm:gap-6">
+            <div key={sys.name} className="flex flex-col gap-3 p-5 sm:flex-row sm:gap-6 sm:p-7">
               <dt className="flex items-center gap-3 sm:w-1/4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/5 text-primary">
                   <Icon name={sys.icon} className="h-6 w-6" />
@@ -273,20 +227,20 @@ export function DirectIndirect() {
    =========================================================================== */
 export function Costs() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="TPMS Service Cost" />
         <div className="mx-auto mt-8 max-w-2xl space-y-3">
           {PRICING_LINES.map((line) => (
             <p
               key={line}
-              className="pricing-summary rounded-2xl border border-l-4 border-l-accent bg-card p-5 text-center font-heading text-xl font-extrabold text-primary"
+              className="pricing-summary surface-card border-l-4 border-l-accent p-5 text-center font-heading text-xl font-extrabold text-primary"
             >
               {line}
             </p>
           ))}
         </div>
-        <div className="mt-10 space-y-5 text-lg leading-relaxed text-foreground/80">
+        <div className="prose-col mt-10 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
             A valve service is the low-cost perishable fix, a sensor replacement costs more
             because the whole sealed unit is replaced, and the diagnostic confirms which is
@@ -305,8 +259,8 @@ export function Costs() {
    =========================================================================== */
 export function VehiclesCovered() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4">
+    <section className="section-pad bg-background">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Vehicles and TPMS Systems Covered
         </h2>
@@ -337,16 +291,16 @@ export function WhyChoose() {
     "UK mainland coverage",
   ];
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Why Drivers Choose Tyre Fitting Near Me Ltd for TPMS" />
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-muted-foreground">
           Tyre Fitting Near Me Ltd is the only mobile TPMS service where every rival is
           garage-based.
         </p>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {points.map((point) => (
-            <div key={point} className="flex items-start gap-3 rounded-2xl border bg-card p-5 shadow-sm">
+            <div key={point} className="surface-card surface-card-hover flex h-full items-start gap-3 p-5 sm:p-7">
               <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
               <span className="text-sm text-foreground/80">{point}</span>
             </div>
@@ -381,7 +335,7 @@ function renderChecklistTitle(item: { title: string; link?: boolean }) {
 
 export function Checklist() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What to Have Ready Before the Technician Arrives
@@ -409,12 +363,12 @@ export function Checklist() {
    =========================================================================== */
 export function AreasCoverage() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="TPMS Service Coverage Across the UK" subtitle={AREAS_INTRO} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
-            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={area.region} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <div className="flex items-start gap-2">
                 <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>

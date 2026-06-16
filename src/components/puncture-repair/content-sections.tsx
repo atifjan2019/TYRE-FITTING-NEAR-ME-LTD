@@ -77,8 +77,8 @@ function renderChecklistTitle(title: string) {
    =========================================================================== */
 export function WhyGarage() {
   return (
-    <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="section-pad bg-background">
+      <div className="prose-col px-4">
         <Heading eyebrow="Why mobile" title="Why Mobile Puncture Repair Beats the Garage Queue" align="left" />
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
@@ -113,18 +113,18 @@ export function WhyGarage() {
    =========================================================================== */
 export function PunctureTypes() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-6xl px-4">
         <Heading
           eyebrow="What we repair"
           title="Tyre Punctures We Repair at Your Home, Work or Roadside"
           subtitle="Our fitters diagnose and repair the full range of puncture faults at the kerbside, from a screw in the tread to a slow leak no warning light explains."
         />
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
           {PUNCTURE_TYPES.map((p, i) => (
             <li
               key={p.label}
-              className={`flex gap-3 rounded-2xl border bg-card p-5 shadow-sm ${
+              className={`surface-card surface-card-hover flex h-full gap-3 p-5 sm:p-7 ${
                 i === PUNCTURE_TYPES.length - 1 ? "sm:col-span-2" : ""
               }`}
             >
@@ -149,7 +149,7 @@ export function PunctureTypes() {
    =========================================================================== */
 export function Repairability() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-6xl px-4">
         <Heading
           eyebrow="The standard"
@@ -158,7 +158,7 @@ export function Repairability() {
         />
 
         {/* Block A: featured-snippet target (40-50 words, standalone) + explainer */}
-        <div className="mt-6 max-w-3xl space-y-5 leading-relaxed">
+        <div className="prose-col mt-6 space-y-5 leading-relaxed">
           <p className="hero-definition text-lg font-medium text-foreground/90">
             A puncture qualifies for a permanent BS AU 159 repair when it sits within the
             central 75% of the tread, measures up to 6mm in diameter, and passes an
@@ -179,7 +179,7 @@ export function Repairability() {
         <RepairabilityDiagram />
 
         {/* Non-repairable list: two-column checklist with red X markers */}
-        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-secondary p-6">
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-secondary p-5 sm:p-7">
           <h3 className="font-heading text-lg font-bold text-primary">
             Punctures that never qualify, wherever they sit
           </h3>
@@ -216,7 +216,7 @@ function RepairabilityDiagram() {
     <figure
       role="img"
       aria-label="BS AU 159 tyre puncture repair zones, repairable central tread area versus non-repairable sidewall"
-      className="mx-auto mt-10 max-w-[560px] rounded-2xl border bg-card p-5 shadow-sm"
+      className="mx-auto mt-10 max-w-[560px] surface-card p-5 sm:p-7"
     >
       <div className="flex h-20 overflow-hidden rounded-xl border text-center">
         <div className="flex basis-[12.5%] items-center justify-center text-[10px] font-bold" style={red}>
@@ -254,12 +254,12 @@ function RepairabilityDiagram() {
    =========================================================================== */
 export function RepairOrReplace() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-6xl px-4">
         <Heading eyebrow="The decision" title="Puncture Repair or New Tyre, How the Decision Is Made" />
 
         {/* Desktop / >=640px: real table */}
-        <div className="mx-auto mt-10 hidden max-w-[800px] overflow-hidden rounded-2xl border bg-card shadow-sm sm:block">
+        <div className="mx-auto mt-10 hidden max-w-[800px] overflow-hidden surface-card sm:block">
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b bg-primary/5">
@@ -283,7 +283,7 @@ export function RepairOrReplace() {
         {/* Mobile <640px: stacked label-value cards, never horizontal scroll */}
         <div className="mx-auto mt-10 grid max-w-md gap-4 sm:hidden">
           {DECISION_TABLE.map((row) => (
-            <div key={row.factor} className="rounded-2xl border bg-card p-4 shadow-sm">
+            <div key={row.factor} className="surface-card p-5">
               <p className="font-heading font-bold text-primary">{row.factor}</p>
               <dl className="mt-2 space-y-1 text-sm">
                 <div className="flex justify-between gap-3">
@@ -322,7 +322,7 @@ export function RepairOrReplace() {
    =========================================================================== */
 export function Process() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-3xl px-4">
         <Heading eyebrow="Step by step" title="How Our Mobile Puncture Repair Process Works" align="left" />
         <ol className="mt-10 space-y-8">
@@ -356,7 +356,7 @@ export function Process() {
    =========================================================================== */
 export function Pricing() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-6xl px-4">
         <Heading eyebrow="Pricing" title="Puncture Repair Cost, £39 With Nothing Added After" />
 
@@ -370,8 +370,8 @@ export function Pricing() {
           </span>
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+        <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 sm:gap-6">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-primary">
               <Check className="h-5 w-5 text-[var(--color-success)]" aria-hidden="true" />
               What&apos;s included in £39
@@ -385,7 +385,7 @@ export function Pricing() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="font-heading text-lg font-bold text-primary">Quoted separately</h3>
             <ul className="mt-4 space-y-2.5">
               {PRICE_EXCLUDED.map((item) => (
@@ -398,7 +398,7 @@ export function Pricing() {
           </div>
         </div>
 
-        <div className="mx-auto mt-8 max-w-3xl space-y-3 text-center leading-relaxed text-muted-foreground">
+        <div className="prose-col mt-8 space-y-3 leading-relaxed text-muted-foreground">
           <p>
             UK garage puncture repairs run £22 to £50 and require driving on the damaged
             tyre and waiting in a fitting bay. Mobile pricing includes the journey you no

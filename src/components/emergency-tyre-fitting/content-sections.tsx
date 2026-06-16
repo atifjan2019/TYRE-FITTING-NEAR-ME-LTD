@@ -31,7 +31,7 @@ import {
    =========================================================================== */
 export function SafetySteps() {
   return (
-    <section className="bg-primary py-16 text-primary-foreground sm:py-24">
+    <section className="section-pad bg-primary text-primary-foreground">
       <div className="mx-auto max-w-4xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
           Stranded with a Flat? Do These Five Things First
@@ -42,7 +42,7 @@ export function SafetySteps() {
           {SAFETY_STEPS.map((step, i) => (
             <li
               key={step.title}
-              className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 sm:gap-6"
+              className="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 sm:gap-6 sm:p-7"
             >
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent font-heading text-xl font-extrabold text-accent-foreground">
                 {i + 1}
@@ -67,16 +67,16 @@ export function SafetySteps() {
    =========================================================================== */
 export function Emergencies() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="What we handle"
           title="Tyre Emergencies Handled 24/7"
           subtitle="Every common roadside failure is covered, day or night, with the correct tyre sized from your registration before the van sets off."
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {EMERGENCIES.map((e) => (
-            <div key={e.name} className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={e.name} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/5 text-primary">
                 <Icon name={e.icon} className="h-6 w-6" />
               </span>
@@ -95,12 +95,12 @@ export function Emergencies() {
    =========================================================================== */
 export function WhatYouGet() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="What You Get with Emergency Tyre Fitting" />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {BENEFITS.map((b) => (
-            <div key={b.stat + b.body} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+            <div key={b.stat + b.body} className="surface-card flex h-full flex-col p-5 text-center sm:p-7">
               <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent text-accent-foreground">
                 <Icon name={b.icon} className="h-6 w-6" />
               </span>
@@ -109,7 +109,7 @@ export function WhatYouGet() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-10 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 text-center leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-10 max-w-3xl surface-card border-l-4 border-l-accent p-5 text-center leading-relaxed text-muted-foreground sm:p-7">
           {BENEFITS_NOTE_PREFIX}
           <Link href="/services/mobile-tyre-repair" className="font-semibold text-accent hover:underline">
             mobile tyre repair
@@ -126,7 +126,7 @@ export function WhatYouGet() {
    =========================================================================== */
 export function Process() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow="Step by step" title="How the Emergency Callout Works" />
         <ol className="mt-12 space-y-8">
@@ -160,7 +160,7 @@ export function Process() {
    =========================================================================== */
 export function ResponseTimes() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {RESPONSE.heading}
@@ -182,14 +182,14 @@ export function RepairOrReplace() {
   const phrase = "mobile tyre repair";
   const [before, after] = REPAIR.linkLine.split(phrase);
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {REPAIR.heading}
         </h2>
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>{REPAIR.intro}</p>
-          <p className="rounded-2xl border border-l-4 border-l-accent bg-card p-5 font-medium text-primary">
+          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
             {before}
             <Link href="/services/mobile-tyre-repair" className="font-semibold text-accent hover:underline">
               {phrase}
@@ -208,14 +208,14 @@ export function RepairOrReplace() {
    =========================================================================== */
 export function Pricing() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title={PRICING.heading} />
         <p className="pricing-summary mx-auto mt-6 max-w-3xl text-center font-heading text-xl font-extrabold text-primary sm:text-2xl">
           {PRICING.lead}
         </p>
 
-        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border bg-card p-6 shadow-sm">
+        <div className="mx-auto mt-10 max-w-3xl surface-card p-5 sm:p-7">
           <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-primary">
             <Check className="h-5 w-5 text-[var(--color-success)]" aria-hidden="true" />
             The £20 flat fitting fee covers
@@ -230,7 +230,7 @@ export function Pricing() {
           </ul>
         </div>
 
-        <p className="mx-auto mt-6 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-6 max-w-3xl surface-card border-l-4 border-l-accent p-5 leading-relaxed text-muted-foreground sm:p-7">
           {PRICING.closing}
         </p>
       </div>
@@ -243,7 +243,7 @@ export function Pricing() {
    =========================================================================== */
 export function VehiclesCovered() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-5 lg:gap-12">
         <div className="lg:col-span-2">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
@@ -260,13 +260,13 @@ export function VehiclesCovered() {
         <div className="lg:col-span-3">
           <ul className="grid gap-3 sm:grid-cols-2">
             {VEHICLES.map((v) => (
-              <li key={v.label} className="flex items-start gap-2.5 rounded-xl border bg-card p-4 text-sm shadow-sm">
+              <li key={v.label} className="flex items-start gap-2.5 surface-card p-4 text-sm">
                 <Icon name={v.icon} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <span>{v.label}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-5 rounded-xl border border-l-4 border-l-accent bg-secondary p-4 text-sm text-muted-foreground">
+          <p className="mt-5 surface-card border-l-4 border-l-accent p-4 text-sm text-muted-foreground">
             {VEHICLES_NOTE}
           </p>
         </div>
@@ -280,14 +280,14 @@ export function VehiclesCovered() {
    =========================================================================== */
 export function Nights() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {NIGHTS.heading}
         </h2>
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>{NIGHTS.body}</p>
-          <p className="rounded-2xl border border-l-4 border-l-accent bg-card p-5 font-medium text-primary">
+          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
             {NIGHTS.pricing}
           </p>
         </div>
@@ -302,7 +302,7 @@ export function Nights() {
    =========================================================================== */
 export function WhyChoose() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Why Stranded Drivers Call Tyre Fitting Near Me Ltd" />
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-muted-foreground">
@@ -311,7 +311,7 @@ export function WhyChoose() {
         </p>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
           {WHY_TILES.map((tile) => (
-            <div key={tile.stat + tile.label} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+            <div key={tile.stat + tile.label} className="surface-card p-5 text-center sm:p-7">
               <p className="font-heading text-2xl font-extrabold text-accent sm:text-3xl">{tile.stat}</p>
               <p className="mt-2 text-sm text-muted-foreground">{tile.label}</p>
             </div>
@@ -330,12 +330,12 @@ export function WhyChoose() {
    =========================================================================== */
 export function AreasCoverage() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Emergency Tyre Fitting Coverage Across the UK" subtitle={AREAS_INTRO} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
-            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={area.region} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <div className="flex items-start gap-2">
                 <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>
@@ -365,9 +365,9 @@ export function AreasCoverage() {
    =========================================================================== */
 export function CaseStudy() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
+        <div className="surface-card p-5 sm:p-8">
           <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
             {CASE_STUDY.label}
           </span>

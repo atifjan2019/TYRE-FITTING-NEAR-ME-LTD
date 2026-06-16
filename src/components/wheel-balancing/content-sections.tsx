@@ -64,16 +64,16 @@ function renderChecklistTitle(title: string) {
    =========================================================================== */
 export function SignsGrid() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Diagnose the vibration"
           title="Signs Your Wheels Need Balancing"
           subtitle={SIGNS_INTRO}
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {SIGNS.map((s) => (
-            <div key={s.name} className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={s.name} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/5 text-primary">
                 <Icon name={s.icon} className="h-6 w-6" />
               </span>
@@ -82,7 +82,7 @@ export function SignsGrid() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 leading-relaxed text-foreground/80">
+        <p className="mx-auto mt-8 max-w-3xl surface-card border-l-4 border-l-accent p-5 leading-relaxed text-foreground/80 sm:p-7">
           {SIGNS_HONESTY}
         </p>
       </div>
@@ -98,7 +98,7 @@ export function SignsGrid() {
    =========================================================================== */
 export function VsAlignment() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Two different faults"
@@ -106,7 +106,7 @@ export function VsAlignment() {
           subtitle={VS_ALIGNMENT_INTRO}
         />
 
-        <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border bg-card shadow-sm">
+        <div className="mx-auto mt-10 max-w-4xl overflow-hidden surface-card">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-sm">
               <caption className="sr-only">
@@ -140,7 +140,7 @@ export function VsAlignment() {
           </div>
         </div>
 
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 text-center font-medium leading-relaxed text-primary">
+        <p className="mx-auto mt-8 max-w-3xl surface-card border-l-4 border-l-accent p-5 text-center font-medium leading-relaxed text-primary sm:p-7">
           {VS_ALIGNMENT_CLOSE}
         </p>
       </div>
@@ -153,16 +153,16 @@ export function VsAlignment() {
    =========================================================================== */
 export function WhatYouGet() {
   return (
-    <section className="bg-primary py-16 text-primary-foreground sm:py-24">
+    <section className="section-pad bg-primary text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
           What You Get with Mobile Wheel Balancing
         </h2>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {BENEFITS.map((b) => (
             <div
               key={b.stat + b.body}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"
+              className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center sm:p-7"
             >
               <span className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent text-accent-foreground">
                 <Icon name={b.icon} className="h-6 w-6" />
@@ -172,7 +172,7 @@ export function WhatYouGet() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-6 text-center leading-relaxed text-primary-foreground/90">
+        <p className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-5 text-center leading-relaxed text-primary-foreground/90 sm:p-7">
           Balancing comes free with every tyre fitted through{" "}
           <Link href="/services/mobile-tyre-fitting" className="font-semibold text-accent hover:underline">
             mobile tyre fitting
@@ -193,7 +193,7 @@ export function WhatYouGet() {
    =========================================================================== */
 export function Process() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow="Step by step" title="How the Mobile Wheel Balancing Process Works" />
         <ol className="mt-12 space-y-8">
@@ -227,11 +227,11 @@ export function Process() {
    =========================================================================== */
 export function Availability() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="24/7 Mobile Wheel Balancing Across the UK" />
-        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
-          <dl className="divide-y divide-border rounded-2xl border bg-card p-2 shadow-sm">
+        <div className="mt-10 grid gap-4 sm:gap-6 lg:grid-cols-2 lg:items-start">
+          <dl className="divide-y divide-border surface-card p-2">
             {AVAILABILITY.hours.map((row) => (
               <div key={row.label} className="flex flex-col gap-1 p-4 sm:flex-row sm:gap-4">
                 <dt className="font-heading font-bold text-primary sm:w-2/5">{row.label}</dt>
@@ -240,7 +240,7 @@ export function Availability() {
             ))}
           </dl>
 
-          <div className="rounded-2xl border border-l-4 border-l-accent bg-card p-6 shadow-sm">
+          <div className="surface-card border-l-4 border-l-accent p-5 sm:p-7">
             <h3 className="font-heading text-xl font-bold text-primary">{AVAILABILITY.pricingHeading}</h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">{AVAILABILITY.pricingBody}</p>
           </div>
@@ -255,18 +255,18 @@ export function Availability() {
    =========================================================================== */
 export function WhenToBook() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading eyebrow="Triggers" title="When Wheels Need Balancing" subtitle={TRIGGERS_INTRO} />
         <ul className="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-2">
           {TRIGGERS.map((t) => (
-            <li key={t} className="flex items-start gap-2.5 rounded-xl border bg-card p-4 text-sm shadow-sm">
+            <li key={t} className="flex items-start gap-2.5 surface-card p-4 text-sm">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
               <span>{t}</span>
             </li>
           ))}
         </ul>
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-secondary p-6 leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-8 max-w-3xl surface-card border-l-4 border-l-accent p-5 leading-relaxed text-muted-foreground sm:p-7">
           {TRIGGERS_EV}
         </p>
       </div>
@@ -279,8 +279,8 @@ export function WhenToBook() {
    =========================================================================== */
 export function DynamicBalancing() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="section-pad bg-secondary">
+      <div className="prose-col px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {DYNAMIC.heading}
         </h2>
@@ -299,7 +299,7 @@ export function DynamicBalancing() {
    =========================================================================== */
 export function VehiclesCovered() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-5 lg:gap-12">
         <div className="lg:col-span-2">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
@@ -352,7 +352,7 @@ export function VehiclesCovered() {
    =========================================================================== */
 export function Costs() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Mobile Wheel Balancing Cost and What's Included" />
         <p className="pricing-summary mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
