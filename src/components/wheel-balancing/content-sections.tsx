@@ -420,7 +420,7 @@ export function WhyChoose() {
         </p>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
           {WHY_TILES.map((tile) => (
-            <div key={tile.stat + tile.label} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+            <div key={tile.stat + tile.label} className="surface-card p-5 text-center sm:p-7">
               <p className="font-heading text-2xl font-extrabold text-accent sm:text-3xl">{tile.stat}</p>
               <p className="mt-2 text-sm text-muted-foreground">{tile.label}</p>
             </div>
@@ -440,7 +440,7 @@ export function WhyChoose() {
    =========================================================================== */
 export function Checklist() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           What to Have Ready Before the Technician Arrives
@@ -458,7 +458,7 @@ export function Checklist() {
             </li>
           ))}
         </ol>
-        <p className="mt-8 rounded-2xl border border-l-4 border-l-primary bg-secondary p-6 leading-relaxed text-muted-foreground">
+        <p className="mt-8 surface-card border-l-4 border-l-primary p-5 leading-relaxed text-muted-foreground sm:p-7">
           {CHECKLIST_NOTE}
         </p>
       </div>
@@ -471,12 +471,12 @@ export function Checklist() {
    =========================================================================== */
 export function AreasCoverage() {
   return (
-    <section className="bg-secondary py-16 sm:py-24">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Mobile Wheel Balancing Coverage Across the UK" subtitle={AREAS_INTRO} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
-            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={area.region} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <div className="flex items-start gap-2">
                 <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>
@@ -506,9 +506,9 @@ export function AreasCoverage() {
    =========================================================================== */
 export function CaseStudy() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
+        <div className="surface-card p-5 sm:p-8">
           <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
             {CASE_STUDY.label}
           </span>

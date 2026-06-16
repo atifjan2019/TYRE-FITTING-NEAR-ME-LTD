@@ -498,7 +498,7 @@ export function Emergency() {
 
           <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {EMERGENCY_HOURS.map((row) => (
-              <div key={row.label} className="rounded-2xl border bg-card p-5 shadow-sm">
+              <div key={row.label} className="surface-card flex h-full flex-col p-5 sm:p-7">
                 <dt className="font-heading font-bold text-primary">{row.label}</dt>
                 <dd className="mt-1 text-sm text-muted-foreground">{row.value}</dd>
               </div>
@@ -515,15 +515,15 @@ export function Emergency() {
    =========================================================================== */
 export function VehiclesDrivers() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-6xl px-4">
         <Heading
           eyebrow="Who we serve"
           title="Puncture Repairs for Cars, Vans, SUVs, EVs and Fleets"
           subtitle="Each vehicle class is torqued and inflated to its own specification, applied correctly on every callout."
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="font-heading text-lg font-bold text-primary">Vehicles we repair</h3>
             <ul className="mt-4 space-y-2.5">
               {VEHICLES.map((v) => (
@@ -534,7 +534,7 @@ export function VehiclesDrivers() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="font-heading text-lg font-bold text-primary">Drivers we serve</h3>
             <ul className="mt-4 space-y-2.5">
               {DRIVERS.map((d) => (
@@ -556,12 +556,12 @@ export function VehiclesDrivers() {
    =========================================================================== */
 export function WhyChoose() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-6xl px-4">
         <Heading eyebrow="Why us" title="Why UK Drivers Choose Tyre Fitting Near Me Ltd for Puncture Repairs" />
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
           {WHY_TILES.map((tile) => (
-            <div key={tile.stat + tile.label} className="rounded-2xl border bg-card p-6 text-center shadow-sm">
+            <div key={tile.stat + tile.label} className="surface-card p-5 text-center sm:p-7">
               <p className="font-heading text-2xl font-extrabold text-accent sm:text-3xl">{tile.stat}</p>
               <p className="mt-2 text-sm text-muted-foreground">{tile.label}</p>
             </div>
@@ -584,7 +584,7 @@ export function WhyChoose() {
    =========================================================================== */
 export function Checklist() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-3xl px-4">
         <Heading eyebrow="Before we arrive" title="What to Have Ready Before Your Puncture Repair Appointment" align="left" />
         <ol className="mt-8 space-y-5">
@@ -603,7 +603,7 @@ export function Checklist() {
 
         {/* Bold safety warning as a distinct alert strip */}
         <div
-          className="mt-8 flex items-start gap-3 rounded-2xl border border-l-4 border-l-destructive p-5"
+          className="mt-8 flex items-start gap-3 rounded-2xl border border-l-4 border-l-destructive p-5 sm:p-7"
           style={{ backgroundColor: "color-mix(in srgb, var(--color-destructive) 8%, white)" }}
         >
           <TriangleAlert className="mt-0.5 h-5 w-5 shrink-0 text-destructive" aria-hidden="true" />
@@ -622,12 +622,12 @@ export function Checklist() {
    =========================================================================== */
 export function AreasCoverage() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-6xl px-4">
         <Heading eyebrow="Local to you" title="Mobile Puncture Repair Service Areas" subtitle={AREAS_INTRO} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
-            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={area.region} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <div className="flex items-start gap-2">
                 <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>
@@ -657,9 +657,9 @@ export function AreasCoverage() {
    =========================================================================== */
 export function CaseStudy() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-3xl px-4">
-        <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
+        <div className="surface-card p-5 sm:p-8">
           <p className="mb-2 text-sm font-bold uppercase tracking-wide text-accent">{CASE_STUDY.label}</p>
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-primary sm:text-3xl">
             Mobile Puncture Repair in Action
