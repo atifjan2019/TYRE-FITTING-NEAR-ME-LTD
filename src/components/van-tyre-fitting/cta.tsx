@@ -39,7 +39,7 @@ export function VanButtons({
 export function VanCtaBand({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <section className="bg-primary text-primary-foreground">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-16 text-center sm:py-20">
+      <div className="section-pad mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center">
         <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
         <p className="max-w-2xl text-lg text-primary-foreground/90">{subtitle}</p>
         <VanButtons className="w-full justify-center sm:w-auto" />
