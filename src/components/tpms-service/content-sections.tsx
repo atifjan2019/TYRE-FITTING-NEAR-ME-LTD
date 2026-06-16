@@ -398,9 +398,9 @@ export function AreasCoverage() {
    =========================================================================== */
 export function CaseStudy() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="rounded-2xl border bg-card p-6 shadow-md sm:p-8">
+        <div className="surface-card p-5 sm:p-8">
           <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-accent">
             {CASE_STUDY.label}
           </span>
