@@ -5,9 +5,9 @@
  * so the section components stay layout-only. British English throughout, no em
  * dashes (brand rule). Icon names map to src/components/icon.tsx.
  *
- * Pricing: PRICE is the £20 flat fitting fee per tyre. The optional Section 8
- * price-anchor line deliberately keeps the "[£XX]" placeholder, priced live
- * from the VRN before deploy.
+ * Pricing: PRICE is the £20 flat fitting fee per tyre (charged on top of the
+ * tyre). The Section 8 tyre-only "from £90" anchor is benchmarked against UK
+ * budget run-flats and is priced live from the VRN at quote time.
  *
  * Brand rule: the legal name "Tyre Fitting Near Me Ltd" appears a maximum of
  * four times in body copy. Three are used, all in the section components

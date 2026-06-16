@@ -5,8 +5,10 @@
  * so the section components stay layout-only. British English throughout, no em
  * dashes (brand rule). Icon names map to src/components/icon.tsx.
  *
- * Pricing: PRICE is a deliberate placeholder. Replace "[£XX]" with the real
- * figure (and the Offer schema price in page.tsx) before deploy.
+ * Pricing: competitively benchmarked against UK mobile TPMS services (valve
+ * service £5.99 to £25 per wheel, sensor replacement £30 to £60 per sensor).
+ * PRICE is the per-wheel valve-service figure used by the Offer schema, CTA and
+ * meta description.
  *
  * Brand rule: the legal name "Tyre Fitting Near Me Ltd" appears a maximum of
  * four times in body copy. Three are used, all in the section components
@@ -14,7 +16,7 @@
  * used in this data file.
  */
 
-export const PRICE = "[£XX]";
+export const PRICE = "£15";
 
 // --- Section 1: Hero ---------------------------------------------------------
 
@@ -22,8 +24,8 @@ export const HERO = {
   definition:
     "TPMS service is the maintenance of a vehicle's tyre pressure monitoring system, covering replacement of the perishable valve service pack, replacement of a failed sensor with a dead sealed battery, and a diagnostic reset of the dashboard warning light. Performed mobile at the home or workplace, every day of the year through 2026.",
   ticks: [
-    "Valve service from [£XX] per wheel",
-    "Sensor replacement from [£XX]",
+    "Valve service from £15 per wheel",
+    "Sensor replacement from £45",
     "MOT-ready, UK mainland",
   ],
   subLine: "Book with a postcode and registration, or call 0788 328 8831.",
@@ -121,9 +123,9 @@ export const SYSTEMS_CLOSE =
 // --- Section 8: Costs --------------------------------------------------------
 
 export const PRICING_LINES: string[] = [
-  "[£XX] per wheel for a valve service",
-  "[£XX] per sensor for a replacement",
-  "[£XX] for a diagnostic and warning light reset",
+  "£15 per wheel for a valve service",
+  "£45 per sensor for a replacement",
+  "£25 for a diagnostic and warning light reset",
 ];
 
 // --- Section 11: Pre-arrival checklist ---------------------------------------
@@ -205,7 +207,7 @@ export const FAQS: {
     id: "cost",
     question: "How much does TPMS service cost?",
     answer:
-      "A valve service is [£XX] per wheel, a sensor replacement is [£XX] per sensor, and a diagnostic with a warning light reset is [£XX]. The diagnostic confirms which job is needed first, and every figure is quoted before booking with nothing added later.",
+      "A valve service is £15 per wheel, a sensor replacement is £45 per sensor, and a diagnostic with a warning light reset is £25. The diagnostic confirms which job is needed first, and every figure is quoted before booking with nothing added later.",
   },
   {
     id: "with-tyre-change",

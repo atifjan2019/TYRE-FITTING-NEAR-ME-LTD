@@ -286,7 +286,8 @@ export function VehiclesCovered() {
 
 /* ===========================================================================
    Section 8 - Run-flat tyres fitted: premium and mid-range (prose)
-   KEEPS the optional [£XX] price-anchor line.
+   Tyre-only "from" anchor, benchmarked against UK budget run-flats. The £20
+   fitting fee is charged separately (see Section 9).
    =========================================================================== */
 export function TyresFitted() {
   return (
@@ -305,7 +306,7 @@ export function TyresFitted() {
             UK distributors with the manufacturer warranty preserved.
           </p>
           <p className="rounded-2xl border border-l-4 border-l-accent bg-card p-5 font-medium text-primary">
-            Run-flats are fitted from [£XX], priced live from the VRN.
+            Run-flats are fitted from £90, priced live from the VRN.
           </p>
         </div>
       </div>

@@ -5,8 +5,9 @@
  * so the section components stay layout-only. British English throughout, no em
  * dashes (brand rule). Icon names map to src/components/icon.tsx (Font Awesome).
  *
- * Pricing: PRICE is a deliberate placeholder. Replace "[£XX]" with the real
- * figure (and the Offer schema price in page.tsx) before deploy.
+ * Pricing: competitively benchmarked against UK mobile locking-nut specialists
+ * (single nut from £40, full set £55 to £80 across regional and national
+ * operators). PRICE is the per-nut figure used by the Offer schema and CTA.
  *
  * Brand rule: the legal name "Tyre Fitting Near Me Ltd" appears a maximum of
  * four times in body copy. Three are used, all in the section components (Why
@@ -14,7 +15,7 @@
  * in this data file.
  */
 
-export const PRICE = "[£XX]";
+export const PRICE = "£45";
 
 // --- Section 1: Hero ---------------------------------------------------------
 
@@ -23,7 +24,7 @@ export const HERO = {
     "Locking wheel nut removal is a mobile service where a technician extracts a locking wheel nut that will not undo, because the key is lost, the nut is rounded, seized, or guarded by a spinning collar, using specialist tooling that protects the alloy wheel. Performed mobile at the home, workplace, or roadside, around the clock through 2026.",
   ticks: [
     "No damage to your alloys",
-    "[£XX] per nut removed",
+    "£45 per nut removed",
     "24/7 UK mainland cover",
   ],
 };
@@ -95,7 +96,7 @@ export const PROCESS_STEPS: { title: string; description: string; icon: string }
   {
     title: "Price confirmed before booking",
     description:
-      "[£XX] per nut or [£XX] for a set is confirmed before booking, with any seized-nut surcharge stated upfront. Nothing is added later.",
+      "£45 per nut or £80 for a set is confirmed before booking, with any seized-nut surcharge stated upfront. Nothing is added later.",
     icon: "badge-pound-sterling",
   },
   {
@@ -125,7 +126,7 @@ export const VEHICLES_COVERED_PROSE =
 
 // --- Section 8: Cost ---------------------------------------------------------
 
-export const PRICING_SUMMARY = "[£XX] per locking nut, [£XX] for a full set of four";
+export const PRICING_SUMMARY = "£45 per locking nut, £80 for a full set of four";
 
 export const COST_PROSE =
   "Two honest factors set the price: the number of nuts, and the condition, because a clean lost-key removal is faster than a severely seized or pre-damaged nut. Replacement standard nuts are included, or customer-supplied where an exact match matters. No call-out fee applies within standard hours, and out-of-hours emergency callouts are disclosed before dispatch. Compared honestly, a main-dealer replacement key takes weeks and costs more, and DIY kits that round the nut force a second removal, so a one-visit specialist extraction is the faster and often cheaper route in 2026.";
@@ -210,7 +211,7 @@ export const FAQS: FaqItem[] = [
     id: "cost",
     question: "How much does locking wheel nut removal cost?",
     answer:
-      "Pricing starts at [£XX] per nut and [£XX] for a full set of four. Condition affects the price, because a seized or pre-damaged nut needs extended work. Every figure is quoted before any work begins, with no charge added afterwards.",
+      "Pricing starts at £45 per nut and £80 for a full set of four. Condition affects the price, because a seized or pre-damaged nut needs extended work. Every figure is quoted before any work begins, with no charge added afterwards.",
   },
   {
     id: "damage",

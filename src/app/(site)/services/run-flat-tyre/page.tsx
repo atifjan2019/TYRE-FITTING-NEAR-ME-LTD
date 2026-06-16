@@ -221,7 +221,7 @@ export default async function RunFlatTyrePage() {
       {/* 7. Vehicles and run-flat types covered (markings tag row) */}
       <Reveal><VehiclesCovered /></Reveal>
 
-      {/* 8. Run-flat tyres fitted (KEEPS the [£XX] price-anchor line) */}
+      {/* 8. Run-flat tyres fitted (tyre-only "from £90" anchor, priced live) */}
       <Reveal><TyresFitted /></Reveal>
 
       {/* 9. Run-flat tyre replacement cost (Offer schema above) */}

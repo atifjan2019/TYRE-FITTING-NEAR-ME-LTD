@@ -148,8 +148,8 @@ export default async function LockingWheelNutRemovalPage() {
     })),
   };
 
-  // 5. Offer (removal fee). NOTE: replace the [£XX] placeholder with the real
-  // numeric price before deploy.
+  // 5. Offer (removal fee). Per-nut price, benchmarked against UK mobile
+  // locking-nut specialists. Schema price is the numeric value only (no symbol).
   const offerSchema = {
     "@context": "https://schema.org",
     "@type": "Offer",
@@ -157,7 +157,7 @@ export default async function LockingWheelNutRemovalPage() {
     description:
       "Specialist locking wheel nut extraction per nut, including technician travel, condition assessment, alloy-protected removal, a standard replacement nut fitted and torqued to specification, and a no-damage guarantee. No call-out fee in standard hours.",
     priceCurrency: "GBP",
-    price: PRICE, // "[£XX]" placeholder, replace with the real figure before deploy.
+    price: "45", // per nut; the full set of four is £80.
     availability: "https://schema.org/InStock",
     areaServed: { "@type": "Country", name: "United Kingdom" },
     seller: { "@type": "LocalBusiness", name: "Tyre Fitting Near Me Ltd" },

@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "TPMS Service Near Me | Mobile Valve Service, Sensor Replacement, UK",
     absoluteTitle: true,
     description:
-      "Mobile TPMS service at home or work. TPMS valve service, sensor replacement, and warning light reset. Pass your MOT, fix the light. From [£XX]. Call 0788 328 8831.",
+      "Mobile TPMS service at home or work. TPMS valve service, sensor replacement, and warning light reset. Pass your MOT, fix the light. From £15. Call 0788 328 8831.",
     path: PAGE_PATH,
   });
 }
@@ -149,8 +149,8 @@ export default async function TpmsServicePage() {
     })),
   };
 
-  // 5. Offer (per-wheel valve service fee). NOTE: replace the [£XX] placeholder
-  // with the real numeric price (e.g. "19") before deploy.
+  // 5. Offer (per-wheel valve service fee). Benchmarked against UK mobile TPMS
+  // services. Schema price is the numeric value only (no symbol).
   const offerSchema = {
     "@context": "https://schema.org",
     "@type": "Offer",
@@ -158,7 +158,7 @@ export default async function TpmsServicePage() {
     description:
       "Per-wheel TPMS valve service replacing the perishable grommet, valve core, cap and retaining nut, including technician travel and a diagnostic to confirm the cause. No call-out fee in standard hours.",
     priceCurrency: "GBP",
-    price: PRICE, // "[£XX]" placeholder, replace with the real figure before deploy.
+    price: "15", // per-wheel valve service; sensor replacement £45, diagnostic and reset £25.
     availability: "https://schema.org/InStock",
     areaServed: { "@type": "Country", name: "United Kingdom" },
     seller: { "@type": "LocalBusiness", name: "Tyre Fitting Near Me Ltd" },
