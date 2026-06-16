@@ -449,7 +449,7 @@ export function Checklist() {
             </li>
           ))}
         </ol>
-        <p className="mt-8 rounded-2xl border border-l-4 border-l-primary bg-card p-6 leading-relaxed text-muted-foreground">
+        <p className="surface-card mt-8 border-l-4 border-l-primary p-5 leading-relaxed text-muted-foreground sm:p-7">
           {CHECKLIST_MOTORWAY}
         </p>
       </div>
@@ -462,12 +462,12 @@ export function Checklist() {
    =========================================================================== */
 export function AreasCoverage() {
   return (
-    <section className="bg-background py-16 sm:py-24">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Mobile Puncture Repair Coverage Across the UK" subtitle={AREAS_INTRO} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
-            <div key={area.region} className="flex flex-col rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={area.region} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <div className="flex items-start gap-2">
                 <Icon name="map-pin" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <h3 className="font-heading text-lg font-bold text-primary">{area.region}</h3>

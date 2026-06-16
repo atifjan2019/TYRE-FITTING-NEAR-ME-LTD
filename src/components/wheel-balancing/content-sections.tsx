@@ -360,8 +360,8 @@ export function Costs() {
           <span className="mt-1 block text-lg font-bold text-accent">[£XX] for all four wheels</span>
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-primary">
               <Check className="h-5 w-5 text-[var(--color-success)]" aria-hidden="true" />
               What&apos;s included
@@ -375,7 +375,7 @@ export function Costs() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+          <div className="surface-card flex h-full flex-col p-5 sm:p-7">
             <h3 className="font-heading text-lg font-bold text-primary">Quoted separately</h3>
             <ul className="mt-4 space-y-2.5">
               {COST_SEPARATE.map((item) => (
@@ -388,7 +388,7 @@ export function Costs() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-l-4 border-l-accent bg-secondary p-6">
+        <div className="mt-6 surface-card border-l-4 border-l-accent p-5 sm:p-7">
           <h3 className="font-heading text-lg font-bold text-primary">{COST_CALLOUT.heading}</h3>
           <p className="mt-2 leading-relaxed text-muted-foreground">{COST_CALLOUT.body}</p>
           <p className="mt-3 leading-relaxed text-muted-foreground">
@@ -411,7 +411,7 @@ export function Costs() {
    =========================================================================== */
 export function WhyChoose() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Why Drivers Across the UK Choose Tyre Fitting Near Me Ltd" />
         <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-muted-foreground">

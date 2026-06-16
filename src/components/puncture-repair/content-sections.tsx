@@ -416,16 +416,16 @@ export function Pricing() {
    =========================================================================== */
 export function SpecialCases() {
   return (
-    <section className="bg-background py-12 sm:py-20">
+    <section className="section-pad bg-background">
       <div className="mx-auto max-w-6xl px-4">
         <Heading
           eyebrow="Handled differently"
           title="Run-Flat Tyres, EV Tyres and Punctures We Handle Differently"
           subtitle="Some tyres change the repair assessment. Our fitters carry the right resolution for each on every van."
         />
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:gap-6 lg:grid-cols-3">
           {SPECIAL_CASES.map((s) => (
-            <div key={s.name} className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div key={s.name} className="surface-card surface-card-hover flex h-full flex-col p-5 sm:p-7">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/5 text-primary">
                 <Icon name={s.icon} className="h-6 w-6" />
               </span>
@@ -470,7 +470,7 @@ export function SpecialCases() {
    =========================================================================== */
 export function Emergency() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-6xl px-4">
         <Heading eyebrow="Emergency" title="Emergency Puncture Repair, 24 Hours a Day Across the UK" />
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center">
