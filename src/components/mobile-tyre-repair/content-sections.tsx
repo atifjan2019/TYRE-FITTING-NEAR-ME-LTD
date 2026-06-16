@@ -25,6 +25,32 @@ import {
   CASE_STUDY,
 } from "@/lib/mobile-tyre-repair-content";
 
+/* ---------------------------------------------------------------------------
+   Linkify the "locking wheel nut key" phrase inside a checklist title, pointing
+   at the locking wheel nut removal service. Returns the plain string unchanged
+   when the phrase is absent so other checklist items render normally.
+   --------------------------------------------------------------------------- */
+function renderChecklistTitle(title: string) {
+  const phrase = "locking wheel nut key";
+  const idx = title.toLowerCase().indexOf(phrase);
+  if (idx === -1) return title;
+  const before = title.slice(0, idx);
+  const match = title.slice(idx, idx + phrase.length);
+  const after = title.slice(idx + phrase.length);
+  return (
+    <>
+      {before}
+      <Link
+        href="/services/locking-wheel-nut-removal"
+        className="font-medium text-accent hover:underline"
+      >
+        {match}
+      </Link>
+      {after}
+    </>
+  );
+}
+
 /* ===========================================================================
    Section 2 - Why driving on a puncture costs more than the repair
    (clone of the fitting page's WhyGarage prose block)
@@ -376,7 +402,22 @@ export function VehiclesCovered() {
               ))}
             </ul>
             <p className="mt-5 rounded-xl border border-l-4 border-l-accent bg-card p-4 text-sm text-muted-foreground">
-              {RUNFLAT_NOTE}
+              {(() => {
+                const phrase = "Run-flat tyres";
+                const idx = RUNFLAT_NOTE.indexOf(phrase);
+                if (idx === -1) return RUNFLAT_NOTE;
+                return (
+                  <>
+                    <Link
+                      href="/services/run-flat-tyre"
+                      className="font-medium text-accent hover:underline"
+                    >
+                      {phrase}
+                    </Link>
+                    {RUNFLAT_NOTE.slice(idx + phrase.length)}
+                  </>
+                );
+              })()}
             </p>
           </div>
         </div>
@@ -431,7 +472,7 @@ export function Checklist() {
                 {i + 1}
               </span>
               <div>
-                <p className="font-heading font-bold text-primary">{item.title}</p>
+                <p className="font-heading font-bold text-primary">{renderChecklistTitle(item.title)}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
               </div>
             </li>

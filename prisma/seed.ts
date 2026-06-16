@@ -127,6 +127,18 @@ async function main() {
       features: ["Sensor diagnostics", "Replacement & programming", "Valve service kits"],
     },
     {
+      title: "Run-Flat Tyre Replacement",
+      slug: "run-flat-tyre",
+      shortDescription:
+        "Punctured run-flat? We bring the correct manufacturer-approved run-flat to your home, work or roadside and fit it on site.",
+      icon: "circle-dot",
+      features: [
+        "Correct run-flat marking matched from your reg",
+        "TPMS checked and reset",
+        "Replacement in matched axle pairs",
+      ],
+    },
+    {
       title: "Battery Replacement",
       slug: "battery-replacement",
       shortDescription:

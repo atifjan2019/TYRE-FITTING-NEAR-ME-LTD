@@ -165,7 +165,7 @@ export const MOBILE_SERVICES: {
   },
   {
     title: "Run-Flat Tyre Replacement",
-    slug: "run-flat-tyre-replacement",
+    slug: "run-flat-tyre",
     hypernym: "Tyre Maintenance Service",
     icon: "circle-dot",
     description:
@@ -189,19 +189,6 @@ export const ADDITIONAL_SERVICES: {
   description: string;
   eav: string[];
 }[] = [
-  {
-    title: "Mobile Wheel Alignment",
-    slug: "mobile-wheel-alignment",
-    hypernym: "Wheel Geometry Service",
-    icon: "activity",
-    description:
-      "We carry out 2-wheel, 4-wheel and 4-wheel laser alignment on-site at your home, workplace or roadside, using a portable digital alignment rig adjusted to your vehicle manufacturer specification, so your new tyres wear evenly and your steering tracks straight.",
-    eav: [
-      "Methods: 2-wheel, 4-wheel and 4-wheel laser alignment on-site",
-      "Adjustments: camber, caster, toe-in / toe-out, thrust angle",
-      "Outcome: even tread wear, straight tracking, extended tyre life",
-    ],
-  },
   {
     title: "Mobile Tyre Rotation",
     slug: "mobile-tyre-rotation",
@@ -239,32 +226,6 @@ export const ADDITIONAL_SERVICES: {
       "Vehicles: touring caravans, motorhomes, campervans, static caravans, horseboxes",
       "Tyres: CP-rated camper, reinforced load-rated, all-season leisure tyres",
       "Locations: storage compound, caravan park, driveway, dealership",
-    ],
-  },
-  {
-    title: "Mobile Truck and HGV Tyre Fitting",
-    slug: "mobile-truck-hgv-tyre-fitting",
-    hypernym: "Heavy Goods Vehicle Service",
-    icon: "truck",
-    description:
-      "We fit steer, drive and trailer-position tyres on-site to 7.5t through 44t commercial vehicles for fleet operators and owner-drivers at distribution yards, depots or the roadside, using heavy-duty equipment torqued to manufacturer and DVSA standard.",
-    eav: [
-      "Vehicles: 7.5t to 44t rigid and articulated commercial vehicles",
-      "Positions: steer, drive and trailer-specific compounds",
-      "Compliance: DVSA roadworthiness standards, O-licence support",
-    ],
-  },
-  {
-    title: "Mobile Alloy Wheel Refurbishment",
-    slug: "mobile-alloy-wheel-refurbishment",
-    hypernym: "Alloy Wheel Cosmetic Service",
-    icon: "wrench",
-    description:
-      "We restore kerb-damaged and scuffed alloy wheels on-site for drivers across our six UK regions, stripping damaged areas, colour-matching to your factory finish and applying primer, paint and lacquer in 4 to 6 hours per wheel, so your wheels look factory-fresh without leaving home.",
-    eav: [
-      "Services: kerb damage repair, paint refurbishment, light cosmetic restoration",
-      "Mobile scope: on-site cosmetic and kerb repair (diamond-cut not available mobile)",
-      "Time: 4 to 6 hours per wheel on-site",
     ],
   },
 ];

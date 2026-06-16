@@ -46,6 +46,32 @@ function Heading({
   );
 }
 
+/* ---------------------------------------------------------------------------
+   Linkify the "locking wheel nut key" phrase inside a checklist title, pointing
+   at the locking wheel nut removal service. Returns the plain string unchanged
+   when the phrase is absent so other checklist items render normally.
+   --------------------------------------------------------------------------- */
+function renderChecklistTitle(title: string) {
+  const phrase = "locking wheel nut key";
+  const idx = title.toLowerCase().indexOf(phrase);
+  if (idx === -1) return title;
+  const before = title.slice(0, idx);
+  const match = title.slice(idx, idx + phrase.length);
+  const after = title.slice(idx + phrase.length);
+  return (
+    <>
+      {before}
+      <Link
+        href="/services/locking-wheel-nut-removal"
+        className="font-medium text-accent hover:underline"
+      >
+        {match}
+      </Link>
+      {after}
+    </>
+  );
+}
+
 /* ===========================================================================
    Section 2 - Why mobile beats the garage queue (WHITE, prose)
    =========================================================================== */
@@ -404,7 +430,25 @@ export function SpecialCases() {
                 <Icon name={s.icon} className="h-6 w-6" />
               </span>
               <h3 className="mt-4 font-heading text-lg font-bold text-primary">{s.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {(() => {
+                  const phrase = "matching replacement run-flat";
+                  const idx = s.body.indexOf(phrase);
+                  if (idx === -1) return s.body;
+                  return (
+                    <>
+                      {s.body.slice(0, idx)}
+                      <Link
+                        href="/services/run-flat-tyre"
+                        className="font-medium text-accent hover:underline"
+                      >
+                        {phrase}
+                      </Link>
+                      {s.body.slice(idx + phrase.length)}
+                    </>
+                  );
+                })()}
+              </p>
             </div>
           ))}
         </div>
@@ -550,7 +594,7 @@ export function Checklist() {
                 {i + 1}
               </span>
               <div>
-                <p className="font-heading font-bold text-primary">{item.title}</p>
+                <p className="font-heading font-bold text-primary">{renderChecklistTitle(item.title)}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
               </div>
             </li>

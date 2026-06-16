@@ -31,6 +31,32 @@ import {
   CASE_STUDY,
 } from "@/lib/wheel-balancing-content";
 
+/* ---------------------------------------------------------------------------
+   Linkify the "locking wheel nut key" phrase inside a checklist title, pointing
+   at the locking wheel nut removal service. Returns the plain string unchanged
+   when the phrase is absent so other checklist items render normally.
+   --------------------------------------------------------------------------- */
+function renderChecklistTitle(title: string) {
+  const phrase = "locking wheel nut key";
+  const idx = title.toLowerCase().indexOf(phrase);
+  if (idx === -1) return title;
+  const before = title.slice(0, idx);
+  const match = title.slice(idx, idx + phrase.length);
+  const after = title.slice(idx + phrase.length);
+  return (
+    <>
+      {before}
+      <Link
+        href="/services/locking-wheel-nut-removal"
+        className="font-medium text-accent hover:underline"
+      >
+        {match}
+      </Link>
+      {after}
+    </>
+  );
+}
+
 /* ===========================================================================
    Section 2 - Signs your wheels need balancing (SIGNATURE icon card grid)
    Replaces the repair page's WhyDriving prose slot with the diagnostic
@@ -426,7 +452,7 @@ export function Checklist() {
                 {i + 1}
               </span>
               <div>
-                <p className="font-heading font-bold text-primary">{item.title}</p>
+                <p className="font-heading font-bold text-primary">{renderChecklistTitle(item.title)}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{item.body}</p>
               </div>
             </li>

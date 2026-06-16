@@ -53,10 +53,10 @@ export function MobileServices({ availableSlugs }: { availableSlugs: Set<string>
             </span>
           </summary>
           <p className="mt-2 max-w-3xl text-muted-foreground">
-            Tyre Fitting Near Me Ltd also delivers wheel alignment, tyre rotation, safety
-            inspections, leisure vehicle tyre fitting, commercial HGV tyre work and alloy wheel
-            restoration to drivers across our six UK coverage regions, using the same insured
-            certified mobile technicians and on-site equipment as our core tyre fitting service.
+            Tyre Fitting Near Me Ltd also delivers tyre rotation, free safety inspections and
+            leisure vehicle tyre fitting to drivers across our six UK coverage regions, using the
+            same insured certified mobile technicians and on-site equipment as our core tyre
+            fitting service.
           </p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {ADDITIONAL_SERVICES.map((service) => (
