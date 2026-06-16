@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
  * (e.g. a Next.js <Link> or an <a tel:>) while keeping the button styling.
  */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-heading text-center text-sm font-semibold transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-md active:scale-[0.97] motion-reduce:transform-none motion-reduce:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[8px] font-heading text-center text-sm font-semibold transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-md active:scale-[0.97] motion-reduce:transform-none motion-reduce:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -33,8 +33,10 @@ const buttonVariants = cva(
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
-        lg: "h-12 rounded-md px-6 text-base",
-        xl: "h-14 rounded-lg px-8 text-lg",
+        // Primary CTA / WhatsApp height per design spec: 48px, padding 28px.
+        lg: "h-12 px-7 text-base",
+        // Hero + mid-page CTA pair: 52px, padding 28px, shared by every band.
+        xl: "h-[52px] px-7 text-base",
         icon: "h-10 w-10",
       },
     },

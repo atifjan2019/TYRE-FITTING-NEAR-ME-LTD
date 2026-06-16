@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { ComparisonBlock } from "@/components/sections/comparison-block";
 import {
   DOWNTIME,
   LOAD_RATING_INTRO,
@@ -78,7 +79,7 @@ export function WhyDowntime() {
    =========================================================================== */
 export function LoadRating() {
   return (
-    <section className="bg-secondary py-12 sm:py-20">
+    <section className="section-pad bg-secondary">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Load ratings explained"
@@ -86,47 +87,13 @@ export function LoadRating() {
           subtitle={LOAD_RATING_INTRO}
         />
 
-        <div className="load-rating-explainer mt-10 grid gap-6 lg:grid-cols-2">
-          {/* C-rated van tyre (green) */}
-          <div className="rounded-2xl border border-[var(--color-success)]/30 bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-[var(--color-success)]/20 pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[var(--color-success)]/10 text-[var(--color-success)]">
-                <Check className="h-6 w-6" aria-hidden="true" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-[var(--color-success)]">C-Rated Van Tyre</h3>
-            </div>
-            <ul className="mt-5 space-y-3">
-              {LOAD_RATING_YES.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-success)]" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Standard car tyre on a van (red) */}
-          <div className="rounded-2xl border border-destructive/30 bg-card p-6 shadow-sm">
-            <div className="flex items-center gap-3 border-b border-destructive/20 pb-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-destructive/10 text-destructive">
-                <X className="h-6 w-6" aria-hidden="true" />
-              </span>
-              <h3 className="font-heading text-xl font-bold text-destructive">Standard Car Tyre on a Van</h3>
-            </div>
-            <ul className="mt-5 space-y-3">
-              {LOAD_RATING_NO.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <X className="mt-0.5 h-4 w-4 shrink-0 text-destructive" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-card p-6 leading-relaxed text-foreground/80">
-          {LOAD_RATING_CLOSE}
-        </p>
+        <ComparisonBlock
+          className="load-rating-explainer mt-10"
+          left={{ title: "C-Rated Van Tyre", items: LOAD_RATING_YES }}
+          right={{ title: "Standard Car Tyre on a Van", items: LOAD_RATING_NO }}
+          rightMode="cross"
+          caption={LOAD_RATING_CLOSE}
+        />
       </div>
     </section>
   );

@@ -63,38 +63,44 @@
 
   /* Red + Navy brand spec */
   --background: #ffffff; /* white */
-  --foreground: #0a1733; /* navy - headings & default text (body copy = #333 via .prose-content) */
+  --foreground: #0b1736; /* navy - headings & default text (body copy = #333 via .prose-content) */
   --card: #ffffff;
-  --card-foreground: #0a1733;
+  --card-foreground: #0b1736;
   --popover: #ffffff;
-  --popover-foreground: #0a1733;
+  --popover-foreground: #0b1736;
 
   /* Navy = brand dark surfaces (header, footer, dark sections, headings) */
-  --primary: #0a1733;
+  --primary: #0b1736;
   --primary-foreground: #ffffff;
 
-  /* Alternate light section background (muted light grey) */
-  --secondary: #f4f4f4;
-  --secondary-foreground: #0a1733;
-  --muted: #f4f4f4;
-  --muted-foreground: #5b6470; /* muted text */
+  /* Alternate light section background (cool off-white "light band") */
+  --secondary: #f5f7fa;
+  --secondary-foreground: #0b1736;
+  --muted: #f5f7fa;
+  --muted-foreground: #5a6478; /* muted text */
   --muted-blue: #dadff0; /* soft card/section background */
 
   /* Brand RED = primary CTA / highlights */
-  --accent: #ed1c24;
+  --accent: #e63946;
   --accent-foreground: #ffffff; /* ALWAYS white on red (AA) */
-  --accent-hover: #c9151c;
+  --accent-hover: #c92e3b; /* darkened #E63946 for hover */
   --primary-alt: #fc414e; /* soft red - secondary buttons / gradients */
 
   --logo-blue: #1f4ed8; /* logo accent only */
 
-  --success: #16a34a; /* success UI states only */
+  --success: #1b9c5d; /* true success green - comparison ticks + success UI */
   --destructive: #dc2626; /* error UI states only */
   --destructive-foreground: #ffffff;
 
   --border: #e6e8ef; /* light border */
   --input: #e6e8ef;
-  --ring: #ed1c24; /* focus ring in brand red */
+  --ring: #e63946; /* focus ring in brand red */
+
+  /* Comparison-block palette (signature two-column decision aid) */
+  --compare-neutral: #e8ebf0; /* muted secondary header bar */
+  --compare-left-tint: #f2fbf6; /* very light green wash on recommended column */
+  --compare-muted-text: #5a6478; /* secondary-side row text */
+  --pill-red-bg: #fdeaec; /* soft red pill background */
 }
 
 @keyframes accordion-down {
@@ -224,4 +230,65 @@ html {
 .prose-content img {
   border-radius: var(--radius);
   margin: 1rem 0;
+}
+
+/* ===========================================================================
+   Global design-polish primitives (shared across all service pages).
+   - Uniform vertical rhythm for full-width sections: 40 / 56 / 80
+   - Readable left-aligned body column capped at ~760px and centred
+   - Consistent card depth + definition on both white and #F5F7FA bands
+   =========================================================================== */
+
+/* Section vertical rhythm: 40px mobile, 56px tablet, 80px desktop. */
+.section-pad {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+}
+@media (min-width: 1024px) {
+  .section-pad {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* Readable body column: left-aligned text, capped width, centred in viewport. */
+.prose-col {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* Card surface: soft elevation + 1px hairline so cards read as distinct
+   objects on white AND on the #F5F7FA light band. */
+.surface-card {
+  background: var(--card);
+  border: 1px solid rgba(11, 23, 54, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(11, 23, 54, 0.06);
+}
+/* Interactive cards lift on hover. */
+.surface-card-hover {
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+.surface-card-hover:hover {
+  box-shadow: 0 6px 16px rgba(11, 23, 54, 0.1);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .surface-card-hover {
+    transition: box-shadow 0.15s ease;
+  }
+  .surface-card-hover:hover {
+    transform: none;
+  }
 }

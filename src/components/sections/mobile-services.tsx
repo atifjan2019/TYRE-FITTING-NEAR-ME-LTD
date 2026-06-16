@@ -20,7 +20,7 @@ type ServiceItem = {
  */
 export function MobileServices({ availableSlugs }: { availableSlugs: Set<string> }) {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="section-pad">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Mobile tyre services"
@@ -32,7 +32,7 @@ export function MobileServices({ availableSlugs }: { availableSlugs: Set<string>
         <h3 className="mt-12 text-sm font-bold uppercase tracking-wide text-muted-foreground">
           Core Mobile Tyre Services
         </h3>
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-4 grid items-stretch gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {MOBILE_SERVICES.map((service) => (
             <ServiceCard
               key={service.title}
@@ -58,7 +58,7 @@ export function MobileServices({ availableSlugs }: { availableSlugs: Set<string>
             same insured certified mobile technicians and on-site equipment as our core tyre
             fitting service.
           </p>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid items-stretch gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {ADDITIONAL_SERVICES.map((service) => (
               <ServiceCard
                 key={service.title}
@@ -74,24 +74,38 @@ export function MobileServices({ availableSlugs }: { availableSlugs: Set<string>
 }
 
 function ServiceCard({ service, linked }: { service: ServiceItem; linked: boolean }) {
+  const href = `/services/${service.slug}`;
+
+  // The Learn more affordance is identical on every card so the grid is
+  // uniform. When the whole card is already a <Link> it renders as a styled
+  // <span> (no nested anchors); otherwise it is the card's own <Link>.
+  const learnMoreClass =
+    "mt-auto inline-flex w-fit items-center rounded-[8px] bg-accent px-5 py-3 font-heading text-sm font-semibold text-accent-foreground transition-colors duration-150 group-hover:bg-[var(--color-accent-hover)]";
+  const learnMore = (
+    <>
+      Learn more
+      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+    </>
+  );
+
   const inner = (
     <>
-      <div className="flex items-center justify-between">
-        <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent text-accent-foreground shadow-sm">
+      <div className="flex items-start justify-between gap-3">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-accent text-accent-foreground shadow-sm">
           <Icon name={service.icon} className="h-6 w-6" />
         </span>
-        <span className="rounded-full bg-primary/5 px-2.5 py-1 text-xs font-semibold text-primary">
+        <span className="rounded-full bg-primary px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.04em] text-primary-foreground">
           Mobile &amp; 24/7
         </span>
       </div>
 
-      <h4 className="mt-4 font-heading text-lg font-bold text-primary">{service.title}</h4>
+      <h4 className="mt-5 font-heading text-lg font-bold text-primary">{service.title}</h4>
       <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
         {service.hypernym}
       </p>
       <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
 
-      <ul className="mt-4 space-y-1.5">
+      <ul className="mb-6 mt-4 space-y-1.5">
         {service.eav.map((item) => (
           <li key={item} className="flex gap-2 text-sm text-foreground">
             <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
@@ -100,25 +114,29 @@ function ServiceCard({ service, linked }: { service: ServiceItem; linked: boolea
         ))}
       </ul>
 
-      {linked ? (
-        <span className="mt-5 inline-flex min-h-11 items-center gap-1.5 self-start rounded-full bg-accent/10 px-4 py-2 text-sm font-bold text-accent">
-          Learn more <ArrowRight className="h-4 w-4" />
-        </span>
-      ) : null}
+      {linked ? <span className={learnMoreClass}>{learnMore}</span> : null}
     </>
   );
 
   const cardClass =
-    "flex flex-col rounded-2xl border bg-card p-6 shadow-sm transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-md active:scale-[0.97] motion-reduce:transform-none";
+    "surface-card surface-card-hover group flex h-full flex-col p-5 sm:p-7";
 
   return linked ? (
     <Link
-      href={`/services/${service.slug}`}
+      href={href}
       className={`${cardClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
     >
       {inner}
     </Link>
   ) : (
-    <div className={cardClass}>{inner}</div>
+    <div className={cardClass}>
+      {inner}
+      <Link
+        href={href}
+        className={`${learnMoreClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+      >
+        {learnMore}
+      </Link>
+    </div>
   );
 }

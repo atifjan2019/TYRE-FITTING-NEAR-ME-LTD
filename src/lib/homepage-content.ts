@@ -60,19 +60,6 @@ export const MOBILE_SERVICES: {
     ],
   },
   {
-    title: "Mobile Tyre Replacement",
-    slug: "mobile-tyre-fitting",
-    hypernym: "Vehicle Maintenance Service",
-    icon: "circle-dot",
-    description:
-      "We remove worn, damaged or illegal tyres and fit new summer, winter, all-season or performance tyres on-site, balanced and torqued to manufacturer specification.",
-    eav: [
-      "Tyre types: summer, winter, all-season, run-flat, performance",
-      "Disposal: old tyres removed and recycled responsibly",
-      "Finish: torqued to manufacturer spec, valves renewed",
-    ],
-  },
-  {
     title: "Mobile Tyre Repair (BS AU 159)",
     slug: "puncture-repair",
     hypernym: "Tyre Repair Service",
@@ -83,19 +70,6 @@ export const MOBILE_SERVICES: {
       "Standard: British Standard AU 159 compliant",
       "Repairable: tread punctures up to 6mm in the central 75%",
       "Time: under 30 minutes from arrival",
-    ],
-  },
-  {
-    title: "Puncture Repair On-Site",
-    slug: "puncture-repair",
-    hypernym: "Mobile Tyre Maintenance",
-    icon: "circle-dot",
-    description:
-      "We plug, patch or combination-repair repairable punctures at your location, inspecting the tread and sidewall first so only safe, road-legal repairs are carried out.",
-    eav: [
-      "Methods: plug, patch and combined plug-and-patch",
-      "Inspection: tread, sidewall and bead checked before repair",
-      "Outcome: tyre restored to road-legal condition",
     ],
   },
   {
