@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE } from "@/lib/site-config";
 import { BRAND_PAGE_SLUGS } from "@/lib/brand-pages";
+import { LIVE_AREAS } from "@/data/areas";
 
 /**
  * Dynamic sitemap. Includes static pages plus every published county, town,
@@ -82,12 +83,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  // Area pages: only status "live" slugs are listed (pending towns are excluded
+  // until their pages are published). The /areas hub is in staticRoutes above.
+  const areaRoutes: MetadataRoute.Sitemap = LIVE_AREAS.map((a) => ({
+    url: `${base}/areas/${a.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.8, // local intent pages are an SEO priority
+  }));
+
   return [
     ...staticRoutes,
     ...countyRoutes,
     ...townRoutes,
     ...serviceRoutes,
     ...brandRoutes,
+    ...areaRoutes,
     ...postRoutes,
   ];
 }
