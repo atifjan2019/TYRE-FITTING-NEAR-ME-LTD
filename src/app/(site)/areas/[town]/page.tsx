@@ -27,7 +27,7 @@ function naturalList(items: string[]): string {
   return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
 }
 
-/** The money-page services offered in every town (descriptive anchors). */
+/** Money-page services. `emphasis` maps to the foregrounded card. */
 const SERVICES: { label: string; href: string }[] = [
   { label: "Mobile tyre fitting", href: "/services/mobile-tyre-fitting" },
   { label: "Puncture repair", href: "/services/mobile-tyre-repair" },
@@ -39,37 +39,100 @@ const SERVICES: { label: string; href: string }[] = [
   { label: "Van and fleet fitting", href: "/services/van-tyre-fitting" },
 ];
 
-function localFaqs(area: Area): { id: string; question: string; answer: string }[] {
-  const pc = naturalList(area.postcodes);
-  const others = area.postcodes.slice(1);
+const EMPHASIS_HREF: Record<Area["emphasis"], string> = {
+  emergency: "/services/emergency-tyre-fitting",
+  van: "/services/van-tyre-fitting",
+  fitting: "/services/mobile-tyre-fitting",
+};
+
+/* --- Skeleton variants (selected by area.variant). Each set differs in
+   structure, not just synonyms, so two towns with different variants never
+   share a sentence skeleton once proper nouns are stripped. ----------------- */
+
+function servicesIntro(a: Area, pc: string): string {
+  return [
+    `Every tyre job in ${a.town} is handled on-site, from a single puncture to a full set, across the ${pc} area.`,
+    `From a quick repair to a four-tyre change, the services below come to you anywhere in ${a.town} and the ${pc} postcodes.`,
+    `Drivers in ${a.town} book any of these services to the kerb, with the fitter and the stock arriving at the ${pc} address.`,
+  ][a.variant];
+}
+
+function whyChooseLead(a: Area, pc: string): string {
+  return [
+    `Drivers in ${a.town} choose a mobile fitter for the time saved and a price agreed before dispatch.`,
+    `The reasons drivers in ${a.town} book us come down to convenience, hours and honest pricing.`,
+    `Across the ${pc} area, the case for a mobile fitter in ${a.town} is straightforward.`,
+  ][a.variant];
+}
+
+function howFast(a: Area, pc: string): string {
+  return [
+    `A response of 30 to 60 minutes is typical across ${pc}, postcode-dependent, with the arrival time confirmed when you call.`,
+    `Most ${a.town} callouts are reached in 30 to 60 minutes, varying by postcode within ${pc}, and the realistic arrival time is given on the phone.`,
+    `Expect 30 to 60 minutes to most ${pc} addresses, dependent on the exact postcode, with a firm window confirmed on the call.`,
+  ][a.variant];
+}
+
+function finalCtaSubtitle(a: Area, pc: string): string {
+  return [
+    `Call or WhatsApp 0788 328 8831 for a 30 to 60 minute response across ${pc}. Tyres fitted at your home, work or roadside in ${a.town}, 24/7.`,
+    `One call to 0788 328 8831 brings a fitter to ${a.town}, day or night, with a 30 to 60 minute typical response across ${pc}.`,
+    `Reach 0788 328 8831 by phone or WhatsApp, and a fitter comes to your ${a.town} address 24/7, usually within 30 to 60 minutes.`,
+  ][a.variant];
+}
+
+/** Hero subline, ordered by the town's real character. */
+function heroSubline(a: Area, pc: string): string {
+  if (a.emphasis === "emergency")
+    return `Open 24/7 for emergencies, with the nearest fitter sent to the ${a.roads[0]} and across ${pc} fast, day or night.`;
+  if (a.emphasis === "van")
+    return `Van and fleet fitting at the depot, yard or roadside keeps working vehicles in ${a.town} moving.`;
+  return `Most jobs are tyres fitted at the kerb at home or work, at a £20 flat fitting fee per tyre with no garage trip.`;
+}
+
+/** Why-choose points, ordered per emphasis (most locally relevant first). */
+function whyChoosePoints(a: Area, pc: string): string[] {
+  const comeToYou = `We come to you in ${a.town}, with no drive to a garage and no ordering tyres online first.`;
+  const open247 = `Open 24/7, including nights, weekends and bank holidays.`;
+  const response = `A 30 to 60 minute typical response across the ${pc} area.`;
+  const price = `A transparent £20 flat fitting fee per tyre, quoted before dispatch.`;
+  const repair = `An honest repair before replacement where a puncture passes assessment.`;
+  const guarantee = `A 12-month workmanship guarantee on every fitting.`;
+  const emergencyLead = `Open 24/7 for emergencies, with the nearest fitter sent to the ${a.roads[0]} and across ${pc} fast.`;
+  const vanLead = `Depot, yard and workplace fitting that keeps working vehicles in ${a.town} moving.`;
+
+  if (a.emphasis === "emergency") return [emergencyLead, response, comeToYou, price, repair, guarantee];
+  if (a.emphasis === "van") return [vanLead, comeToYou, open247, response, price, guarantee];
+  return [comeToYou, price, open247, response, repair, guarantee];
+}
+
+function localFaqs(a: Area, pc: string): { id: string; question: string; answer: string }[] {
+  const others = a.postcodes.slice(1);
   return [
     {
       id: "how-quick",
-      question: `How quickly can you reach ${area.town}?`,
-      answer: `A response of 30 to 60 minutes is typical across the ${pc} area, postcode-dependent, with the realistic arrival time confirmed when you call.`,
+      question: `How quickly can you reach ${a.town}?`,
+      answer: `A response of 30 to 60 minutes is typical across ${pc}, with the exact window confirmed on the call.`,
     },
     {
       id: "postcode",
-      question: `Do you cover ${area.postcodes[0]}?`,
+      question: `Do you cover ${a.postcodes[0]}?`,
       answer: others.length
-        ? `Yes. We cover ${area.postcodes[0]}, ${naturalList(others)} and the surrounding ${area.town} area.`
-        : `Yes. We cover ${area.postcodes[0]} and the surrounding ${area.town} area.`,
+        ? `Yes, ${a.postcodes[0]}, ${naturalList(others)} and the surrounding ${a.town} area are all covered.`
+        : `Yes, ${a.postcodes[0]} and the surrounding ${a.town} area are all covered.`,
     },
     {
       id: "night",
-      question: `Do you come out to ${area.town} at night?`,
-      answer: `Yes. We run 24/7, 365 days a year, so a fitter reaches ${area.town} day or night, including weekends and bank holidays.`,
+      question: `Do you come out to ${a.town} at night?`,
+      answer: `Yes. We run 24/7, 365 days a year through 2026, so a fitter reaches ${a.town} day or night, weekends and bank holidays included.`,
     },
     {
       id: "cost",
-      question: `How much is tyre fitting in ${area.town}?`,
-      answer: `Fitting is a £20 flat fee per tyre plus the tyre price, quoted in full before we dispatch, with no call-out fee in standard hours.`,
+      question: `How much is tyre fitting in ${a.town}?`,
+      answer: `Fitting is a £20 flat fee per tyre plus the tyre price, quoted before dispatch, with no call-out fee in standard hours.`,
     },
-    {
-      id: "near",
-      question: `Which areas near ${area.town} do you cover?`,
-      answer: `We cover ${naturalList(area.neighbours)}, plus the wider ${area.region} area.`,
-    },
+    // Town-specific FAQ from the data (unique information gain).
+    { id: "local", question: a.localFaq.q, answer: a.localFaq.a },
   ];
 }
 
@@ -103,6 +166,8 @@ export default async function AreaTownPage({
   const settings = await getSiteSettings();
   const { phone, whatsapp } = settings;
   const pageUrl = `${SITE.url}/areas/${area.slug}`;
+  const pc = naturalList(area.postcodes);
+  const foregroundHref = EMPHASIS_HREF[area.emphasis];
 
   const crumbs = [
     { name: "Home", path: "/" },
@@ -110,8 +175,7 @@ export default async function AreaTownPage({
     { name: area.town, path: `/areas/${area.slug}` },
   ];
 
-  const faqs = localFaqs(area);
-  const pc = naturalList(area.postcodes);
+  const faqs = localFaqs(area, pc);
 
   // --- Schema ----------------------------------------------------------------
   const business = localBusinessJsonLd({
@@ -151,7 +215,7 @@ export default async function AreaTownPage({
     url: pageUrl,
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["h1", ".local-coverage"],
+      cssSelector: ["h1", ".local-note"],
     },
     isPartOf: { "@type": "WebSite", name: "Tyre Fitting Near Me Ltd", url: SITE.url },
   };
@@ -174,10 +238,11 @@ export default async function AreaTownPage({
             </h1>
             <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/90">
-              Mobile tyre fitting across {area.town} and the surrounding {pc} postcode area, covering{" "}
-              {naturalList(area.neighbours)}, with fitters reaching the {area.roads[0]} and nearby
-              roads. Open 24/7, with a 30 to 60 minute typical response.
+              Mobile tyre fitting in {area.town} and the surrounding {pc} postcode area, covering{" "}
+              {naturalList(area.neighbours)}, with fitters working the {area.roads[0]} and nearby
+              roads. Through 2026 we run 24/7 with a 30 to 60 minute typical response.
             </p>
+            <p className="mt-4 max-w-2xl font-medium text-primary-foreground">{heroSubline(area, pc)}</p>
             <CtaButtons phone={phone} whatsapp={whatsapp} className="mt-8" />
             <p className="mt-4 text-sm text-primary-foreground/70">
               Or use the booking form with your registration and postcode.
@@ -203,88 +268,90 @@ export default async function AreaTownPage({
         </div>
       </section>
 
-      {/* 2. LOCAL COVERAGE (unique-data block, speakable target) */}
+      {/* 2. LOCAL COVERAGE (unique data: localNote is the primary asset) */}
       <section className="section-pad bg-background">
-        <div className="local-coverage prose-col px-4">
+        <div className="prose-col px-4">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
             Tyre Fitting Across {area.town} and Nearby
           </h2>
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
             <p>
-              We cover the {naturalList(area.postcodes)} postcode{area.postcodes.length > 1 ? "s" : ""} in and
-              around {area.town}, fitting tyres at your home, workplace or roadside.
+              We cover the {pc} postcode{area.postcodes.length > 1 ? "s" : ""} in and around {area.town},
+              fitting tyres at your home, workplace or roadside.
             </p>
-            <p>
-              Neighbouring areas covered from the same {area.town} dispatch include{" "}
-              {naturalList(area.neighbours)}.
-            </p>
-            <p>
-              Local fitters work the {naturalList(area.roads)}, so a callout reaches you quickly across
-              the {area.town} road network.
-            </p>
+            <p className="local-note callout font-medium text-primary">{area.localNote}</p>
+            <p>Local fitters work the {naturalList(area.roads)}.</p>
+            <p>Recognisable local anchors include {naturalList(area.landmarks)}.</p>
           </div>
         </div>
       </section>
 
-      {/* 3. SERVICES IN TOWN */}
+      {/* 3. SERVICES IN TOWN (emphasis service foregrounded) */}
       <section className="section-pad bg-secondary">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Services"
             title={`Our Tyre Services in ${area.town}`}
-            subtitle={`Every mobile service is available in ${area.town} and the surrounding ${pc} area, fitted on-site by an insured technician.`}
+            subtitle={servicesIntro(area, pc)}
           />
           <div className="mx-auto mt-10 grid max-w-4xl gap-3 sm:grid-cols-2">
-            {SERVICES.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                className="surface-card surface-card-hover flex items-center justify-between p-4 text-sm font-semibold text-primary"
-              >
-                <span>{s.label}</span>
-                <span className="text-accent">&rarr;</span>
-              </Link>
-            ))}
+            {SERVICES.map((s) => {
+              const lead = s.href === foregroundHref;
+              return (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  className={
+                    lead
+                      ? "surface-card flex items-center justify-between border-2 border-accent p-4 text-sm font-semibold text-primary"
+                      : "surface-card surface-card-hover flex items-center justify-between p-4 text-sm font-semibold text-primary"
+                  }
+                >
+                  <span>
+                    {s.label}
+                    {lead ? (
+                      <span className="ml-2 rounded-full bg-accent/10 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-accent">
+                        Most used in {area.town}
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="text-accent">&rarr;</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 4. WHY DRIVERS CHOOSE US */}
+      {/* 4. WHY DRIVERS CHOOSE US (ordered per emphasis) */}
       <section className="section-pad bg-background">
         <div className="prose-col px-4">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
             Why Drivers in {area.town} Choose Tyre Fitting Near Me Ltd
           </h2>
+          <p className="mt-4 text-lg text-muted-foreground">{whyChooseLead(area, pc)}</p>
           <ul className="mt-6 space-y-3 text-lg leading-relaxed text-foreground/80">
-            <li>We come to you in {area.town}, with no drive to a garage and no ordering tyres online first.</li>
-            <li>Open 24/7, including nights, weekends and bank holidays.</li>
-            <li>A 30 to 60 minute typical response across the {pc} area.</li>
-            <li>A transparent £20 flat fitting fee per tyre, quoted before dispatch.</li>
-            <li>An honest repair before replacement where a puncture passes assessment.</li>
-            <li>A 12-month workmanship guarantee on every fitting.</li>
+            {whyChoosePoints(area, pc).map((point) => (
+              <li key={point}>{point}</li>
+            ))}
           </ul>
         </div>
       </section>
 
-      {/* 5. RESPONSE TIME */}
+      {/* 5. HOW FAST WE REACH TOWN (variant phrasing) */}
       <section className="section-pad bg-secondary">
         <div className="prose-col px-4">
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
             How Fast We Reach {area.town}
           </h2>
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
-            <p>
-              A response of 30 to 60 minutes is typical across the {pc} area, postcode-dependent, with the
-              realistic arrival time confirmed on the call.
-            </p>
-            <p>
-              For an emergency on the {area.roads[0]}, the nearest fitter is dispatched immediately.
-            </p>
+            <p>{howFast(area, pc)}</p>
+            <p>For an emergency on the {area.roads[0]}, the nearest fitter is dispatched straight away.</p>
           </div>
         </div>
       </section>
 
-      {/* 6. LOCAL SCENARIO */}
+      {/* 6. LOCAL SCENARIO (unique: built from the scenario object) */}
       <section className="section-pad bg-background">
         <div className="mx-auto max-w-7xl px-4">
           <div className="surface-card p-5 sm:p-8">
@@ -295,15 +362,14 @@ export default async function AreaTownPage({
               Mobile Tyre Fitting in {area.town}: A Recent Callout
             </h2>
             <p className="mt-4 leading-relaxed text-foreground/80">
-              A driver with a flat near the {area.roads[0]} in {area.town} books a callout. The fitter
-              arrives within the typical 30 to 60 minute window, fits the correct tyre at the kerb, and
-              has the driver moving again without a garage trip.
+              A {area.scenario.vehicle} had {area.scenario.situation}. The nearest fitter was dispatched
+              to the {area.scenario.road}, and the job was done on-site, {area.scenario.outcome}.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 7. AREAS NEAR TOWN (sideways cluster links to live neighbours only) */}
+      {/* 7. AREAS NEAR TOWN (adjacency mesh, live neighbours only) */}
       <section className="section-pad bg-secondary">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading title={`Areas We Cover Near ${area.town}`} />
@@ -360,12 +426,12 @@ export default async function AreaTownPage({
         </div>
       </section>
 
-      {/* 9. FINAL CTA BAND */}
+      {/* 9. FINAL CTA BAND (variant phrasing) */}
       <CtaBand
         phone={phone}
         whatsapp={whatsapp}
         title={`Need a tyre fitted in ${area.town}?`}
-        subtitle={`Call or WhatsApp 0788 328 8831 for a 30 to 60 minute response across the ${pc} area. Mobile tyre fitting at your home, work or roadside, 24/7.`}
+        subtitle={finalCtaSubtitle(area, pc)}
       />
     </>
   );

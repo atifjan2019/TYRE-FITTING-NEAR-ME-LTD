@@ -8,7 +8,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { AreasCovered } from "@/components/sections/areas-covered";
 import { CtaBand } from "@/components/sections/cta-band";
-import { AREAS, LIVE_AREAS, CLUSTER_LABELS } from "@/data/areas";
+import { areas, LIVE_AREAS, CLUSTER_LABELS } from "@/data/areas";
 
 export const revalidate = 3600;
 
@@ -75,13 +75,13 @@ export default async function AreasPage() {
 
       {/* Cluster card grids */}
       {liveClusters().map((cluster) => {
-        const areas = AREAS.filter((a) => a.cluster === cluster);
+        const clusterAreas = areas.filter((a) => a.cluster === cluster);
         return (
           <section key={cluster} className="section-pad bg-background">
             <div className="mx-auto max-w-7xl px-4">
               <SectionHeading eyebrow="Areas we cover" title={CLUSTER_LABELS[cluster]} />
               <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-                {areas.map((a) => {
+                {clusterAreas.map((a) => {
                   const live = a.status === "live";
                   const inner = (
                     <>
