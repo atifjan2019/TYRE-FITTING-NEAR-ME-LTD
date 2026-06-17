@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, Phone, Star } from "lucide-react";
 import { getSiteSettings, getCounties } from "@/lib/data";
@@ -22,6 +23,14 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { telHref, whatsappHref } from "@/lib/utils";
 
 export const revalidate = 3600;
+
+/** Brands whose models run run-flat tyres from the factory (Rule 5 link target). */
+const RUN_FLAT_BRAND_SLUGS = new Set([
+  "bmw-mobile-tyre-fitting",
+  "mercedes-mobile-tyre-fitting",
+  "rolls-royce-mobile-tyre-fitting",
+  "bentley-mobile-tyre-fitting",
+]);
 
 export function generateStaticParams() {
   return BRAND_PAGE_SLUGS.map((slug) => ({ slug }));
@@ -207,25 +216,54 @@ export default async function BrandPage({
         </div>
       </section>
 
-      {/* Section 4 - Run-flat */}
+      {/* Section 4 - Technical flagship (run-flat for BMW/Mercedes, EV for Tesla,
+          N-rating for Porsche, marque approval for supercars, etc.) */}
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4">
           <SectionHeading
-            eyebrow="Run-flat specialist"
-            title={`${page.brand} Run-Flat Tyre Replacement On-Site`}
+            eyebrow={page.s4Eyebrow ?? "Run-flat specialist"}
+            title={page.s4Title ?? `${page.brand} Run-Flat Tyre Replacement On-Site`}
           />
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">{page.runFlatBody}</p>
         </div>
       </section>
 
-      {/* Section 5 - TPMS */}
+      {/* Section 5 - Second technical section (TPMS for most, fitment precision /
+          discretion for supercars and luxury marques) */}
       <section className="bg-secondary py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4">
           <SectionHeading
-            eyebrow="TPMS reset included"
-            title={`${page.brand} TPMS Reset Included with Every Tyre Change`}
+            eyebrow={page.s5Eyebrow ?? "TPMS reset included"}
+            title={page.s5Title ?? `${page.brand} TPMS Reset Included with Every Tyre Change`}
           />
           <p className="mt-6 text-base leading-relaxed text-muted-foreground">{page.tpmsBody}</p>
+
+          {/* Directional internal links (cluster web): up to the pillar plus the
+              relevant service spokes for this marque. One contextual link each. */}
+          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+            Stranded with a flat? See our{" "}
+            <Link href="/services/emergency-tyre-fitting" className="font-medium text-accent hover:underline">
+              24/7 emergency tyre fitting
+            </Link>
+            . For a sensor warning we run a dedicated{" "}
+            <Link href="/services/tpms-service" className="font-medium text-accent hover:underline">
+              TPMS service
+            </Link>
+            {RUN_FLAT_BRAND_SLUGS.has(slug) ? (
+              <>
+                , and a punctured run-flat is a{" "}
+                <Link href="/services/run-flat-tyre" className="font-medium text-accent hover:underline">
+                  run-flat replacement
+                </Link>{" "}
+                rather than a repair
+              </>
+            ) : null}
+            . For any other vehicle, our general{" "}
+            <Link href="/services/mobile-tyre-fitting" className="font-medium text-accent hover:underline">
+              mobile tyre fitting
+            </Link>{" "}
+            covers all makes across the same six regions.
+          </p>
         </div>
       </section>
 

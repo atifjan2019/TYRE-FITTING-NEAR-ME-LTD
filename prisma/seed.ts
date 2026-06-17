@@ -158,6 +158,18 @@ async function main() {
         "Single-axle, twin-axle & Tyron bands handled",
       ],
     },
+    {
+      title: "Free Tyre Health Check",
+      slug: "free-tyre-health-check",
+      shortDescription:
+        "A free, no-obligation mobile tyre health check at your home, work or roadside. Tread, sidewall, pressure, valve, age and wear pattern checked, with an honest written report and a fix only if you want one.",
+      icon: "shield-check",
+      features: [
+        "Free and no obligation, we come to you",
+        "Six-point check on every tyre, honest written report",
+        "Fixed on the spot only if you want it",
+      ],
+    },
   ];
 
   for (const [i, s] of services.entries()) {

@@ -112,7 +112,11 @@ export function Eligibility() {
               <Link href="/services/mobile-tyre-fitting" className="font-semibold text-accent hover:underline">
                 mobile tyre fitting
               </Link>{" "}
-              service.
+              service. Not sure whether the tyre needs anything yet? Book a{" "}
+              <Link href="/services/free-tyre-health-check" className="font-semibold text-accent hover:underline">
+                free tyre health check
+              </Link>{" "}
+              first and we will tell you honestly.
             </>
           }
         />

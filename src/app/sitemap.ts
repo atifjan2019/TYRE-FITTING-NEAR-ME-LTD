@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE } from "@/lib/site-config";
+import { BRAND_PAGE_SLUGS } from "@/lib/brand-pages";
 
 /**
  * Dynamic sitemap. Includes static pages plus every published county, town,
@@ -73,11 +74,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
+  // Brand cluster pages (/brands/[slug]) are code-defined, not in the database,
+  // so they are listed explicitly from the brand-pages registry.
+  const brandRoutes: MetadataRoute.Sitemap = BRAND_PAGE_SLUGS.map((slug) => ({
+    url: `${base}/brands/${slug}`,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...countyRoutes,
     ...townRoutes,
     ...serviceRoutes,
+    ...brandRoutes,
     ...postRoutes,
   ];
 }

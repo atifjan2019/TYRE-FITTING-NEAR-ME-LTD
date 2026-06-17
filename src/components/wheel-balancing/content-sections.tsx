@@ -182,6 +182,11 @@ export function WhatYouGet() {
             mobile tyre repair
           </Link>{" "}
           by our technicians, so book this standalone service when the wheels need balancing on their own.
+          Not sure a vibration is a balance issue? A{" "}
+          <Link href="/services/free-tyre-health-check" className="font-semibold text-accent hover:underline">
+            free tyre health check
+          </Link>{" "}
+          reads the wear pattern first and tells you what is causing it.
         </p>
       </div>
     </section>
