@@ -202,7 +202,7 @@ export function Availability() {
             ))}
           </dl>
 
-          <div className="surface-card border-l-4 border-l-accent p-5 sm:p-7">
+          <div className="callout">
             <h3 className="font-heading text-xl font-bold text-primary">{AVAILABILITY.pricingHeading}</h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">{AVAILABILITY.pricingBody}</p>
           </div>
@@ -260,7 +260,7 @@ export function SealantVsRepair() {
             the vulcanised bond a permanent patch needs, turning a repairable tyre into a
             replacement.
           </p>
-          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
+          <p className="callout font-medium text-primary">
             Use a sealant only when stranded with no alternative, then book a professional
             assessment immediately and tell the technician sealant was used.
           </p>
@@ -319,7 +319,7 @@ export function Costs() {
           </div>
         </div>
 
-        <div className="surface-card mt-6 border-l-4 border-l-accent p-5 sm:p-7">
+        <div className="callout mt-6">
           <h3 className="font-heading text-lg font-bold text-primary">{COST_CALLOUT.heading}</h3>
           <p className="mt-2 leading-relaxed text-muted-foreground">{COST_CALLOUT.body}</p>
           <p className="mt-3 font-semibold text-primary">{COST_CALLOUT.freshness}</p>
@@ -344,9 +344,6 @@ export function VehiclesCovered() {
             Each vehicle class is torqued and inflated to its own specification, applied
             correctly on every callout.
           </p>
-          <span className="mt-6 grid h-16 w-16 place-items-center rounded-2xl bg-primary/5 text-primary">
-            <Icon name="truck" className="h-8 w-8" />
-          </span>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:col-span-3">
@@ -372,7 +369,7 @@ export function VehiclesCovered() {
                 </li>
               ))}
             </ul>
-            <p className="surface-card mt-5 border-l-4 border-l-accent p-4 text-sm text-muted-foreground">
+            <p className="callout mt-5 text-sm text-muted-foreground">
               {(() => {
                 const phrase = "Run-flat tyres";
                 const idx = RUNFLAT_NOTE.indexOf(phrase);
@@ -449,7 +446,7 @@ export function Checklist() {
             </li>
           ))}
         </ol>
-        <p className="surface-card mt-8 border-l-4 border-l-primary p-5 leading-relaxed text-muted-foreground sm:p-7">
+        <p className="callout mt-8 leading-relaxed text-muted-foreground">
           {CHECKLIST_MOTORWAY}
         </p>
       </div>

@@ -276,7 +276,7 @@ export function TyresFitted() {
             confirmed against the VRN before fitting. All tyres are sourced from authorised
             UK distributors with the manufacturer warranty preserved.
           </p>
-          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
+          <p className="callout font-medium text-primary">
             Run-flats are fitted from £90, priced live from the VRN.
           </p>
         </div>

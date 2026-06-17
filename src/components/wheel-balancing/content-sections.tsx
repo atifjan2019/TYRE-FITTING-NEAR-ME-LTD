@@ -82,7 +82,7 @@ export function SignsGrid() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-8 max-w-3xl surface-card border-l-4 border-l-accent p-5 leading-relaxed text-foreground/80 sm:p-7">
+        <p className="callout mx-auto mt-8 max-w-3xl leading-relaxed text-foreground/80">
           {SIGNS_HONESTY}
         </p>
       </div>
@@ -140,7 +140,7 @@ export function VsAlignment() {
           </div>
         </div>
 
-        <p className="mx-auto mt-8 max-w-3xl surface-card border-l-4 border-l-accent p-5 text-center font-medium leading-relaxed text-primary sm:p-7">
+        <p className="callout mx-auto mt-8 max-w-3xl text-center font-medium leading-relaxed text-primary">
           {VS_ALIGNMENT_CLOSE}
         </p>
       </div>
@@ -240,7 +240,7 @@ export function Availability() {
             ))}
           </dl>
 
-          <div className="surface-card border-l-4 border-l-accent p-5 sm:p-7">
+          <div className="callout">
             <h3 className="font-heading text-xl font-bold text-primary">{AVAILABILITY.pricingHeading}</h3>
             <p className="mt-3 leading-relaxed text-muted-foreground">{AVAILABILITY.pricingBody}</p>
           </div>
@@ -266,7 +266,7 @@ export function WhenToBook() {
             </li>
           ))}
         </ul>
-        <p className="mx-auto mt-8 max-w-3xl surface-card border-l-4 border-l-accent p-5 leading-relaxed text-muted-foreground sm:p-7">
+        <p className="callout mx-auto mt-8 max-w-3xl leading-relaxed text-muted-foreground">
           {TRIGGERS_EV}
         </p>
       </div>
@@ -309,9 +309,6 @@ export function VehiclesCovered() {
             Each vehicle class is balanced, torqued and inflated to its own specification, applied
             correctly on every callout.
           </p>
-          <span className="mt-6 grid h-16 w-16 place-items-center rounded-2xl bg-primary/5 text-primary">
-            <Icon name="truck" className="h-8 w-8" />
-          </span>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:col-span-3">
@@ -337,7 +334,7 @@ export function VehiclesCovered() {
                 </li>
               ))}
             </ul>
-            <p className="mt-5 rounded-xl border border-l-4 border-l-accent bg-secondary p-4 text-sm text-muted-foreground">
+            <p className="callout mt-5 text-sm text-muted-foreground">
               {EV_NOTE}
             </p>
           </div>
@@ -388,7 +385,7 @@ export function Costs() {
           </div>
         </div>
 
-        <div className="mt-6 surface-card border-l-4 border-l-accent p-5 sm:p-7">
+        <div className="callout mt-6">
           <h3 className="font-heading text-lg font-bold text-primary">{COST_CALLOUT.heading}</h3>
           <p className="mt-2 leading-relaxed text-muted-foreground">{COST_CALLOUT.body}</p>
           <p className="mt-3 leading-relaxed text-muted-foreground">
@@ -458,7 +455,7 @@ export function Checklist() {
             </li>
           ))}
         </ol>
-        <p className="mt-8 surface-card border-l-4 border-l-primary p-5 leading-relaxed text-muted-foreground sm:p-7">
+        <p className="callout mt-8 leading-relaxed text-muted-foreground">
           {CHECKLIST_NOTE}
         </p>
       </div>

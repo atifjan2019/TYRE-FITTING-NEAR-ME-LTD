@@ -234,7 +234,7 @@ export function Costs() {
           {PRICING_LINES.map((line) => (
             <p
               key={line}
-              className="pricing-summary surface-card border-l-4 border-l-accent p-5 text-center font-heading text-xl font-extrabold text-primary"
+              className="pricing-summary callout text-center font-heading text-xl font-extrabold text-primary"
             >
               {line}
             </p>

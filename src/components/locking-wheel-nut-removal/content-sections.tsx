@@ -178,9 +178,6 @@ export function VehiclesCovered() {
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
             Vehicles and Locking Nut Types Covered
           </h2>
-          <span className="mt-6 grid h-16 w-16 place-items-center rounded-2xl bg-primary/5 text-primary">
-            <Icon name="truck" className="h-8 w-8" />
-          </span>
         </div>
         <div className="lg:col-span-3">
           <p className="text-lg leading-relaxed text-foreground/80">{VEHICLES_COVERED_PROSE}</p>

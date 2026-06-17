@@ -250,7 +250,7 @@ export function TyreOptions() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-8 max-w-3xl surface-card border-l-4 border-l-accent p-5 leading-relaxed text-muted-foreground sm:p-7">
+        <p className="callout mx-auto mt-8 max-w-3xl leading-relaxed text-muted-foreground">
           {TYRE_OPTIONS_NOTE}
         </p>
       </div>
@@ -288,7 +288,7 @@ export function Costs() {
           </ul>
         </div>
 
-        <div className="mx-auto mt-6 max-w-3xl surface-card border-l-4 border-l-accent p-5 sm:p-7">
+        <div className="callout mx-auto mt-6 max-w-3xl">
           <h3 className="font-heading text-lg font-bold text-primary">{COST_CALLOUT.heading}</h3>
           <p className="mt-2 leading-relaxed text-muted-foreground">{COST_CALLOUT.body}</p>
           <p className="mt-3 font-semibold text-primary">{COST_CALLOUT.freshness}</p>
@@ -383,7 +383,7 @@ export function Checklist() {
             </li>
           ))}
         </ol>
-        <p className="mt-8 surface-card border-l-4 border-l-primary p-5 leading-relaxed text-muted-foreground sm:p-7">
+        <p className="callout mt-8 leading-relaxed text-muted-foreground">
           {CHECKLIST_NOTE}
         </p>
       </div>

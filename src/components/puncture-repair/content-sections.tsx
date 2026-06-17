@@ -179,7 +179,7 @@ export function Repairability() {
         <RepairabilityDiagram />
 
         {/* Non-repairable list: two-column checklist with red X markers */}
-        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-l-4 border-l-accent bg-secondary p-5 sm:p-7">
+        <div className="callout mx-auto mt-10 max-w-3xl">
           <h3 className="font-heading text-lg font-bold text-primary">
             Punctures that never qualify, wherever they sit
           </h3>
@@ -300,7 +300,7 @@ export function RepairOrReplace() {
         </div>
 
         {/* Commitment callout strip */}
-        <p className="mx-auto mt-8 max-w-[800px] rounded-2xl border border-l-4 border-l-accent bg-accent/5 p-5 text-center font-bold text-primary">
+        <p className="callout mx-auto mt-8 max-w-[800px] text-center font-bold text-primary">
           When the tyre passes BS AU 159, we repair it. We carry replacement stock only for
           tyres that fail.
         </p>

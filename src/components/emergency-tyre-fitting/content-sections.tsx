@@ -109,7 +109,7 @@ export function WhatYouGet() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-10 max-w-3xl surface-card border-l-4 border-l-accent p-5 text-center leading-relaxed text-muted-foreground sm:p-7">
+        <p className="callout mx-auto mt-10 max-w-3xl text-center leading-relaxed text-muted-foreground">
           {BENEFITS_NOTE_PREFIX}
           <Link href="/services/mobile-tyre-repair" className="font-semibold text-accent hover:underline">
             mobile tyre repair
@@ -189,7 +189,7 @@ export function RepairOrReplace() {
         </h2>
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>{REPAIR.intro}</p>
-          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
+          <p className="callout font-medium text-primary">
             {before}
             <Link href="/services/mobile-tyre-repair" className="font-semibold text-accent hover:underline">
               {phrase}
@@ -230,7 +230,7 @@ export function Pricing() {
           </ul>
         </div>
 
-        <p className="mx-auto mt-6 max-w-3xl surface-card border-l-4 border-l-accent p-5 leading-relaxed text-muted-foreground sm:p-7">
+        <p className="callout mx-auto mt-6 max-w-3xl leading-relaxed text-muted-foreground">
           {PRICING.closing}
         </p>
       </div>
@@ -252,9 +252,6 @@ export function VehiclesCovered() {
           <p className="mt-4 text-muted-foreground">
             Each vehicle class is fitted, balanced and torqued to its own specification on every callout.
           </p>
-          <span className="mt-6 grid h-16 w-16 place-items-center rounded-2xl bg-primary/5 text-primary">
-            <Icon name="truck" className="h-8 w-8" />
-          </span>
         </div>
 
         <div className="lg:col-span-3">
@@ -266,7 +263,7 @@ export function VehiclesCovered() {
               </li>
             ))}
           </ul>
-          <p className="mt-5 surface-card border-l-4 border-l-accent p-4 text-sm text-muted-foreground">
+          <p className="callout mt-5 text-sm text-muted-foreground">
             {VEHICLES_NOTE}
           </p>
         </div>
@@ -287,7 +284,7 @@ export function Nights() {
         </h2>
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>{NIGHTS.body}</p>
-          <p className="surface-card border-l-4 border-l-accent p-5 font-medium text-primary sm:p-7">
+          <p className="callout font-medium text-primary">
             {NIGHTS.pricing}
           </p>
         </div>
