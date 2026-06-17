@@ -146,6 +146,18 @@ async function main() {
       icon: "battery-charging",
       features: ["Battery health check", "Quality batteries fitted", "Old battery recycled"],
     },
+    {
+      title: "Caravan & Motorhome Tyre Fitting",
+      slug: "caravan-tyre-fitting",
+      shortDescription:
+        "CP-rated and load-rated leisure tyres fitted where the caravan stands - storage compound, campsite, pitch or home, with a full DOT age and sidewall safety check.",
+      icon: "bus",
+      features: [
+        "CP-rated camper & load-rated leisure tyres",
+        "Replaced on age, 5 to 7 years by DOT code",
+        "Single-axle, twin-axle & Tyron bands handled",
+      ],
+    },
   ];
 
   for (const [i, s] of services.entries()) {

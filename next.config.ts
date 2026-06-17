@@ -53,6 +53,14 @@ const nextConfig: NextConfig = {
         destination: "/services/run-flat-tyre",
         permanent: true,
       },
+      // The caravan and motorhome service was published at the shortened slug
+      // /services/caravan-tyre-fitting. Redirect the original reserved slug so
+      // the URL and any internal link to it never 404.
+      {
+        source: "/services/mobile-caravan-motorhome-tyre-fitting",
+        destination: "/services/caravan-tyre-fitting",
+        permanent: true,
+      },
     ];
   },
 };

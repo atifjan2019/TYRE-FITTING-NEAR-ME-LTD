@@ -191,7 +191,7 @@ export const ADDITIONAL_SERVICES: {
   },
   {
     title: "Mobile Caravan and Motorhome Tyre Fitting",
-    slug: "mobile-caravan-motorhome-tyre-fitting",
+    slug: "caravan-tyre-fitting",
     hypernym: "Leisure Vehicle Tyre Service",
     icon: "bus",
     description:

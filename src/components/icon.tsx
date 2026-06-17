@@ -23,6 +23,11 @@ import {
   faCircleQuestion,
   faGear,
   faTableColumns,
+  faWarehouse,
+  faTree,
+  faTent,
+  faBuilding,
+  faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 
 /**
@@ -54,6 +59,11 @@ const ICONS: Record<string, IconDefinition> = {
   "badge-check": faCircleCheck,
   settings: faGear,
   "layout-dashboard": faTableColumns,
+  warehouse: faWarehouse,
+  tree: faTree,
+  tent: faTent,
+  building: faBuilding,
+  "triangle-alert": faTriangleExclamation,
 };
 
 export function Icon({
