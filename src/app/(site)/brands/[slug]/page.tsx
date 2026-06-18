@@ -9,6 +9,7 @@ import {
   localBusinessJsonLd,
   faqPageJsonLd,
   breadcrumbJsonLd,
+  organizationJsonLd,
 } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE } from "@/lib/site-config";
@@ -72,6 +73,10 @@ export default async function BrandPage({
     image: settings.defaultOgImage,
   });
 
+  const pageUrl = `${SITE.url}/brands/${slug}`;
+
+  // Quote-based Offer: brand pricing is "Get a quote" / "from registration", so
+  // we never assert a fixed numeric price. priceSpecification carries the policy.
   const serviceNode = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -82,6 +87,29 @@ export default async function BrandPage({
     description: page.hero.intro,
     provider: { "@id": `${SITE.url}#business` },
     areaServed: SERVICE_REGIONS.map((r) => ({ "@type": "AdministrativeArea", name: r.region })),
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "GBP",
+      availability: "https://schema.org/InStock",
+      url: pageUrl,
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "GBP",
+        description: `Tyre supplied and fitted for your ${page.brand}, quoted on request from the registration, with no call-out fee.`,
+      },
+    },
+  };
+
+  const webPageNode = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.metaTitle,
+    url: pageUrl,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".brand-intro"],
+    },
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
   };
 
   return (
@@ -89,7 +117,9 @@ export default async function BrandPage({
       <JsonLd
         data={[
           business,
+          organizationJsonLd({ settings }),
           serviceNode,
+          webPageNode,
           faqPageJsonLd(page.faqs),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -105,7 +135,7 @@ export default async function BrandPage({
           <h1 className="font-heading text-3xl font-extrabold leading-tight text-primary sm:text-4xl lg:text-5xl">
             {page.hero.h1}
           </h1>
-          <p className="mt-5 max-w-3xl text-lg text-muted-foreground">{page.hero.intro}</p>
+          <p className="brand-intro mt-5 max-w-3xl text-lg text-muted-foreground">{page.hero.intro}</p>
 
           <ul className="mt-6 grid max-w-3xl grid-cols-1 gap-2.5 sm:grid-cols-2">
             {page.hero.bullets.map((b) => (

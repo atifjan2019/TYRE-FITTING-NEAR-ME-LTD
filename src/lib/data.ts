@@ -22,7 +22,10 @@ const DEFAULT_SETTINGS = {
   // Fallback contact details so the call button + WhatsApp bubble still work if
   // the DB is briefly unreachable. The CMS overrides these when reachable.
   phone: "0788 328 8831",
-  whatsapp: "447722127759",
+  // Aligned to the displayed phone (+447883288831) and every bespoke service
+  // page. The legacy 447722127759 conflicted with the sitewide number; the DB
+  // settings row must be confirmed/updated via /admin, as it overrides this.
+  whatsapp: "447883288831",
   email: "bookings@tyrefittingnearme.co.uk",
   openingHours: "24/7, 365 days a year",
   yearsExperience: 10,

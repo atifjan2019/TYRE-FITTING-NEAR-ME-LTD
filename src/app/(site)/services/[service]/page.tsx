@@ -8,6 +8,7 @@ import {
   localBusinessJsonLd,
   faqPageJsonLd,
   breadcrumbJsonLd,
+  organizationJsonLd,
 } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE } from "@/lib/site-config";
@@ -77,6 +78,44 @@ export default async function ServicePage({
     { name: service.title, path: `/services/${service.slug}` },
   ];
 
+  const pageUrl = `${SITE.url}/services/${service.slug}`;
+
+  // Service node with a quote-based Offer. We never assert a fixed numeric price
+  // here because the DB serves services with mixed pricing models; the policy is
+  // described instead, so no figure is fabricated.
+  const serviceNode = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    serviceType: service.title,
+    description: service.shortDescription,
+    provider: { "@id": `${pageUrl}#business` },
+    areaServed: counties.map((c) => ({ "@type": "AdministrativeArea", name: c.name })),
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "GBP",
+      availability: "https://schema.org/InStock",
+      url: pageUrl,
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "GBP",
+        description: "Price quoted before dispatch, with no call-out fee in standard hours.",
+      },
+    },
+  };
+
+  const webPageNode = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: service.seoTitle || service.title,
+    url: pageUrl,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".service-lead"],
+    },
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+  };
+
   return (
     <>
       <JsonLd
@@ -85,10 +124,13 @@ export default async function ServicePage({
             settings,
             name: `${settings.brandName} - ${service.title}`,
             description: service.shortDescription,
-            url: `${SITE.url}/services/${service.slug}`,
+            url: pageUrl,
             areaServed: counties.map((c) => c.name),
             image: service.ogImage,
           }),
+          organizationJsonLd({ settings }),
+          serviceNode,
+          webPageNode,
           breadcrumbJsonLd(crumbs),
           ...(service.faqs.length ? [faqPageJsonLd(service.faqs)] : []),
         ]}
@@ -104,7 +146,7 @@ export default async function ServicePage({
             {service.title}
           </h1>
           <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
-          <p className="mt-4 max-w-2xl text-lg text-primary-foreground/90">
+          <p className="service-lead mt-4 max-w-2xl text-lg text-primary-foreground/90">
             {service.shortDescription}
           </p>
           {service.priceFrom ? (
