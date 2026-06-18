@@ -94,7 +94,7 @@ function heroSubline(a: Area, pc: string): string {
 function whyChoosePoints(a: Area, pc: string): string[] {
   const comeToYou = `We come to you in ${a.town}, with no drive to a garage and no ordering tyres online first.`;
   const open247 = `Open 24/7, including nights, weekends and bank holidays.`;
-  const response = `A 30 to 60 minute typical response across the ${pc} area.`;
+  const response = `A 30 to 60 minute typical response across the wider ${a.town} area.`;
   const price = `A transparent £20 flat fitting fee per tyre, quoted before dispatch.`;
   const repair = `An honest repair before replacement where a puncture passes assessment.`;
   const guarantee = `A 12-month workmanship guarantee on every fitting.`;
@@ -130,6 +130,11 @@ function localFaqs(a: Area, pc: string): { id: string; question: string; answer:
       id: "cost",
       question: `How much is tyre fitting in ${a.town}?`,
       answer: `Fitting is a £20 flat fee per tyre plus the tyre price, quoted before dispatch, with no call-out fee in standard hours.`,
+    },
+    {
+      id: "ev",
+      question: `Do you fit tyres on electric vehicles in ${a.town}?`,
+      answer: `Yes. We carry EV-rated, load-rated tyres for electric cars and SUVs, matched from your registration and fitted at your ${a.town} home, work or roadside, with the correct load index and acoustic-foam construction where the model specifies it.`,
     },
     // Town-specific FAQ from the data (unique information gain).
     { id: "local", question: a.localFaq.q, answer: a.localFaq.a },
@@ -201,6 +206,7 @@ export default async function AreaTownPage({
     "@type": "Service",
     serviceType: "Mobile Tyre Fitting",
     name: `Mobile Tyre Fitting in ${area.town}`,
+    description: `Mobile tyre fitting, puncture repair assessed to BS AU 159, and replacement in ${area.town}. Tread is checked against the 1.6mm legal minimum and tyre age against the DOT date code at every visit.`,
     provider: { "@id": `${pageUrl}#business` },
     areaServed: [
       { "@type": "City", name: area.town },
@@ -335,6 +341,10 @@ export default async function AreaTownPage({
               <li key={point}>{point}</li>
             ))}
           </ul>
+          <p className="mt-6 font-medium text-primary">
+            There is no call-out fee, ever, the £20 flat fitting fee per tyre and the tyre price are
+            the only charges, quoted in full before dispatch.
+          </p>
         </div>
       </section>
 
@@ -347,6 +357,35 @@ export default async function AreaTownPage({
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
             <p>{howFast(area, pc)}</p>
             <p>For an emergency on the {area.roads[0]}, the nearest fitter is dispatched straight away.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5b. TYRE SAFETY AND THE LAW (reference / E-E-A-T, same facts every town) */}
+      <section className="section-pad bg-background">
+        <div className="prose-col px-4">
+          <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+            Tyre Safety and the Law in {area.town}
+          </h2>
+          <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+            <p>
+              Every tyre fitted in {area.town} has to meet the legal standard. The legal minimum tread
+              depth is 1.6mm across the central three-quarters of the tread and around the full
+              circumference, and a tyre below that figure is an MOT failure. Tread worn below 1.6mm
+              cannot pass, so a worn tyre is replaced rather than signed off.
+            </p>
+            <p>
+              A puncture is assessed against BS AU 159 before any repair. A repair is permitted only
+              within the central three-quarters of the tread, the minor repair area, and only on a tyre
+              that has not been run flat. A puncture in the sidewall or shoulder, or a tyre driven on
+              while flat, cannot be repaired safely and is replaced.
+            </p>
+            <p>
+              Tyre age matters separately from tread. Rubber hardens and cracks with age regardless of
+              mileage, read from the four-digit DOT date code stamped on the sidewall. Low-mileage cars
+              in {area.town} often carry tyres that look sound but have aged past safe service, so the
+              DOT code is checked at every visit.
+            </p>
           </div>
         </div>
       </section>
@@ -364,6 +403,45 @@ export default async function AreaTownPage({
             <p className="mt-4 leading-relaxed text-foreground/80">
               A {area.scenario.vehicle} had {area.scenario.situation}. The nearest fitter was dispatched
               to the {area.scenario.road}, and the job was done on-site, {area.scenario.outcome}.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 6b. VEHICLES WE COVER (EV coverage + brand-silo links, max 2 live brands) */}
+      <section className="section-pad bg-secondary">
+        <div className="prose-col px-4">
+          <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+            Vehicles We Cover in {area.town}
+          </h2>
+          <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+            <p>
+              Our mobile fitters in {area.town} cover cars, vans up to 3.5 tonnes, 4x4s, SUVs and
+              electric vehicles, with the correct tyre matched from the registration. Every tyre is
+              fitted to the load index, speed rating and size the manufacturer specifies, then balanced
+              and torqued on-site.
+            </p>
+            <p>
+              Electric vehicles run heavier than the petrol equivalent and need the correct load-rated
+              tyre, often built with acoustic foam to keep the cabin quiet. We carry EV-rated tyres and
+              fit them at your {area.town} home, workplace or roadside.
+            </p>
+            <p>
+              For marque-specific fitting, see our{" "}
+              <Link
+                href="/brands/tesla-mobile-tyre-fitting"
+                className="font-medium text-accent hover:underline"
+              >
+                Tesla mobile tyre fitting
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/brands/bmw-mobile-tyre-fitting"
+                className="font-medium text-accent hover:underline"
+              >
+                BMW mobile tyre fitting
+              </Link>{" "}
+              pages.
             </p>
           </div>
         </div>
