@@ -62,8 +62,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PX3PV4PD');`}
         </Script>
-        {/* Smartlook session recording - loads after page is interactive. */}
-        <Script id="smartlook" strategy="afterInteractive">
+        {/* Smartlook session recording - loads after page is interactive.
+            NOTE: the id must NOT be "smartlook" - a script tag with that id
+            clobbers window.smartlook (named-element global), short-circuiting
+            the snippet's `window.smartlook||...` guard so the recorder never loads. */}
+        <Script id="smartlook-loader" strategy="afterInteractive">
           {`window.smartlook||(function(d) {
 var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
 var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
