@@ -167,12 +167,12 @@ export default async function GuidePage({
               <div className="rounded-xl border bg-card p-5 shadow-sm">
                 <h2 className="text-lg font-bold">Get a fast quote</h2>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Mobile fitting that comes to you, day or night. Call, WhatsApp
-                  or send your details.
+                  Mobile fitting that comes to you, day or night. Call us or send
+                  your details.
                 </p>
                 <CtaButtons
                   phone={settings.phone}
-                  whatsapp={settings.whatsapp}
+                  whatsapp=""
                   size="lg"
                   className="mt-4"
                 />
@@ -235,7 +235,11 @@ export default async function GuidePage({
         </div>
       </div>
 
-      <CtaBand phone={settings.phone} whatsapp={settings.whatsapp} />
+      <CtaBand
+        phone={settings.phone}
+        whatsapp=""
+        subtitle="Call us and we'll come to you, day or night."
+      />
     </>
   );
 }

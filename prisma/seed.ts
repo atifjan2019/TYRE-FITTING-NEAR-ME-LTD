@@ -25,7 +25,7 @@ async function main() {
       brandName: "Tyre Fitting Near Me Ltd",
       tagline: "24/7 Mobile Tyre Fitting - We Come To You",
       phone: "0800 000 0000",
-      whatsapp: "447000000000",
+      whatsapp: "447883288831",
       email: "bookings@tyrefittingnearme.co.uk",
       openingHours: "24 hours a day, 7 days a week",
       yearsExperience: 0,
