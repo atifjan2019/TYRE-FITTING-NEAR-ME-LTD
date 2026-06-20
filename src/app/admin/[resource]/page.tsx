@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Plus, Pencil } from "lucide-react";
+import { Plus, Pencil, Eye } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { getResource } from "@/lib/admin/resources";
 import { DeleteButton } from "@/components/admin/delete-button";
@@ -67,6 +67,19 @@ export default async function ResourceListPage({
                   ))}
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-4">
+                      {(() => {
+                        const view = resource.viewUrl?.(row);
+                        return view ? (
+                          <Link
+                            href={view}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary hover:underline"
+                          >
+                            <Eye className="h-3.5 w-3.5" /> View
+                          </Link>
+                        ) : null;
+                      })()}
                       <Link
                         href={`/admin/${resource.key}/${row.id}`}
                         className="inline-flex items-center gap-1 text-primary hover:underline"
