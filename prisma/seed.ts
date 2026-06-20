@@ -491,22 +491,29 @@ async function main() {
   console.log("✓ Cleared placeholder reviews (add real ones in /admin)");
 
   // --- Blog post ------------------------------------------------------------
+  // Content fields are defined once and applied on both create and update so a
+  // re-seed corrects the production row (em dash sweep + filled SEO title +
+  // tightened meta description). The em dash sweep replaced the spaced hyphen
+  // "give us a call - we'll fit" with a full stop: "give us a call. We'll fit".
+  // Compound hyphens (three-quarters) and number ranges are left intact.
+  const treadDepthGuide = {
+    title: "How to Check Your Tyre Tread Depth (The 20p Test)",
+    excerpt:
+      "The legal minimum tyre tread depth in the UK is 1.6mm. Here's a simple 20p test you can do in 60 seconds to stay safe and legal.",
+    author: "Tyre Fitting Near Me Ltd",
+    tags: ["tyre safety", "advice"],
+    published: true,
+    publishedAt: new Date("2026-01-15"),
+    body: `<p>The legal minimum tread depth for car tyres in the UK is <strong>1.6mm</strong> across the central three-quarters of the tyre, around its entire circumference.</p><h2>The 20p test</h2><p>Place a 20p coin into the main tread grooves of your tyre. If you can't see the outer band of the coin, your tread is above the legal limit. If you can see the band, your tyres may be unsafe and should be checked.</p><h2>Why it matters</h2><p>Worn tyres dramatically increase stopping distances in the wet and risk a £2,500 fine and 3 penalty points <em>per tyre</em>. If your tread is low, give us a call. We'll fit new tyres wherever you are.</p>`,
+    seoTitle: "How to Check Tyre Tread Depth: The 20p Test (UK)",
+    seoDescription:
+      "Check your tyre tread depth in 60 seconds with the simple 20p test. The UK legal minimum is 1.6mm. Stay safe, stay legal and avoid a £2,500 fine.",
+  };
+
   await prisma.blogPost.upsert({
     where: { slug: "how-to-check-your-tyre-tread-depth" },
-    update: {},
-    create: {
-      title: "How to Check Your Tyre Tread Depth (The 20p Test)",
-      slug: "how-to-check-your-tyre-tread-depth",
-      excerpt:
-        "The legal minimum tyre tread depth in the UK is 1.6mm. Here's a simple 20p test you can do in 60 seconds to stay safe and legal.",
-      author: "Tyre Fitting Near Me Ltd",
-      tags: ["tyre safety", "advice"],
-      published: true,
-      publishedAt: new Date("2026-01-15"),
-      body: `<p>The legal minimum tread depth for car tyres in the UK is <strong>1.6mm</strong> across the central three-quarters of the tyre, around its entire circumference.</p><h2>The 20p test</h2><p>Place a 20p coin into the main tread grooves of your tyre. If you can't see the outer band of the coin, your tread is above the legal limit. If you can see the band, your tyres may be unsafe and should be checked.</p><h2>Why it matters</h2><p>Worn tyres dramatically increase stopping distances in the wet and risk a £2,500 fine and 3 penalty points <em>per tyre</em>. If your tread is low, give us a call - we'll fit new tyres wherever you are.</p>`,
-      seoDescription:
-        "Learn how to check your tyre tread depth with the simple 20p test. UK legal minimum is 1.6mm. Stay safe and avoid fines.",
-    },
+    update: treadDepthGuide,
+    create: { slug: "how-to-check-your-tyre-tread-depth", ...treadDepthGuide },
   });
   console.log("✓ 1 blog post");
 

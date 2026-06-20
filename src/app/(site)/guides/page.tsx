@@ -4,16 +4,17 @@ import Image from "next/image";
 import { getPosts } from "@/lib/data";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
+import { SITE } from "@/lib/site-config";
 import { PageHero } from "@/components/page-hero";
 
 export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "Tyre Safety & Advice Blog",
+    title: "Tyre Guides & Advice",
     description:
-      "Practical tyre safety, maintenance and advice articles from the Tyre Fitting Near Me team.",
-    path: "/blog",
+      "Practical tyre safety, maintenance and advice guides from the Tyre Fitting Near Me team. The evergreen home for our supporting content.",
+    path: "/guides",
   });
 }
 
@@ -26,18 +27,30 @@ function formatDate(date: Date | null) {
   }).format(date);
 }
 
-export default async function BlogIndexPage() {
+export default async function GuidesHubPage() {
   const posts = await getPosts();
   const crumbs = [
     { name: "Home", path: "/" },
-    { name: "Blog", path: "/blog" },
+    { name: "Guides", path: "/guides" },
   ];
+
+  // ItemList of published guides for the hub, plus the breadcrumb trail.
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: posts.map((post, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE.url}/guides/${post.slug}`,
+      name: post.title,
+    })),
+  };
 
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(crumbs)} />
+      <JsonLd data={[breadcrumbJsonLd(crumbs), itemListJsonLd]} />
       <PageHero
-        title="Tyre safety & advice"
+        title="Tyre guides & advice"
         subtitle="Tips to keep you safe, legal and moving."
         crumbs={crumbs}
       />
@@ -48,7 +61,7 @@ export default async function BlogIndexPage() {
             {posts.map((post) => (
               <Link
                 key={post.id}
-                href={`/blog/${post.slug}`}
+                href={`/guides/${post.slug}`}
                 className="group flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-shadow hover:shadow-md"
               >
                 {post.coverImage ? (
@@ -80,7 +93,7 @@ export default async function BlogIndexPage() {
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground">No articles yet - check back soon.</p>
+          <p className="text-muted-foreground">No guides yet. Check back soon.</p>
         )}
       </div>
     </>

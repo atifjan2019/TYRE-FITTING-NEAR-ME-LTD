@@ -40,7 +40,7 @@ export const FOOTER_NAV: { title: string; links: { label: string; href: string }
     links: [
       { label: "About Us", href: "/about" },
       { label: "Reviews", href: "/reviews" },
-      { label: "Blog", href: "/blog" },
+      { label: "Guides", href: "/guides" },
       { label: "Contact", href: "/contact" },
     ],
   },

@@ -29,10 +29,13 @@ export async function generateMetadata({
   const post = await getPostBySlug(slug);
   if (!post) return {};
 
+  // Self-referential canonical to the /guides/ URL (path drives the canonical
+  // in buildMetadata). The retired /blog/ URL 301s here and carries no canonical
+  // of its own.
   return buildMetadata({
     title: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
-    path: `/blog/${post.slug}`,
+    path: `/guides/${post.slug}`,
     ogImage: post.ogImage || post.coverImage,
   });
 }
@@ -46,7 +49,7 @@ function formatDate(date: Date | null) {
   }).format(date);
 }
 
-export default async function BlogPostPage({
+export default async function GuidePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -59,16 +62,22 @@ export default async function BlogPostPage({
 
   if (!post) notFound();
 
+  const url = `${SITE.url}/guides/${post.slug}`;
   const crumbs = [
     { name: "Home", path: "/" },
-    { name: "Blog", path: "/blog" },
-    { name: post.title, path: `/blog/${post.slug}` },
+    { name: "Guides", path: "/guides" },
+    { name: post.title, path: `/guides/${post.slug}` },
   ];
 
-  // Article structured data.
+  // How-to guides (e.g. the tread-depth 20p test) are TechArticles; everything
+  // else is a plain Article.
+  const isHowTo = /^how to\b/i.test(post.title);
+  const articleType = isHowTo ? "TechArticle" : "Article";
+
+  // Article / TechArticle structured data, reflecting the /guides/ URL.
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": articleType,
     headline: post.title,
     description: post.excerpt,
     image: post.coverImage ? `${SITE.url}${post.coverImage}` : undefined,
@@ -76,16 +85,33 @@ export default async function BlogPostPage({
     dateModified: post.updatedAt.toISOString(),
     author: { "@type": "Organization", name: post.author },
     publisher: { "@type": "Organization", name: settings.brandName },
-    mainEntityOfPage: `${SITE.url}/blog/${post.slug}`,
+    mainEntityOfPage: url,
+    url,
+  };
+
+  // WebPage with speakable on the title + intro/definition line.
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": url,
+    url,
+    name: post.seoTitle || post.title,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["#guide-title", "#guide-body p:first-of-type"],
+    },
   };
 
   return (
     <>
-      <JsonLd data={[articleJsonLd, breadcrumbJsonLd(crumbs)]} />
+      <JsonLd data={[articleJsonLd, webPageJsonLd, breadcrumbJsonLd(crumbs)]} />
 
       <article className="mx-auto max-w-3xl px-4 py-10">
         <Breadcrumbs items={crumbs} />
-        <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h1
+          id="guide-title"
+          className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl"
+        >
           {post.title}
         </h1>
         <div className="mt-3 text-sm text-muted-foreground">
@@ -105,7 +131,7 @@ export default async function BlogPostPage({
           </div>
         ) : null}
 
-        <div className="mt-8">
+        <div id="guide-body" className="mt-8">
           <RichText html={post.body} />
         </div>
       </article>

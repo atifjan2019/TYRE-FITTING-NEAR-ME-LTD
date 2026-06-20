@@ -6,7 +6,7 @@ import { LIVE_AREAS } from "@/data/areas";
 
 /**
  * Dynamic sitemap. Includes static pages plus every published county, town,
- * service and blog post pulled from the database, so new CMS pages appear
+ * service and guide (article) pulled from the database, so new CMS pages appear
  * automatically. Revalidated hourly alongside the rest of the site.
  */
 export const revalidate = 3600;
@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/services`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/areas`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/reviews`, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.6 },
+    { url: `${base}/guides`, changeFrequency: "weekly", priority: 0.6 },
     { url: `${base}/about`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${base}/contact`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${base}/book`, changeFrequency: "yearly", priority: 0.7 },
@@ -69,8 +69,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  // Guides (formerly /blog) - published articles only, drafts excluded by the
+  // `published: true` query above.
   const postRoutes: MetadataRoute.Sitemap = posts.map((p) => ({
-    url: `${base}/blog/${p.slug}`,
+    url: `${base}/guides/${p.slug}`,
     lastModified: p.updatedAt,
     changeFrequency: "monthly",
     priority: 0.5,

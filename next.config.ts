@@ -33,6 +33,21 @@ const nextConfig: NextConfig = {
   // offered. The run-flat slug was also shortened to /services/run-flat-tyre.
   async redirects() {
     return [
+      // Blog -> Guides migration. /guides is the permanent evergreen home for
+      // all article content. Every old /blog/[slug] 301s 1-to-1 to its true
+      // /guides/[slug] equivalent (slug preserved), and the /blog hub 301s to
+      // /guides. The :slug wildcard is scale-agnostic for any future or
+      // previously-indexed article. No chains, no loops, no homepage redirects.
+      {
+        source: "/blog",
+        destination: "/guides",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug",
+        destination: "/guides/:slug",
+        permanent: true,
+      },
       {
         source: "/services/mobile-wheel-alignment",
         destination: "/services",
