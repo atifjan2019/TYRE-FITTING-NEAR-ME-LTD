@@ -83,8 +83,6 @@ export default async function ResourceListPage({
                         return view ? (
                           <Link
                             href={view}
-                            target="_blank"
-                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary hover:underline"
                           >
                             <Eye className="h-3.5 w-3.5" /> View
