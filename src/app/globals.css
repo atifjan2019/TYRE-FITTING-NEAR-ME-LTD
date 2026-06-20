@@ -232,6 +232,9 @@ html {
 }
 .prose-content a {
   color: var(--color-accent);
+  text-decoration: none;
+}
+.prose-content a:hover {
   text-decoration: underline;
 }
 .prose-content img {
