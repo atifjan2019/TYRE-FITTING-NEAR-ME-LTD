@@ -54,12 +54,20 @@ export interface ResourceConfig {
   /** Optional Prisma `include` for the list query (e.g. to show related rows). */
   include?: Record<string, unknown>;
   /**
-   * Optional builder for a "View" link to the live public page of a row.
-   * Return the public path (e.g. `/guides/[slug]`), or `null` to hide the
-   * link (e.g. for unpublished rows that would 404 on the live site).
+   * Optional "View" link to the live public page of a row. Kept as plain data
+   * (NOT a function) so the whole config stays serialisable and can cross the
+   * server/client boundary into <AdminForm>. The list page builds the URL from
+   * this via `buildViewUrl`.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  viewUrl?: (row: any) => string | null;
+  viewPath?: {
+    /** Public path prefix, e.g. "/guides". The row's slug is appended. */
+    base: string;
+    /** Row field holding the slug. Defaults to "slug". */
+    slugField?: string;
+    /** If set, only show the link when this boolean row field is truthy
+     * (e.g. "published", since unpublished pages 404 on the live site). */
+    onlyWhen?: string;
+  };
   fields: FieldConfig[];
 }
 
@@ -317,7 +325,7 @@ export const RESOURCES: Record<string, ResourceConfig> = {
     orderBy: [{ publishedAt: "desc" }],
     // Articles live at /guides/[slug]. Only published posts have a live page
     // (getPostBySlug filters published), so unpublished rows hide the link.
-    viewUrl: (row) => (row.published ? `/guides/${row.slug}` : null),
+    viewPath: { base: "/guides", slugField: "slug", onlyWhen: "published" },
     fields: [
       { name: "title", label: "Title", type: "text", required: true },
       { name: "slug", label: "Slug (URL)", type: "text", required: true },

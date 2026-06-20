@@ -2,8 +2,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Plus, Pencil, Eye } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { getResource } from "@/lib/admin/resources";
+import { getResource, type ResourceConfig } from "@/lib/admin/resources";
 import { DeleteButton } from "@/components/admin/delete-button";
+
+/** Build the live "View" URL for a row, or null if it should be hidden. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function buildViewUrl(resource: ResourceConfig, row: any): string | null {
+  const v = resource.viewPath;
+  if (!v) return null;
+  if (v.onlyWhen && !row[v.onlyWhen]) return null;
+  const slug = row[v.slugField ?? "slug"];
+  if (!slug) return null;
+  return `${v.base}/${slug}`;
+}
 
 export const dynamic = "force-dynamic";
 
@@ -68,7 +79,7 @@ export default async function ResourceListPage({
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-4">
                       {(() => {
-                        const view = resource.viewUrl?.(row);
+                        const view = buildViewUrl(resource, row);
                         return view ? (
                           <Link
                             href={view}
