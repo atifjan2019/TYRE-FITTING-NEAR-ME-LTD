@@ -129,9 +129,18 @@ export default async function GuidePage({
             >
               {post.title}
             </h1>
-            <div className="mt-3 text-sm text-muted-foreground">
-              {formatDate(post.publishedAt)} · {post.author}
-            </div>
+            {(() => {
+              // Only render the meta parts that exist, so a missing date or
+              // author never leaves an orphan "·" separator under the title.
+              const meta = [formatDate(post.publishedAt), post.author].filter(
+                Boolean
+              );
+              return meta.length ? (
+                <div className="mt-3 text-sm text-muted-foreground">
+                  {meta.join(" · ")}
+                </div>
+              ) : null;
+            })()}
 
             {post.coverImage ? (
               <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-xl bg-secondary">

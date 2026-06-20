@@ -8,14 +8,19 @@ import Image from "@tiptap/extension-image";
 import {
   Bold,
   Italic,
+  Strikethrough,
   Heading2,
   Heading3,
   List,
   ListOrdered,
+  Quote,
+  Code,
+  Minus,
   Link as LinkIcon,
   Image as ImageIcon,
   Undo,
   Redo,
+  Code2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +28,11 @@ import { cn } from "@/lib/utils";
  * Tiptap rich-text editor for admin body fields. Outputs HTML into a hidden
  * input (`name`) so it submits with the surrounding form. Images are uploaded
  * to Vercel Blob via /api/upload and inserted inline.
+ *
+ * An "HTML" toggle switches the body area to a raw-HTML textarea, so whole
+ * articles can be pasted in as markup (e.g. from another CMS) and hand-edited.
+ * The hidden input always carries the current HTML, so the form submits
+ * correctly in either mode.
  */
 export function RichTextEditor({
   name,
@@ -32,6 +42,7 @@ export function RichTextEditor({
   defaultValue?: string;
 }) {
   const [html, setHtml] = useState(defaultValue ?? "");
+  const [showSource, setShowSource] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const editor = useEditor({
@@ -63,6 +74,15 @@ export function RichTextEditor({
     }
   }
 
+  /** Toggle between the visual editor and the raw-HTML textarea. */
+  function toggleSource() {
+    if (showSource) {
+      // Coming back to the visual editor: push the edited HTML into Tiptap.
+      editor?.commands.setContent(html);
+    }
+    setShowSource((s) => !s);
+  }
+
   if (!editor) {
     return (
       <div className="min-h-48 rounded-md border border-input bg-background" />
@@ -75,43 +95,80 @@ export function RichTextEditor({
 
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-1 rounded-t-md border border-input bg-secondary/40 p-1.5">
-        <ToolbarButton onClick={() => editor.chain().focus().toggleBold().run()} active={editor.isActive("bold")} title="Bold">
-          <Bold className="h-4 w-4" />
-        </ToolbarButton>
-        <ToolbarButton onClick={() => editor.chain().focus().toggleItalic().run()} active={editor.isActive("italic")} title="Italic">
-          <Italic className="h-4 w-4" />
-        </ToolbarButton>
-        <Divider />
-        <ToolbarButton onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} active={editor.isActive("heading", { level: 2 })} title="Heading 2">
-          <Heading2 className="h-4 w-4" />
-        </ToolbarButton>
-        <ToolbarButton onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} active={editor.isActive("heading", { level: 3 })} title="Heading 3">
-          <Heading3 className="h-4 w-4" />
-        </ToolbarButton>
-        <Divider />
-        <ToolbarButton onClick={() => editor.chain().focus().toggleBulletList().run()} active={editor.isActive("bulletList")} title="Bullet list">
-          <List className="h-4 w-4" />
-        </ToolbarButton>
-        <ToolbarButton onClick={() => editor.chain().focus().toggleOrderedList().run()} active={editor.isActive("orderedList")} title="Numbered list">
-          <ListOrdered className="h-4 w-4" />
-        </ToolbarButton>
-        <Divider />
-        <ToolbarButton onClick={() => setLink(editor)} active={editor.isActive("link")} title="Add link">
-          <LinkIcon className="h-4 w-4" />
-        </ToolbarButton>
-        <ToolbarButton onClick={() => fileRef.current?.click()} title="Insert image">
-          <ImageIcon className="h-4 w-4" />
-        </ToolbarButton>
-        <Divider />
-        <ToolbarButton onClick={() => editor.chain().focus().undo().run()} title="Undo">
-          <Undo className="h-4 w-4" />
-        </ToolbarButton>
-        <ToolbarButton onClick={() => editor.chain().focus().redo().run()} title="Redo">
-          <Redo className="h-4 w-4" />
+        {showSource ? (
+          <span className="px-2 text-xs font-medium text-muted-foreground">
+            Editing raw HTML — switch back to format visually.
+          </span>
+        ) : (
+          <>
+            <ToolbarButton onClick={() => editor.chain().focus().toggleBold().run()} active={editor.isActive("bold")} title="Bold">
+              <Bold className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().toggleItalic().run()} active={editor.isActive("italic")} title="Italic">
+              <Italic className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().toggleStrike().run()} active={editor.isActive("strike")} title="Strikethrough">
+              <Strikethrough className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().toggleCode().run()} active={editor.isActive("code")} title="Inline code">
+              <Code className="h-4 w-4" />
+            </ToolbarButton>
+            <Divider />
+            <ToolbarButton onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} active={editor.isActive("heading", { level: 2 })} title="Heading 2">
+              <Heading2 className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} active={editor.isActive("heading", { level: 3 })} title="Heading 3">
+              <Heading3 className="h-4 w-4" />
+            </ToolbarButton>
+            <Divider />
+            <ToolbarButton onClick={() => editor.chain().focus().toggleBulletList().run()} active={editor.isActive("bulletList")} title="Bullet list">
+              <List className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().toggleOrderedList().run()} active={editor.isActive("orderedList")} title="Numbered list">
+              <ListOrdered className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().toggleBlockquote().run()} active={editor.isActive("blockquote")} title="Quote">
+              <Quote className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().setHorizontalRule().run()} title="Divider line">
+              <Minus className="h-4 w-4" />
+            </ToolbarButton>
+            <Divider />
+            <ToolbarButton onClick={() => setLink(editor)} active={editor.isActive("link")} title="Add link">
+              <LinkIcon className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => fileRef.current?.click()} title="Insert image">
+              <ImageIcon className="h-4 w-4" />
+            </ToolbarButton>
+            <Divider />
+            <ToolbarButton onClick={() => editor.chain().focus().undo().run()} title="Undo">
+              <Undo className="h-4 w-4" />
+            </ToolbarButton>
+            <ToolbarButton onClick={() => editor.chain().focus().redo().run()} title="Redo">
+              <Redo className="h-4 w-4" />
+            </ToolbarButton>
+          </>
+        )}
+
+        {/* HTML source toggle, always available, pushed to the right. */}
+        <span className="ml-auto" />
+        <ToolbarButton onClick={toggleSource} active={showSource} title="Edit HTML source">
+          <Code2 className="h-4 w-4" />
         </ToolbarButton>
       </div>
 
-      <EditorContent editor={editor} />
+      {showSource ? (
+        <textarea
+          value={html}
+          onChange={(e) => setHtml(e.target.value)}
+          spellCheck={false}
+          className="min-h-48 w-full max-w-none rounded-b-md border border-t-0 border-input bg-background px-3 py-2 font-mono text-sm focus:outline-none"
+          rows={18}
+          placeholder="<p>Paste or write HTML here…</p>"
+        />
+      ) : (
+        <EditorContent editor={editor} />
+      )}
 
       <input
         ref={fileRef}
