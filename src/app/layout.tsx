@@ -62,6 +62,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PX3PV4PD');`}
         </Script>
+        {/* Smartlook session recording - loads after page is interactive. */}
+        <Script id="smartlook" strategy="afterInteractive">
+          {`window.smartlook||(function(d) {
+var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+})(document);
+smartlook('init', '3e4604d37a26534ff3c1b6ed02e16cd724ef1bab', { region: 'eu' });`}
+        </Script>
       </head>
       <body className="min-h-dvh antialiased">
         {/* Google Tag Manager (noscript) - fallback for JS-disabled clients. */}
