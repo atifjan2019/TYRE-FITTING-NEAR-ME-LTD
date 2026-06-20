@@ -28,12 +28,19 @@ export function BookingForm({
   defaultPostcode,
   leadKey,
   messagePlaceholder,
+  compact = false,
 }: {
   phone?: string;
   defaultService?: string;
   defaultPostcode?: string;
   leadKey?: string;
   messagePlaceholder?: string;
+  /**
+   * Compact mode shows only phone, tyre size and postcode (e.g. in a sidebar).
+   * The name field is omitted, so a default name is supplied to satisfy the
+   * required-field schema — the phone number is what the team needs anyway.
+   */
+  compact?: boolean;
 }) {
   const [submitted, setSubmitted] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -51,7 +58,13 @@ export function BookingForm({
     formState: { errors, isSubmitting },
   } = useForm<LeadInput>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { service: defaultService ?? "", postcode: defaultPostcode ?? "" },
+    defaultValues: {
+      service: defaultService ?? "",
+      postcode: defaultPostcode ?? "",
+      // Compact mode hides the name field; supply a placeholder so the required
+      // schema passes (the team calls back on the phone number provided).
+      name: compact ? "Website enquiry" : "",
+    },
   });
 
   async function lookUpVehicle() {
@@ -132,10 +145,55 @@ export function BookingForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-xl border bg-card p-6 shadow-sm sm:p-8"
+      className={
+        compact
+          ? "" // sits inside the sidebar card, so no extra chrome
+          : "rounded-xl border bg-card p-6 shadow-sm sm:p-8"
+      }
       noValidate
     >
       <div className="grid gap-4 sm:grid-cols-2">
+        {compact ? (
+          <>
+            <div className="sm:col-span-2">
+              <Label htmlFor="phone">Phone number *</Label>
+              <Input
+                id="phone"
+                type="tel"
+                inputMode="tel"
+                {...register("phone")}
+                className="mt-1.5"
+                autoComplete="tel"
+              />
+              {errors.phone && (
+                <p className="mt-1 text-sm text-destructive">{errors.phone.message}</p>
+              )}
+            </div>
+            <div className="sm:col-span-2">
+              <Label htmlFor="tyreSize">Tyre size (if known)</Label>
+              <Input
+                id="tyreSize"
+                {...register("tyreSize")}
+                className="mt-1.5"
+                placeholder="e.g. 205/55 R16"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <Label htmlFor="postcode">Postcode / location *</Label>
+              <Input
+                id="postcode"
+                {...register("postcode")}
+                className="mt-1.5"
+                placeholder="e.g. ME16 or 'M20 J6'"
+                autoComplete="postal-code"
+              />
+              {errors.postcode && (
+                <p className="mt-1 text-sm text-destructive">{errors.postcode.message}</p>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
         <div className="sm:col-span-2">
           <Label htmlFor="name">Your name *</Label>
           <Input id="name" {...register("name")} className="mt-1.5" autoComplete="name" />
@@ -243,6 +301,8 @@ export function BookingForm({
             }
           />
         </div>
+          </>
+        )}
 
         {/* Honeypot - off-screen anti-spam field. Real users never see or focus
             it; spam bots fill it and the submission is rejected server-side. Kept

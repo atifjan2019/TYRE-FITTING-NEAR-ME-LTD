@@ -177,7 +177,7 @@ export default async function GuidePage({
                   className="mt-4"
                 />
                 <div className="mt-5 border-t pt-5">
-                  <BookingForm phone={settings.phone} />
+                  <BookingForm phone={settings.phone} compact />
                 </div>
               </div>
 
