@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getCounties, getSiteSettings } from "@/lib/data";
+import { getSiteSettings } from "@/lib/data";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE } from "@/lib/site-config";
@@ -34,7 +34,7 @@ function liveClusters() {
 }
 
 export default async function AreasPage() {
-  const [counties, settings] = await Promise.all([getCounties(), getSiteSettings()]);
+  const settings = await getSiteSettings();
 
   // ItemList of the live area pages (hub schema) + breadcrumb.
   const itemList = {
@@ -139,8 +139,8 @@ export default async function AreasPage() {
         );
       })}
 
-      {/* Browse by county (DB-driven region hubs), kept so location pages stay linked */}
-      <AreasCovered counties={counties} heading />
+      {/* Browse by region: the six /areas/[region] hubs and their towns. */}
+      <AreasCovered heading />
 
       <CtaBand phone={settings.phone} whatsapp={settings.whatsapp} />
     </>

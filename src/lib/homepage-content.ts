@@ -548,7 +548,7 @@ export const SERVICE_REGIONS: { region: string; slug: string; towns: string[] }[
   },
   {
     region: "Birmingham and West Midlands",
-    slug: "birmingham-west-midlands",
+    slug: "west-midlands",
     towns: ["Solihull", "Birmingham", "Coventry", "Wolverhampton", "Walsall", "Dudley", "Sutton Coldfield", "West Bromwich"],
   },
   {

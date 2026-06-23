@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, Phone, Star } from "lucide-react";
-import { getSiteSettings, getCounties } from "@/lib/data";
+import { getSiteSettings } from "@/lib/data";
 import { getBrandPage, BRAND_PAGE_SLUGS } from "@/lib/brand-pages";
 import {
   buildMetadata,
@@ -62,8 +62,7 @@ export default async function BrandPage({
   const page = getBrandPage(slug);
   if (!page) notFound();
 
-  const [settings, counties] = await Promise.all([getSiteSettings(), getCounties()]);
-  const countySlugs = new Set(counties.map((c) => c.slug));
+  const settings = await getSiteSettings();
 
   const business: Record<string, unknown> = localBusinessJsonLd({
     settings,
@@ -366,7 +365,7 @@ export default async function BrandPage({
       </section>
 
       {/* Section 8 - Areas */}
-      <AreasSemantic availableSlugs={countySlugs} />
+      <AreasSemantic />
 
       {/* Section 9 - FAQs */}
       <FaqSection

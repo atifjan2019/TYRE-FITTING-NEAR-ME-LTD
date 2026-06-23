@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Phone, Truck, Clock } from "lucide-react";
-import { prisma } from "@/lib/prisma";
 import { getSiteSettings } from "@/lib/data";
 import { buildMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site-config";
 import { regionSlugForPostcode } from "@/lib/postcode-regions";
+import { getRegion } from "@/data/regions";
 import { CoverageMap } from "@/components/sections/coverage-map";
 import { BookingDialog } from "@/components/sections/booking-dialog";
 import { Button } from "@/components/ui/button";
@@ -36,14 +36,9 @@ export default async function AvailabilityPage({
 
   // Resolve the searched postcode to one of our region hubs (if possible).
   const slug = location ? regionSlugForPostcode(location) : null;
-  const county = slug
-    ? await prisma.county.findFirst({
-        where: { slug, published: true },
-        select: { name: true, slug: true },
-      })
-    : null;
+  const region = slug ? getRegion(slug) : null;
 
-  const areaLabel = county?.name ?? (location ? location.toUpperCase() : "your area");
+  const areaLabel = region?.name ?? (location ? location.toUpperCase() : "your area");
 
   // Deterministic "available fitters" count (placeholder - wire to real fitter
   // availability later). 2-4 based on the search so it feels location-specific.

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   getSiteSettings,
   getServices,
-  getCounties,
   getReviewStats,
 } from "@/lib/data";
 import {
@@ -65,16 +64,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [settings, services, counties, stats] = await Promise.all([
+  const [settings, services, stats] = await Promise.all([
     getSiteSettings(),
     getServices(),
-    getCounties(),
     getReviewStats(),
   ]);
 
   // Only link to destinations that actually exist (no shipped 404s).
   const serviceSlugs = new Set(services.map((s) => s.slug));
-  const countySlugs = new Set(counties.map((c) => c.slug));
 
   const reviewCount = stats.count > 0 ? stats.count : HOME_REVIEWS.length;
   const builtBrandSlugs = new Set(BRAND_PAGE_SLUGS);
@@ -202,7 +199,7 @@ export default async function HomePage() {
       <Reveal><RecentWork /></Reveal>
 
       {/* 11. Areas we cover */}
-      <Reveal><AreasSemantic availableSlugs={countySlugs} /></Reveal>
+      <Reveal><AreasSemantic /></Reveal>
 
       {/* CTA strip 2 (before why-choose) */}
       <Reveal>

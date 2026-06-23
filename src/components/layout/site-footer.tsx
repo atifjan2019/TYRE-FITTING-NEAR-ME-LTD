@@ -5,18 +5,14 @@ import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { FOOTER_NAV, SITE } from "@/lib/site-config";
 import { telHref, whatsappHref } from "@/lib/utils";
 import type { SiteSettingsData } from "@/lib/data";
+import { REGIONS } from "@/data/regions";
 
 /**
  * Site footer. Lists service areas (good for internal linking + local SEO),
  * contact actions, and legal links. No street address - service-area business.
+ * The "Areas We Cover" column links to the regional tier at /areas/[region].
  */
-export function SiteFooter({
-  settings,
-  counties,
-}: {
-  settings: SiteSettingsData;
-  counties: { name: string; slug: string }[];
-}) {
+export function SiteFooter({ settings }: { settings: SiteSettingsData }) {
   return (
     <footer className="mt-16 border-t bg-secondary/40">
       <div className="mx-auto max-w-7xl px-4 py-12">
@@ -76,10 +72,10 @@ export function SiteFooter({
               Areas We Cover
             </div>
             <ul className="space-y-2 text-sm">
-              {counties.map((c) => (
-                <li key={c.slug}>
-                  <Link href={`/${c.slug}`} className="hover:text-primary">
-                    {c.name}
+              {REGIONS.map((r) => (
+                <li key={r.slug}>
+                  <Link href={`/areas/${r.slug}`} className="hover:text-primary">
+                    {r.name}
                   </Link>
                 </li>
               ))}

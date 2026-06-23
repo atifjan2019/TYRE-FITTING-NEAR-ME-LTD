@@ -5,10 +5,10 @@ import { SERVICE_REGIONS } from "@/lib/homepage-content";
 
 /**
  * Section 11 - Areas we cover. Six regions, each with eight town entities named
- * in visible copy for local semantic coverage. Region titles link to the county
- * hub page; towns are listed as visible body copy.
+ * in visible copy for local semantic coverage. Region titles link to the
+ * regional tier at /areas/[region]; towns are listed as visible body copy.
  */
-export function AreasSemantic({ availableSlugs }: { availableSlugs: Set<string> }) {
+export function AreasSemantic() {
   return (
     <section className="bg-secondary py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4">
@@ -23,13 +23,9 @@ export function AreasSemantic({ availableSlugs }: { availableSlugs: Set<string> 
             <div key={region.region} className="rounded-2xl border bg-card p-6 shadow-sm">
               <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-primary">
                 <MapPin className="h-5 w-5 text-accent" />
-                {availableSlugs.has(region.slug) ? (
-                  <Link href={`/${region.slug}`} className="hover:text-accent hover:underline">
-                    {region.region}
-                  </Link>
-                ) : (
-                  <span>{region.region}</span>
-                )}
+                <Link href={`/areas/${region.slug}`} className="hover:text-accent hover:underline">
+                  {region.region}
+                </Link>
               </h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {region.towns.map((town) => (

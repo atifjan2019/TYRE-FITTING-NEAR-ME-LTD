@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { getServiceBySlug, getSiteSettings, getCounties } from "@/lib/data";
+import { getServiceBySlug, getSiteSettings, EXCLUDED_SERVICE_SLUGS } from "@/lib/data";
+import { REGIONS } from "@/data/regions";
 import {
   buildMetadata,
   localBusinessJsonLd,
@@ -38,7 +39,7 @@ export async function generateStaticParams() {
     "puncture-repair",
   ]);
   return services
-    .filter((s) => !STATIC_SLUGS.has(s.slug))
+    .filter((s) => !STATIC_SLUGS.has(s.slug) && !EXCLUDED_SERVICE_SLUGS.has(s.slug))
     .map((s) => ({ service: s.slug }));
 }
 
@@ -65,13 +66,14 @@ export default async function ServicePage({
   params: Promise<{ service: string }>;
 }) {
   const { service: slug } = await params;
-  const [service, settings, counties] = await Promise.all([
+  const [service, settings] = await Promise.all([
     getServiceBySlug(slug),
     getSiteSettings(),
-    getCounties(),
   ]);
 
   if (!service) notFound();
+
+  const regionNames = REGIONS.map((r) => r.name);
 
   const features = Array.isArray(service.features)
     ? (service.features as string[])
@@ -95,7 +97,7 @@ export default async function ServicePage({
     serviceType: service.title,
     description: service.shortDescription,
     provider: { "@id": `${pageUrl}#business` },
-    areaServed: counties.map((c) => ({ "@type": "AdministrativeArea", name: c.name })),
+    areaServed: regionNames.map((name) => ({ "@type": "AdministrativeArea", name })),
     offers: {
       "@type": "Offer",
       priceCurrency: "GBP",
@@ -130,7 +132,7 @@ export default async function ServicePage({
             name: `${settings.brandName} - ${service.title}`,
             description: service.shortDescription,
             url: pageUrl,
-            areaServed: counties.map((c) => c.name),
+            areaServed: regionNames,
             image: service.ogImage,
           }),
           organizationJsonLd({ settings }),
@@ -201,7 +203,7 @@ export default async function ServicePage({
         <FaqSection faqs={service.faqs} title={`${service.title} FAQs`} />
       ) : null}
 
-      <AreasCovered counties={counties} />
+      <AreasCovered />
 
       <CtaBand
         phone={settings.phone}

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react";
-import { getSiteSettings, getCounties } from "@/lib/data";
+import { Check, ArrowRight, ChevronDown } from "lucide-react";
+import { getSiteSettings } from "@/lib/data";
+import { REGIONS } from "@/data/regions";
 import {
   buildMetadata,
   localBusinessJsonLd,
@@ -14,6 +15,7 @@ import { SITE } from "@/lib/site-config";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaButtons } from "@/components/sections/cta-buttons";
 import { CtaBand } from "@/components/sections/cta-band";
+import { SectionHeading } from "@/components/sections/section-heading";
 import { AreasCovered } from "@/components/sections/areas-covered";
 import { BookingForm } from "@/components/forms/booking-form";
 
@@ -25,6 +27,8 @@ export const revalidate = 3600;
 
 const PAGE_PATH = "/services/mobile-tyre-fitting";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
+
+const SUCCESS = "#1B9C5D";
 
 // Single source of truth: the visible steps also feed the HowTo schema below.
 const PROCESS_STEPS = [
@@ -203,6 +207,22 @@ const FEATURES = [
   "Same-day appointments",
 ];
 
+// Tyre safety facts, kept verbatim but split into scannable sub-points.
+const SAFETY = [
+  {
+    label: "Legal tread depth",
+    body: "UK law sets the minimum legal tread depth at 1.6mm across the central three-quarters of the tyre and around its full circumference. A tyre below that limit is illegal, fails the MOT and cannot legally stay on the road.",
+  },
+  {
+    label: "Repair standard BS AU 159",
+    body: "Whether a puncture is repaired or replaced is judged against BS AU 159, the British Standard for tyre repair: damage inside the central repairable area gets a permanent plug-patch, while sidewall damage, a run-flat driven flat or a tyre worn past the limit cannot be repaired and needs replacing.",
+  },
+  {
+    label: "Tyre age and the DOT code",
+    body: "Tyre age matters too. The DOT code stamped on the sidewall shows the week and year of manufacture, and rubber hardens as it ages, so a tyre over roughly ten years old warrants replacement even with tread to spare.",
+  },
+];
+
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "Mobile Tyre Fitting Near Me | 24/7, Come To You, £20 Fitting",
@@ -214,7 +234,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function MobileTyreFittingPage() {
-  const [settings, counties] = await Promise.all([getSiteSettings(), getCounties()]);
+  const settings = await getSiteSettings();
   const { phone, whatsapp } = settings;
 
   const crumbs = [
@@ -223,9 +243,7 @@ export default async function MobileTyreFittingPage() {
     { name: "Mobile Tyre Fitting", path: PAGE_PATH },
   ];
 
-  const areaNames = counties.length
-    ? counties.map((c) => c.name)
-    : ["London", "Kent", "Sussex", "Essex", "West Midlands", "Scotland"];
+  const areaNames = REGIONS.map((r) => r.name);
 
   // --- JSON-LD: 8 discrete schema blocks, one <script> each ------------------
   const logoUrl = settings.logo
@@ -353,169 +371,226 @@ export default async function MobileTyreFittingPage() {
       <JsonLd id="schema-offer" data={offerSchema} />
       <JsonLd id="schema-webpage" data={webPageSchema} />
 
-      {/* Hero */}
+      {/* 1. HERO (booking form lives in the hero, so no dead column below) */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
-          <div className="mb-4">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:py-16 lg:grid-cols-5 lg:gap-12">
+          <div className="lg:col-span-3">
             <Breadcrumbs items={crumbs} light />
+            <h1 className="mt-4 font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
+              Mobile Tyre Fitting
+            </h1>
+            <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
+            <p className="service-lead mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/90">
+              New tyres supplied and fitted at your home, work or roadside. No need
+              to visit a garage.
+            </p>
+            <p className="mt-3 text-base font-bold text-accent sm:text-lg">
+              £20 flat fitting fee, no call-out charge
+            </p>
+            <CtaButtons
+              phone={phone}
+              whatsapp={whatsapp}
+              message="Hi, I'd like to book mobile tyre fitting. My location is … and my tyre size is …"
+              className="mt-8"
+            />
           </div>
-          <h1 className="font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
-            Mobile Tyre Fitting
-          </h1>
-          <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
-          <p className="service-lead mt-4 max-w-2xl text-lg text-primary-foreground/90">
-            New tyres supplied and fitted at your home, work or roadside. No need
-            to visit a garage.
-          </p>
-          <p className="mt-2 text-sm font-semibold text-accent">
-            £20 flat fitting fee, no call-out charge
-          </p>
-          <CtaButtons
-            phone={phone}
-            whatsapp={whatsapp}
-            message="Hi, I'd like to book mobile tyre fitting. My location is … and my tyre size is …"
-            className="mt-8"
-          />
-        </div>
-      </section>
-
-      <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="grid gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            {/* Trust ticks */}
-            <ul className="mb-10 grid gap-3 sm:grid-cols-2">
-              {FEATURES.map((f) => (
-                <li key={f} className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-whatsapp)]" />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="prose-content max-w-none">
-              {/* 1. What it is */}
-              <h2>Mobile Tyre Fitting Across the UK</h2>
-              <p>
-                Mobile tyre fitting brings a fully equipped tyre service to
-                wherever your vehicle is parked. A trained fitter travels to you
-                with the right tyres, a mobile rig and calibrated balancing gear,
-                then carries out the whole job on your driveway, in a car park or
-                at the roadside. The service suits busy drivers, parents, fleet
-                operators and anyone facing a flat away from home. Through 2026 we
-                cover London, Kent, Sussex, Essex, the West Midlands and Scotland,
-                with same-day and 24/7 emergency slots. Booking takes about a
-                minute by registration or tyre size, and payment is taken on-site
-                by card or cash.
-              </p>
-
-              {/* 2. How it works */}
-              <h2>How Mobile Tyre Fitting Works</h2>
-              <ol>
-                {PROCESS_STEPS.map((s) => (
-                  <li key={s.title}>
-                    <strong>{s.title}.</strong> {s.description}
-                  </li>
-                ))}
-              </ol>
-
-              {/* 3. Services we offer (the down-links) */}
-              <h2>Our Mobile Tyre Services</h2>
-              <p>
-                Every job below comes to you, fitted on-site by an insured
-                technician. Pick the service that matches your situation:
-              </p>
-              <ul>
-                {SERVICES.map((s) => (
-                  <li key={s.href}>
-                    <Link href={s.href} className="font-semibold text-accent underline">
-                      {s.anchor}
-                    </Link>
-                    . {s.line}
-                  </li>
-                ))}
-              </ul>
-
-              {/* 4. Transparent pricing */}
-              <h2>Transparent Pricing</h2>
-              <p className="pricing-summary">
-                Pricing stays simple. We charge a flat £20 fitting fee for each
-                tyre, and there is no call-out fee, ever, during standard hours.
-                The tyre itself is priced by its size and specification, and we
-                quote the full amount before a fitter is dispatched, so the figure
-                agreed is the figure paid. We stock premium, mid-range and budget
-                tyres, so you choose the brand that fits your vehicle and your
-                budget. Payment is taken on-site by card or cash once the work is
-                signed off.
-              </p>
-
-              {/* 5. Vehicles we cover */}
-              <h2>Vehicles We Cover</h2>
-              <p>
-                We fit tyres on cars, vans up to 3.5 tonnes, 4x4s, SUVs and
-                electric vehicles. Each job uses correctly load-rated tyres, and
-                EV owners get EV-rated tyres built for the extra weight and instant
-                torque of an electric drivetrain. Drivers of premium marques are
-                well covered: see our dedicated pages for{" "}
-                <Link href="/brands/bmw-mobile-tyre-fitting" className="font-semibold text-accent underline">
-                  BMW mobile tyre fitting
-                </Link>
-                ,{" "}
-                <Link href="/brands/tesla-mobile-tyre-fitting" className="font-semibold text-accent underline">
-                  Tesla tyre replacement
-                </Link>{" "}
-                and{" "}
-                <Link href="/brands/audi-mobile-tyre-fitting" className="font-semibold text-accent underline">
-                  Audi mobile fitting
-                </Link>
-                , each matched to the manufacturer&apos;s original specification.
-              </p>
-
-              {/* 6. Tyre safety and the law */}
-              <h2>Tyre Safety and the Law</h2>
-              <p>
-                UK law sets the minimum legal tread depth at 1.6mm across the
-                central three-quarters of the tyre and around its full
-                circumference. A tyre below that limit is illegal, fails the MOT
-                and cannot legally stay on the road. Whether a puncture is
-                repaired or replaced is judged against BS AU 159, the British
-                Standard for tyre repair: damage inside the central repairable area
-                gets a permanent plug-patch, while sidewall damage, a run-flat
-                driven flat or a tyre worn past the limit cannot be repaired and
-                needs replacing. Tyre age matters too. The DOT code stamped on the
-                sidewall shows the week and year of manufacture, and rubber hardens
-                as it ages, so a tyre over roughly ten years old warrants
-                replacement even with tread to spare.
-              </p>
-
-              {/* 7. FAQ */}
-              <h2>Mobile Tyre Fitting FAQs</h2>
-              <div className="not-prose mt-4 divide-y rounded-2xl border bg-card">
-                {FAQS.map((f) => (
-                  <details key={f.q} className="group px-5 py-4">
-                    <summary className="flex cursor-pointer list-none items-center justify-between font-semibold text-primary [&::-webkit-details-marker]:hidden">
-                      {f.q}
-                      <span className="ml-4 shrink-0 text-accent transition-transform group-open:rotate-45">
-                        +
-                      </span>
-                    </summary>
-                    <p className="mt-3 text-muted-foreground">{f.answer}</p>
-                  </details>
-                ))}
+            <div className="rounded-2xl bg-card p-1 text-card-foreground shadow-xl lg:sticky lg:top-24">
+              <h2 className="px-5 pt-5 font-heading text-xl font-bold text-primary">
+                Book Mobile Tyre Fitting
+              </h2>
+              <div className="p-1">
+                <BookingForm phone={phone} defaultService="Mobile Tyre Fitting" />
               </div>
             </div>
           </div>
-
-          <aside className="lg:col-span-1">
-            <div className="lg:sticky lg:top-24">
-              <h2 className="mb-3 text-lg font-bold">Book Mobile Tyre Fitting</h2>
-              <BookingForm phone={phone} defaultService="Mobile Tyre Fitting" />
-            </div>
-          </aside>
         </div>
-      </div>
+      </section>
 
-      <AreasCovered counties={counties} />
+      {/* 2. TRUST TICKS */}
+      <section className="border-b bg-background">
+        <div className="mx-auto max-w-6xl px-4 py-8">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {FEATURES.map((f) => (
+              <li key={f} className="flex items-start gap-2 text-sm font-medium text-foreground/90">
+                <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: SUCCESS }} aria-hidden="true" />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
+      {/* 3. OVERVIEW */}
+      <section className="section-pad bg-background">
+        <div className="prose-col px-4">
+          <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">What it is</p>
+          <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+            Mobile Tyre Fitting Across the UK
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-foreground/80">
+            Mobile tyre fitting brings a fully equipped tyre service to wherever your vehicle is parked. A trained
+            fitter travels to you with the right tyres, a mobile rig and calibrated balancing gear, then carries
+            out the whole job on your driveway, in a car park or at the roadside. The service suits busy drivers,
+            parents, fleet operators and anyone facing a flat away from home. Through 2026 we cover{" "}
+            <strong className="font-semibold text-primary">London</strong>,{" "}
+            <strong className="font-semibold text-primary">Kent</strong>,{" "}
+            <strong className="font-semibold text-primary">Sussex</strong>,{" "}
+            <strong className="font-semibold text-primary">Essex</strong>, the{" "}
+            <strong className="font-semibold text-primary">West Midlands</strong> and{" "}
+            <strong className="font-semibold text-primary">Scotland</strong>, with same-day and 24/7 emergency
+            slots. Booking takes about a minute by registration or tyre size, and payment is taken on-site by card
+            or cash.
+          </p>
+        </div>
+      </section>
+
+      {/* 4. HOW IT WORKS (visual step cards) */}
+      <section className="section-pad bg-secondary">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading eyebrow="The process" title="How Mobile Tyre Fitting Works" />
+          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {PROCESS_STEPS.map((s, i) => (
+              <li
+                key={s.title}
+                className="flex h-full flex-col rounded-[14px] border border-[#E7EAF0] bg-card p-6 shadow-[0_2px_8px_rgba(11,23,54,0.06)]"
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary font-heading text-base font-extrabold text-primary-foreground">
+                  {i + 1}
+                </span>
+                <h3 className="mt-4 font-heading text-lg font-bold text-primary">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 5. SERVICES (card grid down-links) */}
+      <section className="section-pad bg-background">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading
+            eyebrow="Services"
+            title="Our Mobile Tyre Services"
+            subtitle="Every job below comes to you, fitted on-site by an insured technician. Pick the service that matches your situation."
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SERVICES.map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="group flex h-full flex-col rounded-[14px] border border-[#E7EAF0] bg-card p-6 shadow-[0_2px_8px_rgba(11,23,54,0.06)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(11,23,54,0.1)] motion-reduce:transform-none"
+              >
+                <h3 className="font-heading text-base font-bold text-primary">{s.anchor}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{s.line}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent">
+                  Learn more
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. TRANSPARENT PRICING (navy standout band) */}
+      <section className="bg-primary text-primary-foreground">
+        <div className="section-pad mx-auto max-w-4xl px-4 text-center">
+          <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">Pricing</p>
+          <h2 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">Transparent Pricing</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-2xl font-extrabold sm:text-3xl">
+            £20 flat fitting fee per tyre. <span className="text-accent">No call-out fee, ever.</span>
+          </p>
+          <p className="pricing-summary mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
+            Pricing stays simple. We charge a flat £20 fitting fee for each tyre, and there is no call-out fee,
+            ever, during standard hours. The tyre itself is priced by its size and specification, and we quote
+            the full amount before a fitter is dispatched, so the figure agreed is the figure paid. We stock
+            premium, mid-range and budget tyres, so you choose the brand that fits your vehicle and your budget.
+            Payment is taken on-site by card or cash once the work is signed off.
+          </p>
+        </div>
+      </section>
+
+      {/* 7. VEHICLES WE COVER */}
+      <section className="section-pad bg-background">
+        <div className="prose-col px-4">
+          <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">Vehicles</p>
+          <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+            Vehicles We Cover
+          </h2>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {["Cars", "Vans up to 3.5t", "4x4s", "SUVs", "Electric vehicles"].map((v) => (
+              <span
+                key={v}
+                className="rounded-full border border-[#E7EAF0] bg-secondary px-3 py-1 text-sm font-semibold text-primary"
+              >
+                {v}
+              </span>
+            ))}
+          </div>
+          <p className="mt-6 text-lg leading-relaxed text-foreground/80">
+            We fit tyres on cars, vans up to 3.5 tonnes, 4x4s, SUVs and electric vehicles. Each job uses correctly
+            load-rated tyres, and EV owners get EV-rated tyres built for the extra weight and instant torque of an
+            electric drivetrain. Drivers of premium marques are well covered: see our dedicated pages for{" "}
+            <Link href="/brands/bmw-mobile-tyre-fitting" className="font-semibold text-accent underline">
+              BMW mobile tyre fitting
+            </Link>
+            ,{" "}
+            <Link href="/brands/tesla-mobile-tyre-fitting" className="font-semibold text-accent underline">
+              Tesla tyre replacement
+            </Link>{" "}
+            and{" "}
+            <Link href="/brands/audi-mobile-tyre-fitting" className="font-semibold text-accent underline">
+              Audi mobile fitting
+            </Link>
+            , each matched to the manufacturer&apos;s original specification.
+          </p>
+        </div>
+      </section>
+
+      {/* 8. TYRE SAFETY AND THE LAW (readable light band, facts intact) */}
+      <section className="section-pad bg-secondary">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionHeading eyebrow="Safety and the law" title="Tyre Safety and the Law" align="left" />
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {SAFETY.map((s) => (
+              <div
+                key={s.label}
+                className="flex h-full flex-col rounded-[14px] border border-[#E7EAF0] bg-card p-6 shadow-[0_2px_8px_rgba(11,23,54,0.06)]"
+              >
+                <h3 className="font-heading text-base font-bold text-primary">{s.label}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. FAQ */}
+      <section className="section-pad bg-background">
+        <div className="mx-auto max-w-3xl px-4">
+          <SectionHeading eyebrow="FAQs" title="Mobile Tyre Fitting FAQs" />
+          <div className="mt-8 divide-y rounded-2xl border bg-card">
+            {FAQS.map((f) => (
+              <details key={f.q} className="group px-5 py-4">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-heading font-bold text-primary [&::-webkit-details-marker]:hidden">
+                  <span>{f.q}</span>
+                  <ChevronDown
+                    className="h-5 w-5 shrink-0 text-accent transition-transform duration-200 group-open:rotate-180"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10. AREAS WE COVER (single six-region grid, links to /areas/[region]) */}
+      <AreasCovered />
+
+      {/* 11. FINAL CTA BAND */}
       <CtaBand phone={phone} whatsapp={whatsapp} title="Book mobile tyre fitting today" />
     </>
   );

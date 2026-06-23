@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { SITE } from "@/lib/site-config";
 import { BRAND_PAGE_SLUGS } from "@/lib/brand-pages";
 import { LIVE_AREAS } from "@/data/areas";
+import { REGIONS } from "@/data/regions";
+import { EXCLUDED_SERVICE_SLUGS } from "@/lib/data";
 
 /**
  * Dynamic sitemap. Includes static pages plus every published county, town,
@@ -29,15 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/refund`, changeFrequency: "yearly", priority: 0.2 },
   ];
 
-  const [counties, towns, services, posts] = await Promise.all([
-    prisma.county.findMany({
-      where: { published: true },
-      select: { slug: true, updatedAt: true },
-    }),
-    prisma.town.findMany({
-      where: { published: true, county: { published: true } },
-      select: { slug: true, updatedAt: true, county: { select: { slug: true } } },
-    }),
+  const [services, posts] = await Promise.all([
     prisma.service.findMany({
       where: { published: true },
       select: { slug: true, updatedAt: true },
@@ -48,26 +42,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   ]);
 
-  const countyRoutes: MetadataRoute.Sitemap = counties.map((c) => ({
-    url: `${base}/${c.slug}`,
-    lastModified: c.updatedAt,
+  // Regional tier: the six /areas/[region] pages (200-status, indexable). The
+  // old root region URLs (/london etc.) 301 to these and are NOT listed. The
+  // legacy /[county]/[town] system was retired and likewise stays out.
+  const regionRoutes: MetadataRoute.Sitemap = REGIONS.map((r) => ({
+    url: `${base}/areas/${r.slug}`,
     changeFrequency: "weekly",
     priority: 0.8,
   }));
 
-  const townRoutes: MetadataRoute.Sitemap = towns.map((t) => ({
-    url: `${base}/${t.county.slug}/${t.slug}`,
-    lastModified: t.updatedAt,
-    changeFrequency: "weekly",
-    priority: 0.9, // location pages are the SEO priority
-  }));
-
-  const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({
-    url: `${base}/services/${s.slug}`,
-    lastModified: s.updatedAt,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const serviceRoutes: MetadataRoute.Sitemap = services
+    .filter((s) => !EXCLUDED_SERVICE_SLUGS.has(s.slug))
+    .map((s) => ({
+      url: `${base}/services/${s.slug}`,
+      lastModified: s.updatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
 
   // Guides (formerly /blog) - published articles only, drafts excluded by the
   // `published: true` query above.
@@ -96,8 +87,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticRoutes,
-    ...countyRoutes,
-    ...townRoutes,
+    ...regionRoutes,
     ...serviceRoutes,
     ...brandRoutes,
     ...areaRoutes,

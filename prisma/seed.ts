@@ -139,14 +139,6 @@ async function main() {
       ],
     },
     {
-      title: "Battery Replacement",
-      slug: "battery-replacement",
-      shortDescription:
-        "Flat battery? We test, supply and fit car batteries at your location while we're there.",
-      icon: "battery-charging",
-      features: ["Battery health check", "Quality batteries fitted", "Old battery recycled"],
-    },
-    {
       title: "Caravan & Motorhome Tyre Fitting",
       slug: "caravan-tyre-fitting",
       shortDescription:

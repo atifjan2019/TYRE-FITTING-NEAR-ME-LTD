@@ -33,6 +33,35 @@ const nextConfig: NextConfig = {
   // offered. The run-flat slug was also shortened to /services/run-flat-tyre.
   async redirects() {
     return [
+      // Region pages migrated from root to the nested /areas/[region] tier, so
+      // the URL tree matches the topical hierarchy (/areas > region > town).
+      // Each old root URL 301s once to its new /areas/[region] URL. 301 only,
+      // never to the homepage, no chains.
+      { source: "/london", destination: "/areas/london", permanent: true },
+      { source: "/kent", destination: "/areas/kent", permanent: true },
+      { source: "/sussex", destination: "/areas/sussex", permanent: true },
+      { source: "/essex", destination: "/areas/essex", permanent: true },
+      { source: "/west-midlands", destination: "/areas/west-midlands", permanent: true },
+      { source: "/scotland", destination: "/areas/scotland", permanent: true },
+
+      // The retired root-level town pages (the DB /[county]/[town] system) 301
+      // to their true successor: a built /areas/[town] page where one exists,
+      // otherwise the parent region. One hop, never the homepage.
+      { source: "/london/bromley", destination: "/areas/bromley", permanent: true },
+      { source: "/kent/maidstone", destination: "/areas/kent", permanent: true },
+      { source: "/west-midlands/solihull", destination: "/areas/west-midlands", permanent: true },
+      { source: "/sussex/brighton", destination: "/areas/sussex", permanent: true },
+      { source: "/essex/chelmsford", destination: "/areas/essex", permanent: true },
+      { source: "/scotland/glasgow", destination: "/areas/scotland", permanent: true },
+
+      // Battery replacement is not a confirmed offered service and has been
+      // retired from the tyre-focused silo. Its URL 301s to the services hub.
+      {
+        source: "/services/battery-replacement",
+        destination: "/services",
+        permanent: true,
+      },
+
       // Blog -> Guides migration. /guides is the permanent evergreen home for
       // all article content. Every old /blog/[slug] 301s 1-to-1 to its true
       // /guides/[slug] equivalent (slug preserved), and the /blog hub 301s to

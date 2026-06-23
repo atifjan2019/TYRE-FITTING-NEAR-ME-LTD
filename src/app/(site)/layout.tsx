@@ -2,7 +2,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { MobileCtaBar } from "@/components/layout/mobile-cta-bar";
-import { getSiteSettings, getCounties } from "@/lib/data";
+import { getSiteSettings } from "@/lib/data";
 
 /**
  * Layout for the public-facing site. Loads the DB-driven contact settings once
@@ -14,10 +14,7 @@ export default async function SiteLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [settings, counties] = await Promise.all([
-    getSiteSettings(),
-    getCounties(),
-  ]);
+  const settings = await getSiteSettings();
 
   return (
     <>
@@ -33,10 +30,7 @@ export default async function SiteLayout({
         logo={settings.logo}
       />
       <main id="main-content">{children}</main>
-      <SiteFooter
-        settings={settings}
-        counties={counties.map((c) => ({ name: c.name, slug: c.slug }))}
-      />
+      <SiteFooter settings={settings} />
       <WhatsAppFloat whatsapp={settings.whatsapp} />
       <MobileCtaBar phone={settings.phone} whatsapp={settings.whatsapp} />
     </>

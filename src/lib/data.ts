@@ -51,14 +51,24 @@ export const getSiteSettings = cache(async (): Promise<SiteSettingsData> => {
 
 // --- Services ----------------------------------------------------------------
 
+/**
+ * Service slugs retired from the tyre-focused silo. Battery replacement is not a
+ * confirmed offered service, so it is excluded site-wide (grid, pillar list,
+ * dynamic route, sitemap) and its URL 301s to /services in next.config.ts. The
+ * exclusion lives here so the DB row can stay without rendering anywhere.
+ */
+export const EXCLUDED_SERVICE_SLUGS = new Set<string>(["battery-replacement"]);
+
 export const getServices = cache(async () => {
-  return prisma.service.findMany({
+  const services = await prisma.service.findMany({
     where: { published: true },
     orderBy: [{ order: "asc" }, { title: "asc" }],
   });
+  return services.filter((s) => !EXCLUDED_SERVICE_SLUGS.has(s.slug));
 });
 
 export const getServiceBySlug = cache(async (slug: string) => {
+  if (EXCLUDED_SERVICE_SLUGS.has(slug)) return null;
   return prisma.service.findFirst({
     where: { slug, published: true },
     include: {
