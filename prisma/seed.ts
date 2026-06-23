@@ -49,7 +49,7 @@ async function main() {
       title: "Mobile Tyre Fitting",
       slug: "mobile-tyre-fitting",
       shortDescription:
-        "New tyres supplied and fitted at your home, work or roadside - no need to visit a garage.",
+        "New tyres supplied and fitted at your home, work or roadside. No need to visit a garage.",
       icon: "truck",
       features: [
         "All tyre brands & sizes",

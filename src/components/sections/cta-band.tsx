@@ -8,7 +8,7 @@ export function CtaBand({
   phone,
   whatsapp,
   title = "Need a tyre sorted now?",
-  subtitle = "Call or WhatsApp us - we'll come to you, day or night.",
+  subtitle = "Call or WhatsApp us. We'll come to you, day or night.",
   message,
 }: {
   phone: string;

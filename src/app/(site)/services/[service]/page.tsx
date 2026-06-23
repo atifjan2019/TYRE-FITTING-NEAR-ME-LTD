@@ -28,10 +28,15 @@ export async function generateStaticParams() {
     where: { published: true },
     select: { slug: true },
   });
-  // `mobile-tyre-repair` and `puncture-repair` have bespoke static routes that
-  // take precedence over this dynamic segment. Exclude them here so the static
-  // and dynamic routes don't both try to build the same path.
-  const STATIC_SLUGS = new Set(["mobile-tyre-repair", "puncture-repair"]);
+  // `mobile-tyre-fitting`, `mobile-tyre-repair` and `puncture-repair` have
+  // bespoke static routes that take precedence over this dynamic segment.
+  // Exclude them here so the static and dynamic routes don't both try to build
+  // the same path.
+  const STATIC_SLUGS = new Set([
+    "mobile-tyre-fitting",
+    "mobile-tyre-repair",
+    "puncture-repair",
+  ]);
   return services
     .filter((s) => !STATIC_SLUGS.has(s.slug))
     .map((s) => ({ service: s.slug }));

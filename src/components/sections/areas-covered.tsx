@@ -29,7 +29,7 @@ export function AreasCovered({
           <SectionHeading
             eyebrow="Local to you"
             title="Areas we cover"
-            subtitle="Mobile tyre fitting across the UK - find your town below or just give us a call."
+            subtitle="Mobile tyre fitting across the UK. Find your town below or just give us a call."
           />
         ) : null}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
