@@ -13,6 +13,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { CtaButtons } from "@/components/sections/cta-buttons";
 import { CtaBand } from "@/components/sections/cta-band";
+import { BookingForm } from "@/components/forms/booking-form";
 
 /** Join a list naturally with commas and a final "and". */
 function naturalList(items: string[]): string {
@@ -79,6 +80,97 @@ const SERVICES: { href: string; anchor: string; line: string }[] = [
   },
 ];
 
+/* --- Skeleton variants (selected by region.variant). A length-3 selector
+   (variant % 3) and a length-2 selector (variant % 2) combine so each of the
+   six regions lands on a distinct pairing, the same anti-fingerprint approach
+   the town pages use. The unique substance still comes from each region's real
+   roads, postcode areas, contextNote and overviewExtra; these variants only
+   break the shared sentence skeletons. ------------------------------------- */
+
+/** Hero lead paragraph (variant % 3). */
+function heroLead(region: Region, pcAreas: string): string {
+  return [
+    `Mobile tyre fitting across ${region.name} and the ${pcAreas} postcode areas, with fitters who come to your home, workplace or roadside. Through 2026 we run 24/7 with a 30 to 60 minute typical response, so a flat or a worn tyre is sorted without a garage trip.`,
+    `Tyres supplied and fitted across ${region.name} and the ${pcAreas} postcode areas, at your home, workplace or the roadside. Through 2026 cover runs 24/7 with a 30 to 60 minute typical response, so a flat or a worn tyre is dealt with on the spot.`,
+    `Across ${region.name} and the ${pcAreas} postcode areas, a fitter arrives at your home, workplace or roadside with the right tyres already loaded. Through 2026 the service runs 24/7 with a 30 to 60 minute typical response, so a flat or a worn tyre is sorted without a garage trip.`,
+  ][region.variant % 3];
+}
+
+/** Overview opening sentence (variant % 3). */
+function overviewLead(region: Region, pcAreas: string): string {
+  return [
+    `Mobile tyre fitting across ${region.name} covers the ${pcAreas} postcode areas, with the nearest insured fitter dispatched to each one.`,
+    `Coverage across ${region.name} reaches the ${pcAreas} postcode areas, and the closest insured fitter is sent to wherever the vehicle sits.`,
+    `Drivers across ${region.name} are covered through the ${pcAreas} postcode areas, with an insured fitter routed from the nearest base to each job.`,
+  ][region.variant % 3];
+}
+
+/** Overview closing sentence (variant % 2). */
+function overviewClose(region: Region): string {
+  return [
+    `Home, workplace and roadside fitting all run to the same flat fee, so a ${region.name} driver books once and a fitter arrives with the correct tyres already loaded.`,
+    `Home, workplace and roadside jobs are charged at the same flat fee, so one booking brings a fitter to a ${region.name} driver with the right tyres on board.`,
+  ][region.variant % 2];
+}
+
+/** Why-choose lead sentence (variant % 2). */
+function whyChooseLead(region: Region): string {
+  return [
+    `Drivers across ${region.name} choose a mobile fitter for the time saved and a price agreed before a fitter sets off.`,
+    `The case for a mobile fitter across ${region.name} comes down to convenience, round-the-clock hours and honest pricing.`,
+  ][region.variant % 2];
+}
+
+/** Why-choose tick points (a few phrased by variant % 2). */
+function whyChoosePoints(region: Region): string[] {
+  const v = region.variant % 2;
+  const open247 = [
+    "Open 24/7, including nights, weekends and bank holidays.",
+    "Round-the-clock cover, 24/7, with weekends and bank holidays included.",
+  ][v];
+  const response = [
+    `A 30 to 60 minute typical response across ${region.name}, postcode-dependent.`,
+    `Typical arrival of 30 to 60 minutes across ${region.name}, depending on the postcode.`,
+  ][v];
+  const comeToYou = [
+    "We come to you, with no drive to a garage and no ordering tyres online first.",
+    "A fitter comes to you, so there is no garage run and no buying tyres online beforehand.",
+  ][v];
+  const repair = [
+    "An honest repair before replacement where a puncture passes assessment.",
+    "Repair before replacement whenever a puncture passes a safety assessment.",
+  ][v];
+  const guarantee = "A 12-month workmanship guarantee on every fitting.";
+  return [open247, response, comeToYou, repair, guarantee];
+}
+
+/** FAQ answer: how fast (variant % 3). */
+function howFastAnswer(region: Region): string {
+  return [
+    `A response of 30 to 60 minutes is typical across ${region.name}, postcode-dependent, with the realistic arrival window confirmed when you call.`,
+    `Most callouts across ${region.name} are reached in 30 to 60 minutes, varying by postcode, and a firm arrival window is given on the phone.`,
+    `Expect 30 to 60 minutes to most ${region.name} addresses, dependent on the exact postcode, with the window confirmed when you book.`,
+  ][region.variant % 3];
+}
+
+/** FAQ answer: night cover (variant % 3). */
+function nightAnswer(region: Region): string {
+  return [
+    `Yes. We run 24/7, 365 days a year through 2026, so a fitter reaches drivers in ${region.name} day or night, weekends and bank holidays included.`,
+    `Yes. Cover runs 24/7 through 2026, every day of the year, so a fitter reaches ${region.name} at night, at weekends and on bank holidays.`,
+    `Yes. A fitter is available across ${region.name} around the clock through 2026, nights, weekends and bank holidays included.`,
+  ][region.variant % 3];
+}
+
+/** FAQ answer: cost (variant % 3). Always states the flat fee and no call-out. */
+function costAnswer(region: Region): string {
+  return [
+    `Fitting is a flat £20 fee per tyre plus the price of the tyre, quoted in full before dispatch, with no call-out fee during standard hours.`,
+    `Expect a flat £20 fitting fee per tyre on top of the tyre price, with the full figure quoted before dispatch and no call-out fee in standard hours.`,
+    `The charge is a £20 flat fitting fee per tyre and the tyre price, agreed in full before a fitter sets off, with no call-out fee during standard hours.`,
+  ][region.variant % 3];
+}
+
 export function RegionTemplate({
   region,
   settings,
@@ -97,10 +189,11 @@ export function RegionTemplate({
     { name: region.name, path: `/areas/${region.slug}` },
   ];
 
-  const overviewLine = `Mobile tyre fitting across ${region.name} covers the ${pcAreas} postcode areas, with the nearest insured fitter dispatched to each one.`;
-
   // --- FAQ (answers rendered into the DOM and mirrored into FAQPage schema) ---
   const liveLinked = liveTowns.length > 0;
+  const howFastText = howFastAnswer(region);
+  const nightText = nightAnswer(region);
+  const costText = costAnswer(region);
   const faqs: { id: string; question: string; answer: React.ReactNode; text: string }[] = [
     {
       id: "towns",
@@ -120,35 +213,20 @@ export function RegionTemplate({
     {
       id: "how-fast",
       question: `How quickly can you reach ${region.name}?`,
-      answer: (
-        <>
-          A response of 30 to 60 minutes is typical across {region.name}, postcode-dependent, with the realistic
-          arrival window confirmed when you call.
-        </>
-      ),
-      text: `A response of 30 to 60 minutes is typical across ${region.name}, postcode-dependent, with the realistic arrival window confirmed when you call.`,
+      answer: howFastText,
+      text: howFastText,
     },
     {
       id: "night",
       question: `Do you come out across ${region.name} at night?`,
-      answer: (
-        <>
-          Yes. We run 24/7, 365 days a year through 2026, so a fitter reaches drivers in {region.name} day or
-          night, weekends and bank holidays included.
-        </>
-      ),
-      text: `Yes. We run 24/7, 365 days a year through 2026, so a fitter reaches drivers in ${region.name} day or night, weekends and bank holidays included.`,
+      answer: nightText,
+      text: nightText,
     },
     {
       id: "cost",
       question: `How much does tyre fitting cost in ${region.name}?`,
-      answer: (
-        <>
-          Fitting is a flat £20 fee per tyre plus the price of the tyre, quoted in full before dispatch, with no
-          call-out fee during standard hours.
-        </>
-      ),
-      text: `Fitting is a flat £20 fee per tyre plus the price of the tyre, quoted in full before dispatch, with no call-out fee during standard hours.`,
+      answer: costText,
+      text: costText,
     },
     {
       id: "headline",
@@ -228,28 +306,47 @@ export function RegionTemplate({
       <JsonLd id="schema-itemlist" data={itemList} />
       <JsonLd id="schema-webpage" data={webPageSchema} />
 
-      {/* 1. HERO */}
+      {/* 1. HERO (booking form lives in the hero, so no dead column below) */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 lg:py-20">
-          <Breadcrumbs items={crumbs} light />
-          <h1 className="mt-5 max-w-3xl font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
-            Mobile Tyre Fitting in {region.name}
-          </h1>
-          <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
-          <p className="region-overview mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/90">
-            Mobile tyre fitting across {region.name} and the {pcAreas} postcode areas, with fitters who come to
-            your home, workplace or roadside. Through 2026 we run 24/7 with a 30 to 60 minute typical response, so
-            a flat or a worn tyre is sorted without a garage trip.
-          </p>
-          <p className="mt-4 text-base font-bold text-accent sm:text-lg">
-            £20 flat fitting fee per tyre. No call-out fee, ever.
-          </p>
-          <CtaButtons
-            phone={phone}
-            whatsapp={whatsapp}
-            message={`Hi, I need mobile tyre fitting in ${region.name}. My location is … and my tyre size is …`}
-            className="mt-8"
-          />
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:py-16 lg:grid-cols-5 lg:gap-12">
+          <div className="lg:col-span-3">
+            <Breadcrumbs items={crumbs} light />
+            <h1 className="mt-4 font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
+              Mobile Tyre Fitting in {region.name}
+            </h1>
+            <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
+            <p className="region-overview mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/90">
+              {heroLead(region, pcAreas)}
+            </p>
+            <p className="mt-4 text-base font-bold text-accent sm:text-lg">
+              £20 flat fitting fee per tyre. No call-out fee, ever.
+            </p>
+            <CtaButtons
+              phone={phone}
+              whatsapp={whatsapp}
+              message={`Hi, I need mobile tyre fitting in ${region.name}. My location is … and my tyre size is …`}
+              className="mt-8"
+            />
+            <p className="mt-4 text-sm text-primary-foreground/70">
+              Or use the booking form with your registration and postcode.
+            </p>
+          </div>
+          <div className="lg:col-span-2">
+            <div
+              data-section="hero-form"
+              className="rounded-2xl bg-card p-1 text-card-foreground shadow-xl lg:sticky lg:top-24"
+            >
+              <h2 className="px-5 pt-5 font-heading text-xl font-bold text-primary">
+                Book Mobile Tyre Fitting in {region.name}
+              </h2>
+              <div className="p-1">
+                <BookingForm
+                  phone={phone}
+                  defaultService={`Mobile tyre fitting in ${region.name}`}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -274,18 +371,20 @@ export function RegionTemplate({
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
             Tyre Fitting Across {region.name}
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-foreground/80">
-            {overviewLine} Drivers reach a fitter along the{" "}
-            {region.roads.map((road, i) => (
-              <span key={road}>
-                <strong className="font-semibold text-primary">{road}</strong>
-                {i < region.roads.length - 2 ? ", " : i === region.roads.length - 2 ? " and " : ""}
-              </span>
-            ))}
-            , whether a tyre fails on a fast dual carriageway or a wheel is kerbed near home. {region.contextNote}{" "}
-            Home, workplace and roadside fitting all run to the same flat fee, so a {region.name} driver books once
-            and a fitter arrives with the correct tyres already loaded.
-          </p>
+          <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
+            <p>
+              {overviewLead(region, pcAreas)} Drivers reach a fitter along the{" "}
+              {region.roads.map((road, i) => (
+                <span key={road}>
+                  <strong className="font-semibold text-primary">{road}</strong>
+                  {i < region.roads.length - 2 ? ", " : i === region.roads.length - 2 ? " and " : ""}
+                </span>
+              ))}
+              , whether a tyre fails on a fast dual carriageway or a wheel is kerbed near home. {region.contextNote}
+            </p>
+            <p>{region.overviewExtra}</p>
+            <p>{overviewClose(region)}</p>
+          </div>
         </div>
       </section>
 
@@ -295,7 +394,11 @@ export function RegionTemplate({
           <SectionHeading
             eyebrow="Local to you"
             title={`Towns We Cover in ${region.name}`}
-            subtitle={`Pick a town for local coverage, response times and the nearest fitter across ${region.name}.`}
+            subtitle={
+              liveLinked
+                ? `Pick a town for local coverage, response times and the nearest fitter across ${region.name}.`
+                : `Coverage runs across these ${region.name} towns, with a dedicated local page added as each one goes live.`
+            }
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {region.towns.map((town) => {
@@ -405,14 +508,9 @@ export function RegionTemplate({
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
             Why Drivers in {region.name} Choose Us
           </h2>
+          <p className="mt-4 text-lg leading-relaxed text-foreground/80">{whyChooseLead(region)}</p>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-            {[
-              "Open 24/7, including nights, weekends and bank holidays.",
-              `A 30 to 60 minute typical response across ${region.name}, postcode-dependent.`,
-              "We come to you, with no drive to a garage and no ordering tyres online first.",
-              "An honest repair before replacement where a puncture passes assessment.",
-              "A 12-month workmanship guarantee on every fitting.",
-            ].map((point) => (
+            {whyChoosePoints(region).map((point) => (
               <li key={point} className="flex items-start gap-3 text-base leading-relaxed text-foreground/85">
                 <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: SUCCESS }} aria-hidden="true" />
                 <span>{point}</span>
