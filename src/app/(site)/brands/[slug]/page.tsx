@@ -23,7 +23,12 @@ import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/sections/cta-band";
 import { telHref, whatsappHref } from "@/lib/utils";
 
-export const revalidate = 3600;
+// Fully static: BRAND_PAGE_SLUGS is the complete, code-defined slug set. No
+// time-based regeneration.
+export const revalidate = false;
+// Only the prebuilt brand slugs are valid. Unknown slugs 404 at the edge
+// without invoking the page or writing to the ISR cache.
+export const dynamicParams = false;
 
 /** Brands whose models run run-flat tyres from the factory (Rule 5 link target). */
 const RUN_FLAT_BRAND_SLUGS = new Set([

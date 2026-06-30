@@ -22,7 +22,13 @@ import { FaqSection } from "@/components/sections/faq-section";
 import { AreasCovered } from "@/components/sections/areas-covered";
 import { BookingForm } from "@/components/forms/booking-form";
 
-export const revalidate = 3600; // ISR
+// Fully static: generateStaticParams() returns the complete set of published
+// service slugs. No time-based regeneration; admin publishes call
+// revalidatePath() to push updates.
+export const revalidate = false;
+// Only the prebuilt service slugs are valid. Unknown slugs 404 at the edge
+// without invoking the page or writing to the ISR cache.
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const services = await prisma.service.findMany({

@@ -7,7 +7,13 @@ import { REGIONS, getRegion } from "@/data/regions";
 import { TownView } from "@/components/areas/town-view";
 import { RegionTemplate } from "@/components/region/region-template";
 
-export const revalidate = 3600;
+// Fully static: the complete slug set is known at build time (regions + live
+// towns), so there is no time-based regeneration. Content updates are pushed
+// via revalidatePath() from the admin publish pipeline, not a TTL.
+export const revalidate = false;
+// Only slugs returned by generateStaticParams() are valid. Unknown slugs 404 at
+// the edge without invoking the page or writing to the ISR cache.
+export const dynamicParams = false;
 
 /**
  * Unified /areas/[slug] route. A slug resolves to EITHER a region (the regional
