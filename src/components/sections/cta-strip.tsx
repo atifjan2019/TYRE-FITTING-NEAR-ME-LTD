@@ -32,7 +32,7 @@ export function CtaStrip({
           : "bg-[#EEEAFB] text-primary"
       }
     >
-      <div className="section-pad mx-auto flex max-w-5xl flex-col items-center gap-5 px-4 text-center">
+      <div className="section-pad mx-auto flex max-w-7xl flex-col items-center gap-5 px-4 text-center">
         <h3 className="font-heading text-2xl font-extrabold sm:text-3xl">{title}</h3>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           {phone ? (

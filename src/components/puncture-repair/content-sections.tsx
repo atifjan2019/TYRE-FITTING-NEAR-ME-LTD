@@ -114,7 +114,7 @@ export function WhyGarage() {
 export function PunctureTypes() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading
           eyebrow="What we repair"
           title="Tyre Punctures We Repair at Your Home, Work or Roadside"
@@ -150,7 +150,7 @@ export function PunctureTypes() {
 export function Repairability() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading
           eyebrow="The standard"
           title="When a Puncture Can Be Repaired Under British Standard BS AU 159"
@@ -255,7 +255,7 @@ function RepairabilityDiagram() {
 export function RepairOrReplace() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading eyebrow="The decision" title="Puncture Repair or New Tyre, How the Decision Is Made" />
 
         {/* Desktop / >=640px: real table */}
@@ -323,7 +323,7 @@ export function RepairOrReplace() {
 export function Process() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading eyebrow="Step by step" title="How Our Mobile Puncture Repair Process Works" align="left" />
         <ol className="mt-10 space-y-8">
           {PROCESS_STEPS.map((step, i) => (
@@ -357,7 +357,7 @@ export function Process() {
 export function Pricing() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading eyebrow="Pricing" title="Puncture Repair Cost, £39 With Nothing Added After" />
 
         {/* Price headline strip: two badges */}
@@ -417,7 +417,7 @@ export function Pricing() {
 export function SpecialCases() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading
           eyebrow="Handled differently"
           title="Run-Flat Tyres, EV Tyres and Punctures We Handle Differently"
@@ -471,7 +471,7 @@ export function SpecialCases() {
 export function Emergency() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading eyebrow="Emergency" title="Emergency Puncture Repair, 24 Hours a Day Across the UK" />
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="space-y-5 leading-relaxed text-foreground/80">
@@ -516,7 +516,7 @@ export function Emergency() {
 export function VehiclesDrivers() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading
           eyebrow="Who we serve"
           title="Puncture Repairs for Cars, Vans, SUVs, EVs and Fleets"
@@ -557,7 +557,7 @@ export function VehiclesDrivers() {
 export function WhyChoose() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading eyebrow="Why us" title="Why UK Drivers Choose Tyre Fitting Near Me Ltd for Puncture Repairs" />
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
           {WHY_TILES.map((tile) => (
@@ -585,7 +585,7 @@ export function WhyChoose() {
 export function Checklist() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading eyebrow="Before we arrive" title="What to Have Ready Before Your Puncture Repair Appointment" align="left" />
         <ol className="mt-8 space-y-5">
           {CHECKLIST.map((item, i) => (
@@ -623,7 +623,7 @@ export function Checklist() {
 export function AreasCoverage() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <Heading eyebrow="Local to you" title="Mobile Puncture Repair Service Areas" subtitle={AREAS_INTRO} />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {AREAS.map((area) => (
@@ -658,7 +658,7 @@ export function AreasCoverage() {
 export function CaseStudy() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="surface-card p-5 sm:p-8">
           <p className="mb-2 text-sm font-bold uppercase tracking-wide text-accent">{CASE_STUDY.label}</p>
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-primary sm:text-3xl">

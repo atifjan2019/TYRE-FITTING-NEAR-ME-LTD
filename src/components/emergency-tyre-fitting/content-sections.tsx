@@ -32,7 +32,7 @@ import {
 export function SafetySteps() {
   return (
     <section className="section-pad bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-4xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
           Stranded with a Flat? Do These Five Things First
         </h2>
@@ -161,7 +161,7 @@ export function Process() {
 export function ResponseTimes() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {RESPONSE.heading}
         </h2>
@@ -183,7 +183,7 @@ export function RepairOrReplace() {
   const [before, after] = REPAIR.linkLine.split(phrase);
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {REPAIR.heading}
         </h2>
@@ -278,7 +278,7 @@ export function VehiclesCovered() {
 export function Nights() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {NIGHTS.heading}
         </h2>
@@ -395,7 +395,7 @@ export function CaseStudy() {
 export function CallNow() {
   return (
     <section data-section="final-cta" className="bg-primary text-primary-foreground">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-16 text-center sm:py-20">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-16 text-center sm:py-20">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
           Get an Emergency Tyre Fitter Now
         </h2>

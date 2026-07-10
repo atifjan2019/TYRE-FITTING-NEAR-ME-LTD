@@ -193,7 +193,7 @@ export function Process() {
 export function SwitchAdvice() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Should You Replace Run-Flats With Conventional Tyres?
         </h2>
@@ -221,7 +221,7 @@ export function SwitchAdvice() {
 export function VehiclesCovered() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Vehicles and Run-Flat Types Covered
         </h2>
@@ -263,7 +263,7 @@ export function VehiclesCovered() {
 export function TyresFitted() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Run-Flat Tyres Fitted: Premium and Mid-Range
         </h2>
@@ -291,7 +291,7 @@ export function TyresFitted() {
 export function Cost() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Run-Flat Tyre Replacement Cost
         </h2>
@@ -325,7 +325,7 @@ export function Cost() {
 export function Emergency() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Run-Flat Warning On? Emergency Replacement 24/7
         </h2>

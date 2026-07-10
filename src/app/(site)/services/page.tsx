@@ -63,7 +63,7 @@ export default async function ServicesIndexPage() {
 
       {/* HERO / INTRO */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16">
           <Breadcrumbs items={crumbs} light />
           <p className="mt-5 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">Our services</p>
           <h1 className="mt-2 font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
@@ -90,7 +90,7 @@ export default async function ServicesIndexPage() {
 
       {/* FRAMING LINE */}
       <section className="bg-background pt-12 sm:pt-16">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <p className="text-center text-base text-muted-foreground">
             Every service below is mobile and comes to your home, workplace or roadside.
           </p>

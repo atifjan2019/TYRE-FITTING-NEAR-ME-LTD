@@ -308,7 +308,7 @@ export function RegionTemplate({
 
       {/* 1. HERO (booking form lives in the hero, so no dead column below) */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:py-16 lg:grid-cols-5 lg:gap-12">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:py-16 lg:grid-cols-5 lg:gap-12">
           <div className="lg:col-span-3">
             <Breadcrumbs items={crumbs} light />
             <h1 className="mt-4 font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
@@ -352,7 +352,7 @@ export function RegionTemplate({
 
       {/* 2. TRUST TICKS */}
       <section className="border-b bg-background">
-        <div className="mx-auto max-w-6xl px-4 py-8">
+        <div className="mx-auto max-w-7xl px-4 py-8">
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {TRUST_TICKS.map((t) => (
               <li key={t} className="flex items-start gap-2 text-sm font-medium text-foreground/90">
@@ -390,7 +390,7 @@ export function RegionTemplate({
 
       {/* 4. TOWNS WE COVER (signature coverage grid) */}
       <section className="section-pad bg-secondary">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Local to you"
             title={`Towns We Cover in ${region.name}`}
@@ -462,7 +462,7 @@ export function RegionTemplate({
 
       {/* 5. OUR SERVICES (compact down-links) */}
       <section className="section-pad bg-background">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="Services" title={`Our Services Across ${region.name}`} />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
@@ -485,7 +485,7 @@ export function RegionTemplate({
 
       {/* 6. TRANSPARENT PRICING (standout navy band) */}
       <section className="bg-primary text-primary-foreground">
-        <div className="section-pad mx-auto max-w-4xl px-4 text-center">
+        <div className="section-pad mx-auto max-w-7xl px-4 text-center">
           <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">Pricing</p>
           <h2 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
             Transparent Pricing in {region.name}
@@ -522,7 +522,7 @@ export function RegionTemplate({
 
       {/* 8. FAQ */}
       <section data-section="faq" className="section-pad bg-background">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="FAQs" title={`${region.name} Mobile Tyre Fitting FAQs`} />
           <div className="mt-8 divide-y border-y">
             {faqs.map((f) => (

@@ -41,7 +41,7 @@ export function ComparisonBlock({
   const divider = "border-[rgba(11,23,54,0.10)]";
 
   return (
-    <div className={cn("mx-auto max-w-[860px]", className)}>
+    <div className={cn("mx-auto max-w-7xl", className)}>
       <div className="overflow-hidden rounded-2xl bg-card shadow-[0_4px_20px_rgba(11,23,54,0.10)]">
         <div className="grid md:grid-cols-2">
           {/* LEFT - recommended option */}

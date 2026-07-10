@@ -31,7 +31,7 @@ export function Faq({ faqs, eyebrow = "FAQs", title }: { faqs: FaqItem[]; eyebro
 
   return (
     <section className="bg-background py-12 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="text-center">
           <p className="mb-2 text-sm font-bold uppercase tracking-wide text-accent">{eyebrow}</p>
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">

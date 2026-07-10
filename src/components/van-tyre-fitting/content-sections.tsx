@@ -58,7 +58,7 @@ function renderChecklistTitle(title: string) {
 export function WhyDowntime() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {DOWNTIME.heading}
         </h2>
@@ -304,7 +304,7 @@ export function Costs() {
 export function EmergencyBridge() {
   return (
     <section className="section-pad bg-secondary">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Van Breakdown? Emergency Tyre Fitting 24/7
         </h2>

@@ -19,7 +19,7 @@ export function CtaBand({
 }) {
   return (
     <section className="bg-primary text-primary-foreground">
-      <div className="section-pad mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center">
+      <div className="section-pad mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center">
         <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
         <p className="max-w-2xl text-lg text-primary-foreground/90">{subtitle}</p>
         <CtaButtons phone={phone} whatsapp={whatsapp} message={message} />

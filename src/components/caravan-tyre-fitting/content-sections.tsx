@@ -60,7 +60,7 @@ function renderChecklistTitle(title: string) {
 export function WhyDriveway() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           {DRIVEWAY.heading}
         </h2>
@@ -348,7 +348,7 @@ export function Costs() {
 export function EmergencyBridge() {
   return (
     <section className="section-pad bg-background">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
           Caravan Blowout? Emergency Tyre Fitting 24/7
         </h2>

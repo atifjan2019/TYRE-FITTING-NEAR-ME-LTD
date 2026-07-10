@@ -373,7 +373,7 @@ export default async function MobileTyreFittingPage() {
 
       {/* 1. HERO (booking form lives in the hero, so no dead column below) */}
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:py-16 lg:grid-cols-5 lg:gap-12">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:py-16 lg:grid-cols-5 lg:gap-12">
           <div className="lg:col-span-3">
             <Breadcrumbs items={crumbs} light />
             <h1 className="mt-4 font-heading text-3xl font-extrabold tracking-tight sm:text-5xl">
@@ -409,7 +409,7 @@ export default async function MobileTyreFittingPage() {
 
       {/* 2. TRUST TICKS */}
       <section className="border-b bg-background">
-        <div className="mx-auto max-w-6xl px-4 py-8">
+        <div className="mx-auto max-w-7xl px-4 py-8">
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {FEATURES.map((f) => (
               <li key={f} className="flex items-start gap-2 text-sm font-medium text-foreground/90">
@@ -447,7 +447,7 @@ export default async function MobileTyreFittingPage() {
 
       {/* 4. HOW IT WORKS (visual step cards) */}
       <section className="section-pad bg-secondary">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="The process" title="How Mobile Tyre Fitting Works" />
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {PROCESS_STEPS.map((s, i) => (
@@ -468,7 +468,7 @@ export default async function MobileTyreFittingPage() {
 
       {/* 5. SERVICES (card grid down-links) */}
       <section className="section-pad bg-background">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Services"
             title="Our Mobile Tyre Services"
@@ -495,7 +495,7 @@ export default async function MobileTyreFittingPage() {
 
       {/* 6. TRANSPARENT PRICING (navy standout band) */}
       <section className="bg-primary text-primary-foreground">
-        <div className="section-pad mx-auto max-w-4xl px-4 text-center">
+        <div className="section-pad mx-auto max-w-7xl px-4 text-center">
           <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">Pricing</p>
           <h2 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">Transparent Pricing</h2>
           <p className="mx-auto mt-6 max-w-2xl text-2xl font-extrabold sm:text-3xl">
@@ -550,7 +550,7 @@ export default async function MobileTyreFittingPage() {
 
       {/* 8. TYRE SAFETY AND THE LAW (readable light band, facts intact) */}
       <section className="section-pad bg-secondary">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="Safety and the law" title="Tyre Safety and the Law" align="left" />
           <div className="mt-8 grid gap-5 lg:grid-cols-3">
             {SAFETY.map((s) => (
@@ -568,7 +568,7 @@ export default async function MobileTyreFittingPage() {
 
       {/* 9. FAQ */}
       <section className="section-pad bg-background">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="FAQs" title="Mobile Tyre Fitting FAQs" />
           <div className="mt-8 divide-y rounded-2xl border bg-card">
             {FAQS.map((f) => (

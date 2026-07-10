@@ -20,7 +20,7 @@ const CRUMBS = [
 export function Hero({ phone, whatsapp }: { phone: string; whatsapp: string }) {
   return (
     <section data-section="hero" className="bg-primary text-primary-foreground">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-20 pt-12 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-24">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-20 pt-12 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-24">
         {/* Left: copy + CTAs (55%) */}
         <div className="lg:col-span-7">
           <Breadcrumbs items={CRUMBS} light />

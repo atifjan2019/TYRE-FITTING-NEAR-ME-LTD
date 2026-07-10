@@ -330,7 +330,7 @@ html {
 
 /* Readable body column: left-aligned text, capped width, centred in viewport. */
 .prose-col {
-  max-width: 760px;
+  max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
   text-align: left;

@@ -135,7 +135,7 @@ export default async function BrandPage({
 
       {/* Section 1 - Hero */}
       <section className="border-b bg-gradient-to-b from-white to-[var(--color-muted-blue)]/50">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:py-20">
           <h1 className="font-heading text-3xl font-extrabold leading-tight text-primary sm:text-4xl lg:text-5xl">
             {page.hero.h1}
           </h1>
@@ -179,7 +179,7 @@ export default async function BrandPage({
 
       {/* Section 2 - Models we service */}
       <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Models we service"
             title={`${page.brand} Models Our Mobile Tyre Fitters Service`}
@@ -207,7 +207,7 @@ export default async function BrandPage({
 
       {/* Section 3 - OE specs */}
       <section className="bg-secondary py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="OE specifications"
             title={`${page.brand} Tyre Specifications We Match`}
@@ -253,7 +253,7 @@ export default async function BrandPage({
       {/* Section 4 - Technical flagship (run-flat for BMW/Mercedes, EV for Tesla,
           N-rating for Porsche, marque approval for supercars, etc.) */}
       <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow={page.s4Eyebrow ?? "Run-flat specialist"}
             title={page.s4Title ?? `${page.brand} Run-Flat Tyre Replacement On-Site`}
@@ -265,7 +265,7 @@ export default async function BrandPage({
       {/* Section 5 - Second technical section (TPMS for most, fitment precision /
           discretion for supercars and luxury marques) */}
       <section className="bg-secondary py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow={page.s5Eyebrow ?? "TPMS reset included"}
             title={page.s5Title ?? `${page.brand} TPMS Reset Included with Every Tyre Change`}
@@ -336,7 +336,7 @@ export default async function BrandPage({
 
       {/* Section 7 - Pricing */}
       <section className="bg-secondary py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Transparent pricing"
             title={`Transparent Pricing for ${page.brand} Tyre Fitting`}

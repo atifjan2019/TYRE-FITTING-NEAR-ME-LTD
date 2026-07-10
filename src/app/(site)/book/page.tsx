@@ -37,7 +37,7 @@ export default async function BookPage() {
         crumbs={crumbs}
       />
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-2 lg:items-start">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 lg:items-start">
         {/* Quick-contact options */}
         <div>
           <h2 className="text-2xl font-bold">Fastest ways to reach us</h2>

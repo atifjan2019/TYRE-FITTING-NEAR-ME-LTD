@@ -10,7 +10,7 @@ import { COMPARISON_ROWS, COMPARISON_SCENARIOS } from "@/lib/homepage-content";
 export function MobileVsGarage() {
   return (
     <section className="bg-secondary py-16 sm:py-20">
-      <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Mobile vs garage"
           title="Mobile Tyre Fitting vs Visiting a Tyre Garage"

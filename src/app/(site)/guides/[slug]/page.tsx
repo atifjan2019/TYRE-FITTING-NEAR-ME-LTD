@@ -117,7 +117,7 @@ export default async function GuidePage({
     <>
       <JsonLd data={[articleJsonLd, webPageJsonLd, breadcrumbJsonLd(crumbs)]} />
 
-      <div className="mx-auto max-w-6xl px-4 py-10">
+      <div className="mx-auto max-w-7xl px-4 py-10">
         <Breadcrumbs items={crumbs} />
 
         <div className="mt-6 grid gap-10 lg:grid-cols-3">
