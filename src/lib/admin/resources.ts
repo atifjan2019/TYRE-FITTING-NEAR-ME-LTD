@@ -33,13 +33,10 @@ export interface FieldConfig {
 
 /** Prisma delegate names we expose in the admin. */
 export type PrismaModel =
-  | "county"
-  | "town"
   | "service"
   | "blogPost"
   | "review"
   | "faq"
-  | "brand"
   | "lead";
 
 export interface ResourceConfig {
@@ -165,110 +162,6 @@ export const RESOURCES: Record<string, ResourceConfig> = {
     ],
   },
 
-  counties: {
-    key: "counties",
-    model: "county",
-    labelSingular: "County",
-    labelPlural: "Counties",
-    icon: "map",
-    listColumns: [
-      { name: "name", label: "Name" },
-      { name: "slug", label: "Slug" },
-      { name: "towns", label: "Towns" },
-      { name: "published", label: "Published" },
-    ],
-    orderBy: [{ order: "asc" }, { name: "asc" }],
-    include: {
-      towns: {
-        orderBy: [{ order: "asc" }, { name: "asc" }],
-        select: { id: true, name: true },
-      },
-    },
-    fields: [
-      { name: "name", label: "County name", type: "text", required: true },
-      {
-        name: "slug",
-        label: "Slug (URL)",
-        type: "text",
-        required: true,
-        help: "Used in the URL, e.g. 'kent' → /kent. Lowercase, no spaces.",
-      },
-      PUBLISH_FIELD,
-      ORDER_FIELD,
-      { name: "intro", label: "Intro paragraph", type: "textarea", colSpan: 2 },
-      {
-        name: "responseTimeText",
-        label: "Response time text",
-        type: "text",
-        colSpan: 2,
-      },
-      {
-        name: "coverageNotes",
-        label: "Coverage notes (roads/areas)",
-        type: "textarea",
-        colSpan: 2,
-      },
-      { name: "body", label: "Body content", type: "richtext", colSpan: 2 },
-      { name: "heroImage", label: "Hero image", type: "image", colSpan: 2 },
-      ...SEO_FIELDS,
-    ],
-  },
-
-  towns: {
-    key: "towns",
-    model: "town",
-    labelSingular: "Town",
-    labelPlural: "Towns",
-    icon: "map-pin",
-    listColumns: [
-      { name: "name", label: "Town" },
-      { name: "slug", label: "Slug" },
-      { name: "published", label: "Published" },
-    ],
-    orderBy: [{ order: "asc" }, { name: "asc" }],
-    fields: [
-      { name: "name", label: "Town name", type: "text", required: true },
-      {
-        name: "slug",
-        label: "Slug (URL)",
-        type: "text",
-        required: true,
-        help: "e.g. 'maidstone' → /kent/maidstone. Unique within the county.",
-      },
-      {
-        name: "countyId",
-        label: "County",
-        type: "select",
-        required: true,
-        optionsFrom: { model: "county", labelField: "name" },
-      },
-      PUBLISH_FIELD,
-      ORDER_FIELD,
-      {
-        name: "intro",
-        label: "Intro paragraph (unique!)",
-        type: "textarea",
-        colSpan: 2,
-        help: "Write something genuinely specific to this town for SEO.",
-      },
-      {
-        name: "localNotes",
-        label: "Local notes (roads, landmarks, retail parks)",
-        type: "textarea",
-        colSpan: 2,
-      },
-      {
-        name: "responseTimeText",
-        label: "Response time text",
-        type: "text",
-        colSpan: 2,
-      },
-      { name: "body", label: "Body content", type: "richtext", colSpan: 2 },
-      { name: "heroImage", label: "Hero image", type: "image", colSpan: 2 },
-      ...SEO_FIELDS,
-    ],
-  },
-
   services: {
     key: "services",
     model: "service",
@@ -369,18 +262,6 @@ export const RESOURCES: Record<string, ResourceConfig> = {
       PUBLISH_FIELD,
       ORDER_FIELD,
       {
-        name: "townId",
-        label: "Attach to town (optional)",
-        type: "select",
-        optionsFrom: { model: "town", labelField: "name" },
-      },
-      {
-        name: "countyId",
-        label: "Attach to county (optional)",
-        type: "select",
-        optionsFrom: { model: "county", labelField: "name" },
-      },
-      {
         name: "serviceId",
         label: "Attach to service (optional)",
         type: "select",
@@ -418,18 +299,6 @@ export const RESOURCES: Record<string, ResourceConfig> = {
       PUBLISH_FIELD,
       ORDER_FIELD,
       {
-        name: "townId",
-        label: "Attach to town (optional)",
-        type: "select",
-        optionsFrom: { model: "town", labelField: "name" },
-      },
-      {
-        name: "countyId",
-        label: "Attach to county (optional)",
-        type: "select",
-        optionsFrom: { model: "county", labelField: "name" },
-      },
-      {
         name: "serviceId",
         label: "Attach to service (optional)",
         type: "select",
@@ -446,8 +315,6 @@ export function getResource(key: string): ResourceConfig | undefined {
 /** Ordered list for the admin sidebar. */
 export const RESOURCE_ORDER = [
   "leads",
-  "counties",
-  "towns",
   "services",
   "posts",
   "reviews",

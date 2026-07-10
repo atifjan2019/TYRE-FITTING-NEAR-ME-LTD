@@ -9,10 +9,8 @@ import { SITE } from "@/lib/site-config";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const [leads, counties, towns, services, posts, reviews, faqs] = await Promise.all([
+  const [leads, services, posts, reviews, faqs] = await Promise.all([
     prisma.lead.count(),
-    prisma.county.count(),
-    prisma.town.count(),
     prisma.service.count(),
     prisma.blogPost.count(),
     prisma.review.count(),
@@ -21,8 +19,6 @@ export default async function AdminDashboard() {
 
   const counts: Record<string, number> = {
     leads,
-    counties,
-    towns,
     services,
     posts,
     reviews,

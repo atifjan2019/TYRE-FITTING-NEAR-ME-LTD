@@ -31,19 +31,6 @@ datasource db {
 }
 
 // -----------------------------------------------------------------------------
-// Admin users - login for the /admin dashboard (NextAuth credentials provider)
-// -----------------------------------------------------------------------------
-model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
-  name         String?
-  passwordHash String // bcrypt hash - never store plain text
-  role         String   @default("admin") // "admin" | "editor"
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-}
-
-// -----------------------------------------------------------------------------
 // Site settings - a single row (id = "settings") edited from the admin.
 // Holds global NAP/contact info reused across the whole site + header/footer.
 // SERVICE-AREA business: NO street address is stored anywhere.
@@ -111,78 +98,8 @@ model Service {
 }
 
 // -----------------------------------------------------------------------------
-// County hubs - top-level location pages, e.g. /kent
-// -----------------------------------------------------------------------------
-model County {
-  id               String  @id @default(cuid())
-  name             String // e.g. "Kent"
-  slug             String  @unique // e.g. "kent"
-  intro            String  @default("") // short lead paragraph
-  body             String  @default("") // rich-text HTML
-  heroImage        String?
-  responseTimeText String  @default("Typical call-out: 30-60 minutes")
-  coverageNotes    String  @default("") // major roads/areas covered in the county
-
-  // SEO
-  seoTitle       String?
-  seoDescription String?
-  ogImage        String?
-
-  published Boolean  @default(true)
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  towns   Town[]
-  faqs    Faq[]
-  reviews Review[]
-
-  @@index([slug])
-  @@index([published, order])
-}
-
-// -----------------------------------------------------------------------------
-// Town / borough pages - nested under a county, e.g. /kent/maidstone
-// These are the SEO money pages: every field exists so each page is genuinely
-// unique (local notes, response time, local FAQs, local reviews).
-// -----------------------------------------------------------------------------
-model Town {
-  id       String @id @default(cuid())
-  name     String // e.g. "Maidstone"
-  slug     String // e.g. "maidstone" (unique WITHIN its county)
-  countyId String
-  county   County @relation(fields: [countyId], references: [id], onDelete: Cascade)
-
-  intro            String  @default("") // unique lead paragraph for this town
-  body             String  @default("") // rich-text HTML
-  localNotes       String  @default("") // major roads, landmarks, retail parks, etc.
-  responseTimeText String  @default("Typical call-out: 30-45 minutes")
-  heroImage        String?
-
-  // SEO
-  seoTitle       String?
-  seoDescription String?
-  ogImage        String?
-
-  published Boolean  @default(true)
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  faqs    Faq[]
-  reviews Review[]
-
-  // slug only needs to be unique within a county (so two counties can both
-  // have e.g. "newport"), enforced by the composite unique constraint below.
-  @@unique([countyId, slug])
-  @@index([slug])
-  @@index([countyId])
-  @@index([published])
-}
-
-// -----------------------------------------------------------------------------
-// FAQs - reusable. Attach to a service, county, or town, or leave all relations
-// null for a GENERAL/global FAQ shown on the homepage & /faq.
+// FAQs - reusable. Attach to a service, or leave the relation null for a
+// GENERAL/global FAQ shown on the homepage & /faq.
 // -----------------------------------------------------------------------------
 model Faq {
   id       String @id @default(cuid())
@@ -192,10 +109,6 @@ model Faq {
 
   serviceId String?
   service   Service? @relation(fields: [serviceId], references: [id], onDelete: Cascade)
-  countyId  String?
-  county    County?  @relation(fields: [countyId], references: [id], onDelete: Cascade)
-  townId    String?
-  town      Town?    @relation(fields: [townId], references: [id], onDelete: Cascade)
 
   published Boolean  @default(true)
   order     Int      @default(0)
@@ -204,13 +117,11 @@ model Faq {
 
   @@index([category, published])
   @@index([serviceId])
-  @@index([countyId])
-  @@index([townId])
 }
 
 // -----------------------------------------------------------------------------
-// Reviews - reusable. Attach to a town/county/service for local social proof,
-// or leave relations null for a global review shown on the homepage & /reviews.
+// Reviews - reusable. Attach to a service for social proof, or leave the
+// relation null for a global review shown on the homepage & /reviews.
 // -----------------------------------------------------------------------------
 model Review {
   id       String   @id @default(cuid())
@@ -224,10 +135,6 @@ model Review {
 
   serviceId String?
   service   Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
-  countyId  String?
-  county    County?  @relation(fields: [countyId], references: [id], onDelete: SetNull)
-  townId    String?
-  town      Town?    @relation(fields: [townId], references: [id], onDelete: SetNull)
 
   published Boolean  @default(true)
   order     Int      @default(0)
@@ -236,8 +143,6 @@ model Review {
 
   @@index([published, featured])
   @@index([serviceId])
-  @@index([countyId])
-  @@index([townId])
 }
 
 // -----------------------------------------------------------------------------
@@ -265,21 +170,6 @@ model BlogPost {
 
   @@index([slug])
   @@index([published, publishedAt])
-}
-
-// -----------------------------------------------------------------------------
-// Tyre brands - logos for the homepage brand strip.
-// -----------------------------------------------------------------------------
-model Brand {
-  id        String   @id @default(cuid())
-  name      String
-  logo      String? // image URL (Vercel Blob)
-  url       String?
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([order])
 }
 
 // -----------------------------------------------------------------------------
