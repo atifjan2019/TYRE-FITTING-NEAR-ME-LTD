@@ -9,7 +9,7 @@ import { PRICING_ROWS } from "@/lib/homepage-content";
 export function PricingTable() {
   return (
     <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
           eyebrow="Transparent pricing"
           title="Transparent Mobile Tyre Fitting Prices"

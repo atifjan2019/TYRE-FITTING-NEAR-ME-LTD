@@ -78,7 +78,7 @@ export function TyreLookup({ whatsapp }: { whatsapp: string }) {
 
   return (
     <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-2 text-sm font-bold uppercase tracking-wide text-primary">
             Tyre lookup

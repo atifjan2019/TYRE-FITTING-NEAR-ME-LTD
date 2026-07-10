@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import Image from "next/image";
 import { Icon } from "@/components/icon";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { StatCounter } from "@/components/ui/stat-counter";
@@ -38,17 +38,17 @@ export function OurFitters() {
           </div>
 
           <figure className="mx-auto w-full max-w-sm">
-            {/* Placeholder until a real founder photo at FOUNDER.photo is supplied. */}
-            <div
-              role="img"
-              aria-label={FOUNDER.photoAlt}
-              data-status="placeholder"
-              className="flex aspect-[4/3] items-center justify-center rounded-2xl border bg-gradient-to-br from-secondary to-[var(--color-muted-blue)]/60 text-muted-foreground"
-            >
-              <User className="h-16 w-16" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border bg-secondary shadow-sm">
+              <Image
+                src={FOUNDER.photo}
+                alt={FOUNDER.photoAlt}
+                fill
+                sizes="(min-width: 1024px) 384px, 100vw"
+                className="object-cover"
+              />
             </div>
             <figcaption className="mt-3 text-center text-sm text-muted-foreground">
-              {FOUNDER.name}, {FOUNDER.role}, {FOUNDER.yearsInTrade}
+              Mobile tyre fitting standards: calibrated tools, safe lifting and on-site fitting.
             </figcaption>
           </figure>
         </div>

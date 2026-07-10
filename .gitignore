@@ -50,6 +50,9 @@ pnpm-debug.log*
 # ...and recent work gallery images used by the homepage
 !/public/uploads/work
 !/public/uploads/work/**
+# ...and team / standards images used by the homepage
+!/public/uploads/team
+!/public/uploads/team/**
 
 # internal working notes (not for the repo)
 /PROJECT-NOTES.md

@@ -452,9 +452,9 @@ export const FOUNDER = {
   name: "Paul",
   role: "Founder and lead mobile tyre fitter",
   yearsInTrade: "over 10 years in the tyre trade",
-  photo: "/uploads/team/founder-photo.jpg",
+  photo: "/uploads/team/our-standards-mobile-tyre-fitter.png",
   photoAlt:
-    "Paul, founder and lead mobile tyre fitter at Tyre Fitting Near Me Ltd, photographed beside a fully equipped mobile fitting van",
+    "Professional mobile tyre technician beside a fully equipped mobile fitting van with tyre fitting tools",
   bio: "I started out fitting tyres in busy high-street garages, and after more than a decade in the trade I kept seeing the same problem: drivers stuck waiting, or stranded with no safe way to reach a garage. So I built Tyre Fitting Near Me as a fully mobile service that brings the workshop to you, at home, at work or at the roadside. Every fitting my team and I carry out is balanced on calibrated equipment, torqued to manufacturer specification and backed by our workmanship guarantee. If a job is not right, we put it right. That promise is personal.",
   quote:
     "We bring the workshop to you, and every fitting is backed by my personal workmanship guarantee.",
