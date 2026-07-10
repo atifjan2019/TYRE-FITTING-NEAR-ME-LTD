@@ -475,49 +475,48 @@ export const FOUNDER_STATS: {
 ];
 
 // ---------------------------------------------------------------------------
-// Section 10 - Recent mobile tyre fittings (image placeholders, EAV alt text)
-// Real photos are owner input. Filenames map to alt text for easy swap-in.
+// Section 10 - Recent mobile tyre fittings.
 // ---------------------------------------------------------------------------
 export const RECENT_WORK: { file: string; alt: string; caption: string }[] = [
   {
-    file: "/uploads/work/recent-work-01-michelin-pilot-sport-4-225-40-r18-bmw-3-series-bromley.jpg",
-    alt: "Michelin Pilot Sport 4 225/40 R18 fitted to a BMW 3 Series in Bromley by Tyre Fitting Near Me mobile fitter",
-    caption: "Michelin Pilot Sport 4 225/40 R18, BMW 3 Series, Bromley, fitted in 45 minutes",
+    file: "/uploads/work/recent-work-01-mobile-tyre-fitting-driveway.jpg",
+    alt: "Mobile tyre fitter replacing a tyre on a driveway with a service van parked behind the vehicle",
+    caption: "Driveway tyre replacement with mobile fitting van and on-site tools",
   },
   {
-    file: "/uploads/work/recent-work-02-continental-205-55-r16-ford-focus-maidstone.jpg",
-    alt: "Continental PremiumContact 205/55 R16 fitted to a Ford Focus in Maidstone by Tyre Fitting Near Me mobile fitter",
-    caption: "Continental 205/55 R16, Ford Focus, Maidstone, roadside call-out",
+    file: "/uploads/work/recent-work-02-roadside-tyre-callout.jpg",
+    alt: "Roadside mobile tyre call-out with a wheel removed and replacement tyre ready to fit",
+    caption: "Roadside tyre call-out completed safely with mobile fitting equipment",
   },
   {
-    file: "/uploads/work/recent-work-03-michelin-agilis-215-65-r16c-ford-transit-croydon.jpg",
-    alt: "Michelin Agilis 215/65 R16C commercial van tyre fitted to a Ford Transit in Croydon by Tyre Fitting Near Me mobile fitter",
-    caption: "Michelin Agilis 215/65 R16C, Ford Transit, Croydon, fleet call-out",
+    file: "/uploads/work/recent-work-03-ev-tyre-fitting.jpg",
+    alt: "Electric vehicle mobile tyre fitting with the rear wheel removed and service equipment beside the car",
+    caption: "EV tyre replacement carried out on-site with specialist mobile tools",
   },
   {
-    file: "/uploads/work/recent-work-04-pirelli-p-zero-245-40-r19-tesla-model-3-brighton.jpg",
-    alt: "Pirelli P Zero 245/40 R19 EV tyre fitted to a Tesla Model 3 in Brighton by Tyre Fitting Near Me mobile fitter",
-    caption: "Pirelli P Zero 245/40 R19, Tesla Model 3, Brighton, home fitting",
+    file: "/uploads/work/recent-work-04-mobile-van-tyre-service.jpg",
+    alt: "Mobile tyre service vehicle attending an on-site tyre fitting job",
+    caption: "Mobile tyre service van attending an on-site fitting",
   },
   {
-    file: "/uploads/work/recent-work-05-bridgestone-turanza-195-65-r15-vw-golf-chelmsford.jpg",
-    alt: "Bridgestone Turanza 195/65 R15 fitted to a Volkswagen Golf in Chelmsford by Tyre Fitting Near Me mobile fitter",
-    caption: "Bridgestone Turanza 195/65 R15, VW Golf, Chelmsford, workplace fitting",
+    file: "/uploads/work/recent-work-05-home-tyre-fitting.jpg",
+    alt: "Home tyre fitting appointment with a vehicle jacked safely and tools ready beside the wheel",
+    caption: "Home tyre fitting with the vehicle safely lifted for wheel removal",
   },
   {
-    file: "/uploads/work/recent-work-06-goodyear-efficientgrip-225-45-r17-audi-a4-solihull.jpg",
-    alt: "Goodyear EfficientGrip 225/45 R17 fitted to an Audi A4 in Solihull by Tyre Fitting Near Me mobile fitter",
-    caption: "Goodyear EfficientGrip 225/45 R17, Audi A4, Solihull, 30-minute arrival",
+    file: "/uploads/work/recent-work-06-alloy-wheel-tyre-fitting.jpg",
+    alt: "Replacement tyre and alloy wheel ready for fitting during a mobile tyre appointment",
+    caption: "Replacement tyre and alloy wheel prepared for mobile fitting",
   },
   {
-    file: "/uploads/work/recent-work-07-dunlop-sport-205-55-r16-vauxhall-astra-glasgow.jpg",
-    alt: "Dunlop Sport BluResponse 205/55 R16 fitted to a Vauxhall Astra in Glasgow by Tyre Fitting Near Me mobile fitter",
-    caption: "Dunlop Sport 205/55 R16, Vauxhall Astra, Glasgow, evening call-out",
+    file: "/uploads/work/recent-work-07-evening-tyre-callout.jpg",
+    alt: "Evening mobile tyre call-out with service tools beside the vehicle",
+    caption: "Evening tyre call-out with on-site mobile fitting equipment",
   },
   {
-    file: "/uploads/work/recent-work-08-hankook-ventus-235-55-r18-nissan-qashqai-coventry.jpg",
-    alt: "Hankook Ventus 235/55 R18 SUV tyre fitted to a Nissan Qashqai in Coventry by Tyre Fitting Near Me mobile fitter",
-    caption: "Hankook Ventus 235/55 R18, Nissan Qashqai, Coventry, home fitting",
+    file: "/uploads/work/recent-work-08-mobile-suv-tyre-fitting.jpg",
+    alt: "SUV tyre replacement carried out by a mobile tyre fitter at the customer's location",
+    caption: "SUV tyre replacement completed at the customer's location",
   },
 ];
 

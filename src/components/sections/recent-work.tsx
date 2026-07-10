@@ -1,12 +1,9 @@
-import { Camera } from "lucide-react";
+import Image from "next/image";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { RECENT_WORK } from "@/lib/homepage-content";
 
 /**
- * Section 10 - Recent mobile tyre fittings gallery. Real photographs are owner
- * input (flagged in the audit appendix); until supplied, each tile renders an
- * entity-rich caption (brand, size, vehicle, location, service time) so the
- * semantic value is present now and photos drop in by filename later.
+ * Section 10 - Recent mobile tyre fittings gallery.
  */
 export function RecentWork() {
   return (
@@ -24,15 +21,14 @@ export function RecentWork() {
               key={item.file}
               className="group overflow-hidden rounded-xl border bg-card shadow-sm"
             >
-              {/* Placeholder until a real photo at item.file is supplied. */}
-              <div
-                role="img"
-                aria-label={item.alt}
-                data-status="placeholder"
-                data-src={item.file}
-                className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-secondary to-[var(--color-muted-blue)]/60 text-muted-foreground"
-              >
-                <Camera className="h-8 w-8" />
+              <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                <Image
+                  src={item.file}
+                  alt={item.alt}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="object-cover transition duration-300 group-hover:scale-105"
+                />
               </div>
               <figcaption className="p-3 text-xs font-medium text-foreground">
                 {item.caption}

@@ -11,6 +11,25 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
+const validateDatabaseUrl = () => {
+  const databaseUrl = process.env.DATABASE_URL;
+  if (!databaseUrl) return;
+
+  const placeholderValues = ["VPS_PUBLIC_IP", "USER", "PASSWORD", "DBNAME"];
+  const unresolvedPlaceholder = placeholderValues.find((value) =>
+    databaseUrl.includes(value),
+  );
+
+  if (unresolvedPlaceholder) {
+    throw new Error(
+      `DATABASE_URL still contains the placeholder "${unresolvedPlaceholder}". ` +
+        "Update .env.local with the real Postgres connection string, then restart the dev server.",
+    );
+  }
+};
+
+validateDatabaseUrl();
+
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({

@@ -47,6 +47,9 @@ pnpm-debug.log*
 # ...but DO commit curated brand logos so they deploy
 !/public/uploads/brands
 !/public/uploads/brands/**
+# ...and recent work gallery images used by the homepage
+!/public/uploads/work
+!/public/uploads/work/**
 
 # internal working notes (not for the repo)
 /PROJECT-NOTES.md
