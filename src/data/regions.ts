@@ -59,10 +59,15 @@ const LONDON_LIVE_TOWNS: RegionTown[] = LIVE_AREAS.filter(
   (a: Area) => a.region === "South East London"
 ).map((a) => ({ name: a.town, slug: a.slug, postcodes: a.postcodes }));
 
+/** Live town pages that sit within the Greater Manchester region. */
+const MANCHESTER_LIVE_TOWNS: RegionTown[] = LIVE_AREAS.filter(
+  (a: Area) => a.region === "Greater Manchester"
+).map((a) => ({ name: a.town, slug: a.slug, postcodes: a.postcodes }));
+
 /**
- * The six regions, in render order. London is the only region with built town
- * pages today (the SE London cluster); the other five list their real towns as
- * not-built chips until town pages are published.
+ * The regions, in render order. London (the SE London cluster) and Greater
+ * Manchester have built town pages today; the remaining regions list their real
+ * towns as not-built chips until town pages are published.
  */
 export const REGIONS: Region[] = [
   {
@@ -191,6 +196,29 @@ export const REGIONS: Region[] = [
       { name: "Motherwell", postcodes: ["ML1"] },
       { name: "Cumbernauld", postcodes: ["G67"] },
       { name: "Livingston", postcodes: ["EH54"] },
+    ],
+  },
+  {
+    slug: "manchester",
+    name: "Greater Manchester",
+    postcodeAreas: ["M", "SK", "OL", "BL", "WN"],
+    roads: ["M60", "M62", "M56", "A6", "A34", "A56"],
+    contextNote:
+      "Greater Manchester is wrapped by the M60 orbital ring, with the M62 and M56 feeding in from the east and the airport, so a fitter reaching a home or workplace beats crossing the ring to a tyre garage on most days.",
+    overviewExtra:
+      "The conurbation gathers Manchester itself across the M postcodes, Stockport in SK, Oldham and Rochdale in OL, Bolton and Bury in BL and Wigan in WN, a dense spread where home, workplace and roadside jobs all keep a fitter busy without a long orbital detour.",
+    headlineTowns: ["Stockport", "Bolton"],
+    variant: 7,
+    towns: [
+      ...MANCHESTER_LIVE_TOWNS,
+      { name: "Eccles", postcodes: ["M30"] },
+      { name: "Urmston", postcodes: ["M41"] },
+      { name: "Swinton", postcodes: ["M27"] },
+      { name: "Middleton", postcodes: ["M24"] },
+      { name: "Prestwich", postcodes: ["M25"] },
+      { name: "Denton", postcodes: ["M34"] },
+      { name: "Hyde", postcodes: ["SK14"] },
+      { name: "Cheadle", postcodes: ["SK8"] },
     ],
   },
 ];

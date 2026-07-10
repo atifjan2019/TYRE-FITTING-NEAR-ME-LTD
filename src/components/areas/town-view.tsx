@@ -39,6 +39,7 @@ const EMPHASIS_HREF: Record<Area["emphasis"], string> = {
 /** Map an area's display region to its parent /areas/[region] slug. */
 const REGION_SLUG_BY_TOWN_REGION: Record<string, string> = {
   "South East London": "london",
+  "Greater Manchester": "manchester",
 };
 
 /* --- Skeleton variants (selected by area.variant). Each set differs in

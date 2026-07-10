@@ -198,6 +198,186 @@ export const areas: Area[] = [
     emphasis: "fitting",
     localFaq: { q: "Do you cover Eltham High Street and Well Hall?", a: "Yes, across SE9 including the High Street, Well Hall Road, Eltham Palace, and toward Mottingham and New Eltham." },
     variant: 1, status: "live"
+  },
+  {
+    slug: "didsbury", town: "Didsbury", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["M20"],
+    neighbours: ["Withington", "Chorlton", "Burnage", "West Didsbury"],
+    roads: ["A34 Kingsway", "A5145 Barlow Moor Road", "Wilmslow Road", "Palatine Road"],
+    landmarks: ["Didsbury Village", "Fletcher Moss Gardens", "East Didsbury station", "Parrs Wood"],
+    localNote: "Didsbury Village clogs around Wilmslow Road and School Lane, where parking is tight and the Metrolink crossings slow the traffic, so a fitter coming to a driveway off Barlow Moor Road or Palatine Road beats circling the village for a garage space.",
+    scenario: { road: "A5145 Barlow Moor Road", vehicle: "family car", situation: "a kerbed alloy and a slow leak picked up near Didsbury Village", outcome: "fitted on the driveway off Palatine Road with the school run unaffected" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Didsbury Village and East Didsbury?", a: "Yes, across M20 including Didsbury Village, West Didsbury and East Didsbury toward Parrs Wood, and out to Withington and Burnage." },
+    variant: 0, status: "live"
+  },
+  {
+    slug: "manchester-city-centre", town: "Manchester City Centre", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["M1", "M2", "M4"],
+    neighbours: ["Ancoats", "Northern Quarter", "Castlefield", "Salford"],
+    roads: ["A57(M) Mancunian Way", "A665 Great Ancoats Street", "Deansgate", "Portland Street"],
+    landmarks: ["Manchester Piccadilly station", "Manchester Arndale", "Piccadilly Gardens", "Castlefield"],
+    localNote: "Parking in the core is scarce and red routes run along Deansgate and Portland Street, so office car park and multi-storey fitting while you work beats hunting for a garage slot in the city centre.",
+    scenario: { road: "A57(M) Mancunian Way", vehicle: "car", situation: "a blowout on the inner ring road at rush hour", outcome: "fitted at a Northern Quarter car park under roadside protocol" },
+    emphasis: "emergency",
+    localFaq: { q: "Can you fit tyres in a city-centre car park?", a: "Yes, across M1, M2 and M4 we fit at office and multi-storey car parks around Piccadilly, Deansgate and the Northern Quarter while you carry on with your day." },
+    variant: 1, status: "live"
+  },
+  {
+    slug: "salford", town: "Salford", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["M5", "M6"],
+    neighbours: ["Eccles", "Pendleton", "Ordsall", "Broughton"],
+    roads: ["A6 Chapel Street", "A56 Bury New Road", "M602", "A576 Great Cheetham Street"],
+    landmarks: ["Salford Quays", "MediaCityUK", "Salford Crescent station", "University of Salford"],
+    localNote: "Salford Quays and MediaCityUK draw heavy weekday and fleet traffic, and the A6 Chapel Street and M602 back up at peak, so depot and workplace fitting around the Quays keeps vans and cars moving without an orbital run.",
+    scenario: { road: "M602", vehicle: "fleet van", situation: "a nail picked up on the Eccles approach mid-shift", outcome: "fitted at the MediaCity depot before the afternoon runs" },
+    emphasis: "van",
+    localFaq: { q: "Do you cover Salford Quays and MediaCityUK?", a: "Yes, across M5 and M6 including Salford Quays, MediaCityUK, the Crescent, and toward Eccles and Pendleton." },
+    variant: 2, status: "live"
+  },
+  {
+    slug: "stockport", town: "Stockport", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["SK1", "SK3"],
+    neighbours: ["Cheadle", "Bramhall", "Heaton Moor", "Edgeley"],
+    roads: ["M60", "A6 Wellington Road", "A560", "A5145 Didsbury Road"],
+    landmarks: ["Stockport station", "Merseyway shopping centre", "Stockport Viaduct", "the Peel Centre"],
+    localNote: "Stockport funnels onto the M60 at Junction 1 and the A6 Wellington Road sits under the viaduct through the centre, both slow at peak, so a fitter reaching a home in Heaton Moor or Edgeley beats the crawl into town for a garage.",
+    scenario: { road: "M60", vehicle: "car", situation: "a debris blowout near Junction 1", outcome: "fitted at the roadside under National Highways protocol" },
+    emphasis: "emergency",
+    localFaq: { q: "Do you cover Stockport centre and the M60?", a: "Yes, across SK1 and SK3 including Merseyway, the viaduct, Edgeley, and toward Cheadle and Heaton Moor." },
+    variant: 0, status: "live"
+  },
+  {
+    slug: "bolton", town: "Bolton", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["BL1", "BL2"],
+    neighbours: ["Farnworth", "Horwich", "Westhoughton", "Little Lever"],
+    roads: ["A666 St Peter's Way", "M61", "A579", "Manchester Road"],
+    landmarks: ["Bolton station", "Middlebrook retail park", "University of Bolton", "Bolton Market Place"],
+    localNote: "Bolton's A666 St Peter's Way ring and the Manchester Road approach are busy through the day, and Middlebrook draws steady retail traffic, so home and workplace fitting across BL1 and BL2 is quicker than a town-centre garage trip.",
+    scenario: { road: "A666 St Peter's Way", vehicle: "family car", situation: "a kerbed alloy and slow leak on the ring road", outcome: "fitted on the driveway before the school run" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Bolton town centre and Middlebrook?", a: "Yes, across BL1 and BL2 including the Market Place, Middlebrook, and toward Farnworth and Horwich." },
+    variant: 1, status: "live"
+  },
+  {
+    slug: "oldham", town: "Oldham", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["OL1", "OL8"],
+    neighbours: ["Chadderton", "Royton", "Failsworth", "Shaw"],
+    roads: ["A627(M)", "A62 Oldham Way", "A669", "Manchester Street"],
+    landmarks: ["Oldham Mumps", "Spindles Town Square", "Oldham Central tram stop", "Alexandra Park"],
+    localNote: "The A627(M) and the A62 Oldham Way ring take heavy commuter traffic toward the M60, so a fitter coming to a home in Chadderton or Royton beats nursing a damaged tyre down through the town-centre one-way system to a garage.",
+    scenario: { road: "A627(M)", vehicle: "car", situation: "a slow puncture flagged on the school run", outcome: "fitted at the kerb off the Oldham Way ring" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Oldham centre and Chadderton?", a: "Yes, across OL1 and OL8 including Oldham Mumps, the Town Square, and toward Chadderton, Royton and Failsworth." },
+    variant: 2, status: "live"
+  },
+  {
+    slug: "rochdale", town: "Rochdale", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["OL11", "OL16"],
+    neighbours: ["Heywood", "Littleborough", "Milnrow", "Castleton"],
+    roads: ["M62", "A58 Manchester Road", "A627", "A664 Roch Valley Way"],
+    landmarks: ["Rochdale town hall", "Rochdale Riverside", "Rochdale station", "Rochdale Exchange"],
+    localNote: "Rochdale sits on the M62 at Junctions 20 and 21 with the A58 and A627 feeding the centre, so roadside cover on the motorway runs alongside home fitting across OL11 and OL16 where the town-centre gyratory is slow.",
+    scenario: { road: "M62", vehicle: "car", situation: "a blowout on the Milnrow approach", outcome: "fitted at the roadside under National Highways protocol" },
+    emphasis: "emergency",
+    localFaq: { q: "Do you cover Rochdale centre and the M62?", a: "Yes, across OL11 and OL16 including Rochdale Riverside, the town hall, and toward Heywood, Castleton and Milnrow." },
+    variant: 0, status: "live"
+  },
+  {
+    slug: "bury", town: "Bury", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["BL8", "BL9"],
+    neighbours: ["Radcliffe", "Whitefield", "Ramsbottom", "Tottington"],
+    roads: ["M66", "A56 Manchester Road", "A58", "Angouleme Way"],
+    landmarks: ["Bury Market", "The Rock shopping centre", "Bury Interchange", "Bury tram stop"],
+    localNote: "The M66 feeds Bury at Junctions 2 and 3 and the A56 runs through the centre past the market, so home and workplace fitting across BL8 and BL9 beats the slow run round Angouleme Way to a garage.",
+    scenario: { road: "A56 Manchester Road", vehicle: "car", situation: "a sidewall split caught near Bury Market", outcome: "fitted at home off Manchester Road with no detour" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Bury Market and the Interchange?", a: "Yes, across BL8 and BL9 including Bury Market, The Rock, the Interchange, and toward Radcliffe and Whitefield." },
+    variant: 1, status: "live"
+  },
+  {
+    slug: "wigan", town: "Wigan", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["WN1", "WN3"],
+    neighbours: ["Ince", "Pemberton", "Standish", "Hindley"],
+    roads: ["M6", "A49 Wigan Lane", "A577", "A573 Warrington Road"],
+    landmarks: ["Wigan Wallgate station", "Wigan North Western station", "the Grand Arcade", "the DW Stadium"],
+    localNote: "Wigan sits between the M6 Junctions 25, 26 and 27, with the A49 Wigan Lane running through the centre, so roadside cover on the motorway and home fitting across WN1 and WN3 both see steady demand.",
+    scenario: { road: "M6", vehicle: "car", situation: "a debris blowout near Junction 26", outcome: "fitted at the roadside under National Highways protocol" },
+    emphasis: "emergency",
+    localFaq: { q: "Do you cover Wigan centre and the M6?", a: "Yes, across WN1 and WN3 including the Grand Arcade, both Wigan stations, the DW Stadium, and toward Pemberton and Standish." },
+    variant: 2, status: "live"
+  },
+  {
+    slug: "altrincham", town: "Altrincham", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["WA14", "WA15"],
+    neighbours: ["Sale", "Hale", "Bowdon", "Timperley"],
+    roads: ["A56 Manchester Road", "M56", "A560", "Stamford New Road"],
+    landmarks: ["Altrincham Market", "Altrincham Interchange", "Stamford Quarter", "Dunham Massey"],
+    localNote: "Altrincham's A56 through the centre and the M56 at Junction 7 are busy at peak, and the market quarter draws weekend crowds, so home and workplace fitting across WA14 and WA15 beats circling Stamford New Road for a space.",
+    scenario: { road: "A56 Manchester Road", vehicle: "car", situation: "a kerbed wheel and slow leak near the market", outcome: "fitted on the driveway in Timperley" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Altrincham Market and Hale?", a: "Yes, across WA14 and WA15 including Altrincham Market, the Interchange, Stamford Quarter, and toward Hale, Bowdon and Timperley." },
+    variant: 0, status: "live"
+  },
+  {
+    slug: "sale", town: "Sale", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["M33"],
+    neighbours: ["Brooklands", "Sale Moor", "Timperley", "Altrincham"],
+    roads: ["M60", "Washway Road (A56)", "A6144 Cross Street", "Marsland Road"],
+    landmarks: ["Sale station", "Sale Metrolink", "Sale Water Park", "Stanley Square"],
+    localNote: "Sale runs along the A56 Washway Road with the M60 at Junction 6, both slow at peak, so a fitter reaching a home off Marsland Road or in Brooklands beats the crawl up Washway Road to a garage.",
+    scenario: { road: "Washway Road (A56)", vehicle: "family car", situation: "a slow puncture losing pressure by the day", outcome: "fitted on the driveway near Sale Moor" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Sale centre and Brooklands?", a: "Yes, across M33 including Sale station, Stanley Square, Sale Water Park, and toward Brooklands and Ashton upon Mersey." },
+    variant: 1, status: "live"
+  },
+  {
+    slug: "stretford", town: "Stretford", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["M32"],
+    neighbours: ["Old Trafford", "Urmston", "Firswood", "Chorlton"],
+    roads: ["A56 Chester Road", "M60", "A5081 Talbot Road", "Barton Road"],
+    landmarks: ["Stretford Mall", "Old Trafford stadium", "Emirates Old Trafford", "Stretford Metrolink"],
+    localNote: "Stretford sits on the A56 Chester Road with Trafford Park and the stadiums alongside, so depot, matchday car park and workplace fitting across M32 keeps vans and cars moving without a run onto the M60.",
+    scenario: { road: "A56 Chester Road", vehicle: "delivery van", situation: "a nail in the tread on the Trafford Park approach", outcome: "fitted at the depot before the next drops" },
+    emphasis: "van",
+    localFaq: { q: "Do you cover Stretford and Old Trafford?", a: "Yes, across M32 including Stretford Mall, the Old Trafford stadiums, the Metrolink, and toward Urmston and Gorse Hill." },
+    variant: 2, status: "live"
+  },
+  {
+    slug: "chorlton", town: "Chorlton", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["M21"],
+    neighbours: ["Whalley Range", "Chorltonville", "Firswood", "West Didsbury"],
+    roads: ["A6010 Barlow Moor Road", "Wilbraham Road", "Manchester Road", "Upper Chorlton Road"],
+    landmarks: ["Chorlton Metrolink", "Chorlton Water Park", "Beech Road", "Chorlton precinct"],
+    localNote: "Chorlton's Barlow Moor Road and Wilbraham Road junctions are tight and the Beech Road area draws steady weekend traffic, so a fitter coming to a driveway off Manchester Road beats hunting for a space near the precinct.",
+    scenario: { road: "A6010 Barlow Moor Road", vehicle: "car", situation: "a kerbed alloy near the Chorlton precinct", outcome: "fitted on a residential street off Wilbraham Road" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Chorlton and Beech Road?", a: "Yes, across M21 including the Chorlton precinct, Beech Road, the Metrolink, and toward Whalley Range and West Didsbury." },
+    variant: 0, status: "live"
+  },
+  {
+    slug: "withington", town: "Withington", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["M20"],
+    neighbours: ["Didsbury", "Fallowfield", "West Didsbury", "Burnage"],
+    roads: ["Wilmslow Road (B5093)", "A5145 Mauldeth Road", "Palatine Road", "Copson Street"],
+    landmarks: ["Withington village", "the Christie Hospital", "Fog Lane Park", "Withington Baths"],
+    localNote: "Withington's Wilmslow Road corridor is busy with hospital and student traffic past the Christie, so home and workplace fitting across M20 beats the slow crawl through the village to a garage.",
+    scenario: { road: "Wilmslow Road (B5093)", vehicle: "car", situation: "a flat caught outside the Christie", outcome: "fitted in the hospital visitor car park while the appointment ran" },
+    emphasis: "fitting",
+    localFaq: { q: "Do you cover Withington village and the Christie?", a: "Yes, across M20 including Withington village, the Christie Hospital, Fog Lane Park, and toward Fallowfield and Didsbury." },
+    variant: 1, status: "live"
+  },
+  {
+    slug: "ashton-under-lyne", town: "Ashton-under-Lyne", region: "Greater Manchester", cluster: "manchester",
+    postcodes: ["OL6", "OL7"],
+    neighbours: ["Dukinfield", "Stalybridge", "Droylsden", "Audenshaw"],
+    roads: ["M60", "A635 Manchester Road", "A627", "A6140 Wellington Road"],
+    landmarks: ["Ashton Market", "Ashton Metrolink", "the Ashton Moss retail park", "Ashton-under-Lyne station"],
+    localNote: "Ashton sits on the M60 at Junction 23 with the A635 running through the centre past the market, and Ashton Moss draws steady retail traffic, so home and depot fitting across OL6 and OL7 beats the town-centre crawl.",
+    scenario: { road: "M60", vehicle: "car", situation: "a debris blowout near Junction 23", outcome: "fitted at the roadside under National Highways protocol" },
+    emphasis: "emergency",
+    localFaq: { q: "Do you cover Ashton Market and Ashton Moss?", a: "Yes, across OL6 and OL7 including Ashton Market, the Metrolink, the Ashton Moss retail park, and toward Dukinfield and Droylsden." },
+    variant: 2, status: "live"
   }
 ];
 
@@ -206,6 +386,7 @@ export const areas: Area[] = [
 /** Region display names keyed by cluster, in render order on the hub. */
 export const CLUSTER_LABELS: Record<string, string> = {
   "se-london": "South East London",
+  "manchester": "Greater Manchester",
 };
 
 /** Live areas only (built, linked, in the sitemap). */
