@@ -8,7 +8,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { AreasCovered } from "@/components/sections/areas-covered";
 import { CtaBand } from "@/components/sections/cta-band";
-import { areas, LIVE_AREAS, CLUSTER_LABELS } from "@/data/areas";
+import { areas, LIVE_AREAS, CLUSTER_LABELS, areaHref } from "@/data/areas";
 
 export const revalidate = 3600;
 
@@ -45,7 +45,7 @@ export default async function AreasPage() {
       "@type": "ListItem",
       position: i + 1,
       name: `Mobile Tyre Fitting in ${a.town}`,
-      url: `${SITE.url}/areas/${a.slug}`,
+      url: `${SITE.url}${areaHref(a)}`,
     })),
   };
 
@@ -122,7 +122,7 @@ export default async function AreasPage() {
                   return live ? (
                     <Link
                       key={a.slug}
-                      href={`/areas/${a.slug}`}
+                      href={areaHref(a)}
                       className={`${cardBase} transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transform-none`}
                     >
                       {inner}

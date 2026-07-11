@@ -16,7 +16,7 @@ export function BrandSpecialists({ builtSlugs }: { builtSlugs: Set<string> }) {
         <SectionHeading
           eyebrow="Premium and performance specialists"
           title="Mobile Tyre Fitting for Premium and Performance Vehicles"
-          subtitle="Tyre Fitting Near Me Ltd carries OE-spec and manufacturer-approved tyres for premium and performance vehicles, fitting them on-site for owners of Tesla, BMW, Audi, Mercedes-Benz, Range Rover, Porsche, Bentley, Rolls-Royce, Ferrari, McLaren and Lamborghini cars across our six UK coverage regions, using calibrated torque equipment set to each manufacturer's exact specification."
+          subtitle="Tyre Fitting Near Me Ltd carries OE-spec and manufacturer-approved tyres for premium and performance vehicles, fitting them on-site for owners of Tesla, BMW, Audi, Mercedes-Benz, Range Rover and Porsche cars, plus prestige and performance marques such as Ferrari, McLaren, Lamborghini, Rolls-Royce and Bentley, across our six UK coverage regions, using calibrated torque equipment set to each manufacturer's exact specification."
         />
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

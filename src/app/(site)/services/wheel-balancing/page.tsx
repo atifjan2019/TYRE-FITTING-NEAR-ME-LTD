@@ -155,7 +155,7 @@ export default async function WheelBalancingPage() {
     "@type": "Offer",
     name: "Mobile Wheel Balancing",
     description:
-      "Calibrated digital dual-plane wheel balancing per wheel, including technician travel, wheel-off inspection, digital spin measurement, counterweight correction, re-spin to zero, pressure set and torque to specification. No call-out fee in standard hours.",
+      "Calibrated digital dual-plane wheel balancing per wheel, including technician travel, wheel-off inspection, digital spin measurement, counterweight correction, re-spin to zero, pressure set and torque to specification. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
     priceCurrency: "GBP",
     price: PRICE, // "[£7.99]" placeholder, replace with the real figure before deploy.
     availability: "https://schema.org/InStock",

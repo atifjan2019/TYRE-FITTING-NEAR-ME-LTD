@@ -30,7 +30,7 @@ export function Hero({
     { text: `5.0 from ${reviewCount} verified Google reviews` },
     { text: "30+ mobile fittings completed every week" },
     { text: "Public liability insured up to £5,000,000", shield: true },
-    { text: "No call-out fee, all-in quote upfront", shield: true },
+    { text: "No standard-hours call-out fee, all-in quote upfront", shield: true },
   ];
 
   return (

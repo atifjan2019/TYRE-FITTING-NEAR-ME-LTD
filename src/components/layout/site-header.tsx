@@ -34,7 +34,7 @@ export function SiteHeader({
           <span className="flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" /> 24/7 emergency mobile tyre fitting - we come to you
           </span>
-          <span>No call-out fee · Home · Work · Roadside</span>
+          <span>No standard-hours call-out fee · Home · Work · Roadside</span>
         </div>
       </div>
 

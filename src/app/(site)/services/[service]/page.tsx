@@ -35,14 +35,14 @@ export async function generateStaticParams() {
     where: { published: true },
     select: { slug: true },
   });
-  // `mobile-tyre-fitting`, `mobile-tyre-repair` and `puncture-repair` have
-  // bespoke static routes that take precedence over this dynamic segment.
-  // Exclude them here so the static and dynamic routes don't both try to build
-  // the same path.
+  // `mobile-tyre-fitting` and `mobile-tyre-repair` have bespoke static routes
+  // that take precedence over this dynamic segment. Exclude them here so the
+  // static and dynamic routes don't both try to build the same path.
+  // (puncture-repair and home-tyre-fitting were merged away and now live in
+  // EXCLUDED_SERVICE_SLUGS with 301s in next.config.ts.)
   const STATIC_SLUGS = new Set([
     "mobile-tyre-fitting",
     "mobile-tyre-repair",
-    "puncture-repair",
   ]);
   return services
     .filter((s) => !STATIC_SLUGS.has(s.slug) && !EXCLUDED_SERVICE_SLUGS.has(s.slug))
@@ -112,7 +112,7 @@ export default async function ServicePage({
       priceSpecification: {
         "@type": "PriceSpecification",
         priceCurrency: "GBP",
-        description: "Price quoted before dispatch, with no call-out fee in standard hours.",
+        description: "Price quoted before dispatch. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
       },
     },
   };

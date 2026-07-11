@@ -10,9 +10,10 @@
  * (hardcoded, matching the displayed phone; the legacy sitewide 447722127759
  * links are a known bug this page does not inherit).
  *
- * Pricing: VARIANT A is in force on this page. No call-out fee at any hour, day
- * or night, 365 days a year. The £20 flat fitting fee per tyre and the tyre
- * price are the only charges, quoted in full before the van is dispatched.
+ * Pricing: the sitewide call-out claim is in force on this page. No
+ * standard-hours call-out fee. Any out-of-hours charge is included in the
+ * confirmed quote before dispatch. The £20 flat fitting fee per tyre and the
+ * tyre price are quoted in full before the van is dispatched.
  *
  * Brand rule: the legal name "Tyre Fitting Near Me Ltd" appears a maximum of
  * four times in body copy. Three are used, all in the section components (Why
@@ -31,11 +32,11 @@ export const HERO = {
     "Emergency tyre fitting is the immediate dispatch of a mobile technician to a stranded vehicle at the roadside, home or work, fitting or repairing the tyre on-site, 24 hours a day. A van reaches most UK mainland drivers within 30 to 60 minutes through 2026.",
   responseLine: "30 to 60 minute typical response, UK mainland.",
   pricingLine:
-    "No call-out fee, ever. The £20 flat fitting fee per tyre and the tyre price are the only charges, quoted in full before the van is dispatched.",
+    "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The £20 flat fitting fee per tyre and the tyre price are quoted in full before the van is dispatched.",
   ticks: [
     "24/7, 365 days a year",
     "30 to 60 minute typical response",
-    "No call-out fee, ever",
+    "No standard-hours call-out fee",
   ],
 };
 
@@ -122,7 +123,7 @@ export const EMERGENCIES: { name: string; body: string; icon: string }[] = [
 export const BENEFITS: { stat: string; body: string; icon: string }[] = [
   { stat: "24/7", body: "Answered line, 365 days a year, bank holidays included.", icon: "clock" },
   { stat: "30-60 min", body: "Typical response across UK mainland, postcode-dependent.", icon: "gauge" },
-  { stat: "£20", body: "Flat fitting fee per tyre. No call-out fee, ever.", icon: "badge-pound-sterling" },
+  { stat: "£20", body: "Flat fitting fee per tyre. No standard-hours call-out fee.", icon: "badge-pound-sterling" },
   { stat: "VRN", body: "Correct tyre size confirmed from your registration before dispatch.", icon: "circle-check-big" },
   { stat: "Premium to budget", body: "Stock carried or sourced same-callout to suit your budget.", icon: "circle-dot" },
   { stat: "12 months", body: "Workmanship guarantee on every fitment and repair.", icon: "badge-check" },
@@ -145,7 +146,7 @@ export const PROCESS_STEPS: { title: string; description: string; icon: string }
   {
     title: "Price quoted in full on the call",
     description:
-      "Tyre and the £20 flat fitting fee, with no call-out fee. The figure quoted on the phone is the figure charged, and nothing is added later.",
+      "Tyre and the £20 flat fitting fee, with no standard-hours call-out fee and any out-of-hours charge included in the confirmed quote. The figure quoted on the phone is the figure charged, and nothing is added later.",
     icon: "badge-pound-sterling",
   },
   {
@@ -197,7 +198,7 @@ export const REPAIR = {
 export const PRICING = {
   heading: "Emergency Tyre Fitting Cost, Quoted Before Dispatch",
   lead:
-    "No call-out fee at any hour, day or night, 365 days a year. The £20 flat fitting fee per tyre and the tyre price are the only charges. Night, weekend and bank-holiday callouts cost the same as daytime.",
+    "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The £20 flat fitting fee per tyre and the tyre price are quoted in full on the call, whatever the hour.",
   included: [
     "Technician travel to your location",
     "Tyre removal",
@@ -230,7 +231,7 @@ export const NIGHTS = {
   body:
     "A 2am blowout and a Boxing Day flat get the same answered line and the same dispatch process. No answering service. No callback queue. A dispatcher takes the location and sends the van.",
   pricing:
-    "No call-out fee applies at any hour. Night, weekend and bank-holiday callouts cost the same as daytime, with the £20 flat fitting fee per tyre and the tyre price quoted in full before dispatch.",
+    "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch, alongside the £20 flat fitting fee per tyre and the tyre price, all quoted in full before the van moves.",
 };
 
 // --- Section 11: Why drivers choose us ---------------------------------------
@@ -238,7 +239,7 @@ export const NIGHTS = {
 export const WHY_TILES: { stat: string; label: string }[] = [
   { stat: "UK-wide", label: "Coverage where competitors stop at county lines" },
   { stat: "30-60 min", label: "Typical emergency response" },
-  { stat: "£0", label: "Call-out fee, ever" },
+  { stat: "£0", label: "Standard-hours call-out fee" },
   { stat: "BS AU 159", label: "Repair offered before a forced replacement" },
   { stat: "24/7", label: "Answered line, 365 days a year" },
   { stat: "12 months", label: "Workmanship guarantee" },
@@ -290,7 +291,7 @@ export const FAQS: { id: string; question: string; answer: string; link?: boolea
     id: "cost",
     question: "How much does emergency tyre fitting cost?",
     answer:
-      "No call-out fee applies at any hour. The £20 flat fitting fee per tyre and the tyre price are the only charges, quoted in full before the van is dispatched. The fitting fee covers travel, removal, fitment, balancing, a new valve and disposal.",
+      "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The £20 flat fitting fee per tyre and the tyre price are quoted in full before the van is dispatched, and the fitting fee covers travel, removal, fitment, balancing, a new valve and disposal.",
   },
   {
     id: "24-hours",
@@ -333,7 +334,7 @@ export const FAQS: { id: string; question: string; answer: string; link?: boolea
     id: "night-cost",
     question: "Do night or bank holiday callouts cost more?",
     answer:
-      "No. Night, weekend and bank-holiday callouts cost the same as daytime. No call-out fee applies at any hour, and the £20 flat fitting fee per tyre is unchanged overnight. The 2026 pricing is the same figure at 2am as at 2pm.",
+      "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch, so a night, weekend or bank-holiday price is confirmed in full on the call before the van moves. The £20 flat fitting fee per tyre is unchanged overnight, and nothing is added at the roadside.",
   },
   {
     id: "locking-nut",

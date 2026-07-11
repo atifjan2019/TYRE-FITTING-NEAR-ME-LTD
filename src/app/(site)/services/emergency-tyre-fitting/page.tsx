@@ -85,7 +85,7 @@ export default async function EmergencyTyreFittingPage() {
     settings,
     name: `${settings.brandName} - 24/7 Emergency Tyre Fitting`,
     description:
-      "24/7 emergency tyre fitting at the roadside, home or work across UK mainland. Blowouts, flats and no-spare callouts, 30 to 60 minute typical response, no call-out fee, BS AU 159 roadside repair where the tyre passes assessment.",
+      "24/7 emergency tyre fitting at the roadside, home or work across UK mainland. Blowouts, flats and no-spare callouts, 30 to 60 minute typical response, no standard-hours call-out fee, BS AU 159 roadside repair where the tyre passes assessment.",
     url: PAGE_URL,
     areaServed: AREAS.map((a) => a.region),
     image: settings.defaultOgImage,
@@ -149,13 +149,13 @@ export default async function EmergencyTyreFittingPage() {
     })),
   };
 
-  // 5. Offer (the £20 flat fitting fee, Variant A: no call-out fee).
+  // 5. Offer (the £20 flat fitting fee, sitewide call-out claim).
   const offerSchema = {
     "@context": "https://schema.org",
     "@type": "Offer",
     name: "Emergency Tyre Fitting Fee",
     description:
-      "Flat fitting fee per tyre, including technician travel, removal, fitment, wheel balancing, a new valve and old tyre disposal. No call-out fee at any hour, day or night, 365 days a year. The fitting fee and the tyre price are the only charges, quoted in full before dispatch.",
+      "Flat fitting fee per tyre, including technician travel, removal, fitment, wheel balancing, a new valve and old tyre disposal. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch, alongside the fitting fee and the tyre price.",
     priceCurrency: "GBP",
     price: "20",
     availability: "https://schema.org/InStock",
@@ -226,7 +226,7 @@ export default async function EmergencyTyreFittingPage() {
         <Reveal>
           <EmergencyCtaBand
             title="Stranded right now?"
-            subtitle="One call gets the nearest fitter moving. 30 to 60 minute typical response, no call-out fee, the line answered 24/7."
+            subtitle="One call gets the nearest fitter moving. 30 to 60 minute typical response, no standard-hours call-out fee, the line answered 24/7."
           />
         </Reveal>
       </div>

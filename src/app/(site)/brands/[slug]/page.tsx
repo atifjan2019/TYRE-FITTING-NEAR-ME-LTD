@@ -30,12 +30,12 @@ export const revalidate = false;
 // without invoking the page or writing to the ISR cache.
 export const dynamicParams = false;
 
-/** Brands whose models run run-flat tyres from the factory (Rule 5 link target). */
+/** Brands whose models run run-flat tyres from the factory (Rule 5 link target).
+ * The performance page covers Rolls-Royce and Bentley, both factory run-flat. */
 const RUN_FLAT_BRAND_SLUGS = new Set([
   "bmw-mobile-tyre-fitting",
   "mercedes-mobile-tyre-fitting",
-  "rolls-royce-mobile-tyre-fitting",
-  "bentley-mobile-tyre-fitting",
+  "performance-mobile-tyre-fitting",
 ]);
 
 export function generateStaticParams() {
@@ -99,7 +99,7 @@ export default async function BrandPage({
       priceSpecification: {
         "@type": "PriceSpecification",
         priceCurrency: "GBP",
-        description: `Tyre supplied and fitted for your ${page.brand}, quoted on request from the registration, with no call-out fee.`,
+        description: `Tyre supplied and fitted for your ${page.brand}, quoted on request from the registration. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.`,
       },
     },
   };
@@ -340,7 +340,7 @@ export default async function BrandPage({
           <SectionHeading
             eyebrow="Transparent pricing"
             title={`Transparent Pricing for ${page.brand} Tyre Fitting`}
-            subtitle="We confirm the exact all-in price for your model and size before we dispatch a fitter, with no call-out fee and no hidden charges."
+            subtitle="We confirm the exact all-in price for your model and size before we dispatch a fitter, with no hidden charges. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch."
           />
           <div className="mt-10 overflow-hidden rounded-2xl border bg-card shadow-sm">
             <table className="w-full text-left text-sm">

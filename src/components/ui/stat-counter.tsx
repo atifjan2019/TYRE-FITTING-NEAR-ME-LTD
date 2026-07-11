@@ -6,6 +6,10 @@ import { useEffect, useRef, useState } from "react";
  * Animated stat counter. Counts 0 -> `end` over 1600ms (easeOutCubic) once when
  * scrolled into view. Numeric value is passed as a prop (never parsed from text).
  *
+ * The REAL value is the initial state, so the server-rendered HTML, view-source
+ * and no-JS visitors always see the true figure (never "0"). The count-up is a
+ * hydration-only enhancement layered on top.
+ *
  * Robustness: an IntersectionObserver handles scroll-into-view, AND an on-mount
  * bounding-rect check handles the case where the element is already visible on
  * first paint (the common cause of counters freezing at "0"/"1"). Respects
@@ -23,7 +27,8 @@ export function StatCounter({
   useCommas?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [value, setValue] = useState(0);
+  // Base state is the real value: SSR markup and crawlers never see 0.
+  const [value, setValue] = useState(end);
 
   useEffect(() => {
     const el = ref.current;

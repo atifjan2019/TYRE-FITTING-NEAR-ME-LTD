@@ -308,7 +308,8 @@ export function Cost() {
             covers travel, removal, fitment, balancing, valve, and disposal. The run-flat
             itself is priced by size, brand, and load rating, quoted in full from the VRN
             before booking, with nothing added after. Matched-pair replacement is quoted
-            together. No call-out fee applies within standard hours. A drive-in tyre shop
+            together. No standard-hours call-out fee. Any out-of-hours charge is included in
+            your confirmed quote before dispatch. A drive-in tyre shop
             sells the tyre cheaper as a catalogue line but costs the garage trip and a
             compromised drive on the run-on tyre to reach it. Run-flat pricing is quoted live
             from the VRN through 2026.

@@ -5,9 +5,9 @@ import { REGIONS } from "@/data/regions";
 
 /**
  * Areas-covered section: the six region hubs, each linking to /areas/[region],
- * with a few of its towns surfaced beneath. Live towns (a built /areas/[town]
- * page) link directly; towns without a page render as plain text, never a 404.
- * Doubles as a strong internal-linking block for local SEO.
+ * with a few of its towns surfaced beneath. Live towns link directly to their
+ * nested /areas/[region]/[town] page; towns without a page render as plain
+ * text, never a 404. Doubles as a strong internal-linking block for local SEO.
  */
 export function AreasCovered({ heading = true }: { heading?: boolean }) {
   return (
@@ -45,7 +45,7 @@ export function AreasCovered({ heading = true }: { heading?: boolean }) {
                       town.slug ? (
                         <Link
                           key={town.name}
-                          href={`/areas/${town.slug}`}
+                          href={`/areas/${region.slug}/${town.slug}`}
                           className="rounded-full border bg-secondary px-3 py-1 text-xs font-medium text-primary transition-colors hover:border-accent hover:text-accent"
                         >
                           {town.name}

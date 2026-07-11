@@ -4,7 +4,7 @@ import { PRICING_ROWS } from "@/lib/homepage-content";
 /**
  * Section 8 - Transparent mobile tyre fitting prices. Price cells render a styled
  * pill and default to "Get a quote" until the owner supplies real "From £NN"
- * figures. The all-in, no-call-out-fee promise removes booking friction.
+ * figures. The all-in, quoted-before-dispatch promise removes booking friction.
  */
 export function PricingTable() {
   return (
@@ -13,7 +13,7 @@ export function PricingTable() {
         <SectionHeading
           eyebrow="Transparent pricing"
           title="Transparent Mobile Tyre Fitting Prices"
-          subtitle="We quote a single all-in price covering the tyre, fitting, valve, balancing and disposal before we dispatch a fitter, with no call-out fee and no hidden charges added afterwards."
+          subtitle="We quote a single all-in price covering the tyre, fitting, valve, balancing and disposal before we dispatch a fitter, with no hidden charges added afterwards. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch."
         />
 
         <div className="mt-10 overflow-hidden rounded-2xl border bg-card shadow-sm">

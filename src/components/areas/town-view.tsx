@@ -9,7 +9,15 @@ import { CtaButtons } from "@/components/sections/cta-buttons";
 import { CtaBand } from "@/components/sections/cta-band";
 import { BookingForm } from "@/components/forms/booking-form";
 import { SectionHeading } from "@/components/sections/section-heading";
-import { getLiveArea, LIVE_TOWN_SLUG_BY_NAME, type Area } from "@/data/areas";
+import {
+  getLiveArea,
+  LIVE_AREAS,
+  LIVE_TOWN_SLUG_BY_NAME,
+  areaHref,
+  areaRegionSlug,
+  type Area,
+} from "@/data/areas";
+import { getRegion } from "@/data/regions";
 
 /** Join a list naturally with commas and a final "and". */
 function naturalList(items: string[]): string {
@@ -36,11 +44,13 @@ const EMPHASIS_HREF: Record<Area["emphasis"], string> = {
   fitting: "/services/mobile-tyre-fitting",
 };
 
-/** Map an area's display region to its parent /areas/[region] slug. */
-const REGION_SLUG_BY_TOWN_REGION: Record<string, string> = {
-  "South East London": "london",
-  "Greater Manchester": "manchester",
-};
+/** Nested href for a live neighbour town, by display name. */
+function neighbourHref(name: string): string | undefined {
+  const slug = LIVE_TOWN_SLUG_BY_NAME[name.toLowerCase()];
+  if (!slug) return undefined;
+  const area = LIVE_AREAS.find((a) => a.slug === slug);
+  return area ? areaHref(area) : undefined;
+}
 
 /* --- Skeleton variants (selected by area.variant). Each set differs in
    structure, not just synonyms, so two towns with different variants never
@@ -126,7 +136,7 @@ export function townFaqs(a: Area, pc: string): { id: string; question: string; a
     {
       id: "cost",
       question: `How much is tyre fitting in ${a.town}?`,
-      answer: `Fitting is a £20 flat fee per tyre plus the tyre price, quoted before dispatch, with no call-out fee in standard hours.`,
+      answer: `Fitting is a £20 flat fee per tyre plus the tyre price, quoted before dispatch. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.`,
     },
     {
       id: "ev",
@@ -142,14 +152,19 @@ export { naturalList as townNaturalList };
 
 export function TownView({ area, settings }: { area: Area; settings: SiteSettingsData }) {
   const { phone, whatsapp } = settings;
-  const pageUrl = `${SITE.url}/areas/${area.slug}`;
+  const regionSlug = areaRegionSlug(area);
+  const region = getRegion(regionSlug);
+  const pagePath = areaHref(area);
+  const pageUrl = `${SITE.url}${pagePath}`;
   const pc = naturalList(area.postcodes);
   const foregroundHref = EMPHASIS_HREF[area.emphasis];
 
+  // Home > Areas > [Region] > [Town]: the breadcrumb mirrors the nested URL.
   const crumbs = [
     { name: "Home", path: "/" },
     { name: "Areas", path: "/areas" },
-    { name: area.town, path: `/areas/${area.slug}` },
+    { name: region?.name ?? area.region, path: `/areas/${regionSlug}` },
+    { name: area.town, path: pagePath },
   ];
 
   const faqs = townFaqs(area, pc);
@@ -314,8 +329,9 @@ export function TownView({ area, settings }: { area: Area; settings: SiteSetting
             ))}
           </ul>
           <p className="mt-6 font-medium text-primary">
-            There is no call-out fee, ever, the £20 flat fitting fee per tyre and the tyre price are
-            the only charges, quoted in full before dispatch.
+            No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed
+            quote before dispatch. The £20 flat fitting fee per tyre and the tyre price are quoted
+            in full before a fitter sets off.
           </p>
         </div>
       </section>
@@ -425,11 +441,11 @@ export function TownView({ area, settings }: { area: Area; settings: SiteSetting
           <SectionHeading title={`Areas We Cover Near ${area.town}`} />
           <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3">
             {area.neighbours.map((n) => {
-              const slug = LIVE_TOWN_SLUG_BY_NAME[n.toLowerCase()];
-              return slug ? (
+              const href = neighbourHref(n);
+              return href ? (
                 <li key={n}>
                   <Link
-                    href={`/areas/${slug}`}
+                    href={href}
                     className="inline-block rounded-full border border-[rgba(11,23,54,0.08)] bg-card px-4 py-2 text-sm font-semibold text-accent shadow-[0_2px_8px_rgba(11,23,54,0.06)] hover:underline"
                   >
                     Tyre fitting in {n}
@@ -447,7 +463,7 @@ export function TownView({ area, settings }: { area: Area; settings: SiteSetting
           </ul>
           <p className="mt-8 text-center text-sm text-muted-foreground">
             See{" "}
-            <Link href={`/areas/${REGION_SLUG_BY_TOWN_REGION[area.region] ?? "london"}`} className="font-medium text-accent hover:underline">
+            <Link href={`/areas/${regionSlug}`} className="font-medium text-accent hover:underline">
               tyre fitting across {area.region}
             </Link>{" "}
             or all{" "}

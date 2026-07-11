@@ -58,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Mobile Tyre Fitting Near Me | 24/7 Call-Out Across London, Kent, Sussex, Essex, West Midlands & Scotland",
     absoluteTitle: true,
     description:
-      "24/7 mobile tyre fitting that comes to your home, work or roadside. Certified, fully insured fitters supply, fit and balance car, van, SUV and EV tyres in 30 to 60 minutes. No call-out fee.",
+      "24/7 mobile tyre fitting that comes to your home, work or roadside. Certified, fully insured fitters supply, fit and balance car, van, SUV and EV tyres in 30 to 60 minutes. No call-out fee. Out-of-hours pricing is confirmed in your quote before dispatch.",
     path: "/",
   });
 }
@@ -166,7 +166,7 @@ export default async function HomePage() {
           phone={settings.phone}
           whatsapp={settings.whatsapp}
           title="Need a Mobile Tyre Fitter Now? We Arrive in 30 to 60 Minutes."
-          subtitle="Live availability across all six regions. No call-out fee."
+          subtitle="Live availability across all six regions. No call-out fee. Out-of-hours pricing is confirmed in your quote before dispatch."
           variant="navy"
         />
       </Reveal>
@@ -238,7 +238,7 @@ export default async function HomePage() {
           phone={settings.phone}
           whatsapp={settings.whatsapp}
           title="Flat Tyre? We Come to You, 24/7"
-          subtitle="Certified, fully insured mobile fitters at your home, work or roadside in 30 to 60 minutes, with no call-out fee. Call or WhatsApp now."
+          subtitle="Certified, fully insured mobile fitters at your home, work or roadside in 30 to 60 minutes. No call-out fee. Out-of-hours pricing is confirmed in your quote before dispatch. Call or WhatsApp now."
         />
       </Reveal>
     </>

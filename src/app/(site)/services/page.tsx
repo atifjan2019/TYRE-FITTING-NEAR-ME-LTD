@@ -77,7 +77,8 @@ export default async function ServicesIndexPage() {
             tyre size, with the price agreed before a fitter sets off.
           </p>
           <p className="mt-4 text-base font-bold text-accent sm:text-lg">
-            £20 flat fitting fee per tyre. No call-out fee, ever.
+            £20 flat fitting fee per tyre. No standard-hours call-out fee. Any out-of-hours charge is
+            included in your confirmed quote before dispatch.
           </p>
           <CtaButtons
             phone={phone}

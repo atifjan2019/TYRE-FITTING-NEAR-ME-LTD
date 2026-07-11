@@ -63,7 +63,7 @@ export const BOOKING_STEPS = [
     title: "Call or WhatsApp",
     description:
       "Tell us your tyre size, postcode and what you need by phone or WhatsApp, and we lock in your price and arrival time.",
-    micro: "60-second quote, no call-out fee",
+    micro: "60-second quote, no standard-hours call-out fee",
     icon: "phone",
   },
   {
@@ -161,7 +161,7 @@ export const WHY_CHOOSE: { title: string; description: string; icon: string }[] 
   {
     title: "Fair, transparent pricing",
     description:
-      "An upfront, all-in quote before we set off. No call-out fees, no surprises.",
+      "An upfront, all-in quote before we set off. No standard-hours call-out fee, no surprises.",
     icon: "badge-pound-sterling",
   },
   {

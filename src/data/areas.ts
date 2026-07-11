@@ -389,6 +389,26 @@ export const CLUSTER_LABELS: Record<string, string> = {
   "manchester": "Greater Manchester",
 };
 
+/**
+ * Parent /areas/[region] slug for each cluster. Towns nest under their region
+ * (/areas/[region]/[town]) so the URL path encodes the geographic hierarchy.
+ * Kept here (not in regions.ts) because regions.ts imports from this file.
+ */
+export const CLUSTER_REGION_SLUG: Record<string, string> = {
+  "se-london": "london",
+  "manchester": "manchester",
+};
+
+/** Parent region slug for a town. */
+export function areaRegionSlug(a: Area): string {
+  return CLUSTER_REGION_SLUG[a.cluster];
+}
+
+/** Canonical nested path for a town page: /areas/[region]/[town]. */
+export function areaHref(a: Area): string {
+  return `/areas/${areaRegionSlug(a)}/${a.slug}`;
+}
+
 /** Live areas only (built, linked, in the sitemap). */
 export const LIVE_AREAS: Area[] = areas.filter((a) => a.status === "live");
 

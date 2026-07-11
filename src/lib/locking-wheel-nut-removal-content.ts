@@ -129,7 +129,7 @@ export const VEHICLES_COVERED_PROSE =
 export const PRICING_SUMMARY = "£45 per locking nut, £80 for a full set of four";
 
 export const COST_PROSE =
-  "Two honest factors set the price: the number of nuts, and the condition, because a clean lost-key removal is faster than a severely seized or pre-damaged nut. Replacement standard nuts are included, or customer-supplied where an exact match matters. No call-out fee applies within standard hours, and out-of-hours emergency callouts are disclosed before dispatch. Compared honestly, a main-dealer replacement key takes weeks and costs more, and DIY kits that round the nut force a second removal, so a one-visit specialist extraction is the faster and often cheaper route in 2026.";
+  "Two honest factors set the price: the number of nuts, and the condition, because a clean lost-key removal is faster than a severely seized or pre-damaged nut. Replacement standard nuts are included, or customer-supplied where an exact match matters. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. Compared honestly, a main-dealer replacement key takes weeks and costs more, and DIY kits that round the nut force a second removal, so a one-visit specialist extraction is the faster and often cheaper route in 2026.";
 
 // --- Section 9: 24/7 and emergency -------------------------------------------
 

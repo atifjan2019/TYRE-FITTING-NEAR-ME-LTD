@@ -155,7 +155,7 @@ export default async function LockingWheelNutRemovalPage() {
     "@type": "Offer",
     name: "Locking Wheel Nut Removal",
     description:
-      "Specialist locking wheel nut extraction per nut, including technician travel, condition assessment, alloy-protected removal, a standard replacement nut fitted and torqued to specification, and a no-damage guarantee. No call-out fee in standard hours.",
+      "Specialist locking wheel nut extraction per nut, including technician travel, condition assessment, alloy-protected removal, a standard replacement nut fitted and torqued to specification, and a no-damage guarantee. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
     priceCurrency: "GBP",
     price: "45", // per nut; the full set of four is £80.
     availability: "https://schema.org/InStock",

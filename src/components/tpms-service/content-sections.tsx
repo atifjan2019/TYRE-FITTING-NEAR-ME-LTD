@@ -244,7 +244,8 @@ export function Costs() {
           <p>
             A valve service is the low-cost perishable fix, a sensor replacement costs more
             because the whole sealed unit is replaced, and the diagnostic confirms which is
-            needed first. No call-out fee applies within standard hours. A dealership sensor
+            needed first. No standard-hours call-out fee. Any out-of-hours charge is included
+            in your confirmed quote before dispatch. A dealership sensor
             replacement costs more, and a mobile service at the driveway saves the garage trip
             entirely. Pricing is held flat through 2026 for every standard appointment.
           </p>

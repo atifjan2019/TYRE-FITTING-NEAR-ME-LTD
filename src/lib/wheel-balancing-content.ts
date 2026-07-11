@@ -168,7 +168,7 @@ export const AVAILABILITY = {
   ],
   pricingHeading: "Transparent pricing, nothing added after",
   pricingBody:
-    "The [£7.99] per-wheel price applies at any standard hour. Out-of-hours emergency callouts carry a separate charge, disclosed at booking before any work starts, with nothing added after the work.",
+    "The [£7.99] per-wheel price applies at any standard hour. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch, with nothing added after the work.",
 };
 
 // --- Section 7: When wheels need balancing (trigger list) --------------------

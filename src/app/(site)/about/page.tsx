@@ -34,7 +34,7 @@ const VALUES = [
   {
     icon: ShieldCheck,
     title: "Fair, upfront pricing",
-    text: "No hidden call-out fees. You get an all-in quote before we set off.",
+    text: "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
   },
   {
     icon: ThumbsUp,
@@ -44,7 +44,7 @@ const VALUES = [
 ];
 
 const PROMISES = [
-  "No hidden call-out fees",
+  "No standard-hours call-out fee",
   "All major tyre brands & budget options",
   "Cars, vans & 4x4s",
   "Card, contactless & cash accepted",
@@ -79,8 +79,9 @@ export default async function AboutPage() {
             <p>
               We&apos;re built around speed, honest pricing and genuinely caring
               about getting drivers moving again - especially when they&apos;re
-              stranded at the roadside. No hidden call-out fees, no garage queues,
-              just a fast fitter at your door.
+              stranded at the roadside. No standard-hours call-out fee, no garage
+              queues, just a fast fitter at your door, with any out-of-hours
+              charge included in your confirmed quote before dispatch.
             </p>
             <p>
               We cover London, Kent, Sussex, Essex, Birmingham &amp; the West

@@ -148,16 +148,15 @@ export default async function MobileTyreRepairPage() {
     })),
   };
 
-  // 5. Offer (repair fee). NOTE: replace the [£XX] placeholder with the real
-  // numeric price (e.g. "39") before deploy.
+  // 5. Offer (repair fee): £39, carried over from the merged puncture-repair page.
   const offerSchema = {
     "@context": "https://schema.org",
     "@type": "Offer",
     name: "Mobile Puncture Repair",
     description:
-      "Permanent BS AU 159 plug-patch puncture repair including technician travel, full repairability assessment, internal inspection, valve check, wheel rebalance and pressure set. No call-out fee in standard hours.",
+      "Permanent BS AU 159 plug-patch puncture repair including technician travel, full repairability assessment, internal inspection, valve check, wheel rebalance and pressure set. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
     priceCurrency: "GBP",
-    price: PRICE, // "[£XX]" placeholder, replace with the real figure before deploy.
+    price: "39",
     availability: "https://schema.org/InStock",
     areaServed: { "@type": "Country", name: "United Kingdom" },
     seller: { "@type": "LocalBusiness", name: "Tyre Fitting Near Me Ltd" },

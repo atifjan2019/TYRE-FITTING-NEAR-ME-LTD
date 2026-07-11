@@ -45,6 +45,11 @@ export default async function TermsPage() {
             different tyre size or additional damage). We&apos;ll always confirm before
             proceeding.
           </p>
+          <p>
+            No standard-hours call-out fee. Any out-of-hours charge is included in your
+            confirmed quote before dispatch. The figure confirmed in your quote is the
+            figure charged, with nothing added afterwards.
+          </p>
 
           <h2>Payment</h2>
           <p>

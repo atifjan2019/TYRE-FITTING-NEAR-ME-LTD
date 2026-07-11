@@ -1,15 +1,16 @@
 /**
  * Region data for the regional tier of the /areas hierarchy.
  *
- * The topical tree is: /areas (hub) > /areas/[region] (this file) > /areas/[town]
- * (the file-driven town pages in `areas.ts`). A region is a CONNECTOR tier: it
+ * The topical tree is: /areas (hub) > /areas/[region] (this file) >
+ * /areas/[region]/[town] (the file-driven town pages in `areas.ts`, nested
+ * under their parent region). A region is a CONNECTOR tier: it
  * frames coverage across a county/region, links DOWN to the live town pages and
  * the money pages, and UP to the pillar and the /areas hub. It deliberately
  * carries no town-level street detail and no full service copy, so it never
  * duplicates the town or service pages.
  *
- * Live towns (a built /areas/[town] page) are derived from LIVE_AREAS so the two
- * stay in sync automatically. Towns without a built page render as plain,
+ * Live towns (a built /areas/[region]/[town] page) are derived from LIVE_AREAS
+ * so the two stay in sync automatically. Towns without a built page render as plain,
  * non-linked chips (never a 404). All geography here is real (postcode areas,
  * motorways and A-roads, town names); nothing is invented.
  */

@@ -44,7 +44,7 @@ const SERVICES: { href: string; anchor: string; line: string }[] = [
     line: "Tyres supplied and fitted at your home, work or roadside, balanced on the spot.",
   },
   {
-    href: "/services/puncture-repair",
+    href: "/services/mobile-tyre-repair",
     anchor: "Puncture repair",
     line: "Slow punctures, nails and screws assessed and repaired to BS AU 159 where safe.",
   },
@@ -162,12 +162,12 @@ function nightAnswer(region: Region): string {
   ][region.variant % 3];
 }
 
-/** FAQ answer: cost (variant % 3). Always states the flat fee and no call-out. */
+/** FAQ answer: cost (variant % 3). Always carries the sitewide call-out claim. */
 function costAnswer(region: Region): string {
   return [
-    `Fitting is a flat £20 fee per tyre plus the price of the tyre, quoted in full before dispatch, with no call-out fee during standard hours.`,
-    `Expect a flat £20 fitting fee per tyre on top of the tyre price, with the full figure quoted before dispatch and no call-out fee in standard hours.`,
-    `The charge is a £20 flat fitting fee per tyre and the tyre price, agreed in full before a fitter sets off, with no call-out fee during standard hours.`,
+    `Fitting is a flat £20 fee per tyre plus the price of the tyre, quoted in full before dispatch. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.`,
+    `Expect a flat £20 fitting fee per tyre on top of the tyre price, with the full figure quoted before dispatch. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.`,
+    `The charge is a £20 flat fitting fee per tyre and the tyre price, agreed in full before a fitter sets off. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.`,
   ][region.variant % 3];
 }
 
@@ -281,7 +281,7 @@ export function RegionTemplate({
       "@type": "ListItem",
       position: i + 1,
       name: t.name,
-      ...(t.slug ? { url: `${SITE.url}/areas/${t.slug}` } : {}),
+      ...(t.slug ? { url: `${SITE.url}/areas/${region.slug}/${t.slug}` } : {}),
     })),
   };
 
@@ -319,7 +319,7 @@ export function RegionTemplate({
               {heroLead(region, pcAreas)}
             </p>
             <p className="mt-4 text-base font-bold text-accent sm:text-lg">
-              £20 flat fitting fee per tyre. No call-out fee, ever.
+              £20 flat fitting fee per tyre. No standard-hours call-out fee.
             </p>
             <CtaButtons
               phone={phone}
@@ -407,7 +407,7 @@ export function RegionTemplate({
                 return (
                   <Link
                     key={town.name}
-                    href={`/areas/${town.slug}`}
+                    href={`/areas/${region.slug}/${town.slug}`}
                     aria-label={`Mobile tyre fitting in ${town.name}`}
                     className="group flex h-full flex-col rounded-[14px] border border-[#E7EAF0] bg-card p-6 shadow-[0_2px_8px_rgba(11,23,54,0.06)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(11,23,54,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transform-none"
                   >
@@ -491,12 +491,12 @@ export function RegionTemplate({
             Transparent Pricing in {region.name}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-2xl font-extrabold sm:text-3xl">
-            £20 flat fitting fee per tyre. <span className="text-accent">No call-out fee, ever.</span>
+            £20 flat fitting fee per tyre. <span className="text-accent">No standard-hours call-out fee.</span>
           </p>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
-            The tyre is priced by its size and quoted in full before a fitter is dispatched, so the figure agreed
-            is the figure paid. Premium, mid-range and budget options cover every vehicle and budget across{" "}
-            {region.name}.
+            Any out-of-hours charge is included in your confirmed quote before dispatch. The tyre is priced by
+            its size and quoted in full before a fitter is dispatched, so the figure agreed is the figure paid.
+            Premium, mid-range and budget options cover every vehicle and budget across {region.name}.
           </p>
         </div>
       </section>

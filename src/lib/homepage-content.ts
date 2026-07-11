@@ -61,7 +61,7 @@ export const MOBILE_SERVICES: {
   },
   {
     title: "Mobile Tyre Repair (BS AU 159)",
-    slug: "puncture-repair",
+    slug: "mobile-tyre-repair",
     hypernym: "Tyre Repair Service",
     icon: "wrench",
     description:
@@ -91,11 +91,11 @@ export const MOBILE_SERVICES: {
     hypernym: "Roadside Assistance Service",
     icon: "siren",
     description:
-      "We respond to flat tyres and blowouts for stranded drivers around the clock, every day of the year, dispatching the nearest insured fitter with no call-out fee.",
+      "We respond to flat tyres and blowouts for stranded drivers around the clock, every day of the year, dispatching the nearest insured fitter with no standard-hours call-out fee.",
     eav: [
       "Hours: 00:00 to 23:59, 365 days a year",
       "Response: 30 to 60 minutes typical",
-      "Call-out fee: none, ever",
+      "Call-out fee: none in standard hours, out-of-hours included in your quote",
     ],
   },
   {
@@ -257,39 +257,11 @@ export const BRAND_SPECIALISTS: {
       "N-rated Porsche-approved tyres fitted on-site for 911, Cayenne, Macan, Panamera and Taycan with performance-spec torque and balance.",
   },
   {
-    brand: "Bentley",
-    slug: "bentley-mobile-tyre-fitting",
-    badge: "OE-spec luxury tyres",
+    brand: "Performance and Prestige",
+    slug: "performance-mobile-tyre-fitting",
+    badge: "Approval-marked tyres",
     description:
-      "OE-spec tyres for Continental GT, Flying Spur and Bentayga fitted on-site with luxury-grade workmanship.",
-  },
-  {
-    brand: "Rolls-Royce",
-    slug: "rolls-royce-mobile-tyre-fitting",
-    badge: "RR-approved tyres",
-    description:
-      "RR-approved tyres for Phantom, Ghost, Wraith, Dawn and Cullinan fitted at your private location with full discretion.",
-  },
-  {
-    brand: "Ferrari",
-    slug: "ferrari-mobile-tyre-fitting",
-    badge: "Performance tyres",
-    description:
-      "Performance-spec tyres for Ferrari road cars fitted on-site with Ferrari-approved compounds and ultra-precise balancing.",
-  },
-  {
-    brand: "McLaren",
-    slug: "mclaren-mobile-tyre-fitting",
-    badge: "MC-marked Pirelli",
-    description:
-      "MC-marked Pirelli tyres for McLaren GT, 720S and Artura fitted on-site with manufacturer-approved torque and balance.",
-  },
-  {
-    brand: "Lamborghini",
-    slug: "lamborghini-mobile-tyre-fitting",
-    badge: "L-marked tyres",
-    description:
-      "L-marked performance tyres for Huracán, Urus and Revuelto fitted on-site by performance-tyre-trained technicians.",
+      "Approval-marked tyres for Ferrari, McLaren, Lamborghini, Rolls-Royce and Bentley fitted discreetly at your location, with staggered fitments placed to the correct axle.",
   },
 ];
 
@@ -377,8 +349,8 @@ export const PRICING_ROWS: { service: string; price: string; includes: string }[
   },
   {
     service: "Emergency 24/7 call-out",
-    price: "No call-out fee",
-    includes: "You pay the service price only, quoted before dispatch",
+    price: "No standard-hours call-out fee",
+    includes: "Service price only. Any out-of-hours charge is included in your confirmed quote before dispatch",
   },
 ];
 
@@ -408,7 +380,7 @@ export const HOME_REVIEWS: {
     location: "Maidstone, Kent",
     date: "February 2026",
     rating: 5,
-    body: "Blew a tyre on the M20 at 11pm on a Sunday. Mobile fitter was with me in 35 minutes, fitted a new Continental and got me moving. No call-out fee, exactly the price quoted. Saved my night.",
+    body: "Blew a tyre on the M20 at 11pm on a Sunday. Mobile fitter was with me in 35 minutes, fitted a new Continental and got me moving. Exactly the price quoted. Saved my night.",
   },
   {
     id: "rev-anita-r",
@@ -460,8 +432,10 @@ export const FOUNDER = {
     "We bring the workshop to you, and every fitting is backed by my personal workmanship guarantee.",
 };
 
-// Quantified track record (PLACEHOLDER values - owner confirms real figures).
-// Explicit numeric `end` so the counter never parses from formatted text.
+// Quantified track record. The figures below are server-rendered as the real
+// base value (never a 0 placeholder) and animated on top after hydration.
+// FLAGGED: the owner must confirm each figure; update here when the confirmed
+// numbers arrive. Explicit numeric `end` so the counter never parses from text.
 export const FOUNDER_STATS: {
   end: number;
   suffix?: string;
@@ -567,7 +541,7 @@ export const COMPARISON_ROWS: { factor: string; mobile: string; garage: string }
   { factor: "Safety", mobile: "No risk of driving on a flat", garage: "Risk of sidewall damage and accidents" },
   { factor: "Availability", mobile: "24/7, weekends and nights", garage: "Mostly Monday to Saturday business hours" },
   { factor: "Booking", mobile: "Phone, WhatsApp or postcode tool", garage: "In person, phone or online slot" },
-  { factor: "Pricing", mobile: "All-in fixed, no call-out fee", garage: "Varies, fitting and disposal fees common" },
+  { factor: "Pricing", mobile: "All-in fixed, no standard-hours call-out fee", garage: "Varies, fitting and disposal fees common" },
 ];
 
 export const COMPARISON_SCENARIOS: string[] = [
@@ -630,7 +604,7 @@ export const HOMEPAGE_FAQS: { id: string; question: string; answer: string }[] =
     id: "faq-callout-fee",
     question: "Is there a call-out fee?",
     answer:
-      "No. We never charge a call-out fee, day or night. You pay only the service price, which we quote in full before we dispatch a fitter. The price we quote is the price you pay, with no hidden fitting, balancing or disposal charges added afterwards.",
+      "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. You pay only the quoted price, which we confirm in full before we dispatch a fitter, with no hidden fitting, balancing or disposal charges added afterwards.",
   },
   {
     id: "faq-areas",
@@ -648,7 +622,7 @@ export const HOMEPAGE_FAQS: { id: string; question: string; answer: string }[] =
     id: "faq-nights-weekends",
     question: "Can you fit tyres at night or at weekends?",
     answer:
-      "Yes. Our 24/7 emergency tyre fitting service operates from 00:00 to 23:59, every day of the year, including Sundays and bank holidays. Whether you are stranded at 3am or need a weekend replacement, an insured mobile fitter is available with no call-out fee.",
+      "Yes. Our 24/7 emergency tyre fitting service operates from 00:00 to 23:59, every day of the year, including Sundays and bank holidays. Whether you are stranded at 3am or need a weekend replacement, an insured mobile fitter is available. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
   },
   {
     id: "faq-repair-or-replace",
@@ -696,7 +670,7 @@ export const HOMEPAGE_FAQS: { id: string; question: string; answer: string }[] =
     id: "faq-cost",
     question: "How much does mobile tyre fitting cost?",
     answer:
-      "Mobile tyre fitting is priced as a single all-in figure covering the tyre, fitting, a new valve, balancing and disposal, with no call-out fee. The exact price depends on your tyre size and brand choice, and we confirm it in full before dispatch so you can decide with no obligation.",
+      "Mobile tyre fitting is priced as a single all-in figure covering the tyre, fitting, a new valve, balancing and disposal. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The exact price depends on your tyre size and brand choice, confirmed in full so you can decide with no obligation.",
   },
   {
     id: "faq-insured",

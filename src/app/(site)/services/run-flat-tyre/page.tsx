@@ -155,7 +155,7 @@ export default async function RunFlatTyrePage() {
     "@type": "Offer",
     name: "Run-Flat Tyre Fitting Fee (per tyre)",
     description:
-      "Flat fitting fee per tyre covering technician travel, removal, fitment, balancing, valve, and disposal, with the TPMS checked and reset. The run-flat tyre itself is priced live from the VRN. No call-out fee in standard hours.",
+      "Flat fitting fee per tyre covering technician travel, removal, fitment, balancing, valve, and disposal, with the TPMS checked and reset. The run-flat tyre itself is priced live from the VRN. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
     priceCurrency: "GBP",
     price: "20",
     availability: "https://schema.org/InStock",

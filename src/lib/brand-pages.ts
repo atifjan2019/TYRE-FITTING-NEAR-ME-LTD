@@ -44,7 +44,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     brand: "BMW",
     metaTitle: "BMW Mobile Tyre Fitting | OE-Spec & Run-Flat, We Come To You",
     metaDescription:
-      "Mobile BMW tyre fitting at your home, work or roadside in 30 to 60 minutes. OE-spec and run-flat tyres, BMW-approved brands, TPMS reset included, fully insured. No call-out fee.",
+      "Mobile BMW tyre fitting at your home, work or roadside in 30 to 60 minutes. OE-spec and run-flat tyres, BMW-approved brands, TPMS reset included, fully insured. No standard-hours call-out fee.",
     hero: {
       h1: "BMW Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
       intro:
@@ -103,7 +103,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
         location: "Tunbridge Wells, Kent",
         date: "February 2026",
         rating: 5,
-        body: "X5 picked up a nail on the M25. They came to the office car park, had the correct 265/45 R20 run-flat on the van, fitted it and reset the pressure warning. No call-out fee, exactly the price quoted.",
+        body: "X5 picked up a nail on the M25. They came to the office car park, had the correct 265/45 R20 run-flat on the van, fitted it and reset the pressure warning. Exactly the price quoted.",
       },
       {
         id: "bmw-rev-3",
@@ -119,7 +119,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { service: "BMW 5 Series run-flat (245/45 R18, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "BMW X5 run-flat (265/45 R20, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "BMW TPMS reset (with fitting)", price: "Included", includes: "i-Drive reset procedure" },
-      { service: "Emergency 24/7 call-out", price: "No call-out fee", includes: "Service price only, quoted before dispatch" },
+      { service: "Emergency 24/7 call-out", price: "No standard-hours call-out fee", includes: "Service price only, quoted before dispatch" },
     ],
     faqs: [
       {
@@ -230,7 +230,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { service: "Model S / Model X tyre", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "Performance and Plaid staggered tyre", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "TPMS reset via Tesla relearn", price: "Included", includes: "Tesla relearn procedure on every tyre change" },
-      { service: "Emergency mobile call-out", price: "No call-out fee", includes: "24/7 response, 30 to 60 minutes typical" },
+      { service: "Emergency mobile call-out", price: "No standard-hours call-out fee", includes: "24/7 response, 30 to 60 minutes typical" },
     ],
     faqs: [
       { id: "tesla-faq-1", question: "Do you fit acoustic-foam tyres for Tesla?", answer: "Yes. We fit foam-lined OE-spec tyres where the model came with them, matched from the registration so the cabin noise and rolling resistance stay correct." },
@@ -305,7 +305,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { service: "Q SUV range (Q2 to Q8)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "RS and S performance, e-tron", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "TPMS reset and relearn", price: "Included", includes: "MMI or relearn procedure on every tyre change" },
-      { service: "Emergency roadside call-out", price: "No call-out fee", includes: "24/7 response, 30 to 60 minutes typical" },
+      { service: "Emergency roadside call-out", price: "No standard-hours call-out fee", includes: "24/7 response, 30 to 60 minutes typical" },
     ],
     faqs: [
       { id: "audi-faq-1", question: "Are your tyres Audi-approved (AO or RO1)?", answer: "Yes. We fit AO-marked tyres for the standard Audi range and RO1-marked tyres for Audi Sport RS models, matched from your registration. Every 2026 booking uses the exact approved marking for your model." },
@@ -315,7 +315,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { id: "audi-faq-5", question: "Do you fit e-tron electric Audis?", answer: "Yes. We fit e-tron electric Audis with the correct higher load index tyres rated for the battery weight, so the car carries its mass safely on the right specification." },
       { id: "audi-faq-6", question: "Can you fit staggered RS fitments?", answer: "Yes. We fit wider-rear staggered setups matched to each axle, using the RO1-marked sizes the RS model takes front and rear." },
       { id: "audi-faq-7", question: "Do bigger Audi wheels cost more?", answer: "Larger RS and SUV sizes cost more than standard fitments. We quote the exact price from your registration so the figure matches the size your car takes." },
-      { id: "audi-faq-8", question: "How quickly can you reach a stranded Audi?", answer: "We typically reach a stranded Audi within 30 to 60 minutes, 24 hours a day, 365 days a year, with no call-out fee for emergency roadside work." },
+      { id: "audi-faq-8", question: "How quickly can you reach a stranded Audi?", answer: "We typically reach a stranded Audi within 30 to 60 minutes, 24 hours a day, 365 days a year. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch." },
     ],
     metaTitle: "Audi Mobile Tyre Fitting | AO & RO1-Approved, We Come To You",
     metaDescription: "Mobile fitting of AO and RO1-approved tyres for Audi, with TPMS reset included, at your home, work or roadside in 30 to 60 minutes. Call 0788 328 8831.",
@@ -380,7 +380,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { service: "Mercedes SUV tyre (GLA to GLS)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "AMG and EQ tyre (MO1 staggered or EV load)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "TPMS reset and relearn", price: "Included", includes: "Reset through the Mercedes relearn procedure with every tyre change" },
-      { service: "Emergency mobile call-out", price: "No call-out fee", includes: "24/7 roadside attendance, 30 to 60 minutes typical" },
+      { service: "Emergency mobile call-out", price: "No standard-hours call-out fee", includes: "24/7 roadside attendance, 30 to 60 minutes typical" },
     ],
     faqs: [
       { id: "mercedes-faq-1", question: "Are your tyres Mercedes-approved (MO or MO1)?", answer: "Yes. We fit MO-marked tyres across the Mercedes range and MO1-marked tyres for AMG models, matched to your exact specification from the registration before we arrive." },
@@ -453,7 +453,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { service: "Defender and Discovery (all-terrain)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "21 and 22 inch low-profile", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "TPMS reset", price: "Included", includes: "Land Rover relearn procedure on every tyre change" },
-      { service: "Emergency callout", price: "No call-out fee", includes: "24/7 mobile fitting, 30 to 60 minutes typical" },
+      { service: "Emergency callout", price: "No standard-hours call-out fee", includes: "24/7 mobile fitting, 30 to 60 minutes typical" },
     ],
     faqs: [
       { id: "range-rover-faq-1", question: "Do you fit on-road and all-terrain tyres?", answer: "Yes. We fit both, matched to how the vehicle is used, on-road tyres for refinement and quiet, or all-terrain tyres for genuine off-road grip. Throughout 2026 we stock load-rated options for both across our coverage area." },
@@ -526,7 +526,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { service: "Porsche Macan N-rated (265/45 R20, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "Porsche Taycan N-rated EV (285/40 R20, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
       { service: "Porsche TPMS reset (with fitting)", price: "Included", includes: "Porsche relearn procedure" },
-      { service: "Emergency 24/7 call-out", price: "No call-out fee", includes: "Service price only, quoted before dispatch" },
+      { service: "Emergency 24/7 call-out", price: "No standard-hours call-out fee", includes: "Service price only, quoted before dispatch" },
     ],
     faqs: [
       { id: "porsche-faq-1", question: "Are your tyres N-rated for Porsche?", answer: "Yes. We stock N0, N1 and N2 approved tyres and match the correct marking and N revision to your model from the registration. Across 2026 we carry the current N-rated sizes so the right specification reaches your Porsche on the first visit." },
@@ -542,365 +542,83 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     metaDescription: "N-rated (N0, N1, N2) approved tyres for Porsche, staggered fitments, TPMS reset, on the road in 30 to 60 minutes. Porsche-approved brands, fully insured. Call 0788 328 8831.",
   },
 
-  "bentley-mobile-tyre-fitting": {
-    slug: "bentley-mobile-tyre-fitting",
-    brand: "Bentley",
-    hero: {
-      h1: "Bentley Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
-      intro:
-        "Tyre Fitting Near Me Ltd supplies and fits OE-spec tyres for Bentley owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using Bentley-approved brands and torque equipment set to Bentley specification through 2026, returning the car to the road within 30 to 60 minutes.",
-      bullets: [
-        "Discreet OE-spec mobile tyre fitting for Bentley",
-        "24/7 mobile service 365 days a year",
-        "Approved brands stocked (Pirelli, Michelin, Continental)",
-        "TPMS reset included via the Bentley relearn procedure",
-        "Workmanship guaranteed, fully insured",
-        "Free tyre health check on every visit",
-      ],
-      whatsappPrefill:
-        "Hi, I drive a Bentley and need a mobile tyre fitter. My model is _____, tyre size _____, postcode _____.",
-    },
-    modelGroups: [
-      { label: "Grand tourer", models: ["Continental GT", "Continental GT Convertible"] },
-      { label: "Saloon", models: ["Flying Spur"] },
-      { label: "SUV", models: ["Bentayga"] },
-    ],
-    oeIntro:
-      "We match the exact OE tyre specification your Bentley needs, fitting staggered low-profile tyres on-site, run-flat where the car came with it, using calibrated balancing and torque equipment, so the car keeps its refinement, high-speed stability and warranty integrity.",
-    oePoints: [
-      "A Bentley is a heavy grand tourer tuned for quiet, comfort and high-speed stability, so the tyre carries a high load.",
-      "Most Bentleys run 21 and 22 inch low-profile staggered tyres, with a wider rear.",
-      "Some Continental GT and Flying Spur models run run-flat tyres from the factory.",
-      "The Bentayga SUV carries a high load index for the vehicle weight.",
-    ],
-    sizeTable: [
-      { model: "Continental GT", front: "275/35 R22", rear: "315/30 R22", runFlat: "staggered, run-flat option" },
-      { model: "Continental GT Convertible", front: "275/35 R22", rear: "315/30 R22", runFlat: "staggered" },
-      { model: "Flying Spur", front: "275/35 R22", rear: "315/30 R22", runFlat: "staggered, run-flat option" },
-      { model: "Bentayga", front: "285/40 R22", rear: "285/40 R22", runFlat: "load-rated SUV" },
-    ],
-    s4Eyebrow: "OE-spec grand touring",
-    s4Title: "OE-Spec Tyres for Bentley Grand Touring",
-    runFlatBody:
-      "A Bentley is a heavy grand tourer built for refinement at speed, so the tyre carries a high load and is tuned for quiet, comfort and high-speed stability rather than outright sport. Most Bentleys run large 21 and 22 inch wheels with low-profile staggered tyres, a wider rear, which need careful fitting to protect the alloy. Some Continental GT and Flying Spur models run run-flat tyres from the factory. The Bentayga SUV carries a high load index for the vehicle weight. The correct OE-spec tyre, staggered and run-flat or standard to match the car, is matched from the registration. Discretion and a fully insured fitter are standard on a high-value vehicle.",
-    s5Eyebrow: "Fitted with discretion",
-    s5Title: "Fitted at Your Private Location With Full Discretion",
-    tpmsBody:
-      "Your Bentley is fitted at the owner's home, private estate or chosen location, by a fully insured technician, with the work done discreetly and the wheels torqued to the Bentley figure with a calibrated digital torque wrench. Low-profile 22 inch tyres are fitted with rim protection to guard the alloy. TPMS is reset so the car reads the new tyres. Pressures are set to the Bentley figure for the load. Every 2026 booking carries a workmanship guarantee, and the visit ends with a free tyre health check across the remaining wheels. Discretion, calibrated equipment and full insurance are standard on a high-value vehicle.",
-    reviews: [
-      { id: "bentley-rev-1", name: "James W.", location: "Knightsbridge, London", date: "March 2026", rating: 5, body: "Front tyre on my Continental GT picked up a screw outside the house. The fitter came to the private drive, matched the OE-spec 275/35 R22 from the registration and reset the TPMS. Discreet and quick." },
-      { id: "bentley-rev-2", name: "Charlotte H.", location: "Sevenoaks, Kent", date: "April 2026", rating: 5, body: "Needed a staggered rear replaced on the Flying Spur. The technician fitted the run-flat with rim protection and torqued to the Bentley figure on the spot. No fuss, fully insured, back on the road in under an hour." },
-      { id: "bentley-rev-3", name: "Edward T.", location: "Haywards Heath, Sussex", date: "February 2026", rating: 5, body: "Bentayga needed two load-rated 285/40 R22 tyres before a trip. Quoted in full from the plate, no call-out fee, fitted at the office car park with complete discretion. Faultless service." },
-    ],
-    pricing: [
-      { service: "Bentley tyre supply and fit", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Run-flat supply and fit", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Bentayga SUV tyre supply and fit", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "TPMS reset", price: "Included", includes: "Bentley relearn procedure so the car reads the new tyres" },
-      { service: "Emergency roadside call-out", price: "No call-out fee", includes: "24/7 mobile response, 30 to 60 minutes typical" },
-    ],
-    faqs: [
-      { id: "bentley-faq-1", question: "Do you fit Bentley tyres at my home or private location?", answer: "Yes. Your Bentley is fitted discreetly at the owner's chosen home, private estate or location by a fully insured technician. Every 2026 booking is torqued to the Bentley figure with calibrated equipment and finished with a free tyre health check." },
-      { id: "bentley-faq-2", question: "Do you fit run-flats on a Continental GT or Flying Spur?", answer: "Yes, where the model came with run-flat tyres from the factory. We fit them with the correct tooling, matched OE-spec from the registration." },
-      { id: "bentley-faq-3", question: "Do you fit 22 inch low-profile Bentley wheels?", answer: "Yes. Low-profile 22 inch tyres are fitted with rim protection to guard the alloy, with calibrated balancing for a smooth ride at speed." },
-      { id: "bentley-faq-4", question: "Which Bentley models do you fit?", answer: "We fit the Continental GT, Continental GT Convertible, Flying Spur and Bentayga, matching the OE-spec tyre from the registration." },
-      { id: "bentley-faq-5", question: "Are your tyres OE-spec for Bentley?", answer: "Yes. We stock Pirelli, Michelin and Continental approved compounds, matched OE-spec to your exact model from the registration." },
-      { id: "bentley-faq-6", question: "Do you reset the Bentley TPMS?", answer: "Yes. TPMS is reset via the Bentley relearn procedure so the car reads the new tyres and pressures are set to the Bentley figure for the load." },
-      { id: "bentley-faq-7", question: "How is the price set?", answer: "Quoted in full from the registration before dispatch, with no call-out fee. The price covers removal, valve, balance, TPMS reset and disposal." },
-      { id: "bentley-faq-8", question: "How quickly can you reach a stranded Bentley?", answer: "30 to 60 minutes is typical, 24/7, 365 days a year, with a fully insured technician dispatched to the home, work or roadside." },
-    ],
-    metaTitle: "Bentley Mobile Tyre Fitting | OE-Spec, Discreet, We Come To You",
-    metaDescription: "OE-spec and run-flat tyres for Bentley, fitted discreetly at your location, with TPMS reset, in 30 to 60 minutes. Fully insured technician. Call 0788 328 8831.",
-  },
-
-  "rolls-royce-mobile-tyre-fitting": {
-    slug: "rolls-royce-mobile-tyre-fitting",
-    brand: "Rolls-Royce",
-    hero: {
-      h1: "Rolls-Royce Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
-      intro:
-        "Tyre Fitting Near Me Ltd supplies and fits RR-approved run-flat tyres for Rolls-Royce owners across London, Kent, Sussex, Essex, the West Midlands and Scotland in 2026, using approved brands and torque equipment set to Rolls-Royce specification, returning the car to the road within 30 to 60 minutes.",
-      bullets: [
-        "Discreet RR-approved run-flat tyre fitting for Rolls-Royce",
-        "24/7 mobile service 365 days a year",
-        "Approved brands stocked (Continental, Michelin, Pirelli)",
-        "TPMS reset included via the Rolls-Royce relearn procedure",
-        "Workmanship guaranteed, fully insured",
-        "Free tyre health check on every visit",
-      ],
-      whatsappPrefill:
-        "Hi, I drive a Rolls-Royce and need a mobile tyre fitter. My model is _____, tyre size _____, postcode _____.",
-    },
-    modelGroups: [
-      { label: "Saloon", models: ["Phantom", "Ghost", "Wraith", "Dawn"] },
-      { label: "SUV", models: ["Cullinan"] },
-      { label: "Electric", models: ["Spectre"] },
-    ],
-    oeIntro:
-      "We match the exact tyre specification Rolls-Royce approves for your model, fitting RR-marked run-flat tyres on-site, using calibrated balancing and torque equipment, so the car keeps the silence, ride and warranty integrity the marque is built on.",
-    oePoints: [
-      "The RR marking identifies a tyre tuned for the model's silence and ride, developed with Rolls-Royce rather than a generic fitment.",
-      "Most models run run-flat tyres from the factory, carrying reinforced sidewalls that need bead-breaking tooling and matched-pair replacement.",
-      "Very large 21, 22 and 23 inch low-profile sizes need careful rim protection during fitting.",
-      "The Cullinan SUV and Spectre electric carry high load indices rated for the weight of each car.",
-    ],
-    sizeTable: [
-      { model: "Ghost", front: "255/45 R20", rear: "285/40 R20", runFlat: "RR-marked, run-flat" },
-      { model: "Phantom", front: "255/50 R21", rear: "285/45 R21", runFlat: "RR-marked, run-flat" },
-      { model: "Wraith", front: "255/45 R20", rear: "285/40 R20", runFlat: "RR-marked, run-flat" },
-      { model: "Cullinan", front: "285/45 R22", rear: "285/45 R22", runFlat: "RR-marked, run-flat, load-rated" },
-      { model: "Spectre", front: "255/40 R23", rear: "295/35 R23", runFlat: "RR-marked, EV load" },
-    ],
-    s4Eyebrow: "RR-approved run-flat",
-    s4Title: "RR-Approved Run-Flat Tyres for Rolls-Royce",
-    runFlatBody:
-      "Rolls-Royce approves specific tyres tuned for each model, carrying an RR marking on the sidewall, developed for the silence and ride the marque is built on. Most Rolls-Royce models run run-flat tyres from the factory, carrying reinforced sidewalls and needing bead-breaking tooling and matched-pair replacement. A run-flat driven beyond its limited-mobility range cannot be safely repaired and is replaced. Models run very large 21, 22 and 23 inch wheels with low-profile tyres requiring careful rim protection. The Cullinan SUV and Spectre electric carry high load indices for weight. We match the correct RR-marked run-flat tyre from the registration before dispatch, so the tyre fitted is the exact specification Rolls-Royce approves for the car.",
-    s5Eyebrow: "Fitted with discretion",
-    s5Title: "Fitted at Your Location With Complete Discretion",
-    tpmsBody:
-      "The Rolls-Royce is fitted at the owner's home, estate or chosen location by a fully insured technician, discreetly, with wheels torqued to the Rolls-Royce figure using a calibrated digital torque wrench. The large low-profile tyres are fitted with rim protection to guard the finish. The TPMS is reset so the car reads the new tyres, and pressures are set to the Rolls-Royce specification before the technician leaves. Throughout 2026 owners across London and the home counties book the service at a private estate or address rather than attend a workshop. The car stays where the owner wants it, and the work is carried out quietly, precisely and without fuss.",
-    reviews: [
-      { id: "rolls-royce-rev-1", name: "Charles W.", location: "Mayfair, London", date: "January 2026", rating: 5, body: "Fitted a pair of RR-marked run-flats to my Ghost on the drive. Quiet, discreet and the ride is exactly as it should be. Faultless." },
-      { id: "rolls-royce-rev-2", name: "Eleanor H.", location: "Sevenoaks, Kent", date: "February 2026", rating: 5, body: "The technician came to the estate, torqued everything to spec and reset the TPMS on my Cullinan. No fuss, no workshop visit. Excellent." },
-      { id: "rolls-royce-rev-3", name: "James P.", location: "Esher, Surrey", date: "March 2026", rating: 5, body: "Stranded near home with a damaged run-flat on the Phantom. They reached me quickly and fitted the correct RR tyre. Rim protection used throughout." },
-    ],
-    pricing: [
-      { service: "Rolls-Royce saloon tyre (Phantom, Ghost, Wraith, Dawn)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Cullinan SUV tyre", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Spectre electric tyre", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "TPMS reset and relearn", price: "Included", includes: "Rolls-Royce relearn procedure on every tyre change" },
-      { service: "Emergency mobile call-out", price: "No call-out fee", includes: "24/7 response, 30 to 60 minutes typical" },
-    ],
-    faqs: [
-      { id: "rolls-royce-faq-1", question: "Do you fit Rolls-Royce tyres at my home or estate?", answer: "Yes. We fit the Rolls-Royce discreetly at the owner's chosen location, whether a private home, estate or address, by a fully insured technician. Throughout 2026 most owners book this rather than attend a workshop, keeping the car where they want it." },
-      { id: "rolls-royce-faq-2", question: "Are your tyres RR-approved?", answer: "Yes. We fit RR-marked run-flat tyres tuned for the specific model, from approved brands including Continental, Michelin and Pirelli. The correct specification is matched from the registration before dispatch." },
-      { id: "rolls-royce-faq-3", question: "Do you fit run-flats on a Rolls-Royce?", answer: "Yes. Most Rolls-Royce models leave the factory on run-flat tyres, and we fit the correct RR-marked run-flats using the proper bead-breaking tooling for the reinforced sidewalls." },
-      { id: "rolls-royce-faq-4", question: "Which Rolls-Royce models do you fit?", answer: "We fit the Phantom, Ghost, Wraith, Dawn, Cullinan and Spectre, matching the exact RR-marked tyre specification for each car." },
-      { id: "rolls-royce-faq-5", question: "Do you fit 22 and 23 inch wheels?", answer: "Yes. We fit the large low-profile sizes found on the Cullinan and Spectre, using rim protection throughout to guard the finish during fitting." },
-      { id: "rolls-royce-faq-6", question: "Do you reset the Rolls-Royce TPMS?", answer: "Yes. We reset the TPMS via the Rolls-Royce relearn procedure so the car reads the new tyres correctly, with pressures set to specification before we leave." },
-      { id: "rolls-royce-faq-7", question: "How is the price set?", answer: "We quote in full from the registration before dispatch, so the price is known in advance. There is no call-out fee." },
-      { id: "rolls-royce-faq-8", question: "How quickly can you reach a stranded Rolls-Royce?", answer: "We typically reach a stranded Rolls-Royce within 30 to 60 minutes, operating 24/7, 365 days a year." },
-    ],
-    metaTitle: "Rolls-Royce Mobile Tyre Fitting | RR-Approved Run-Flat, We Come To You",
-    metaDescription: "RR-approved run-flat tyres for Rolls-Royce, fitted discreetly at your location with TPMS reset, in 30 to 60 minutes. Fully insured mobile fitting. Call 0788 328 8831.",
-  },
-
-  "ferrari-mobile-tyre-fitting": {
-    slug: "ferrari-mobile-tyre-fitting",
-    brand: "Ferrari",
-    metaTitle: "Ferrari Mobile Tyre Fitting | K1 & F-Marked Approved, We Come To You",
+  "performance-mobile-tyre-fitting": {
+    slug: "performance-mobile-tyre-fitting",
+    brand: "Performance and Prestige",
+    metaTitle: "Performance & Prestige Mobile Tyre Fitting | Ferrari, McLaren, Lamborghini, Rolls-Royce & Bentley",
     metaDescription:
-      "K1 and F-marked Ferrari-approved tyres, staggered fitment, fitted discreetly at your location, TPMS reset, in 30 to 60 minutes. Fully insured. Call 0788 328 8831.",
+      "Approval-marked tyres for Ferrari, McLaren, Lamborghini, Rolls-Royce and Bentley fitted discreetly at your location. Staggered fitments, rim protection, TPMS reset, 30 to 60 minutes. Call 0788 328 8831.",
     hero: {
-      h1: "Ferrari Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
+      h1: "Performance and Prestige Mobile Tyre Fitting at Your Home or Private Location",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits K1 and F-marked Ferrari-approved tyres for Ferrari owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using approved brands and torque equipment set to Ferrari specification, returning the car to the road within 30 to 60 minutes throughout 2026.",
+        "Tyre Fitting Near Me Ltd supplies and fits manufacturer-approved tyres for Ferrari, McLaren, Lamborghini, Rolls-Royce and Bentley owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, matching the exact approval marking and staggered size from the registration and torquing every wheel to the manufacturer figure, with the work carried out discreetly at your chosen location.",
       bullets: [
-        "K1 and F-marked Ferrari-approved tyre specialist",
-        "24/7 mobile service 365 days a year",
-        "Approved brands stocked (Pirelli, Michelin, Bridgestone, Goodyear)",
-        "TPMS reset included via the Ferrari relearn procedure",
-        "Workmanship guaranteed, fully insured",
-        "Free tyre health check on every visit",
+        "Approval-marked tyres: K1 and F (Ferrari), MC (McLaren), L (Lamborghini), RR (Rolls-Royce), Bentley OE",
+        "Staggered fitments placed to the correct axle with the rotation direction set right",
+        "Full rim protection on low-profile 19 to 23 inch forged and polished alloys",
+        "Discreet fitting at the owner's home, estate, office or underground parking",
+        "TPMS reset and manufacturer torque figure on every visit",
+        "24/7 mobile service, workmanship guaranteed, fully insured",
       ],
       whatsappPrefill:
-        "Hi, I drive a Ferrari and need a mobile tyre fitter. My model is _____, tyre size _____, postcode _____.",
+        "Hi, I drive a performance or prestige car and need a mobile tyre fitter. My model is _____, tyre size _____, postcode _____.",
     },
     modelGroups: [
-      { label: "V8 berlinetta and spider", models: ["Roma", "Portofino", "296 GTB", "296 GTS", "F8 Tributo"] },
-      { label: "V12 grand tourer", models: ["812", "12Cilindri", "Purosangue"] },
-      { label: "Hybrid and special", models: ["SF90 Stradale", "SF90 Spider"] },
+      { label: "Ferrari", models: ["Roma", "Portofino", "296 GTB", "296 GTS", "F8 Tributo", "812", "12Cilindri", "SF90", "Purosangue"] },
+      { label: "McLaren", models: ["Artura", "720S", "750S", "765LT", "GT", "GTS"] },
+      { label: "Lamborghini", models: ["Huracan", "Revuelto", "Temerario", "Urus", "Urus SE", "Urus Performante"] },
+      { label: "Rolls-Royce", models: ["Phantom", "Ghost", "Wraith", "Dawn", "Cullinan", "Spectre"] },
+      { label: "Bentley", models: ["Continental GT", "Continental GT Convertible", "Flying Spur", "Bentayga"] },
     ],
     oeIntro:
-      "We match the exact tyre specification Ferrari develops for your model, fitting K1 and F-marked tyres on-site in the correct staggered size, using calibrated balancing and torque equipment, so the car keeps its handling, downforce balance and warranty integrity.",
+      "Each marque homologates specific tyres for each model, identified by a marking on the sidewall. We match the exact approval marking and size from the registration before dispatch, so the tyre fitted is the specification the factory signed off.",
     oePoints: [
-      "K1 identifies Pirelli-developed Ferrari tyres, and the F prefix identifies other Ferrari-homologated tyres",
-      "The approved tyre is engineered for the car's downforce, traction and high-speed handling",
-      "Every Ferrari runs a staggered fitment with a much wider rear, with rotation direction and axle placement set precisely",
-      "Low-profile 20 to 23 inch tyres need careful rim protection",
+      "Ferrari: K1 identifies Pirelli-developed Ferrari tyres and the F prefix identifies other Ferrari-homologated fitments, engineered for the car's downforce, traction and high-speed handling.",
+      "McLaren: the MC marking identifies Pirelli tyres developed with McLaren, with the hydraulic steering and chassis set around that exact tyre.",
+      "Lamborghini: the L marking identifies tyres engineered for downforce, all-wheel-drive traction and high-speed stability, with the Urus SUV carrying a high load index.",
+      "Rolls-Royce: the RR marking identifies tyres tuned for the marque's silence and ride, run-flat from the factory on most models.",
+      "Bentley: heavy grand tourers run 21 and 22 inch low-profile staggered tyres tuned for quiet, comfort and high-speed stability, with run-flat original equipment on some Continental GT and Flying Spur models.",
     ],
     sizeTable: [
-      { model: "Roma", front: "245/35 R20", rear: "285/35 R20", runFlat: "K1-marked, staggered" },
-      { model: "296 GTB", front: "245/35 R20", rear: "305/35 R20", runFlat: "K1-marked, staggered" },
-      { model: "F8 Tributo", front: "245/35 R20", rear: "305/30 R20", runFlat: "K1-marked, staggered" },
-      { model: "812", front: "275/35 R20", rear: "315/35 R20", runFlat: "F-marked, staggered" },
-      { model: "SF90 Stradale", front: "255/35 R20", rear: "315/30 R20", runFlat: "K1-marked, staggered" },
-      { model: "Purosangue", front: "255/40 R22", rear: "315/35 R23", runFlat: "F-marked, staggered, load-rated" },
+      { model: "Ferrari 296 GTB", front: "245/35 R20", rear: "305/35 R20", runFlat: "K1-marked, staggered" },
+      { model: "Ferrari Purosangue", front: "255/40 R22", rear: "315/35 R23", runFlat: "F-marked, staggered, load-rated" },
+      { model: "McLaren 750S", front: "245/35 R19", rear: "305/30 R20", runFlat: "MC-marked, staggered" },
+      { model: "Lamborghini Huracan", front: "245/30 R20", rear: "305/30 R20", runFlat: "L-marked, staggered" },
+      { model: "Lamborghini Urus", front: "285/40 R22", rear: "325/35 R22", runFlat: "L-marked, load-rated SUV" },
+      { model: "Rolls-Royce Ghost", front: "255/45 R20", rear: "285/40 R20", runFlat: "RR-marked, run-flat" },
+      { model: "Rolls-Royce Cullinan", front: "285/45 R22", rear: "285/45 R22", runFlat: "RR-marked, run-flat, load-rated" },
+      { model: "Bentley Continental GT", front: "275/35 R22", rear: "315/30 R22", runFlat: "staggered, run-flat option" },
+      { model: "Bentley Bentayga", front: "285/40 R22", rear: "285/40 R22", runFlat: "load-rated SUV" },
     ],
-    s4Eyebrow: "K1 and F-marked approved",
-    s4Title: "K1 and F-Marked Tyres Developed With Ferrari",
+    s4Eyebrow: "Approval markings and staggered fitments",
+    s4Title: "Approval-Marked Tyres and Staggered Fitments, Matched From the Registration",
     runFlatBody:
-      "Ferrari develops tyres with the tyre maker for each model, and the approved tyre carries a marking on the sidewall, K1 for Pirelli-developed Ferrari tyres and an F prefix for other Ferrari-homologated tyres. The approved tyre is engineered for the car's downforce, traction and high-speed handling, and a non-approved tyre changes the exact behaviour the chassis was tuned around. Every Ferrari runs a staggered fitment with a much wider rear, and the rotation direction and axle placement are set precisely. Tyres are low-profile on 20 to 23 inch wheels needing careful rim protection. The correct K1 or F-marked tyre, in the right staggered size, is matched from the registration.",
-    s5Eyebrow: "Staggered fitment and torque",
-    s5Title: "Staggered Fitment, Rim Protection and Manufacturer Torque",
+      "A performance or prestige car is tuned around its homologated tyre, and a non-approved tyre changes the downforce balance, traction and steering feel the chassis was engineered for, so we fit only the marked specification: K1 or F for Ferrari, MC for McLaren, L for Lamborghini, RR for Rolls-Royce and the Bentley OE fitment. Nearly every car in the group runs a staggered fitment with a much wider rear, so each tyre goes to the correct axle with the rotation direction set right. Most Rolls-Royce models and some Bentleys run run-flat tyres from the factory, carrying reinforced sidewalls that need bead-breaking tooling and matched-pair replacement, and a run-flat driven beyond its limited-mobility range cannot be safely repaired. The Urus, Cullinan, Bentayga and Purosangue carry high load indices rated for each vehicle's weight, and a tyre below the required load index cannot carry the car safely. Low-profile tyres on 19 to 23 inch wheels are fitted with full rim protection, because a scored rim cannot keep an airtight seal.",
+    s5Eyebrow: "Fitted with discretion",
+    s5Title: "Fitted at Your Private Location With Complete Discretion",
     tpmsBody:
-      "The Ferrari staggered setup runs a much wider rear, so each tyre goes to the correct axle with the rotation direction set right. Low-profile tyres are fitted with full rim protection to guard the forged alloys. Each wheel is torqued to the Ferrari figure with a calibrated digital torque wrench. The car is fitted at the owner's home or chosen location by a fully insured technician, discreetly. The TPMS is reset and pressures are set to spec before the technician leaves. Throughout 2026 every Ferrari visit follows the same precise procedure, so the car returns to the road exactly as the factory intended, with the staggered fitment correct and every wheel secured to the manufacturer torque figure.",
+      "Every car in the group is fitted at the owner's home, estate, office or underground parking by a fully insured technician, with the work done quietly and without drawing attention to the vehicle. Wheels are torqued to each manufacturer's figure with a calibrated digital torque wrench, never over-tightened, and forged or polished alloys are protected with rim guards throughout. The TPMS is reset through the relevant relearn procedure so the car reads the new tyres, and pressures are set to the manufacturer specification before the technician leaves. Owners across London and the home counties book the visit at a private address rather than attend a workshop, and every fitting carries the workmanship guarantee and ends with a free tyre health check across the remaining wheels.",
     reviews: [
-      { id: "ferrari-rev-1", name: "James R.", location: "Cobham, Surrey", date: "April 2026", rating: 5, body: "Picked up a nail in the rear of my Roma the night before a track day. The fitter came to the house, had the correct K1-marked 285/35 R20 on the van, protected the forged rim and torqued everything to spec. Discreet and faultless." },
-      { id: "ferrari-rev-2", name: "Daniel K.", location: "Mayfair, London", date: "March 2026", rating: 5, body: "My 296 GTB needed two rears. They matched the staggered fitment from the registration, fitted the K1 tyres at my underground parking, balanced them and reset the TPMS. No call-out fee and exactly the quoted price." },
-      { id: "ferrari-rev-3", name: "Oliver T.", location: "Edgbaston, West Midlands", date: "February 2026", rating: 5, body: "Stranded with a flat on my F8 Tributo. The technician reached me within the hour, fitted the correct staggered F-marked rear with full rim protection and had me moving again. Knew the car inside out." },
+      { id: "performance-rev-1", name: "James R.", location: "Cobham, Surrey", date: "April 2026", rating: 5, body: "Picked up a nail in the rear of my Roma the night before a track day. The fitter came to the house, had the correct K1-marked 285/35 R20 on the van, protected the forged rim and torqued everything to spec. Discreet and faultless." },
+      { id: "performance-rev-2", name: "Edward T.", location: "Haywards Heath, Sussex", date: "February 2026", rating: 5, body: "Bentayga needed two load-rated 285/40 R22 tyres before a trip. Quoted in full from the plate and fitted at the office car park with complete discretion. Faultless service." },
+      { id: "performance-rev-3", name: "Marcus T.", location: "Sevenoaks, Kent", date: "March 2026", rating: 5, body: "My 750S needed a rear after a track day and they sourced the MC-marked tyre the same day. Calibrated torque wrench used on every wheel. Excellent service." },
     ],
     pricing: [
-      { service: "Ferrari Roma (245/35 R20 front, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Ferrari 296 GTB (305/35 R20 rear, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Ferrari Purosangue (315/35 R23 rear, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Ferrari TPMS reset (with fitting)", price: "Included", includes: "Ferrari relearn procedure" },
-      { service: "Emergency 24/7 call-out", price: "No call-out fee", includes: "Service price only, quoted before dispatch" },
+      { service: "Ferrari, McLaren or Lamborghini staggered tyre (supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
+      { service: "Rolls-Royce RR-marked run-flat (supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
+      { service: "Bentley OE-spec tyre (supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
+      { service: "TPMS reset and relearn", price: "Included", includes: "Marque relearn procedure on every tyre change" },
+      { service: "Emergency 24/7 call-out", price: "No standard-hours call-out fee", includes: "Any out-of-hours charge is included in your confirmed quote before dispatch" },
     ],
     faqs: [
-      { id: "ferrari-faq-1", question: "Are your tyres Ferrari-approved (K1 or F-marked)?", answer: "Yes. We fit K1-marked tyres for Pirelli-developed Ferrari tyres and F-marked tyres for other Ferrari-homologated fitments, matched to your car from the registration. Throughout 2026 every Ferrari leaves on the correct approved sidewall marking." },
-      { id: "ferrari-faq-2", question: "Why does a Ferrari need approved tyres?", answer: "The approved tyre is developed for the car's downforce, traction and high-speed handling. A non-approved tyre changes the exact behaviour the chassis was tuned around, so we fit only the correct K1 or F-marked tyre for your model." },
-      { id: "ferrari-faq-3", question: "Do you fit Ferrari tyres at my home?", answer: "Yes. We fit at the owner's home or chosen location, discreetly, by a fully insured technician. Your Ferrari stays where it is while we supply and fit the correct staggered tyres and reset the TPMS." },
-      { id: "ferrari-faq-4", question: "Which Ferrari models do you fit?", answer: "We fit the Roma, Portofino, 296, F8, 812, 12Cilindri, SF90 and Purosangue, in the correct staggered sizes. Tell us the model and registration and we match the exact K1 or F-marked specification." },
-      { id: "ferrari-faq-5", question: "Do you fit staggered supercar fitments?", answer: "Yes. We place the wider rear on the correct axle with the right rotation direction, and fit every low-profile tyre with full rim protection to guard the forged alloys against damage." },
-      { id: "ferrari-faq-6", question: "Do you reset the Ferrari TPMS?", answer: "Yes. We carry out the Ferrari relearn procedure as standard, so the car reads the new tyres and the dashboard warning clears before the technician leaves." },
-      { id: "ferrari-faq-7", question: "How is the price set?", answer: "We quote the price in full from the registration before dispatch, with no call-out fee. The figure you agree is the figure you pay, covering the tyre, fitting, balance, TPMS reset and disposal." },
-      { id: "ferrari-faq-8", question: "How quickly can you reach a stranded Ferrari?", answer: "Our typical arrival time is 30 to 60 minutes, 24 hours a day. If you are stranded with a flat, we dispatch the nearest insured technician with the correct staggered K1 or F-marked tyre and give you a tracked arrival time." },
-    ],
-  },
-
-  "mclaren-mobile-tyre-fitting": {
-    slug: "mclaren-mobile-tyre-fitting",
-    brand: "McLaren",
-    hero: {
-      h1: "McLaren Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
-      intro:
-        "Tyre Fitting Near Me Ltd supplies and fits MC-marked Pirelli McLaren-approved tyres for McLaren owners across London, Kent, Sussex, Essex, the West Midlands and Scotland in 2026, using approved brands and torque equipment set to McLaren specification, returning the car to the road within 30 to 60 minutes.",
-      bullets: [
-        "MC-marked Pirelli McLaren-approved tyre specialist",
-        "24/7 mobile service 365 days a year",
-        "Approved brands stocked (Pirelli, Michelin)",
-        "TPMS reset included via the McLaren relearn procedure",
-        "Workmanship guaranteed, fully insured",
-        "Free tyre health check on every visit",
-      ],
-      whatsappPrefill:
-        "Hi, I drive a McLaren and need a mobile tyre fitter. My model is _____, tyre size _____, postcode _____.",
-    },
-    modelGroups: [
-      { label: "Supercar", models: ["720S", "750S", "Artura", "GT", "GTS"] },
-      { label: "Track and special", models: ["765LT", "Senna (legacy)", "P1 (legacy)"] },
-    ],
-    oeIntro:
-      "We match the exact tyre specification McLaren develops with Pirelli for your model, fitting MC-marked tyres on-site in the correct staggered size, using calibrated balancing and torque equipment, so the car keeps its aerodynamic balance, steering feel and warranty integrity.",
-    oePoints: [
-      "McLaren develops tyres with Pirelli tuned for each model, and the approved tyre carries an MC marking on the sidewall.",
-      "The MC-marked tyre is engineered for the car's aerodynamics, traction and steering feel, with the hydraulic steering and chassis set around that exact tyre.",
-      "Every McLaren runs a staggered fitment with a much wider rear, and axle placement and rotation are set precisely.",
-      "Low-profile 19 to 21 inch tyres need rim protection on the lightweight forged alloys.",
-    ],
-    sizeTable: [
-      { model: "Artura", front: "235/35 R19", rear: "295/35 R20", runFlat: "MC-marked, staggered" },
-      { model: "720S", front: "245/35 R19", rear: "305/30 R20", runFlat: "MC-marked, staggered" },
-      { model: "750S", front: "245/35 R19", rear: "305/30 R20", runFlat: "MC-marked, staggered" },
-      { model: "GT", front: "225/35 R20", rear: "295/35 R21", runFlat: "MC-marked, staggered" },
-      { model: "765LT", front: "245/35 R19", rear: "305/30 R20", runFlat: "MC-marked, staggered, track" },
-    ],
-    s4Eyebrow: "MC-marked approved",
-    s4Title: "MC-Marked Pirelli Tyres Developed for McLaren",
-    runFlatBody:
-      "McLaren develops tyres with Pirelli tuned for each model, and the approved tyre carries an MC marking on the sidewall. The MC-marked tyre is engineered for the car's aerodynamics, traction and steering feel, and McLaren's hydraulic steering and chassis are set around that exact tyre, so a non-MC tyre changes the behaviour the car was built for. Every McLaren runs a staggered fitment with a much wider rear, and axle placement and rotation are set precisely. Low-profile tyres on 19 to 21 inch wheels need careful rim protection on the lightweight forged alloys. A non-MC tyre cannot reproduce the chassis tuning the engineers signed off. The correct MC-marked Pirelli, in the right staggered size, is matched from the registration.",
-    s5Eyebrow: "Staggered fitment and torque",
-    s5Title: "Staggered Fitment and Manufacturer Torque for McLaren",
-    tpmsBody:
-      "The McLaren staggered setup runs a much wider rear, and we fit each tyre to the correct axle with rotation set right. Lightweight forged alloys are protected with full rim protection during fitting. Each wheel is torqued to the McLaren figure with a calibrated digital torque wrench, so the clamping load is exact. Every fitting is carried out at the owner's home or chosen location by a fully insured technician, discreetly and without drawing attention to the car. TPMS is reset and pressures are set to specification before we hand the keys back. Across 2026 we fit McLaren models throughout London, Kent, Sussex, Essex, the West Midlands and Scotland, returning each car to the road within 30 to 60 minutes with the handling and feel the engineers intended.",
-    reviews: [
-      { id: "mclaren-rev-1", name: "Daniel R.", location: "Cobham, Surrey", date: "January 2026", rating: 5, body: "Picked up a kerbed rear on my 720S and they arrived within the hour with the correct MC-marked Pirelli. Fitted on the driveway, torqued and TPMS reset. Faultless." },
-      { id: "mclaren-rev-2", name: "Priya S.", location: "Mayfair, London", date: "February 2026", rating: 5, body: "Needed both fronts on my Artura matched exactly. The technician knew the staggered sizes straight away and protected the forged alloys throughout. Very discreet visit." },
-      { id: "mclaren-rev-3", name: "Marcus T.", location: "Sevenoaks, Kent", date: "March 2026", rating: 5, body: "My 750S needed a rear after a track day and they sourced the MC-marked tyre the same day. Calibrated torque wrench used on every wheel. Excellent service." },
-    ],
-    pricing: [
-      { service: "McLaren front tyre (per tyre, fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "McLaren rear tyre (per tyre, fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "McLaren staggered pair (fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "TPMS reset and relearn", price: "Included", includes: "McLaren relearn procedure on every fitting" },
-      { service: "Emergency mobile call-out", price: "No call-out fee", includes: "24/7 response, 30 to 60 minutes typical" },
-    ],
-    faqs: [
-      { id: "mclaren-faq-1", question: "Are your tyres MC-marked for McLaren?", answer: "Yes. We fit MC-marked Pirelli tyres developed with McLaren, matched exactly from your registration. Throughout 2026 we carry the correct MC-marked specification for current McLaren models so the car keeps the tyre the engineers signed off." },
-      { id: "mclaren-faq-2", question: "Why does McLaren need MC-marked tyres?", answer: "The MC-marked tyre is tuned for the car's aerodynamics and steering, and the chassis is set around that exact tyre. A non-MC tyre changes the feel and the balance the car was built for." },
-      { id: "mclaren-faq-3", question: "Do you fit McLaren at my home?", answer: "Yes. We fit discreetly at the owner's home, work or chosen location by a fully insured technician, with no need to take the car to a workshop." },
-      { id: "mclaren-faq-4", question: "Which McLaren models do you fit?", answer: "We fit the Artura, 720S, 750S, 765LT, GT and GTS, along with legacy models, all in the correct MC-marked staggered specification." },
-      { id: "mclaren-faq-5", question: "Do you fit staggered McLaren fitments?", answer: "Yes. We fit the wider rear to the correct axle and protect the forged alloys with full rim protection throughout the fitting." },
-      { id: "mclaren-faq-6", question: "Do you reset the McLaren TPMS?", answer: "Yes. We run the McLaren relearn procedure and reset the TPMS so the car reads the new tyres correctly before we hand the keys back." },
-      { id: "mclaren-faq-7", question: "How is the price set?", answer: "We quote in full from your registration before dispatch, so you know the cost of the correct MC-marked tyres up front. There is no call-out fee." },
-      { id: "mclaren-faq-8", question: "How quickly can you reach a stranded McLaren?", answer: "We reach most stranded McLaren owners within 30 to 60 minutes, operating 24/7, 365 days a year, and carry the equipment to fit on the spot." },
-    ],
-    metaTitle: "McLaren Mobile Tyre Fitting | MC-Marked Pirelli Approved, We Come To You",
-    metaDescription: "MC-marked Pirelli McLaren-approved tyres, staggered fitment, fitted discreetly, TPMS reset, 30 to 60 minutes. Call 0788 328 8831.",
-  },
-
-  "lamborghini-mobile-tyre-fitting": {
-    slug: "lamborghini-mobile-tyre-fitting",
-    brand: "Lamborghini",
-    metaTitle: "Lamborghini Mobile Tyre Fitting | L-Marked Approved, We Come To You",
-    metaDescription:
-      "L-marked Lamborghini-approved tyres fitted at your location, staggered fitment fitted discreetly, TPMS reset, road-ready in 30 to 60 minutes. Call 0788 328 8831.",
-    hero: {
-      h1: "Lamborghini Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
-      intro:
-        "Tyre Fitting Near Me Ltd supplies and fits L-marked Lamborghini-approved tyres for Lamborghini owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using approved brands and torque equipment set to Lamborghini specification throughout 2026, returning the car to the road within 30 to 60 minutes.",
-      bullets: [
-        "L-marked Lamborghini-approved tyre specialist",
-        "24/7 mobile service 365 days a year",
-        "Approved brands stocked (Pirelli, Bridgestone)",
-        "TPMS reset included via the Lamborghini relearn procedure",
-        "Workmanship guaranteed, fully insured",
-        "Free tyre health check on every visit",
-      ],
-      whatsappPrefill:
-        "Hi, I drive a Lamborghini and need a mobile tyre fitter. My model is _____, tyre size _____, postcode _____.",
-    },
-    modelGroups: [
-      { label: "V12 and hybrid", models: ["Revuelto", "Aventador (legacy)"] },
-      { label: "V10 and V8", models: ["Huracan", "Temerario"] },
-      { label: "SUV", models: ["Urus", "Urus SE", "Urus Performante"] },
-    ],
-    oeIntro:
-      "We match the exact tyre specification Lamborghini develops for your model, fitting L-marked tyres on-site in the correct staggered or load-rated size, using calibrated balancing and torque equipment, so the car keeps its downforce balance, traction and warranty integrity.",
-    oePoints: [
-      "Lamborghini develops tyres with the tyre maker tuned for each model, and the approved tyre carries an L marking on the sidewall",
-      "The L-marked tyre is engineered for downforce, all-wheel-drive traction and high-speed stability",
-      "The Huracan and Revuelto run staggered fitments with a much wider rear, and the Urus SUV carries a high load index",
-      "Low-profile tyres on 20 to 23 inch wheels need careful rim protection",
-    ],
-    sizeTable: [
-      { model: "Huracan", front: "245/30 R20", rear: "305/30 R20", runFlat: "L-marked, staggered" },
-      { model: "Huracan STO", front: "245/30 R20", rear: "305/30 R20", runFlat: "L-marked, staggered, track" },
-      { model: "Revuelto", front: "265/35 R20", rear: "345/30 R21", runFlat: "L-marked, staggered" },
-      { model: "Urus", front: "285/40 R22", rear: "325/35 R22", runFlat: "L-marked, load-rated SUV" },
-      { model: "Urus Performante", front: "285/35 R23", rear: "325/30 R23", runFlat: "L-marked, staggered" },
-      { model: "Temerario", front: "255/35 R20", rear: "325/30 R21", runFlat: "L-marked, staggered" },
-    ],
-    s4Eyebrow: "L-marked approved",
-    s4Title: "L-Marked Tyres Developed for Lamborghini",
-    runFlatBody:
-      "Lamborghini develops tyres with the tyre maker tuned for each model, and the approved tyre carries an L marking on the sidewall. The L-marked tyre is engineered for the car's downforce, all-wheel-drive traction and high-speed stability, and a non-approved tyre changes the behaviour the chassis was tuned around. The Huracan and Revuelto run staggered fitments with a much wider rear, and the Urus SUV carries a high load index for the vehicle weight. Low-profile tyres on 20 to 23 inch wheels need careful rim protection, and a damaged rim cannot keep an airtight seal. We match the correct L-marked tyre, in the right staggered or load-rated size, directly from the registration.",
-    s5Eyebrow: "Staggered fitment and torque",
-    s5Title: "Staggered Fitment, Rim Protection and Manufacturer Torque",
-    tpmsBody:
-      "The Lamborghini staggered setup runs a much wider rear, so we fit each tyre to the correct axle with the rotation direction set right. The Urus runs large load-rated SUV tyres sized for the vehicle weight. We protect the forged alloys with rim protection throughout fitting, and a scored rim cannot keep an airtight seal. We torque each wheel to the Lamborghini figure with a calibrated digital torque wrench, then reset the TPMS so the car reads the new tyres and set every pressure to specification. Across 2026 we fit at the owner's home or chosen location by a fully insured technician, working discreetly so the car is finished out of sight and returned ready for the road.",
-    reviews: [
-      { id: "lamborghini-rev-1", name: "James W.", location: "Mayfair, London", date: "March 2026", rating: 5, body: "Picked up a nail in the rear of my Huracan the night before a show. They came to the underground garage, had the correct 305/30 R20 L-marked tyre on the van, fitted it staggered and reset the TPMS. Completely discreet." },
-      { id: "lamborghini-rev-2", name: "Oliver H.", location: "Sevenoaks, Kent", date: "February 2026", rating: 5, body: "Needed a pair on my Urus. The technician knew the load rating, protected the forged rims throughout, torqued every wheel to spec and reset the pressures. Quoted in full from the registration, no call-out fee." },
-      { id: "lamborghini-rev-3", name: "Charlotte D.", location: "Edinburgh, Scotland", date: "January 2026", rating: 5, body: "Revuelto needed new rears. They sourced the L-marked 345/30 R21, fitted at home, balanced perfectly and reset the system. Faster than the dealer and the rims were untouched." },
-    ],
-    pricing: [
-      { service: "Lamborghini Huracan (305/30 R20 rear, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Lamborghini Revuelto (345/30 R21 rear, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Lamborghini Urus (325/35 R22 rear, supplied and fitted)", price: "Get a quote", includes: "Removal, valve, balance, TPMS reset, disposal" },
-      { service: "Lamborghini TPMS reset (with fitting)", price: "Included", includes: "Lamborghini relearn procedure" },
-      { service: "Emergency 24/7 call-out", price: "No call-out fee", includes: "Service price only, quoted before dispatch" },
-    ],
-    faqs: [
-      { id: "lamborghini-faq-1", question: "Are your tyres L-marked for Lamborghini?", answer: "Yes. We fit L-marked Lamborghini-approved tyres, matched to your model directly from the registration. Throughout 2026 we carry the approved brands so the car keeps the specification Lamborghini developed for it." },
-      { id: "lamborghini-faq-2", question: "Why does Lamborghini need approved tyres?", answer: "Lamborghini tunes each model around an approved tyre for downforce and all-wheel-drive traction. A non-approved tyre changes the behaviour the chassis was tuned around, so we fit the L-marked tyre developed for your model." },
-      { id: "lamborghini-faq-3", question: "Do you fit Lamborghini tyres at my home?", answer: "Yes. We fit at the owner's home or chosen location by a fully insured technician, working discreetly so the car is finished out of sight and returned ready for the road." },
-      { id: "lamborghini-faq-4", question: "Which Lamborghini models do you fit?", answer: "We fit the Huracan, Revuelto and Temerario, alongside the Urus and the Urus SE and Urus Performante variants, each in the correct L-marked staggered or load-rated size matched from the registration." },
-      { id: "lamborghini-faq-5", question: "Do you fit the Urus SUV?", answer: "Yes. We fit the Urus with the correct load-rated L-marked tyre sized for the vehicle weight, protecting the forged rims throughout and torquing every wheel to the Lamborghini figure." },
-      { id: "lamborghini-faq-6", question: "Do you reset the Lamborghini TPMS?", answer: "Yes. We reset the TPMS through the Lamborghini relearn procedure so the car reads the new tyres, then set every pressure to specification before we leave." },
-      { id: "lamborghini-faq-7", question: "How is the price set?", answer: "We quote the price in full from the registration before dispatch, so you know the figure for the correct L-marked tyre in advance. There is no call-out fee." },
-      { id: "lamborghini-faq-8", question: "How quickly can you reach a stranded Lamborghini?", answer: "Our typical arrival time is 30 to 60 minutes, 24 hours a day. We dispatch the nearest insured technician with the correct L-marked tyre and give you a tracked arrival time." },
+      { id: "performance-faq-1", question: "Which marques does the performance and prestige service cover?", answer: "We fit Ferrari, McLaren, Lamborghini, Rolls-Royce and Bentley, matching the exact approval marking and staggered size for each model from the registration. Porsche, BMW M, Mercedes-AMG and other premium marques run through their own dedicated pages." },
+      { id: "performance-faq-2", question: "Are your tyres manufacturer-approved?", answer: "Yes. We fit K1 and F-marked tyres for Ferrari, MC-marked Pirelli for McLaren, L-marked tyres for Lamborghini, RR-marked run-flats for Rolls-Royce and OE-spec fitments for Bentley, sourced from the approved brands each marque signs off." },
+      { id: "performance-faq-3", question: "Do you fit staggered supercar fitments?", answer: "Yes. The wider rear goes to the correct axle with the rotation direction set right, and every low-profile tyre is fitted with full rim protection to guard the forged alloys against damage." },
+      { id: "performance-faq-4", question: "Do you fit at my home or private location?", answer: "Yes. A fully insured technician fits at the owner's home, estate, office or underground parking, discreetly, so the car stays where you want it and never queues at a workshop." },
+      { id: "performance-faq-5", question: "Do you fit run-flats on a Rolls-Royce or Bentley?", answer: "Yes. Most Rolls-Royce models and some Continental GT and Flying Spur models leave the factory on run-flats, and we fit the correct marked run-flat using the proper bead-breaking tooling, replaced in matched pairs where needed." },
+      { id: "performance-faq-6", question: "Do you cover the Urus, Cullinan, Bentayga and Purosangue?", answer: "Yes. The performance SUVs carry high load indices rated for each vehicle's weight, and we fit the correct load-rated, approval-marked size with the TPMS reset and every wheel torqued to the manufacturer figure." },
+      { id: "performance-faq-7", question: "How is the price set?", answer: "We quote the price in full from the registration before dispatch, covering the tyre, fitting, balance, TPMS reset and disposal. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch." },
+      { id: "performance-faq-8", question: "How quickly can you reach a stranded car?", answer: "A 30 to 60 minute arrival is typical, 24 hours a day, 365 days a year. We dispatch the nearest insured technician with the correct approval-marked tyre and give you a tracked arrival time." },
     ],
   },
 };

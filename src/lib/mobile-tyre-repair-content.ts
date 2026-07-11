@@ -5,8 +5,8 @@
  * so the section components stay layout-only. British English throughout, no em
  * dashes (brand rule). Icon names map to src/components/icon.tsx (Font Awesome).
  *
- * Pricing: PRICE is a deliberate placeholder. Replace "[£XX]" with the real
- * figure (and the Offer schema price in page.tsx) before deploy.
+ * Pricing: £39 per repair, carried over from the merged puncture-repair page
+ * (the confirmed live figure). The Offer schema price in page.tsx matches.
  *
  * Brand rule: the legal name "Tyre Fitting Near Me Ltd" appears a maximum of
  * four times in body copy. Three are used, all in the section components (Why
@@ -14,7 +14,7 @@
  * in this data file.
  */
 
-export const PRICE = "[£XX]";
+export const PRICE = "£39";
 
 // --- Section 1: Hero ---------------------------------------------------------
 
@@ -24,7 +24,7 @@ export const HERO = {
   ticks: [
     "24/7 availability",
     "60-minute emergency response",
-    "Permanent BS AU 159 repairs from [£XX]",
+    "Permanent BS AU 159 repairs from £39",
   ],
 };
 
@@ -50,7 +50,7 @@ export const ELIGIBLE_NO: string[] = [
 export const BENEFITS: { stat: string; body: string; icon: string }[] = [
   { stat: "24/7", body: "Cover, 365 days a year, including bank holidays.", icon: "clock" },
   { stat: "60 min", body: "Emergency response target across UK mainland postcodes.", icon: "gauge" },
-  { stat: "[£XX]", body: "Transparent repair price per puncture, quoted before any work begins.", icon: "badge-pound-sterling" },
+  { stat: "£39", body: "Transparent repair price per puncture, quoted before any work begins.", icon: "badge-pound-sterling" },
   { stat: "Free", body: "BS AU 159 repairability assessment on every callout.", icon: "circle-check-big" },
   { stat: "Plug-patch", body: "Permanent repair sealing the channel and inner liner, not a temporary plug.", icon: "wrench" },
   { stat: "12 months", body: "Workmanship guarantee on every permanent repair.", icon: "badge-check" },
@@ -102,7 +102,7 @@ export const AVAILABILITY = {
   ],
   pricingHeading: "Transparent pricing, nothing added after",
   pricingBody:
-    "The [£XX] repair fee applies at any standard hour. Out-of-hours emergency callouts sometimes carry a separate [£XX] charge, disclosed at booking before any work starts, with nothing added after the repair.",
+    "The £39 repair fee applies at any standard hour. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch, with nothing added after the repair.",
 };
 
 // --- Section 7: Slow punctures and pressure loss (card grid) -----------------
@@ -131,6 +131,16 @@ export const CAUSES: { name: string; body: string; icon: string }[] = [
     body: "An earlier string plug or off-centre patch is inspected and replaced with a permanent plug-patch repair.",
     icon: "shield-check",
   },
+  {
+    name: "Embedded objects not yet through",
+    body: "A stone, bolt or screw lodged short of the inner liner works deeper with every mile. The technician assesses the depth off the wheel and removes the object before a slow leak turns into a blowout.",
+    icon: "circle-dot",
+  },
+  {
+    name: "EV and foam-lined tyres",
+    body: "Heavier EV kerb weights and foam-lined acoustic tyres change the repair assessment and the rebalancing. Every van carries the tools for Tesla and mainstream EV models, so a repairable EV puncture is sealed and rebalanced on the same visit.",
+    icon: "battery-charging",
+  },
 ];
 
 // --- Section 10: Vehicles and customers --------------------------------------
@@ -139,6 +149,7 @@ export const VEHICLES: { label: string; icon: string }[] = [
   { label: "Cars, all makes and models", icon: "circle-check-big" },
   { label: "Vans up to 3.5 tonnes", icon: "bus" },
   { label: "4x4s and SUVs", icon: "truck" },
+  { label: "Electric vehicles", icon: "battery-charging" },
   { label: "Fleet and lease vehicles", icon: "truck" },
 ];
 
@@ -184,7 +195,7 @@ export const COST_CALLOUT = {
 export const WHY_TILES: { stat: string; label: string }[] = [
   { stat: "60 min", label: "Emergency response target" },
   { stat: "24/7", label: "Cover, 365 days a year" },
-  { stat: "[£XX]", label: "Repair price, no call-out fee in standard hours" },
+  { stat: "£39", label: "Repair price, no standard-hours call-out fee" },
   { stat: "Free", label: "BS AU 159 assessment, fee waived if it fails" },
   { stat: "12 months", label: "Workmanship guarantee" },
   { stat: "UK-wide", label: "Postcode coverage, verified at booking" },
@@ -258,7 +269,7 @@ export const FAQS: { id: string; question: string; answer: string; link?: boolea
     id: "cost",
     question: "How much does mobile puncture repair cost?",
     answer:
-      "Mobile puncture repair costs [£XX] per puncture. The price includes travel, the BS AU 159 assessment, internal inspection, the plug-patch repair, a valve check, a rebalance and a pressure reset. Where the tyre fails assessment, the repair fee is waived against a replacement fitted on the same visit, so a failed assessment never costs you a wasted callout.",
+      "Mobile puncture repair costs £39 per puncture. The price includes travel, the BS AU 159 assessment, internal inspection, the plug-patch repair, a valve check, a rebalance and a pressure reset. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. Where the tyre fails assessment, the repair fee is waived against a replacement fitted on the same visit, so a failed assessment never costs you a wasted callout.",
   },
   {
     id: "every-tyre",
@@ -276,7 +287,7 @@ export const FAQS: { id: string; question: string; answer: string; link?: boolea
     id: "24-hours",
     question: "Is mobile puncture repair available 24 hours a day?",
     answer:
-      "Yes. Cover runs 24 hours a day, 365 days a year, including bank holidays. Standard slots run 8am to 8pm, and emergency callouts run overnight. Out-of-hours callouts sometimes carry a separate [£XX] charge, disclosed at booking before any work begins, with nothing added afterwards.",
+      "Yes. Cover runs 24 hours a day, 365 days a year, including bank holidays. Standard slots run 8am to 8pm, and emergency callouts run overnight. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch, with nothing added afterwards.",
   },
   {
     id: "permanent",
@@ -306,7 +317,7 @@ export const FAQS: { id: string; question: string; answer: string; link?: boolea
     id: "vs-garage",
     question: "Is mobile repair more expensive than a garage?",
     answer:
-      "A garage quotes a lower headline price, but the comparison ignores the recovery-truck cost, the queue and the risk miles of driving on a damaged tyre. A mobile repair brings the technician to your driveway or roadside, with no towing and no wait. The [£XX] repair price covers the travel and the full BS AU 159 repair.",
+      "A garage quotes a lower headline price, but the comparison ignores the recovery-truck cost, the queue and the risk miles of driving on a damaged tyre. A mobile repair brings the technician to your driveway or roadside, with no towing and no wait. The £39 repair price covers the travel and the full BS AU 159 repair.",
   },
   {
     id: "fails-assessment",

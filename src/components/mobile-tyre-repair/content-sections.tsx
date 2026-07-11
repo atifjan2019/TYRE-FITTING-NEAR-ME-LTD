@@ -66,7 +66,7 @@ export function WhyDriving() {
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/80">
           <p>
             Driving on a punctured or deflating tyre grinds the sidewall, destroys the
-            inner liner, and converts a [£XX] repair into a full tyre replacement. A flat
+            inner liner, and converts a £39 repair into a full tyre replacement. A flat
             tyre dragged even a short distance overheats the rubber and damages the
             structure beyond repair. UK Construction and Use Regulations classify a tyre
             below the 1.6mm legal tread limit as unroadworthy, and a deflated or damaged
@@ -289,7 +289,7 @@ export function Costs() {
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading title="Mobile Puncture Repair Cost and What's Included" />
         <p className="pricing-summary mt-6 text-center font-heading text-2xl font-extrabold text-primary sm:text-3xl">
-          [£XX] per puncture repair
+          £39 per puncture repair
           <span className="mt-1 block text-lg font-bold text-accent">
             Fee waived against a replacement if the tyre fails assessment
           </span>

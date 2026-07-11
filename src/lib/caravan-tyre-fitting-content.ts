@@ -200,7 +200,7 @@ export const COST_INCLUDED: string[] = [
 export const COST_CALLOUT = {
   heading: "Priced before booking, nothing added after",
   body:
-    "The caravan or motorhome tyre is priced by size and type, quoted in full before booking. CP-rated and reinforced tyres cost more than standard car tyres because of the heavier construction, stated honestly rather than buried. Common sizes such as 185R14C are quoted from the size or plate, with no call-out fee within standard hours.",
+    "The caravan or motorhome tyre is priced by size and type, quoted in full before booking. CP-rated and reinforced tyres cost more than standard car tyres because of the heavier construction, stated honestly rather than buried. Common sizes such as 185R14C are quoted from the size or plate. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
   freshness:
     "Towing a caravan to a garage risks the tyre that already needs replacing and adds the cost of the tow, while mobile fitting at the storage site removes both. Pricing is held transparent through 2026.",
 };
@@ -212,7 +212,7 @@ export const WHY_TILES: { stat: string; label: string }[] = [
   { stat: "CP-rated", label: "Load-rated stock matched to the laden weight" },
   { stat: "DOT check", label: "Full age and sidewall safety check every visit" },
   { stat: "Tyron", label: "Bands removed and refitted where rivals turn it away" },
-  { stat: "£20", label: "Transparent fitting fee per tyre, no hidden call-out charge" },
+  { stat: "£20", label: "Transparent fitting fee per tyre, no standard-hours call-out fee" },
   { stat: "24/7", label: "Emergency cover for a tow blowout, UK mainland" },
 ];
 

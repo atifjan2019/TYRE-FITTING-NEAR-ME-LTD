@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE } from "@/lib/site-config";
 import { BRAND_PAGE_SLUGS } from "@/lib/brand-pages";
-import { LIVE_AREAS } from "@/data/areas";
+import { LIVE_AREAS, areaHref } from "@/data/areas";
 import { REGIONS } from "@/data/regions";
 import { EXCLUDED_SERVICE_SLUGS } from "@/lib/data";
 
@@ -77,10 +77,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Area pages: only status "live" slugs are listed (pending towns are excluded
-  // until their pages are published). The /areas hub is in staticRoutes above.
+  // Town pages at their NESTED /areas/[region]/[town] URLs: only status "live"
+  // slugs are listed (pending towns are excluded until their pages are
+  // published). The old flat /areas/[town] URLs 301 and are NOT listed. The
+  // /areas hub is in staticRoutes above.
   const areaRoutes: MetadataRoute.Sitemap = LIVE_AREAS.map((a) => ({
-    url: `${base}/areas/${a.slug}`,
+    url: `${base}${areaHref(a)}`,
     changeFrequency: "monthly",
     priority: 0.8, // local intent pages are an SEO priority
   }));

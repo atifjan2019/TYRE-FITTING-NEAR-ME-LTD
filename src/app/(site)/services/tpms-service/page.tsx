@@ -156,7 +156,7 @@ export default async function TpmsServicePage() {
     "@type": "Offer",
     name: "TPMS Valve Service",
     description:
-      "Per-wheel TPMS valve service replacing the perishable grommet, valve core, cap and retaining nut, including technician travel and a diagnostic to confirm the cause. No call-out fee in standard hours.",
+      "Per-wheel TPMS valve service replacing the perishable grommet, valve core, cap and retaining nut, including technician travel and a diagnostic to confirm the cause. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch.",
     priceCurrency: "GBP",
     price: "15", // per-wheel valve service; sensor replacement £45, diagnostic and reset £25.
     availability: "https://schema.org/InStock",

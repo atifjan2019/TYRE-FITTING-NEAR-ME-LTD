@@ -35,7 +35,7 @@ const PROCESS_STEPS = [
   {
     title: "Get your all-in quote",
     description:
-      "Enter your registration or tyre size for a full price covering the tyre, fitting and balancing, with no call-out fee.",
+      "Enter your registration or tyre size for a full price covering the tyre, fitting and balancing, with no standard-hours call-out fee.",
   },
   {
     title: "Book a slot or emergency callout",
@@ -65,12 +65,7 @@ const SERVICES: { href: string; anchor: string; line: string }[] = [
   {
     href: "/services/mobile-tyre-repair",
     anchor: "Mobile tyre repair",
-    line: "Permanent BS AU 159 repairs carried out at the kerbside where the damage is safe and legal to fix.",
-  },
-  {
-    href: "/services/puncture-repair",
-    anchor: "Fix a slow puncture",
-    line: "Diagnosis and repair of slow punctures, nails and screws, plus valve replacement on the spot.",
+    line: "Permanent BS AU 159 repairs for slow punctures, nails and screws, plus valve replacement, carried out at the kerbside where the damage is safe and legal to fix.",
   },
   {
     href: "/services/emergency-tyre-fitting",
@@ -119,12 +114,13 @@ const SERVICES: { href: string; anchor: string; line: string }[] = [
 const FAQS: { q: string; text: string; answer: React.ReactNode }[] = [
   {
     q: "How much does mobile tyre fitting cost?",
-    text: "Fitting is a flat £20 per tyre with no call-out fee. The tyre itself is priced by its size and brand, and you get the full quote before a fitter sets off, so there are no surprises on the day.",
+    text: "Fitting is a flat £20 per tyre. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The tyre itself is priced by its size and brand, and you get the full quote before a fitter sets off, so there are no surprises on the day.",
     answer: (
       <>
-        Fitting is a flat £20 per tyre with no call-out fee. The tyre itself is
-        priced by its size and brand, and you get the full quote before a fitter
-        sets off, so there are no surprises on the day.
+        Fitting is a flat £20 per tyre. No standard-hours call-out fee. Any
+        out-of-hours charge is included in your confirmed quote before dispatch.
+        The tyre itself is priced by its size and brand, and you get the full
+        quote before a fitter sets off, so there are no surprises on the day.
       </>
     ),
   },
@@ -141,11 +137,12 @@ const FAQS: { q: string; text: string; answer: React.ReactNode }[] = [
   },
   {
     q: "Do you fit at home and at work?",
-    text: "Yes. A fitter comes to your driveway, your workplace car park or the roadside, wherever your vehicle is safely parked.",
+    text: "Yes. A fitter comes to your driveway, your workplace car park or the roadside, wherever your vehicle is safely parked. Home fitting runs with evening and weekend slots, and payment is taken contactlessly on-site.",
     answer: (
       <>
         Yes. A fitter comes to your driveway, your workplace car park or the
-        roadside, wherever your vehicle is safely parked.
+        roadside, wherever your vehicle is safely parked. Home fitting runs with
+        evening and weekend slots, and payment is taken contactlessly on-site.
       </>
     ),
   },
@@ -228,7 +225,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Mobile Tyre Fitting Near Me | 24/7, Come To You, £20 Fitting",
     absoluteTitle: true,
     description:
-      "Mobile tyre fitting across the UK that comes to you at home, work or roadside. £20 flat fitting fee, no call-out charge, same-day and 24/7 emergency slots. Call 0788 328 8831.",
+      "Mobile tyre fitting across the UK that comes to you at home, work or roadside. £20 flat fitting fee, no standard-hours call-out fee, same-day and 24/7 emergency slots. Call 0788 328 8831.",
     path: PAGE_PATH,
   });
 }
@@ -272,7 +269,7 @@ export default async function MobileTyreFittingPage() {
     settings,
     name: `${settings.brandName} - Mobile Tyre Fitting`,
     description:
-      "Mobile tyre fitting at your home, work or roadside across UK mainland. Tyres supplied, fitted and dynamically balanced on-site, with a £20 flat fitting fee, no call-out charge and 24/7 emergency response.",
+      "Mobile tyre fitting at your home, work or roadside across UK mainland. Tyres supplied, fitted and dynamically balanced on-site, with a £20 flat fitting fee, no standard-hours call-out fee and 24/7 emergency response.",
     url: PAGE_URL,
     areaServed: areaNames,
     image: settings.defaultOgImage,
@@ -336,7 +333,7 @@ export default async function MobileTyreFittingPage() {
     "@type": "Offer",
     name: "Mobile Tyre Fitting",
     description:
-      "Flat £20 per-tyre fitting fee covering technician travel, fitting, dynamic balancing and old-tyre disposal. No call-out fee in standard hours. The tyre is priced by size and quoted in full before dispatch.",
+      "Flat £20 per-tyre fitting fee covering technician travel, fitting, dynamic balancing and old-tyre disposal. No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The tyre is priced by size and quoted in full before dispatch.",
     price: "20",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
@@ -350,7 +347,7 @@ export default async function MobileTyreFittingPage() {
     "@type": "WebPage",
     name: "Mobile Tyre Fitting Near Me, At Home, Work or Roadside",
     description:
-      "Mobile tyre fitting across the UK that comes to you. £20 flat fitting fee, no call-out charge, same-day and 24/7 emergency slots.",
+      "Mobile tyre fitting across the UK that comes to you. £20 flat fitting fee, no standard-hours call-out fee, same-day and 24/7 emergency slots.",
     url: PAGE_URL,
     speakable: {
       "@type": "SpeakableSpecification",
@@ -385,7 +382,7 @@ export default async function MobileTyreFittingPage() {
               to visit a garage.
             </p>
             <p className="mt-3 text-base font-bold text-accent sm:text-lg">
-              £20 flat fitting fee, no call-out charge
+              £20 flat fitting fee, no standard-hours call-out fee
             </p>
             <CtaButtons
               phone={phone}
@@ -445,6 +442,26 @@ export default async function MobileTyreFittingPage() {
         </div>
       </section>
 
+      {/* 3b. FITTED AT HOME, ON YOUR DRIVEWAY (folded in from the retired
+          home-tyre-fitting page: home fitting is a location of mobile fitting,
+          not a separate service) */}
+      <section className="section-pad bg-secondary">
+        <div className="prose-col px-4">
+          <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">At home</p>
+          <h2 className="font-heading text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+            Fitted on Your Driveway or at Home
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-foreground/80">
+            Home tyre fitting is the most-booked way to use the service. A fitter arrives at your
+            driveway or kerbside, fits and balances the tyres while you carry on with your day, and
+            takes contactless payment on-site once the work is signed off. Evening and weekend slots
+            cover drivers who cannot take time out in working hours, and the same booking covers a
+            workplace car park where fitting at home is not practical. Nothing changes in the price:
+            home, work and roadside jobs all run to the same £20 flat fitting fee per tyre.
+          </p>
+        </div>
+      </section>
+
       {/* 4. HOW IT WORKS (visual step cards) */}
       <section className="section-pad bg-secondary">
         <div className="mx-auto max-w-7xl px-4">
@@ -499,14 +516,15 @@ export default async function MobileTyreFittingPage() {
           <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-accent">Pricing</p>
           <h2 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">Transparent Pricing</h2>
           <p className="mx-auto mt-6 max-w-2xl text-2xl font-extrabold sm:text-3xl">
-            £20 flat fitting fee per tyre. <span className="text-accent">No call-out fee, ever.</span>
+            £20 flat fitting fee per tyre. <span className="text-accent">No standard-hours call-out fee.</span>
           </p>
           <p className="pricing-summary mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">
-            Pricing stays simple. We charge a flat £20 fitting fee for each tyre, and there is no call-out fee,
-            ever, during standard hours. The tyre itself is priced by its size and specification, and we quote
-            the full amount before a fitter is dispatched, so the figure agreed is the figure paid. We stock
-            premium, mid-range and budget tyres, so you choose the brand that fits your vehicle and your budget.
-            Payment is taken on-site by card or cash once the work is signed off.
+            Pricing stays simple. We charge a flat £20 fitting fee for each tyre. No standard-hours call-out
+            fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The tyre itself
+            is priced by its size and specification, and we quote the full amount before a fitter is
+            dispatched, so the figure agreed is the figure paid. We stock premium, mid-range and budget tyres,
+            so you choose the brand that fits your vehicle and your budget. Payment is taken on-site by card
+            or cash once the work is signed off.
           </p>
         </div>
       </section>

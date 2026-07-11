@@ -204,7 +204,7 @@ export function RepairOrReplace() {
 }
 
 /* ===========================================================================
-   Section 8 - Emergency pricing (Variant A: no call-out fee, ever)
+   Section 8 - Emergency pricing (sitewide call-out claim)
    =========================================================================== */
 export function Pricing() {
   return (

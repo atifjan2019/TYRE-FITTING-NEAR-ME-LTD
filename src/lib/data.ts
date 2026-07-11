@@ -52,12 +52,18 @@ export const getSiteSettings = cache(async (): Promise<SiteSettingsData> => {
 // --- Services ----------------------------------------------------------------
 
 /**
- * Service slugs retired from the tyre-focused silo. Battery replacement is not a
- * confirmed offered service, so it is excluded site-wide (grid, pillar list,
- * dynamic route, sitemap) and its URL 301s to /services in next.config.ts. The
- * exclusion lives here so the DB row can stay without rendering anywhere.
+ * Service slugs retired from the tyre-focused silo, excluded site-wide (grid,
+ * pillar list, dynamic route, sitemap). The exclusion lives here so the DB rows
+ * can stay without rendering anywhere. Each URL 301s in next.config.ts:
+ *  - battery-replacement: not a confirmed offered service -> /services
+ *  - puncture-repair: merged into /services/mobile-tyre-repair
+ *  - home-tyre-fitting: merged into /services/mobile-tyre-fitting
  */
-export const EXCLUDED_SERVICE_SLUGS = new Set<string>(["battery-replacement"]);
+export const EXCLUDED_SERVICE_SLUGS = new Set<string>([
+  "battery-replacement",
+  "puncture-repair",
+  "home-tyre-fitting",
+]);
 
 export const getServices = cache(async () => {
   const services = await prisma.service.findMany({

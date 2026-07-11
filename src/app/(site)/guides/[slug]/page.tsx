@@ -13,7 +13,7 @@ import { RichText } from "@/components/rich-text";
 import { CtaBand } from "@/components/sections/cta-band";
 import { CtaButtons } from "@/components/sections/cta-buttons";
 import { BookingForm } from "@/components/forms/booking-form";
-import { LIVE_AREAS } from "@/data/areas";
+import { LIVE_AREAS, areaHref } from "@/data/areas";
 
 export const revalidate = 3600;
 
@@ -121,7 +121,7 @@ export default async function GuidePage({
         <Breadcrumbs items={crumbs} />
 
         <div className="mt-6 grid gap-10 lg:grid-cols-3">
-          {/* Article — left / main column */}
+          {/* Article: left / main column */}
           <article className="lg:col-span-2">
             <h1
               id="guide-title"
@@ -160,7 +160,7 @@ export default async function GuidePage({
             </div>
           </article>
 
-          {/* Sidebar — right column (sticky on desktop) */}
+          {/* Sidebar: right column (sticky on desktop) */}
           <aside className="lg:col-span-1">
             <div className="lg:sticky lg:top-24 space-y-6">
               {/* Quote form + CTA */}
@@ -215,7 +215,7 @@ export default async function GuidePage({
                     {sidebarAreas.map((a) => (
                       <Link
                         key={a.slug}
-                        href={`/areas/${a.slug}`}
+                        href={areaHref(a)}
                         className="inline-flex items-center gap-1 rounded-full border bg-secondary/40 px-3 py-1 text-xs font-medium hover:border-primary hover:text-primary"
                       >
                         <MapPin className="h-3 w-3" /> {a.town}
