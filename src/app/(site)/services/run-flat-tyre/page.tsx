@@ -268,7 +268,7 @@ export default async function RunFlatTyrePage() {
             phone={phone}
             whatsapp={whatsapp}
             title="Book Run-Flat Tyre Replacement Near You"
-            subtitle="Enter the registration and postcode in the form for planned replacement, or call and WhatsApp 0788 328 8831 for an active run-flat warning. Replacing run-flat tyres across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd."
+            subtitle="Enter the registration and postcode in the form for planned replacement, or call and WhatsApp 0788 328 8831 for an active run-flat warning. Replacing run-flat tyres across UK mainland postcodes from Tyre Fitting Near Me Ltd."
           />
         </Reveal>
       </div>

@@ -21,7 +21,6 @@ import {
   ADDITIONAL_SERVICES,
   BRAND_SPECIALISTS,
   HOMEPAGE_FAQS,
-  HOME_REVIEWS,
   SERVICE_REGIONS,
   FOUNDER,
 } from "@/lib/homepage-content";
@@ -55,7 +54,7 @@ export const revalidate = 3600;
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title:
-      "Mobile Tyre Fitting Near Me | 24/7 Call-Out Across London, Kent, Sussex, Essex, West Midlands & Scotland",
+      "Mobile Tyre Fitting Near Me | 24/7 Call-Out Across London, Kent, Sussex, Essex, West Midlands, Manchester & Scotland",
     absoluteTitle: true,
     description:
       "24/7 mobile tyre fitting that comes to your home, work or roadside. Certified, fully insured fitters supply, fit and balance car, van, SUV and EV tyres in 30 to 60 minutes. No call-out fee. Out-of-hours pricing is confirmed in your quote before dispatch.",
@@ -73,7 +72,6 @@ export default async function HomePage() {
   // Only link to destinations that actually exist (no shipped 404s).
   const serviceSlugs = new Set(services.map((s) => s.slug));
 
-  const reviewCount = stats.count > 0 ? stats.count : HOME_REVIEWS.length;
   const builtBrandSlugs = new Set(BRAND_PAGE_SLUGS);
 
   // ItemList of the premium/performance brand cluster pages (Section 6b).
@@ -89,27 +87,16 @@ export default async function HomePage() {
     })),
   };
 
-  // LocalBusiness node, augmented with rating + reviews.
+  // LocalBusiness node. FLAG: no AggregateRating/Review schema is emitted
+  // because the on-page testimonials are placeholder content and there is no
+  // verifiable Google Business Profile yet. Reinstate the rating + review
+  // markup only when real, verifiable reviews back it.
   const business: Record<string, unknown> = localBusinessJsonLd({
     settings,
     url: SITE.url,
     areaServed: SERVICE_REGIONS.map((r) => r.region),
     image: settings.defaultOgImage,
   });
-  business.aggregateRating = {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount,
-    bestRating: 5,
-    worstRating: 1,
-  };
-  business.review = HOME_REVIEWS.map((r) => ({
-    "@type": "Review",
-    reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-    author: { "@type": "Person", name: r.name },
-    datePublished: r.date,
-    reviewBody: r.body,
-  }));
 
   return (
     <>
@@ -166,7 +153,7 @@ export default async function HomePage() {
           phone={settings.phone}
           whatsapp={settings.whatsapp}
           title="Need a Mobile Tyre Fitter Now? We Arrive in 30 to 60 Minutes."
-          subtitle="Live availability across all six regions. No call-out fee. Out-of-hours pricing is confirmed in your quote before dispatch."
+          subtitle="Live availability across all seven regions. No call-out fee. Out-of-hours pricing is confirmed in your quote before dispatch."
           variant="navy"
         />
       </Reveal>
@@ -183,8 +170,8 @@ export default async function HomePage() {
       {/* 8. Transparent pricing */}
       <Reveal><PricingTable /></Reveal>
 
-      {/* 9. Real customer reviews */}
-      <Reveal><HomeReviews reviewCount={reviewCount} /></Reveal>
+      {/* 9. Customer testimonials (placeholder content - see HomeReviews FLAG) */}
+      <Reveal><HomeReviews /></Reveal>
 
       {/* Repeated postcode finder after reviews (reused component, no new copy) */}
       <Reveal>

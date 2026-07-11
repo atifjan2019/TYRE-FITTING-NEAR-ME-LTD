@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getServices, getSiteSettings } from "@/lib/data";
+import { SERVICE_REGIONS } from "@/lib/homepage-content";
 import { buildMetadata, breadcrumbJsonLd, localBusinessJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE } from "@/lib/site-config";
@@ -15,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "Our Mobile Tyre Services | Fitting, Repairs & More",
     description:
-      "From mobile tyre fitting and puncture repair to wheel balancing, TPMS and 24/7 emergency call-out, we bring the garage to you across the UK.",
+      "From mobile tyre fitting and puncture repair to wheel balancing, TPMS and 24/7 emergency call-out, we bring the garage to you across our seven UK coverage regions.",
     path: "/services",
   });
 }
@@ -54,9 +55,9 @@ export default async function ServicesIndexPage() {
           itemList,
           localBusinessJsonLd({
             settings,
-            name: `${settings.brandName} - Mobile Tyre Services`,
+            name: `Mobile Tyre Services | ${settings.brandName}`,
             url: `${SITE.url}/services`,
-            areaServed: ["United Kingdom"],
+            areaServed: SERVICE_REGIONS.map((r) => r.region),
           }),
         ]}
       />
@@ -72,7 +73,8 @@ export default async function ServicesIndexPage() {
           <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-foreground/90">
             Our full range of mobile tyre services comes to you. A trained, insured technician travels to your
-            home, workplace or roadside and carries out the whole job on-site, 24/7 across the UK through 2026.
+            home, workplace or roadside and carries out the whole job on-site, 24 hours a day, 365 days a year,
+            across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester.
             From a single puncture to a full set of four, every service is booked in minutes by registration or
             tyre size, with the price agreed before a fitter sets off.
           </p>
@@ -144,7 +146,8 @@ export default async function ServicesIndexPage() {
             .
           </p>
           <p className="mt-6 text-lg leading-relaxed text-foreground/80">
-            We cover towns across the UK. See every{" "}
+            We cover towns across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater
+            Manchester. See every{" "}
             <Link href="/areas" className="font-semibold text-accent underline">
               area we cover
             </Link>

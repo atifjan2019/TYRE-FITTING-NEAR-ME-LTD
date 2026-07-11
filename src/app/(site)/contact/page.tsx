@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "Contact Us | Tyre Fitting Near Me",
     description:
-      "Get in touch for 24/7 mobile tyre fitting. Call, WhatsApp or email - we come to you across the UK.",
+      "Get in touch for 24/7 mobile tyre fitting. Call, WhatsApp or email. We come to you across London, Kent, Sussex, Essex, the West Midlands, Scotland & Greater Manchester.",
     path: "/contact",
   });
 }
@@ -90,7 +90,7 @@ export default async function ContactPage() {
               <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary">
                 <MapPin className="h-5 w-5" />
               </span>
-              <span>Mobile service across London, Kent, Sussex, Essex, the West Midlands &amp; Scotland</span>
+              <span>Mobile service across London, Kent, Sussex, Essex, the West Midlands, Scotland &amp; Greater Manchester</span>
             </li>
           </ul>
         </div>

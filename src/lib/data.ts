@@ -16,7 +16,7 @@ import { prisma } from "@/lib/prisma";
 const DEFAULT_SETTINGS = {
   id: "settings",
   brandName: "Tyre Fitting Near Me Ltd",
-  tagline: "24/7 Mobile Tyre Fitting - We Come To You",
+  tagline: "24/7 Mobile Tyre Fitting. We Come To You",
   logo: null as string | null,
   favicon: null as string | null,
   // Fallback contact details so the call button + WhatsApp bubble still work if
@@ -36,7 +36,7 @@ const DEFAULT_SETTINGS = {
   tiktokUrl: null,
   defaultMetaTitle: "Mobile Tyre Fitting Near Me | 24/7 Call-Out",
   defaultMetaDescription:
-    "24/7 mobile tyre fitting that comes to you - home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
+    "24/7 mobile tyre fitting that comes to you at home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands, Scotland & Greater Manchester.",
   defaultOgImage: null,
 };
 

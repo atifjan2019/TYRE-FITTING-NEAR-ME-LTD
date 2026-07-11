@@ -4,7 +4,7 @@ import { WhatsAppIcon } from "@/components/icons/whatsapp";
 import { AvailabilityFinder } from "@/components/sections/availability-finder";
 import { HeroImage } from "@/components/sections/hero-image";
 import { telHref, whatsappHref } from "@/lib/utils";
-import { SITE, GOOGLE_REVIEWS_URL } from "@/lib/site-config";
+import { SITE } from "@/lib/site-config";
 import type { SiteSettingsData } from "@/lib/data";
 
 /**
@@ -20,14 +20,15 @@ export function Hero({
   settings: SiteSettingsData;
   stats: { average: number; count: number };
 }) {
-  const reviewCount = stats.count > 0 ? `${stats.count}+` : "50+";
+  // No invented review counts: the badge reflects the CMS average when real
+  // reviews exist, otherwise the customer testimonials shown further down.
   const ratingValue = stats.count > 0 ? stats.average.toFixed(1) : "5.0";
 
   // `shield` marks the insurance/no-fee guarantees that render as shield badges.
   const bullets: { text: string; shield?: boolean }[] = [
     { text: "24/7 emergency response, 365 days a year" },
     { text: "30 to 60 minute typical arrival" },
-    { text: `5.0 from ${reviewCount} verified Google reviews` },
+    { text: `Rated ${ratingValue} / 5 by drivers we've helped` },
     { text: "30+ mobile fittings completed every week" },
     { text: "Public liability insured up to £5,000,000", shield: true },
     { text: "No standard-hours call-out fee, all-in quote upfront", shield: true },
@@ -46,12 +47,13 @@ export function Hero({
             <span className="block text-primary">WE COME TO YOU, FAST</span>
           </h1>
 
-          {/* Google rating - larger gold stars, clickable to the reviews profile */}
+          {/* Customer rating badge. Links to the on-page testimonials. FLAG:
+              point this at the real Google Business Profile reviews URL (and
+              restore the Google wording) once the owner supplies a verifiable
+              profile with real reviews. */}
           <a
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${ratingValue} from ${reviewCount} verified Google reviews. Read reviews on Google.`}
+            href="#reviews"
+            aria-label={`Rated ${ratingValue} out of 5 by our customers. Read customer reviews.`}
             className="mt-5 inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 text-sm font-semibold shadow-sm transition-all duration-150 ease-out hover:scale-[1.02] hover:shadow-md active:scale-[0.97] motion-reduce:transform-none"
           >
             <span className="flex" aria-hidden>
@@ -60,13 +62,13 @@ export function Hero({
               ))}
             </span>
             <span className="text-base font-bold text-primary">{ratingValue}</span>
-            <span className="text-muted-foreground">/ 5 on Google</span>
+            <span className="text-muted-foreground">/ 5 customer rating</span>
           </a>
 
           <p className="mt-5 max-w-xl text-base text-muted-foreground">
             Tyre Fitting Near Me Ltd is a 24/7 mobile tyre fitting service for car,
             van, SUV, EV and fleet drivers across London, Kent, Sussex, Essex, the
-            West Midlands and Scotland. Our fully insured certified fitters supply,
+            West Midlands, Scotland and Greater Manchester. Our fully insured certified fitters supply,
             fit and balance tyres at your home, work or roadside, returning you to
             the road within 30 to 60 minutes.
           </p>

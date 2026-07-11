@@ -16,7 +16,7 @@ export function TyreBrands() {
         <SectionHeading
           eyebrow="Tyre brands"
           title="Premium and Budget Tyre Brands Supplied and Fitted On-Site"
-          subtitle="Tyre Fitting Near Me Ltd supplies and fits premium, mid-range and budget tyre brands for car, van, SUV and EV drivers across the UK, using certified mobile fitters and calibrated balancing equipment, with most fitted on-site within 30 to 60 minutes."
+          subtitle="Tyre Fitting Near Me Ltd supplies and fits premium, mid-range and budget tyre brands for car, van, SUV and EV drivers across our seven UK coverage regions, using certified mobile fitters and calibrated balancing equipment, with most fitted on-site within 30 to 60 minutes."
         />
 
         {BRAND_LOGOS.length ? (

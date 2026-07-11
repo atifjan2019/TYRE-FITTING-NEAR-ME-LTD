@@ -89,10 +89,10 @@ export function BookingForm({
         setLookupError("We couldn't find that registration. Check it and try again.");
       } else {
         // Not configured / temporarily down: keep the plate, skip the lookup.
-        setLookupError("Couldn't look that up right now — we'll confirm your vehicle when we call.");
+        setLookupError("Couldn't look that up right now. We'll confirm your vehicle when we call.");
       }
     } catch {
-      setLookupError("Couldn't look that up right now — we'll confirm your vehicle when we call.");
+      setLookupError("Couldn't look that up right now. We'll confirm your vehicle when we call.");
     } finally {
       setLooking(false);
     }

@@ -16,7 +16,6 @@ import { SITE } from "@/lib/site-config";
 import { SERVICE_REGIONS } from "@/lib/homepage-content";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/icons/whatsapp";
-import { GoogleGlyph } from "@/components/icons/google-glyph";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { AreasSemantic } from "@/components/sections/areas-semantic";
 import { FaqSection } from "@/components/sections/faq-section";
@@ -183,7 +182,7 @@ export default async function BrandPage({
           <SectionHeading
             eyebrow="Models we service"
             title={`${page.brand} Models Our Mobile Tyre Fitters Service`}
-            subtitle={`We fit OE-spec tyres on-site for owners across our six UK regions, covering the full current ${page.brand} range and recent generations, balanced and torqued to manufacturer specification.`}
+            subtitle={`We fit OE-spec tyres on-site for owners across our seven UK regions, covering the full current ${page.brand} range and recent generations, balanced and torqued to manufacturer specification.`}
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {page.modelGroups.map((g) => (
@@ -296,7 +295,7 @@ export default async function BrandPage({
             <Link href="/services/mobile-tyre-fitting" className="font-medium text-accent hover:underline">
               mobile tyre fitting
             </Link>{" "}
-            covers all makes across the same six regions.
+            covers all makes across the same seven regions.
           </p>
         </div>
       </section>
@@ -305,7 +304,7 @@ export default async function BrandPage({
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            eyebrow="5.0 / 5.0 on Google"
+            eyebrow="Rated 5.0 by our customers"
             title={`What ${page.brand} Drivers Say About Our Mobile Tyre Service`}
           />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -317,7 +316,6 @@ export default async function BrandPage({
                       <Star key={i} className="h-5 w-5 fill-accent text-accent" />
                     ))}
                   </div>
-                  <GoogleGlyph className="h-5 w-5" />
                 </div>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
                   &ldquo;{r.body}&rdquo;

@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { REGIONS } from "@/data/regions";
 
 /**
- * Areas-covered section: the six region hubs, each linking to /areas/[region],
+ * Areas-covered section: the seven region hubs, each linking to /areas/[region],
  * with a few of its towns surfaced beneath. Live towns link directly to their
  * nested /areas/[region]/[town] page; towns without a page render as plain
  * text, never a 404. Doubles as a strong internal-linking block for local SEO.
@@ -17,7 +17,7 @@ export function AreasCovered({ heading = true }: { heading?: boolean }) {
           <SectionHeading
             eyebrow="Local to you"
             title="Areas we cover"
-            subtitle="Mobile tyre fitting across the UK. Find your region below or just give us a call."
+            subtitle="Mobile tyre fitting across seven UK regions. Find your region below or just give us a call."
           />
         ) : null}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

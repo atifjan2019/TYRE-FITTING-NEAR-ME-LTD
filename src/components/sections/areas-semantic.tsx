@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { SERVICE_REGIONS } from "@/lib/homepage-content";
 
 /**
- * Section 11 - Areas we cover. Six regions, each with eight town entities named
+ * Section 11 - Areas we cover. Seven regions, each with eight town entities named
  * in visible copy for local semantic coverage. Region titles link to the
  * regional tier at /areas/[region]; towns are listed as visible body copy.
  */
@@ -15,7 +15,7 @@ export function AreasSemantic() {
         <SectionHeading
           eyebrow="Areas we cover"
           title="Mobile Tyre Fitting Areas Across the UK"
-          subtitle="Tyre Fitting Near Me Ltd covers six regions for home, workplace and roadside drivers, dispatching the nearest insured mobile fitter to towns across London, Kent, Sussex, Essex, the West Midlands and Scotland."
+          subtitle="Tyre Fitting Near Me Ltd covers seven regions for home, workplace and roadside drivers, dispatching the nearest insured mobile fitter to towns across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester."
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -162,7 +162,7 @@ export const CHECKLIST: { title: string }[] = [
 // --- Section 12: Coverage ----------------------------------------------------
 
 export const AREAS_INTRO =
-  "Coverage spans UK mainland, postcode-verified at booking. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, and Scotland. City pages list local response times and slots for each area.";
+  "Coverage spans UK mainland, postcode-verified at booking. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, Scotland and Greater Manchester. City pages list local response times and slots for each area.";
 
 export const AREAS: { region: string; featured: string; cities: string[]; href: string }[] = [
   { region: "London", featured: "Bromley", cities: ["Croydon", "Romford", "Enfield", "Kingston"], href: "/areas/london" },
@@ -171,6 +171,7 @@ export const AREAS: { region: string; featured: string; cities: string[]; href: 
   { region: "Essex", featured: "Chelmsford", cities: ["Colchester", "Basildon", "Southend", "Harlow"], href: "/areas/essex" },
   { region: "Birmingham & West Midlands", featured: "Solihull", cities: ["Coventry", "Wolverhampton", "Walsall", "Dudley"], href: "/areas/west-midlands" },
   { region: "Scotland", featured: "Glasgow", cities: ["Edinburgh", "Aberdeen", "Dundee", "Stirling"], href: "/areas/scotland" },
+  { region: "Greater Manchester", featured: "Stockport", cities: ["Salford", "Bolton", "Bury", "Wigan"], href: "/areas/manchester" },
 ];
 
 // --- Section 13: Case study --------------------------------------------------

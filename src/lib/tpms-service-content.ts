@@ -22,7 +22,7 @@ export const PRICE = "£15";
 
 export const HERO = {
   definition:
-    "TPMS service is the maintenance of a vehicle's tyre pressure monitoring system, covering replacement of the perishable valve service pack, replacement of a failed sensor with a dead sealed battery, and a diagnostic reset of the dashboard warning light. Performed mobile at the home or workplace, every day of the year through 2026.",
+    "TPMS service is the maintenance of a vehicle's tyre pressure monitoring system, covering replacement of the perishable valve service pack, replacement of a failed sensor with a dead sealed battery, and a diagnostic reset of the dashboard warning light. Performed mobile at the home or workplace, every day of the year.",
   ticks: [
     "Valve service from £15 per wheel",
     "Sensor replacement from £45",
@@ -160,7 +160,7 @@ export const CHECKLIST: { title: string; body: string; link?: boolean }[] = [
 // --- Section 12: Coverage ----------------------------------------------------
 
 export const AREAS_INTRO =
-  "Coverage spans UK mainland, postcode-verified at booking. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, and Scotland. City pages carry local response times and slots.";
+  "Coverage spans UK mainland, postcode-verified at booking. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, Scotland and Greater Manchester. City pages carry local response times and slots.";
 
 export const AREAS: { region: string; featured: string; cities: string[]; href: string }[] = [
   { region: "London", featured: "Bromley", cities: ["Croydon", "Romford", "Enfield", "Kingston"], href: "/areas/london" },
@@ -169,6 +169,7 @@ export const AREAS: { region: string; featured: string; cities: string[]; href: 
   { region: "Essex", featured: "Chelmsford", cities: ["Colchester", "Basildon", "Southend", "Harlow"], href: "/areas/essex" },
   { region: "Birmingham & West Midlands", featured: "Solihull", cities: ["Coventry", "Wolverhampton", "Walsall", "Dudley"], href: "/areas/west-midlands" },
   { region: "Scotland", featured: "Glasgow", cities: ["Edinburgh", "Aberdeen", "Dundee", "Stirling"], href: "/areas/scotland" },
+  { region: "Greater Manchester", featured: "Stockport", cities: ["Salford", "Bolton", "Bury", "Wigan"], href: "/areas/manchester" },
 ];
 
 // --- Section 13: Case study --------------------------------------------------

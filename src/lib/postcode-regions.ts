@@ -6,7 +6,7 @@
  * can refine it as coverage grows. Unknown postcodes fall back to /areas.
  *
  * Region slugs must match the County slugs in the CMS:
- *   london | kent | sussex | essex | west-midlands | scotland
+ *   london | kent | sussex | essex | west-midlands | scotland | manchester
  */
 const POSTCODE_AREA_TO_REGION: Record<string, string> = {
   // London (Greater London postcode areas + key outer boroughs)
@@ -33,6 +33,10 @@ const POSTCODE_AREA_TO_REGION: Record<string, string> = {
   FK: "scotland", G: "scotland", HS: "scotland", IV: "scotland",
   KA: "scotland", KW: "scotland", KY: "scotland", ML: "scotland",
   PA: "scotland", PH: "scotland", TD: "scotland", ZE: "scotland",
+
+  // Greater Manchester (matches regions.ts postcodeAreas)
+  M: "manchester", SK: "manchester", OL: "manchester",
+  BL: "manchester", WN: "manchester",
 };
 
 /** Extract the postcode area (1-2 leading letters) and map it to a region slug. */

@@ -48,7 +48,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     hero: {
       h1: "BMW Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits OE-spec and run-flat tyres for BMW owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using BMW-approved tyre brands and torque equipment set to BMW manufacturer specification, returning your car to the road within 30 to 60 minutes.",
+        "Tyre Fitting Near Me Ltd supplies and fits OE-spec and run-flat tyres for BMW owners across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, using BMW-approved tyre brands and torque equipment set to BMW manufacturer specification, returning your car to the road within 30 to 60 minutes.",
       bullets: [
         "Run-flat tyre specialist for BMW models",
         "BMW-approved brands stocked (Michelin, Continental, Pirelli, Bridgestone, Goodyear)",
@@ -68,7 +68,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { label: "Roadster and classic", models: ["Z4 (current)", "historic 6 Series", "historic 8 Series"] },
     ],
     oeIntro:
-      "We match the exact tyre specification BMW approves for your model, fitting star-marked OE tyres on-site for BMW owners across our six UK regions, using calibrated balancing and torque equipment, so your car keeps its handling, ride and warranty integrity.",
+      "We match the exact tyre specification BMW approves for your model, fitting star-marked OE tyres on-site for BMW owners across our seven UK regions, using calibrated balancing and torque equipment, so your car keeps its handling, ride and warranty integrity.",
     oePoints: [
       "BMW OE marking: the star (★) marking identifies BMW-approved tyres tuned for your chassis",
       "Run-flat is OE on most modern 3 Series, 5 Series, 7 Series, X3, X5 and X7",
@@ -179,7 +179,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     hero: {
       h1: "Tesla Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits T0-marked and acoustic-foam OE tyres for Tesla owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using Tesla-tuned compounds and torque equipment set to Tesla specification, returning the car to the road within 30 to 60 minutes.",
+        "Tyre Fitting Near Me Ltd supplies and fits T0-marked and acoustic-foam OE tyres for Tesla owners across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, using Tesla-tuned compounds and torque equipment set to Tesla specification, returning the car to the road within 30 to 60 minutes.",
       bullets: [
         "EV-specialist mobile tyre fitting for Tesla",
         "24/7 mobile service 365 days a year",
@@ -219,7 +219,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     s5Eyebrow: "Range, load and acoustic foam",
     s5Title: "Range, Load and Acoustic Foam Matched to Your Tesla",
     tpmsBody:
-      "Low rolling resistance preserves range, so we fit the OE-spec tyre rather than a cheaper higher-resistance one. The higher load index is matched to the battery weight, and acoustic foam is preserved where the model came with it. Pressures are set to the Tesla figure, which is higher than many cars to support the weight and range. TPMS is reset through the Tesla relearn procedure so the car reads the new tyres correctly. Through 2026 EV tyre demand keeps rising as more Tesla owners reach their first replacement, so we hold T-marked stock across the brands Tesla approves. We return the car to the road within 30 to 60 minutes with the correct specification fitted.",
+      "Low rolling resistance preserves range, so we fit the OE-spec tyre rather than a cheaper higher-resistance one. The higher load index is matched to the battery weight, and acoustic foam is preserved where the model came with it. Pressures are set to the Tesla figure, which is higher than many cars to support the weight and range. TPMS is reset through the Tesla relearn procedure so the car reads the new tyres correctly. EV tyre demand keeps rising as more Tesla owners reach their first replacement, so we hold T-marked stock across the brands Tesla approves. We return the car to the road within 30 to 60 minutes with the correct specification fitted.",
     reviews: [
       { id: "tesla-rev-1", name: "James P.", location: "Bromley, London", date: "March 2026", rating: 5, body: "Picked up a nail in my Model 3 on the school run and they came to my driveway within the hour. Fitted the correct T-marked Michelin with the acoustic foam and reset the pressure warning before they left." },
       { id: "tesla-rev-2", name: "Sophie L.", location: "Maidstone, Kent", date: "April 2026", rating: 5, body: "My Model Y needed two rear tyres and I was worried about getting the EV-rated spec right. They matched it from the registration and set the pressures to the Tesla figure. Quiet and smooth on the drive home." },
@@ -234,7 +234,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     ],
     faqs: [
       { id: "tesla-faq-1", question: "Do you fit acoustic-foam tyres for Tesla?", answer: "Yes. We fit foam-lined OE-spec tyres where the model came with them, matched from the registration so the cabin noise and rolling resistance stay correct." },
-      { id: "tesla-faq-2", question: "Are Tesla tyres different from normal tyres?", answer: "Yes. Tesla tyres carry a higher load index for the battery weight, an EV compound for the instant torque and often acoustic foam inside. Through 2026 EV tyre demand keeps rising as more owners reach their first replacement." },
+      { id: "tesla-faq-2", question: "Are Tesla tyres different from normal tyres?", answer: "Yes. Tesla tyres carry a higher load index for the battery weight, an EV compound for the instant torque and often acoustic foam inside. EV tyre demand keeps rising as more owners reach their first replacement." },
       { id: "tesla-faq-3", question: "Do you reset the Tesla tyre pressure warning?", answer: "Yes. We reset the system through the Tesla relearn procedure so the car reads the new tyres correctly before we leave." },
       { id: "tesla-faq-4", question: "Can I fit standard tyres to my Tesla?", answer: "Not safely below the required load index. A non-foam tyre also changes the cabin noise and cuts range, so we fit the correct T-marked OE spec." },
       { id: "tesla-faq-5", question: "Which Tesla models do you fit?", answer: "We fit Model 3, Model Y, Model S and Model X, including the Performance and Plaid versions." },
@@ -252,7 +252,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     hero: {
       h1: "Audi Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits AO and RO1-marked OE-spec tyres for Audi owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using Audi-approved brands and torque equipment set to Audi specification, returning the car to the road within 30 to 60 minutes through 2026.",
+        "Tyre Fitting Near Me Ltd supplies and fits AO and RO1-marked OE-spec tyres for Audi owners across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, using Audi-approved brands and torque equipment set to Audi specification, returning the car to the road within 30 to 60 minutes.",
       bullets: [
         "Audi-approved AO and RO1 tyres stocked",
         "24/7 mobile service 365 days a year",
@@ -327,7 +327,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     hero: {
       h1: "Mercedes-Benz Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits MO and MO1-marked OE and run-flat tyres for Mercedes-Benz owners across London, Kent, Sussex, Essex, the West Midlands and Scotland throughout 2026, using Mercedes-approved brands and torque equipment set to Mercedes specification, returning the car to the road within 30 to 60 minutes.",
+        "Tyre Fitting Near Me Ltd supplies and fits MO and MO1-marked OE and run-flat tyres for Mercedes-Benz owners across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, using Mercedes-approved brands and torque equipment set to Mercedes specification, returning the car to the road within 30 to 60 minutes.",
       bullets: [
         "Run-flat and MO-approved tyre specialist for Mercedes",
         "24/7 mobile service 365 days a year",
@@ -402,7 +402,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     hero: {
       h1: "Range Rover Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits OE-spec load-rated tyres for Range Rover and Land Rover owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using approved brands and torque equipment set to manufacturer specification, returning the vehicle to the road within 30 to 60 minutes throughout 2026.",
+        "Tyre Fitting Near Me Ltd supplies and fits OE-spec load-rated tyres for Range Rover and Land Rover owners across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, using approved brands and torque equipment set to manufacturer specification, returning the vehicle to the road within 30 to 60 minutes.",
       bullets: [
         "On-road and all-terrain load-rated tyres for Range Rover and Land Rover",
         "24/7 mobile service 365 days a year",
@@ -463,7 +463,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
       { id: "range-rover-faq-5", question: "Do you fit 21 and 22 inch wheels?", answer: "Yes. Larger low-profile sizes are fitted with care to protect the rim, using calibrated equipment so the wheel and tyre are not damaged during fitting." },
       { id: "range-rover-faq-6", question: "Do you fit all-terrain tyres on a Defender?", answer: "Yes. We fit genuine all-terrain options matched to off-road use, load-rated for the Defender and suited to how the vehicle is driven." },
       { id: "range-rover-faq-7", question: "Do bigger wheels cost more?", answer: "Larger 21 and 22 inch sizes cost more than smaller wheels. We quote the exact price from the registration so the figure matches the tyre your vehicle needs." },
-      { id: "range-rover-faq-8", question: "How quickly can you reach a stranded Range Rover?", answer: "A typical response is 30 to 60 minutes, 24/7, across London, Kent, Sussex, Essex, the West Midlands and Scotland." },
+      { id: "range-rover-faq-8", question: "How quickly can you reach a stranded Range Rover?", answer: "A typical response is 30 to 60 minutes, 24/7, across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester." },
     ],
     metaTitle: "Range Rover Mobile Tyre Fitting | On-Road & All-Terrain, We Come To You",
     metaDescription: "Load-rated on-road and all-terrain tyres for Range Rover and Land Rover, TPMS reset included, back on the road in 30 to 60 minutes. Call 0788 328 8831.",
@@ -475,7 +475,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     hero: {
       h1: "Porsche Mobile Tyre Fitting at Your Home, Work or Roadside in 30 to 60 Minutes",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits N-rated (N0, N1, N2) approved tyres for Porsche owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, using Porsche-approved brands and torque equipment set to Porsche specification, returning the car to the road within 30 to 60 minutes throughout 2026.",
+        "Tyre Fitting Near Me Ltd supplies and fits N-rated (N0, N1, N2) approved tyres for Porsche owners across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, using Porsche-approved brands and torque equipment set to Porsche specification, returning the car to the road within 30 to 60 minutes.",
       bullets: [
         "N-rated Porsche-approved tyre specialist",
         "24/7 mobile service 365 days a year",
@@ -551,7 +551,7 @@ export const BRAND_PAGES: Record<string, BrandPage> = {
     hero: {
       h1: "Performance and Prestige Mobile Tyre Fitting at Your Home or Private Location",
       intro:
-        "Tyre Fitting Near Me Ltd supplies and fits manufacturer-approved tyres for Ferrari, McLaren, Lamborghini, Rolls-Royce and Bentley owners across London, Kent, Sussex, Essex, the West Midlands and Scotland, matching the exact approval marking and staggered size from the registration and torquing every wheel to the manufacturer figure, with the work carried out discreetly at your chosen location.",
+        "Tyre Fitting Near Me Ltd supplies and fits manufacturer-approved tyres for Ferrari, McLaren, Lamborghini, Rolls-Royce and Bentley owners across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, matching the exact approval marking and staggered size from the registration and torquing every wheel to the manufacturer figure, with the work carried out discreetly at your chosen location.",
       bullets: [
         "Approval-marked tyres: K1 and F (Ferrari), MC (McLaren), L (Lamborghini), RR (Rolls-Royce), Bentley OE",
         "Staggered fitments placed to the correct axle with the rotation direction set right",

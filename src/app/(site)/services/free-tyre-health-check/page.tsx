@@ -276,7 +276,7 @@ export default async function FreeTyreHealthCheckPage() {
             phone={phone}
             whatsapp={whatsapp}
             title="Book Your Free Tyre Health Check"
-            subtitle="Enter your registration and postcode in the form, or call or WhatsApp 0788 328 8831. No charge and no obligation. Free mobile tyre health checks across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd."
+            subtitle="Enter your registration and postcode in the form, or call or WhatsApp 0788 328 8831. No charge and no obligation. Free mobile tyre health checks across UK mainland postcodes from Tyre Fitting Near Me Ltd."
           />
         </Reveal>
       </div>

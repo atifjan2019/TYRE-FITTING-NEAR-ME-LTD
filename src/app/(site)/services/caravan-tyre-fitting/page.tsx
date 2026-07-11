@@ -268,7 +268,7 @@ export default async function CaravanTyreFittingPage() {
         <Reveal>
           <CaravanCtaBand
             title="Book Caravan and Motorhome Tyre Fitting Near You"
-            subtitle="Enter the tyre size or registration, postcode and location type in the form for planned pre-trip fitting, or call and WhatsApp for urgent and roadside help. Fitting caravan and motorhome tyres on-site across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd."
+            subtitle="Enter the tyre size or registration, postcode and location type in the form for planned pre-trip fitting, or call and WhatsApp for urgent and roadside help. Fitting caravan and motorhome tyres on-site across UK mainland postcodes from Tyre Fitting Near Me Ltd."
           />
         </Reveal>
       </div>

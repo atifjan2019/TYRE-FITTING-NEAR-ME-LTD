@@ -172,10 +172,10 @@ const FAQS: { q: string; text: string; answer: React.ReactNode }[] = [
   },
   {
     q: "What areas do you cover?",
-    text: "We cover London, Kent, Sussex, Essex, the West Midlands and Scotland, with new towns added regularly. See the full list on our areas we cover hub.",
+    text: "We cover London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, with new towns added regularly. See the full list on our areas we cover hub.",
     answer: (
       <>
-        We cover London, Kent, Sussex, Essex, the West Midlands and Scotland,
+        We cover London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester,
         with new towns added regularly. See the full list on our{" "}
         <Link href="/areas" className="font-semibold text-accent underline">
           areas we cover
@@ -429,13 +429,14 @@ export default async function MobileTyreFittingPage() {
             Mobile tyre fitting brings a fully equipped tyre service to wherever your vehicle is parked. A trained
             fitter travels to you with the right tyres, a mobile rig and calibrated balancing gear, then carries
             out the whole job on your driveway, in a car park or at the roadside. The service suits busy drivers,
-            parents, fleet operators and anyone facing a flat away from home. Through 2026 we cover{" "}
+            parents, fleet operators and anyone facing a flat away from home. We cover{" "}
             <strong className="font-semibold text-primary">London</strong>,{" "}
             <strong className="font-semibold text-primary">Kent</strong>,{" "}
             <strong className="font-semibold text-primary">Sussex</strong>,{" "}
             <strong className="font-semibold text-primary">Essex</strong>, the{" "}
-            <strong className="font-semibold text-primary">West Midlands</strong> and{" "}
-            <strong className="font-semibold text-primary">Scotland</strong>, with same-day and 24/7 emergency
+            <strong className="font-semibold text-primary">West Midlands</strong>,{" "}
+            <strong className="font-semibold text-primary">Scotland</strong> and{" "}
+            <strong className="font-semibold text-primary">Greater Manchester</strong>, with same-day and 24/7 emergency
             slots. Booking takes about a minute by registration or tyre size, and payment is taken on-site by card
             or cash.
           </p>
@@ -605,7 +606,7 @@ export default async function MobileTyreFittingPage() {
         </div>
       </section>
 
-      {/* 10. AREAS WE COVER (single six-region grid, links to /areas/[region]) */}
+      {/* 10. AREAS WE COVER (single seven-region grid, links to /areas/[region]) */}
       <AreasCovered />
 
       {/* 11. FINAL CTA BAND */}

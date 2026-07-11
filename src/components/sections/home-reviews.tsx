@@ -1,8 +1,6 @@
 import { Star } from "lucide-react";
 import { SectionHeading } from "@/components/sections/section-heading";
-import { GoogleGlyph } from "@/components/icons/google-glyph";
 import { HOME_REVIEWS } from "@/lib/homepage-content";
-import { GOOGLE_REVIEWS_URL } from "@/lib/site-config";
 
 // Distinct circular-avatar colours, cycled by card index.
 const AVATAR_COLORS = [
@@ -26,27 +24,25 @@ function initials(name: string): string {
 }
 
 /**
- * Section 9 - Customer reviews. Six review cards (3x2 grid on desktop, horizontal
- * swipe carousel on mobile). Content is placeholder until the owner swaps in real
- * Google reviews (flagged in the audit). Matching Review + AggregateRating schema
- * is emitted by the homepage.
+ * Section 9 - Customer testimonials. Six cards (3x2 grid on desktop, horizontal
+ * swipe carousel on mobile). The stated count always equals the cards shown.
+ *
+ * FLAG: HOME_REVIEWS is placeholder testimonial content. These are deliberately
+ * NOT labelled as Google reviews and carry no Review/AggregateRating schema.
+ * Once the owner supplies a real Google Business Profile URL and real posted
+ * reviews, swap the content in homepage-content.ts, restore the Google wording
+ * and link, and reinstate the schema on the homepage.
  */
-export function HomeReviews({
-  reviewCount,
-  googleUrl = GOOGLE_REVIEWS_URL,
-}: {
-  reviewCount: number;
-  googleUrl?: string;
-}) {
-  const countLabel = reviewCount > 0 ? `${reviewCount}` : "50+";
+export function HomeReviews() {
+  const countLabel = `${HOME_REVIEWS.length}`;
 
   return (
-    <section aria-labelledby="reviews-heading" className="py-16 sm:py-24">
+    <section id="reviews" aria-labelledby="reviews-heading" className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeading
-          eyebrow={`5.0 / 5.0 on Google · ${countLabel} verified reviews`}
+          eyebrow={`Rated 5.0 / 5.0 · ${countLabel} customer testimonials`}
           title="What UK Drivers Say About Our Mobile Tyre Fitting Service"
-          subtitle="Verified reviews from drivers across London, Kent, Sussex, Essex, the West Midlands and Scotland, posted after on-site mobile tyre fittings by Tyre Fitting Near Me Ltd, confirming arrival times, workmanship and pricing."
+          subtitle="Customer testimonials from drivers across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, shared after on-site mobile tyre fittings by Tyre Fitting Near Me Ltd, describing arrival times, workmanship and pricing."
         />
 
         <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3">
@@ -61,7 +57,6 @@ export function HomeReviews({
                     <Star key={i} className="h-5 w-5 fill-accent text-accent" />
                   ))}
                 </div>
-                <GoogleGlyph className="h-5 w-5" />
               </div>
               <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
                 &ldquo;{review.body}&rdquo;
@@ -82,17 +77,6 @@ export function HomeReviews({
               </footer>
             </article>
           ))}
-        </div>
-
-        <div className="mt-8 text-center">
-          <a
-            href={googleUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-150 ease-out hover:scale-[1.02] hover:bg-secondary hover:shadow-md active:scale-[0.97] motion-reduce:transform-none"
-          >
-            <GoogleGlyph className="h-4 w-4" /> Read all reviews on Google
-          </a>
         </div>
       </div>
     </section>

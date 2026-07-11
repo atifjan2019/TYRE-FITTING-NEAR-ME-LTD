@@ -110,7 +110,7 @@ export function AvailabilityFinder() {
 
       {/* Genuine demand-pattern social proof (not a fake live counter). */}
       <p className="mt-2 text-center text-sm font-medium text-[var(--color-whatsapp-dark)] sm:text-left">
-        Mobile fitters available across all six regions now.
+        Mobile fitters available across all seven regions now.
       </p>
 
       <form onSubmit={onSubmit} className="mt-5" noValidate>

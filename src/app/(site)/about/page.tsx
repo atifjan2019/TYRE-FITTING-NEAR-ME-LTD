@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "About Us | Tyre Fitting Near Me",
     description:
-      "A 24/7 mobile tyre fitting service that comes to you - home, work or roadside, across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
+      "A 24/7 mobile tyre fitting service that comes to you at home, work or roadside, across London, Kent, Sussex, Essex, the West Midlands, Scotland & Greater Manchester.",
     path: "/about",
   });
 }
@@ -62,7 +62,7 @@ export default async function AboutPage() {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHero
         title="About Tyre Fitting Near Me"
-        subtitle="A mobile-first tyre service built around one idea: getting you safely back on the road, fast - wherever you are."
+        subtitle="A mobile-first tyre service built around one idea: getting you safely back on the road, fast, wherever you are."
         crumbs={crumbs}
       />
 
@@ -72,21 +72,21 @@ export default async function AboutPage() {
           <div className="prose-content lg:col-span-2">
             <p>
               {settings.brandName} is a fully mobile tyre service. We don&apos;t run
-              a shop or expect you to limp a dangerous tyre to a garage - instead,
+              a shop or expect you to limp a dangerous tyre to a garage. Instead,
               our technicians come to you with everything needed to fit, balance
               and repair tyres on the spot.
             </p>
             <p>
               We&apos;re built around speed, honest pricing and genuinely caring
-              about getting drivers moving again - especially when they&apos;re
+              about getting drivers moving again, especially when they&apos;re
               stranded at the roadside. No standard-hours call-out fee, no garage
               queues, just a fast fitter at your door, with any out-of-hours
               charge included in your confirmed quote before dispatch.
             </p>
             <p>
               We cover London, Kent, Sussex, Essex, Birmingham &amp; the West
-              Midlands, and Scotland, fitting all major tyre brands for cars, vans
-              and 4x4s.
+              Midlands, Scotland and Greater Manchester, fitting all major tyre
+              brands for cars, vans and 4x4s.
             </p>
           </div>
 

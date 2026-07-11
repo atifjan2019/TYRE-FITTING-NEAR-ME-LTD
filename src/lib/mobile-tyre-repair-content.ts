@@ -20,7 +20,7 @@ export const PRICE = "£39";
 
 export const HERO = {
   definition:
-    "Mobile puncture repair is a callout service where a qualified technician travels to your vehicle, assesses the tyre against BS AU 159, and completes a permanent plug-patch repair on-site at your home, workplace or roadside. Drivers across the UK book this service in 2026 to keep a repairable tyre and skip the garage queue.",
+    "Mobile puncture repair is a callout service where a qualified technician travels to your vehicle, assesses the tyre against BS AU 159, and completes a permanent plug-patch repair on-site at your home, workplace or roadside. Drivers across our coverage regions book this service to keep a repairable tyre and skip the garage queue.",
   ticks: [
     "24/7 availability",
     "60-minute emergency response",
@@ -241,6 +241,7 @@ export const AREAS: { region: string; featured: string; cities: string[]; href: 
   { region: "Essex", featured: "Chelmsford", cities: ["Colchester", "Basildon", "Southend", "Harlow"], href: "/areas/essex" },
   { region: "Birmingham & West Midlands", featured: "Solihull", cities: ["Coventry", "Wolverhampton", "Walsall", "Dudley"], href: "/areas/west-midlands" },
   { region: "Scotland", featured: "Glasgow", cities: ["Edinburgh", "Aberdeen", "Dundee", "Stirling"], href: "/areas/scotland" },
+  { region: "Greater Manchester", featured: "Stockport", cities: ["Salford", "Bolton", "Bury", "Wigan"], href: "/areas/manchester" },
 ];
 
 // --- Section 14: Case study --------------------------------------------------

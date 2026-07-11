@@ -267,7 +267,7 @@ export default async function MobileTyreRepairPage() {
             phone={phone}
             whatsapp={whatsapp}
             title="Book Mobile Puncture Repair Near You"
-            subtitle={`Book through the form with your postcode and registration, or call or WhatsApp 0788 328 8831 for an emergency callout. 24/7 cover, a 60-minute emergency response target, permanent BS AU 159 repairs from ${PRICE}. Available now across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd.`}
+            subtitle={`Book through the form with your postcode and registration, or call or WhatsApp 0788 328 8831 for an emergency callout. 24/7 cover, a 60-minute emergency response target, permanent BS AU 159 repairs from ${PRICE}. Available now across UK mainland postcodes from Tyre Fitting Near Me Ltd.`}
           />
         </Reveal>
       </div>

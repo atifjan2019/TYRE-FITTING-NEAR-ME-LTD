@@ -31,7 +31,7 @@ export function ReviewsSection({
           <SectionHeading
             eyebrow="Don't just take our word for it"
             title="What our customers say"
-            subtitle="Real reviews from drivers we've helped across the UK."
+            subtitle="Reviews from drivers we've helped across our coverage regions."
           />
         ) : null}
 

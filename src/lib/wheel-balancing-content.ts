@@ -294,6 +294,7 @@ export const AREAS: { region: string; featured: string; cities: string[]; href: 
   { region: "Essex", featured: "Chelmsford", cities: ["Colchester", "Basildon", "Southend", "Harlow"], href: "/areas/essex" },
   { region: "Birmingham & West Midlands", featured: "Solihull", cities: ["Coventry", "Wolverhampton", "Walsall", "Dudley"], href: "/areas/west-midlands" },
   { region: "Scotland", featured: "Glasgow", cities: ["Edinburgh", "Aberdeen", "Dundee", "Stirling"], href: "/areas/scotland" },
+  { region: "Greater Manchester", featured: "Stockport", cities: ["Salford", "Bolton", "Bury", "Wigan"], href: "/areas/manchester" },
 ];
 
 // --- Section 14: Case study --------------------------------------------------

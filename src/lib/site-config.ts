@@ -18,12 +18,6 @@ export const SITE = {
   locale: "en_GB",
 } as const;
 
-/**
- * Google Business Profile reviews URL. Fill this in with the real profile link.
- * Used by the hero rating badge and the "Read all reviews on Google" link.
- */
-export const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Tyre+Fitting+Near+Me+Ltd+reviews";
-
 /** Primary navigation shown in the header. */
 export const MAIN_NAV: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
@@ -100,7 +94,7 @@ export const TRUST_STRIP: { label: string; icon: string }[] = [
   { label: "All cards accepted", icon: "badge-pound-sterling" },
   { label: "Fully insured fitters", icon: "shield-check" },
   { label: "No hidden fees", icon: "circle-check-big" },
-  { label: "5.0 Google rating", icon: "star" },
+  { label: "5.0 customer rating", icon: "star" },
   { label: "Workmanship guaranteed", icon: "badge-check" },
   { label: "British Standard AU 159 repairs", icon: "shield-check" },
   { label: "15+ tyre brands in stock", icon: "circle-dot" },
@@ -141,13 +135,13 @@ export const BRAND_LOGOS: {
     maxHeight: 56,
     maxHeightMobile: 52,
   },
-  { src: "/uploads/brands/Adobe-Express-file-5.png", alt: "Tyre brand" },
-  { src: "/uploads/brands/Adobe-Express-file-6.png", alt: "Tyre brand" },
-  { src: "/uploads/brands/5860f81a4fc7f3474eb80db5.png", alt: "Tyre brand" },
-  { src: "/uploads/brands/5860f8854fc7f3474eb80dba-scaled.png", alt: "Tyre brand" },
-  { src: "/uploads/brands/5860f8f04fc7f3474eb80dbc-scaled.png", alt: "Tyre brand" },
-  { src: "/uploads/brands/pngegg-7.png", alt: "Tyre brand" },
-  { src: "/uploads/brands/pngegg-8.png", alt: "Tyre brand" },
+  { src: "/uploads/brands/Adobe-Express-file-5.png", alt: "Nexen tyres" },
+  { src: "/uploads/brands/Adobe-Express-file-6.png", alt: "Hankook tyres" },
+  { src: "/uploads/brands/5860f81a4fc7f3474eb80db5.png", alt: "Michelin tyres" },
+  { src: "/uploads/brands/5860f8854fc7f3474eb80dba-scaled.png", alt: "Bridgestone tyres" },
+  { src: "/uploads/brands/5860f8f04fc7f3474eb80dbc-scaled.png", alt: "Continental tyres" },
+  { src: "/uploads/brands/pngegg-7.png", alt: "BFGoodrich tyres" },
+  { src: "/uploads/brands/pngegg-8.png", alt: "Maxxis tyres" },
 ];
 
 /** "Why choose us" blocks shown on the homepage. */
@@ -155,7 +149,7 @@ export const WHY_CHOOSE: { title: string; description: string; icon: string }[] 
   {
     title: "30-60 minute arrival",
     description:
-      "A fitter is usually with you within the hour - we know a flat tyre can't wait.",
+      "A fitter is usually with you within the hour. We know a flat tyre can't wait.",
     icon: "gauge",
   },
   {
@@ -177,9 +171,9 @@ export const WHY_CHOOSE: { title: string; description: string; icon: string }[] 
     icon: "shield-check",
   },
   {
-    title: "5.0 out of 5 on Google",
+    title: "Rated 5.0 out of 5 by customers",
     description:
-      "UK drivers rate our mobile tyre fitting 5.0 on Google for speed, fairness and a tidy on-site job.",
+      "UK drivers rate our mobile tyre fitting 5.0 for speed, fairness and a tidy on-site job.",
     icon: "star",
   },
   {

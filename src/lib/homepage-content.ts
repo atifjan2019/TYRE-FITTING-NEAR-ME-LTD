@@ -442,7 +442,7 @@ export const FOUNDER_STATS: {
   useCommas?: boolean;
   label: string;
 }[] = [
-  { end: 10, suffix: "+", label: "years operating across the UK" },
+  { end: 10, suffix: "+", label: "years in the tyre trade" },
   { end: 8, label: "certified mobile tyre technicians on the road" },
   { end: 12000, suffix: "+", useCommas: true, label: "mobile tyre fittings completed" },
   { end: 6, label: "vans on the road across our coverage area" },
@@ -495,7 +495,7 @@ export const RECENT_WORK: { file: string; alt: string; caption: string }[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Section 11 - Areas covered (region + town entities, 8 towns per region)
+// Section 11 - Areas covered (seven regions + town entities, 8 towns per region)
 // Region slug links to the county hub page; towns are shown as visible copy.
 // ---------------------------------------------------------------------------
 export const SERVICE_REGIONS: { region: string; slug: string; towns: string[] }[] = [
@@ -528,6 +528,11 @@ export const SERVICE_REGIONS: { region: string; slug: string; towns: string[] }[
     region: "Scotland",
     slug: "scotland",
     towns: ["Glasgow", "Edinburgh", "Paisley", "East Kilbride", "Hamilton", "Motherwell", "Cumbernauld", "Livingston"],
+  },
+  {
+    region: "Greater Manchester",
+    slug: "manchester",
+    towns: ["Manchester City Centre", "Salford", "Stockport", "Bolton", "Bury", "Oldham", "Rochdale", "Wigan"],
   },
 ];
 
@@ -592,7 +597,7 @@ export const HOMEPAGE_FAQS: { id: string; question: string; answer: string }[] =
     id: "faq-come-to-me",
     question: "Do you really come to me wherever I am?",
     answer:
-      "Yes. We fit tyres on home driveways, in workplace car parks and at the roadside across London, Kent, Sussex, Essex, the West Midlands and Scotland. As long as we can safely reach and work around your vehicle, our mobile fitter comes to you with the correct tyres in stock.",
+      "Yes. We fit tyres on home driveways, in workplace car parks and at the roadside across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester. As long as we can safely reach and work around your vehicle, our mobile fitter comes to you with the correct tyres in stock.",
   },
   {
     id: "faq-how-fast",
@@ -610,7 +615,7 @@ export const HOMEPAGE_FAQS: { id: string; question: string; answer: string }[] =
     id: "faq-areas",
     question: "What areas do you cover for mobile tyre fitting?",
     answer:
-      "We cover London, Kent, Sussex, Essex, Birmingham and the West Midlands, and Scotland, including towns such as Bromley, Maidstone, Brighton, Chelmsford, Solihull and Glasgow. If you are unsure whether we reach you, enter your postcode in the checker above or send your location on WhatsApp.",
+      "We cover London, Kent, Sussex, Essex, Birmingham and the West Midlands, Scotland and Greater Manchester, including towns such as Bromley, Maidstone, Brighton, Chelmsford, Solihull, Glasgow and Stockport. If you are unsure whether we reach you, enter your postcode in the checker above or send your location on WhatsApp.",
   },
   {
     id: "faq-home-work",

@@ -265,7 +265,7 @@ export default async function LockingWheelNutRemovalPage() {
             phone={phone}
             whatsapp={whatsapp}
             title="Book Locking Wheel Nut Removal Near You"
-            subtitle={`Enter the registration, postcode, and a photo of the nut in the form, or call and WhatsApp 0788 328 8831 for urgent removal. Removing locking wheel nuts without alloy damage across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd.`}
+            subtitle={`Enter the registration, postcode, and a photo of the nut in the form, or call and WhatsApp 0788 328 8831 for urgent removal. Removing locking wheel nuts without alloy damage across UK mainland postcodes from Tyre Fitting Near Me Ltd.`}
           />
         </Reveal>
       </div>

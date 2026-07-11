@@ -269,7 +269,7 @@ export default async function TpmsServicePage() {
             phone={phone}
             whatsapp={whatsapp}
             title="Book TPMS Service Near You"
-            subtitle={`Enter the registration and postcode in the form for a planned service, or call and WhatsApp 0788 328 8831 for a warning light before an MOT. Servicing tyre pressure monitoring systems across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd.`}
+            subtitle={`Enter the registration and postcode in the form for a planned service, or call and WhatsApp 0788 328 8831 for a warning light before an MOT. Servicing tyre pressure monitoring systems across UK mainland postcodes from Tyre Fitting Near Me Ltd.`}
           />
         </Reveal>
       </div>

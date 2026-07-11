@@ -32,7 +32,7 @@ export function SiteHeader({
       <div className="hidden bg-primary text-primary-foreground sm:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 text-xs font-medium">
           <span className="flex items-center gap-1.5">
-            <Clock className="h-3.5 w-3.5" /> 24/7 emergency mobile tyre fitting - we come to you
+            <Clock className="h-3.5 w-3.5" /> 24/7 emergency mobile tyre fitting. We come to you
           </span>
           <span>No standard-hours call-out fee · Home · Work · Roadside</span>
         </div>

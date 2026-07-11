@@ -405,7 +405,7 @@ export function CallNow() {
           <Link href="/services/mobile-tyre-fitting" className="font-semibold text-accent hover:underline">
             mobile tyre fitting
           </Link>{" "}
-          for a booked appointment. Dispatching across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd.
+          for a booked appointment. Dispatching across UK mainland postcodes from Tyre Fitting Near Me Ltd.
         </p>
         <EmergencyButtons className="w-full justify-center sm:w-auto" />
       </div>

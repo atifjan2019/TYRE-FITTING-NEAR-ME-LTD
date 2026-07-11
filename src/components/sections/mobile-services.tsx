@@ -54,7 +54,7 @@ export function MobileServices({ availableSlugs }: { availableSlugs: Set<string>
           </summary>
           <p className="mt-2 max-w-3xl text-muted-foreground">
             Tyre Fitting Near Me Ltd also delivers tyre rotation, free safety inspections and
-            leisure vehicle tyre fitting to drivers across our six UK coverage regions, using the
+            leisure vehicle tyre fitting to drivers across our seven UK coverage regions, using the
             same insured certified mobile technicians and on-site equipment as our core tyre
             fitting service.
           </p>
@@ -121,6 +121,8 @@ function ServiceCard({ service, linked }: { service: ServiceItem; linked: boolea
   const cardClass =
     "surface-card surface-card-hover group flex h-full flex-col p-5 sm:p-7";
 
+  // Unlinked cards (no live destination page) render as plain informational
+  // cards with no Learn more link, so the homepage never ships a 404.
   return linked ? (
     <Link
       href={href}
@@ -129,14 +131,6 @@ function ServiceCard({ service, linked }: { service: ServiceItem; linked: boolea
       {inner}
     </Link>
   ) : (
-    <div className={cardClass}>
-      {inner}
-      <Link
-        href={href}
-        className={`${learnMoreClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
-      >
-        {learnMore}
-      </Link>
-    </div>
+    <div className={cardClass}>{inner}</div>
   );
 }

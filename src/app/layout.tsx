@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s | ${SITE.shortName}`,
     },
     description:
-      "24/7 mobile tyre fitting that comes to you - home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands & Scotland.",
+      "24/7 mobile tyre fitting that comes to you at home, work or roadside. Fast call-out across London, Kent, Sussex, Essex, the West Midlands, Scotland & Greater Manchester.",
     applicationName: SITE.name,
     formatDetection: { telephone: true },
     // Favicon from the CMS (falls back to /favicon.ico if unset).

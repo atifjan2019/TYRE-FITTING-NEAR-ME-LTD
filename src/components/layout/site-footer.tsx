@@ -106,7 +106,7 @@ export function SiteFooter({ settings }: { settings: SiteSettingsData }) {
             © {new Date().getFullYear()} {settings.brandName}. All rights reserved.
             <span className="ml-1">Registered in England &amp; Wales, company no. 17137653.</span>
           </p>
-          <p>Mobile service-area business - we come to you. No shop visits.</p>
+          <p>Mobile service-area business. We come to you, no shop visits.</p>
         </div>
       </div>
     </footer>

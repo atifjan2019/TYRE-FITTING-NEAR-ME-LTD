@@ -10,7 +10,7 @@ export function StepsToBook() {
         <SectionHeading
           eyebrow="It couldn't be easier"
           title="How it works"
-          subtitle="From flat tyre to back on the road - usually within the hour."
+          subtitle="From flat tyre to back on the road, usually within the hour."
         />
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {BOOKING_STEPS.map((step, i) => (

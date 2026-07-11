@@ -264,7 +264,7 @@ export default async function VanTyreFittingPage() {
         <Reveal>
           <VanCtaBand
             title="Book Van Tyre Fitting Near You"
-            subtitle="Enter the registration and postcode in the form for planned fitting, or call and WhatsApp for urgent and fleet enquiries. Fitting commercial van tyres across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd."
+            subtitle="Enter the registration and postcode in the form for planned fitting, or call and WhatsApp for urgent and fleet enquiries. Fitting commercial van tyres across UK mainland postcodes from Tyre Fitting Near Me Ltd."
           />
         </Reveal>
       </div>

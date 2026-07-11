@@ -23,7 +23,7 @@ async function main() {
     create: {
       id: "settings",
       brandName: "Tyre Fitting Near Me Ltd",
-      tagline: "24/7 Mobile Tyre Fitting - We Come To You",
+      tagline: "24/7 Mobile Tyre Fitting. We Come To You",
       phone: "0800 000 0000",
       whatsapp: "447883288831",
       email: "bookings@tyrefittingnearme.co.uk",
@@ -62,7 +62,7 @@ async function main() {
       title: "Mobile Tyre Repair",
       slug: "mobile-tyre-repair",
       shortDescription:
-        "Fast, safe tyre repairs that come to you - getting you moving without a costly replacement.",
+        "Fast, safe tyre repairs that come to you, getting you moving without a costly replacement.",
       icon: "wrench",
       features: [
         "British Standard BS AU 159 repairs",
@@ -122,7 +122,7 @@ async function main() {
       title: "TPMS Service",
       slug: "tpms-service",
       shortDescription:
-        "Tyre Pressure Monitoring System diagnosis, sensor replacement and reset - keep that warning light off.",
+        "Tyre Pressure Monitoring System diagnosis, sensor replacement and reset. Keep that warning light off.",
       icon: "activity",
       features: ["Sensor diagnostics", "Replacement & programming", "Valve service kits"],
     },
@@ -142,7 +142,7 @@ async function main() {
       title: "Caravan & Motorhome Tyre Fitting",
       slug: "caravan-tyre-fitting",
       shortDescription:
-        "CP-rated and load-rated leisure tyres fitted where the caravan stands - storage compound, campsite, pitch or home, with a full DOT age and sidewall safety check.",
+        "CP-rated and load-rated leisure tyres fitted where the caravan stands, at a storage compound, campsite, pitch or home, with a full DOT age and sidewall safety check.",
       icon: "bus",
       features: [
         "CP-rated camper & load-rated leisure tyres",
@@ -195,7 +195,7 @@ async function main() {
     {
       question: "Do you really come to me?",
       answer:
-        "Yes. We are a fully mobile service - we come to your home, workplace or the roadside. There is no garage to visit.",
+        "Yes. We are a fully mobile service. We come to your home, workplace or the roadside. There is no garage to visit.",
     },
     {
       question: "Is there a call-out fee?",
@@ -205,7 +205,7 @@ async function main() {
     {
       question: "What areas do you cover?",
       answer:
-        "London, Kent, Sussex, Essex, Birmingham & the West Midlands, and Scotland. Tell us your postcode and we'll confirm.",
+        "London, Kent, Sussex, Essex, Birmingham & the West Midlands, Scotland and Greater Manchester. Tell us your postcode and we'll confirm.",
     },
     {
       question: "How do I pay?",
@@ -215,7 +215,7 @@ async function main() {
     {
       question: "Can you fit tyres at night?",
       answer:
-        "Yes - our emergency tyre fitting service runs 24 hours a day, 365 days a year.",
+        "Yes. Our emergency tyre fitting service runs 24 hours a day, 365 days a year.",
     },
   ];
   await prisma.faq.deleteMany({ where: { category: "general" } });

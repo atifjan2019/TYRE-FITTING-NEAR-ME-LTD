@@ -29,7 +29,7 @@ export const FITTING_FEE = "£20";
 
 export const HERO = {
   definition:
-    "Emergency tyre fitting is the immediate dispatch of a mobile technician to a stranded vehicle at the roadside, home or work, fitting or repairing the tyre on-site, 24 hours a day. A van reaches most UK mainland drivers within 30 to 60 minutes through 2026.",
+    "Emergency tyre fitting is the immediate dispatch of a mobile technician to a stranded vehicle at the roadside, home or work, fitting or repairing the tyre on-site, 24 hours a day. A van reaches most UK mainland drivers within 30 to 60 minutes.",
   responseLine: "30 to 60 minute typical response, UK mainland.",
   pricingLine:
     "No standard-hours call-out fee. Any out-of-hours charge is included in your confirmed quote before dispatch. The £20 flat fitting fee per tyre and the tyre price are quoted in full before the van is dispatched.",
@@ -158,7 +158,7 @@ export const PROCESS_STEPS: { title: string; description: string; icon: string }
   {
     title: "Scene secured, tyre assessed and fitted",
     description:
-      "On arrival, the technician secures the scene and assesses the tyre against BS AU 159, repairing where safe or fitting the replacement. The 2026 vans carry balancing equipment for wheels up to 20 inches, digital torque wrenches, TPMS tools and lighting for night work.",
+      "On arrival, the technician secures the scene and assesses the tyre against BS AU 159, repairing where safe or fitting the replacement. Our vans carry balancing equipment for wheels up to 20 inches, digital torque wrenches, TPMS tools and lighting for night work.",
     icon: "wrench",
   },
   {
@@ -174,7 +174,7 @@ export const PROCESS_STEPS: { title: string; description: string; icon: string }
 export const RESPONSE = {
   heading: "Emergency Response Times Across the UK",
   paras: [
-    "A 30 to 60 minute response is typical in and around the covered regions: London, Kent, Sussex, Essex, Birmingham and the West Midlands, and Scotland's Central Belt. Remote postcodes take longer.",
+    "A 30 to 60 minute response is typical in and around the covered regions: London, Kent, Sussex, Essex, Birmingham and the West Midlands, Greater Manchester, and Scotland's Central Belt. Remote postcodes take longer.",
     "The dispatcher states the realistic ETA on the call before you commit. An honest ETA beats a fictional one when you are stood on a verge.",
   ],
 };
@@ -208,7 +208,7 @@ export const PRICING = {
     "Old tyre disposal",
   ],
   closing:
-    "The tyre is priced by size and brand tier on the call. The figure quoted on the phone is the figure charged, with nothing added at the roadside. Call 0788 328 8831 for the exact price now. Emergency pricing is held transparent through 2026.",
+    "The tyre is priced by size and brand tier on the call. The figure quoted on the phone is the figure charged, with nothing added at the roadside. Call 0788 328 8831 for the exact price now. Emergency pricing is held transparent.",
 };
 
 // --- Section 9: Vehicles covered ---------------------------------------------
@@ -257,6 +257,7 @@ export const AREAS: { region: string; featured: string; cities: string[]; href: 
   { region: "Essex", featured: "Chelmsford", cities: ["Colchester", "Basildon", "Southend", "Harlow"], href: "/areas/essex" },
   { region: "Birmingham & West Midlands", featured: "Solihull", cities: ["Coventry", "Wolverhampton", "Walsall", "Dudley"], href: "/areas/west-midlands" },
   { region: "Scotland", featured: "Glasgow", cities: ["Edinburgh", "Aberdeen", "Dundee", "Stirling"], href: "/areas/scotland" },
+  { region: "Greater Manchester", featured: "Stockport", cities: ["Salford", "Bolton", "Bury", "Wigan"], href: "/areas/manchester" },
 ];
 
 // --- Section 13: Case study --------------------------------------------------
@@ -322,7 +323,7 @@ export const FAQS: { id: string; question: string; answer: string; link?: boolea
     id: "area",
     question: "Do you cover my area?",
     answer:
-      "Coverage spans UK mainland, postcode-verified at dispatch. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, and Scotland, plus the surrounding areas. A nationwide fitter network reaches beyond the headline regions.",
+      "Coverage spans UK mainland, postcode-verified at dispatch. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, Scotland and Greater Manchester, plus the surrounding areas.",
   },
   {
     id: "vehicles",

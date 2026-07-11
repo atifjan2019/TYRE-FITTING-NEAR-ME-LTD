@@ -12,7 +12,7 @@ export function RecentWork() {
         <SectionHeading
           eyebrow="Recent work"
           title="Recent Mobile Tyre Fittings We Have Completed"
-          subtitle="A sample of recent on-site fittings, showing the brand, tyre size, vehicle and location our mobile fitters worked on across the UK."
+          subtitle="A sample of recent on-site fittings, showing the brand, tyre size, vehicle and location our mobile fitters worked on across our coverage regions."
         />
 
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">

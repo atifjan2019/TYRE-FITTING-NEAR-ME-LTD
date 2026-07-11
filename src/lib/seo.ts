@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site-config";
+import { SERVICE_REGIONS } from "@/lib/homepage-content";
 import type { SiteSettingsData } from "@/lib/data";
 
 /**
@@ -155,7 +156,8 @@ export function servicesJsonLd(
         description: s.description,
         url: `${SITE.url}/services/${s.slug}`,
         provider: { "@id": `${SITE.url}#business` },
-        areaServed: "United Kingdom",
+        // Honest coverage: the seven live regions, not the whole UK.
+        areaServed: SERVICE_REGIONS.map((r) => r.region),
       },
     })),
   };

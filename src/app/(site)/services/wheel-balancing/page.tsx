@@ -268,7 +268,7 @@ export default async function WheelBalancingPage() {
             phone={phone}
             whatsapp={whatsapp}
             title="Book Mobile Wheel Balancing Near You"
-            subtitle={`Book through the form with your postcode, registration and a short symptom note, or call or WhatsApp 0788 328 8831. We come to you, ${PRICE} per wheel, 24/7. Available now across UK mainland postcodes in 2026 from Tyre Fitting Near Me Ltd.`}
+            subtitle={`Book through the form with your postcode, registration and a short symptom note, or call or WhatsApp 0788 328 8831. We come to you, ${PRICE} per wheel, 24/7. Available now across UK mainland postcodes from Tyre Fitting Near Me Ltd.`}
           />
         </Reveal>
       </div>

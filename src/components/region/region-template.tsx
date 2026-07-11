@@ -82,7 +82,7 @@ const SERVICES: { href: string; anchor: string; line: string }[] = [
 
 /* --- Skeleton variants (selected by region.variant). A length-3 selector
    (variant % 3) and a length-2 selector (variant % 2) combine so each of the
-   six regions lands on a distinct pairing, the same anti-fingerprint approach
+   seven regions lands on a distinct pairing, the same anti-fingerprint approach
    the town pages use. The unique substance still comes from each region's real
    roads, postcode areas, contextNote and overviewExtra; these variants only
    break the shared sentence skeletons. ------------------------------------- */

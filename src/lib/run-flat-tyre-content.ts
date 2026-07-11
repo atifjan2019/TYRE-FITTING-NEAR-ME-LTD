@@ -22,7 +22,7 @@ export const PRICE = "£20";
 
 export const HERO = {
   definition:
-    "Run-flat tyre replacement is the supply and mobile fitment of a correct manufacturer-approved run-flat tyre to replace one that has been punctured or worn, performed at the driver's home, workplace, or roadside, with the correct run-flat marking and load index matched from the VRN. Booked by drivers across the UK through 2026.",
+    "Run-flat tyre replacement is the supply and mobile fitment of a correct manufacturer-approved run-flat tyre to replace one that has been punctured or worn, performed at the driver's home, workplace, or roadside, with the correct run-flat marking and load index matched from the VRN. Booked by drivers across our coverage regions.",
   ticks: [
     "£20 flat fitting fee per tyre",
     "Run-flat priced from the VRN",
@@ -166,7 +166,7 @@ export const CHECKLIST: { title: string; body: string }[] = [
 // --- Section 13: Coverage ----------------------------------------------------
 
 export const AREAS_INTRO =
-  "Coverage spans UK mainland, postcode-verified at booking. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, and Scotland. City pages carry local response times and slots.";
+  "Coverage spans UK mainland, postcode-verified at booking. Active regions include London, Kent, Sussex, Essex, Birmingham and the West Midlands, Scotland and Greater Manchester. City pages carry local response times and slots.";
 
 export const AREAS: { region: string; featured: string; cities: string[]; href: string }[] = [
   { region: "London", featured: "Bromley", cities: ["Croydon", "Romford", "Enfield", "Kingston"], href: "/areas/london" },
@@ -175,6 +175,7 @@ export const AREAS: { region: string; featured: string; cities: string[]; href: 
   { region: "Essex", featured: "Chelmsford", cities: ["Colchester", "Basildon", "Southend", "Harlow"], href: "/areas/essex" },
   { region: "Birmingham & West Midlands", featured: "Solihull", cities: ["Coventry", "Wolverhampton", "Walsall", "Dudley"], href: "/areas/west-midlands" },
   { region: "Scotland", featured: "Glasgow", cities: ["Edinburgh", "Aberdeen", "Dundee", "Stirling"], href: "/areas/scotland" },
+  { region: "Greater Manchester", featured: "Stockport", cities: ["Salford", "Bolton", "Bury", "Wigan"], href: "/areas/manchester" },
 ];
 
 // --- Section 14: Case study --------------------------------------------------

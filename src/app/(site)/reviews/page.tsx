@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "Customer Reviews | Tyre Fitting Near Me",
     description:
-      "Read real reviews from drivers we've helped with mobile tyre fitting, repairs and emergency call-outs across the UK.",
+      "Read reviews from drivers we've helped with mobile tyre fitting, repairs and emergency call-outs across our seven UK coverage regions.",
     path: "/reviews",
   });
 }
@@ -33,7 +33,7 @@ export default async function ReviewsPage() {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <PageHero
         title="What our customers say"
-        subtitle="Rated 5 stars by drivers across the UK."
+        subtitle="What drivers across our seven coverage regions say about our mobile tyre fitting."
         crumbs={crumbs}
       />
       <ReviewsSection reviews={reviews} heading={false} />

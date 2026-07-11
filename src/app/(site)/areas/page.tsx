@@ -19,9 +19,9 @@ const CRUMBS = [
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "Mobile Tyre Fitting Areas We Cover | 24/7 Across the UK",
+    title: "Mobile Tyre Fitting Areas We Cover | 24/7 Across Seven UK Regions",
     description:
-      "Mobile tyre fitting areas across South East London and the wider UK, with fitters dispatched to each postcode 24/7. Find your town for a 30 to 60 minute response.",
+      "Mobile tyre fitting across London, Kent, Sussex, Essex, the West Midlands, Scotland and Greater Manchester, with fitters dispatched to each postcode 24/7. Find your town for a 30 to 60 minute response.",
     path: "/areas",
   });
 }
@@ -62,8 +62,9 @@ export default async function AreasPage() {
           </h1>
           <span className="mt-4 block h-1 w-16 rounded-full bg-accent" />
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-primary-foreground/90">
-            Tyre Fitting Near Me Ltd covers areas across South East London and the wider UK, with
-            mobile fitters dispatched to each postcode, 24/7. Our{" "}
+            Tyre Fitting Near Me Ltd covers seven regions: London, Kent, Sussex, Essex, the West
+            Midlands, Scotland and Greater Manchester, with mobile fitters dispatched to each
+            postcode, 24/7. Our{" "}
             <Link href="/services/mobile-tyre-fitting" className="font-semibold text-white underline">
               mobile tyre fitting
             </Link>{" "}
@@ -139,7 +140,7 @@ export default async function AreasPage() {
         );
       })}
 
-      {/* Browse by region: the six /areas/[region] hubs and their towns. */}
+      {/* Browse by region: the seven /areas/[region] hubs and their towns. */}
       <AreasCovered heading />
 
       <CtaBand phone={settings.phone} whatsapp={settings.whatsapp} />
