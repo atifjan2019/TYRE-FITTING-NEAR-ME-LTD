@@ -63,11 +63,39 @@ export default async function TermsPage() {
             we can offer the slot to another customer.
           </p>
 
+          <h2>Outsourced &amp; subcontracted work</h2>
+          <p>
+            Some bookings are fulfilled by independent third-party fitters, contractors
+            and suppliers rather than by our own staff. Where a job is outsourced in this
+            way, {settings.brandName} arranges the booking and allocates a suitable
+            fitter — the work itself is carried out by that third party, on their own
+            account.
+          </p>
+          <p>
+            <strong>
+              The third party is directly responsible for any work they carry out.
+            </strong>{" "}
+            That includes the standard of their workmanship, the tyres, parts and
+            materials they supply, their conduct at your premises, and any loss, damage
+            or delay arising from what they do or fail to do. They are responsible for
+            holding their own insurance, qualifications and certifications, and we do not
+            warrant or guarantee their work.
+          </p>
+          <p>
+            {settings.brandName} does not accept responsibility or liability for work
+            outsourced to a third party. Any claim, complaint or dispute about that work
+            should be raised directly with the third party who carried it out. On request
+            we will confirm who attended your booking and pass on their contact details
+            so you can take the matter up with them.
+          </p>
+
           <h2>Liability</h2>
           <p>
             Nothing in these terms limits our liability where it would be unlawful to do
-            so. Our liability is otherwise limited to the value of the services
-            provided.
+            so, including liability for death or personal injury caused by negligence and
+            for your statutory rights as a consumer. Our liability is otherwise limited
+            to the value of the services provided, and does not extend to work carried
+            out by an outsourced third party as set out above.
           </p>
 
           <h2>Contact</h2>
