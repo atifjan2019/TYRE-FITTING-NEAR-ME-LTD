@@ -23,6 +23,37 @@ async function requireAdmin() {
 }
 
 /**
+ * Public pages that render each admin resource. Saving a record refreshes only
+ * these (ISR on demand). Previously every save, even a lead's status change,
+ * called revalidatePath("/", "layout"), which threw away every cached page on
+ * the site and made Vercel rebuild hundreds of area pages: the bulk of this
+ * project's ISR writes and function time.
+ *
+ * Leads and FAQs are not shown on the public site, so they refresh nothing.
+ * Add a resource here when a public page starts reading it.
+ */
+const PUBLIC_PATHS: Record<string, Array<[path: string, type?: "page" | "layout"]>> = {
+  leads: [],
+  faqs: [],
+  services: [["/"], ["/services"], ["/services/[service]", "page"], ["/sitemap.xml"]],
+  posts: [["/guides"], ["/guides/[slug]", "page"], ["/sitemap.xml"]],
+  reviews: [["/"], ["/reviews"]],
+};
+
+function revalidatePublic(resourceKey: string) {
+  const paths = PUBLIC_PATHS[resourceKey];
+  if (!paths) {
+    // Unknown resource: be safe and refresh the whole site.
+    revalidatePath("/", "layout");
+    return;
+  }
+  for (const [path, type] of paths) {
+    if (type) revalidatePath(path, type);
+    else revalidatePath(path);
+  }
+}
+
+/**
  * Convert raw FormData into a typed Prisma data object using the resource's
  * field config (the single source of truth for each field's type).
  */
@@ -102,9 +133,9 @@ export async function saveRecord(
     return { error: toFriendlyError(error) };
   }
 
-  // Refresh both the admin list and the public site (ISR on-demand).
+  // Refresh the admin list and only the public pages that show this resource.
   revalidatePath(`/admin/${resourceKey}`);
-  revalidatePath("/", "layout");
+  revalidatePublic(resourceKey);
   redirect(`/admin/${resourceKey}`);
 }
 
@@ -129,7 +160,7 @@ export async function deleteRecord(resourceKey: string, id: string) {
   }
 
   revalidatePath(`/admin/${resourceKey}`);
-  revalidatePath("/", "layout");
+  revalidatePublic(resourceKey);
 }
 
 /** Update the singleton site settings row. */
@@ -167,6 +198,8 @@ export async function saveSettings(
     return { error: "Could not save settings. Please try again." };
   }
 
+  // Settings (brand, phone, meta defaults) appear in the layout of every page,
+  // so this one genuinely refreshes the whole site.
   revalidatePath("/", "layout");
   redirect("/admin/settings?saved=1");
 }
