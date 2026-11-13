@@ -9,7 +9,8 @@ import { PageHero } from "@/components/page-hero";
 import { BookingForm } from "@/components/forms/booking-form";
 import { telHref, whatsappHref } from "@/lib/utils";
 
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({

@@ -6,7 +6,8 @@ import { PageHero } from "@/components/page-hero";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { CtaBand } from "@/components/sections/cta-band";
 
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({

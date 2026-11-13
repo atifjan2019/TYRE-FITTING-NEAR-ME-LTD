@@ -23,7 +23,8 @@ import { BookingForm } from "@/components/forms/booking-form";
 // This pillar is the most-linked page on the site, so it has a bespoke route
 // (like mobile-tyre-repair and puncture-repair) rather than the DB-driven
 // /services/[service] template. The dynamic segment excludes this slug.
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 const PAGE_PATH = "/services/mobile-tyre-fitting";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;

@@ -15,7 +15,8 @@ import { CtaButtons } from "@/components/sections/cta-buttons";
 import { BookingForm } from "@/components/forms/booking-form";
 import { LIVE_AREAS, areaHref } from "@/data/areas";
 
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const posts = await prisma.blogPost.findMany({

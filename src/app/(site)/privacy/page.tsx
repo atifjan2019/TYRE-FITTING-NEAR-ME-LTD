@@ -3,7 +3,8 @@ import { getSiteSettings } from "@/lib/data";
 import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/page-hero";
 
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({

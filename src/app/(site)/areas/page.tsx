@@ -10,7 +10,8 @@ import { AreasCovered } from "@/components/sections/areas-covered";
 import { CtaBand } from "@/components/sections/cta-band";
 import { areas, LIVE_AREAS, CLUSTER_LABELS, areaHref } from "@/data/areas";
 
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 const CRUMBS = [
   { name: "Home", path: "/" },

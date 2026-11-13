@@ -49,7 +49,8 @@ import { FaqSection } from "@/components/sections/faq-section";
 import { CtaBand } from "@/components/sections/cta-band";
 
 // Statically generated, revalidated hourly (ISR) so the DB isn't hit per visit.
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({

@@ -33,7 +33,8 @@ import {
 import { FAQS, AREAS, PROCESS_STEPS, PRICE } from "@/lib/wheel-balancing-content";
 
 // Statically generated, revalidated hourly (ISR) like the rest of the site.
-export const revalidate = 3600;
+// Daily backstop: admin saves refresh the affected pages on demand (src/app/admin/actions.ts).
+export const revalidate = 86400;
 
 const PAGE_PATH = "/services/wheel-balancing";
 const PAGE_URL = `${SITE.url}${PAGE_PATH}`;
